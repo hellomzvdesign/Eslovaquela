@@ -295,6 +295,174 @@ ls:[
   ],
   w:[],p:[],mc:[]
  }
+]},
+{id:'s3',ti:'La vida diaria',em:'🗓️',col:'#00A86B',
+gr:{
+  intro:'La Sección 3 introduce los verbos en presente, los números hasta 100, la ropa, las compras, los pasatiempos, las preguntas, las direcciones y los adjetivos con concordancia de género.',
+  tables:[
+    {title:'Verbos en presente — patrones principales',note:'"mať" y "robiť" son irregulares e imprescindibles. Los verbos en "-ovať" (como "pracovať") siguen un patrón muy productivo.',
+     h:['Pronombre','mať (tener)','robiť (hacer)','pracovať (-ovať)'],
+     r:[['ja','mám','robím','pracujem'],['ty','máš','robíš','pracuješ'],['on/ona/ono','má','robí','pracuje'],['my','máme','robíme','pracujeme'],['vy','máte','robíte','pracujete'],['oni/ony','majú','robia','pracujú']]},
+    {title:'Números 11–100',
+     h:['Número','Eslovaco','Número','Eslovaco'],
+     r:[['11','jedenásť','17','sedemnásť'],['12','dvanásť','18','osemnásť'],['13','trinásť','19','devätnásť'],['14','štrnásť','20','dvadsať'],['15','pätnásť','30','tridsať'],['16','šestnásť','40','štyridsať'],['50','päťdesiat','80','osemdesiat'],['60','šesťdesiat','90','deväťdesiat'],['70','sedemdesiat','100','sto']]},
+    {title:'Adjetivos: concordancia de género',note:'La mayoría de adjetivos siguen el patrón -ý (masculino) / -á (femenino) / -é (neutro). Esta es la base de la declinación de adjetivos en eslovaco — vuelve aquí cuando necesites repasar las terminaciones.',
+     h:['Masculino','Femenino','Neutro','Español'],
+     r:[['veľký','veľká','veľké','grande'],['malý','malá','malé','pequeño'],['pekný','pekná','pekné','bonito'],['starý','stará','staré','viejo'],['nový','nová','nové','nuevo'],['dobrý','dobrá','dobré','bueno']]},
+    {title:'Palabras interrogativas',
+     h:['Eslovaco','Español'],
+     r:[['kto','quién'],['čo','qué'],['kde','dónde'],['kedy','cuándo'],['prečo','por qué'],['ako','cómo'],['koľko','cuánto']]},
+    {title:'Expresar gustos: rád / rada / radi',note:'"Rád" (hombre), "rada" (mujer) o "radi" (plural/grupo) + verbo en presente = "me/nos gusta hacer algo".',
+     h:['Sujeto','Forma','Ejemplo'],
+     r:[['Yo (hombre)','rád + verbo','Rád čítam. = Me gusta leer.'],['Yo (mujer)','rada + verbo','Rada tancujem. = Me gusta bailar.'],['Nosotros','radi + verbo','Radi plávame. = Nos gusta nadar.']]}
+  ],
+  tips:["🔑 'mať' (tener) y 'robiť' (hacer) son los verbos más usados — apréndelos primero.","🔑 Los números del 11 al 19 terminan en '-násť'; las decenas (20, 30...) terminan en '-dsať' o '-desiat'.","🔑 Los adjetivos cambian su terminación según el género: -ý (m), -á (f), -é (n). Este patrón se aplica a la mayoría de adjetivos.","🔑 'Rád/rada/radi' + verbo es la forma eslovaca de decir 'me gusta hacer algo'."]
+},
+ls:[
+ {id:'s3l1',ti:'Tener y hacer',em:'🤲',
+  sl:[
+   ['v','Verbos esenciales',[['mať','tener','mat'],['robiť','hacer','ro-bit'],['vedieť','saber','ve-dyet'],['môcť','poder','mohts']]],
+   ['g','Presente: mať (tener)','El verbo "mať" es uno de los más usados. Apréndelo bien.',[['ja','mám'],['ty','máš'],['on/ona/ono','má'],['my','máme'],['vy','máte'],['oni/ony','majú']]],
+   ['g','Presente: robiť (hacer)','"Robiť" sigue el patrón regular de los verbos en -iť.',[['ja','robím'],['ty','robíš'],['on/ona/ono','robí'],['my','robíme'],['vy','robíte'],['oni/ony','robia']]]
+  ],
+  w:[['mám','tengo','🤲'],['máš','tienes','👉'],['má','tiene','☝️'],['robím','hago','🛠️'],['robíš','haces','🔨'],['robí','hace','⚙️'],['vieme','sabemos','🧠'],['môžem','puedo','💪']],
+  p:[
+   ['Tengo tiempo','Mám čas',[['Mám','Tengo'],['čas','tiempo']],['robím','môžem'],"'čas' = tiempo. 'Mám čas' es una frase muy útil."],
+   ['¿Qué haces?','Čo robíš?',[['Čo','Qué'],['robíš','haces']],['máš','vieš'],"'Čo' = qué. Pregunta muy común para iniciar conversación."]
+  ],
+  mc:[
+   ['¿Cómo se dice "tengo"?',['máš','má','mám','majú'],2,"'mám' = tengo (yo). 'máš' = tienes (tú)."],
+   ['¿Qué significa "robíš"?',['hago','haces','hace','hacemos'],1,"'robíš' = haces (tú). 'robím' = hago (yo)."],
+   ['¿Cómo se dice "ellos tienen"?',['máme','máte','majú','má'],2,"'majú' = tienen (ellos/ellas). 'máme' = tenemos."]
+  ]
+ },
+ {id:'s3l2',ti:'Mi rutina diaria',em:'⏰',
+  sl:[
+   ['v','Rutina - mañana',[['vstávať','levantarse','vsta-vat'],['raňajkovať','desayunar','ra-nyay-ko-vat'],['umývať sa','lavarse','u-mi-vat sa'],['obliekať sa','vestirse','ob-lye-kat sa']]],
+   ['v','Rutina - resto del día',[['pracovať','trabajar','pra-tso-vat'],['obedovať','almorzar','o-be-do-vat'],['večerať','cenar','ve-che-rat'],['spať','dormir','spat']]],
+   ['g','Presente: pracovať (-ovať)','Los verbos terminados en "-ovať" siguen este patrón en presente.',[['ja','pracujem'],['ty','pracuješ'],['on/ona/ono','pracuje'],['my','pracujeme'],['vy','pracujete'],['oni/ony','pracujú']]]
+  ],
+  w:[['vstávam','me levanto','⏰'],['raňajkujem','desayuno','🥐'],['pracujem','trabajo','💼'],['obedujem','almuerzo','🍲'],['večeriam','ceno','🍝'],['spím','duermo','😴']],
+  p:[
+   ['Me levanto a las siete','Vstávam o siedmej',[['Vstávam','Me levanto'],['o siedmej','a las siete']],['pracujem','spím'],"'o siedmej' = a las siete (forma de hora)."],
+   ['Trabajo y luego ceno','Pracujem a potom večeriam',[['Pracujem','Trabajo'],['a potom','y luego'],['večeriam','ceno']],['raňajkujem','obedujem'],"'a potom' = y luego/después."]
+  ],
+  mc:[
+   ['¿Qué significa "vstávať"?',['dormir','levantarse','cenar','trabajar'],1,"'vstávať' = levantarse."],
+   ['¿Cómo se dice "yo trabajo"?',['pracuje','pracujem','pracujeme','pracuješ'],1,"'pracujem' = trabajo (yo)."],
+   ['¿Qué significa "večerať"?',['desayunar','almorzar','cenar','dormir'],2,"'večerať' = cenar. 'večer' = tarde/noche."]
+  ]
+ },
+ {id:'s3l3',ti:'Números 11–100',em:'🔢',
+  sl:[
+   ['v','Números 11-19',[['jedenásť','once','ye-de-nasty'],['dvanásť','doce','dva-nasty'],['trinásť','trece','tri-nasty'],['pätnásť','quince','pyat-nasty'],['dvadsať','veinte','dvad-sat']]],
+   ['v','Decenas',[['tridsať','treinta','trid-sat'],['štyridsať','cuarenta','shti-rid-sat'],['päťdesiat','cincuenta','pyat-de-syat'],['sto','cien','sto']]],
+   ['g','El patrón -násť','Los números del 11 al 19 se forman añadiendo "-násť" a la base del número (con pequeñas excepciones).',[['11 = jeden + násť','jedenásť'],['12 = dva + násť','dvanásť'],['13 = tri + násť','trinásť'],['20 = dva + dsať','dvadsať'],['30 = tri + dsať','tridsať']]]
+  ],
+  w:[['jedenásť','once','1️⃣1️⃣'],['dvanásť','doce','1️⃣2️⃣'],['dvadsať','veinte','2️⃣0️⃣'],['tridsať','treinta','3️⃣0️⃣'],['päťdesiat','cincuenta','5️⃣0️⃣'],['sto','cien','💯']],
+  p:[
+   ['Tengo veinte años','Mám dvadsať rokov',[['Mám','Tengo'],['dvadsať','veinte'],['rokov','años']],['tridsať','štyridsať'],"'rokov' = años. La estructura es igual: tener + número + años."],
+   ['Cuesta cincuenta euros','Stojí päťdesiat eur',[['Stojí','Cuesta'],['päťdesiat','cincuenta'],['eur','euros']],['sto','dvadsať'],"'eur' es la forma del genitivo plural de 'euro'."]
+  ],
+  mc:[
+   ['¿Qué número es "dvadsať"?',['12','20','30','100'],1,"'dvadsať' = 20 (veinte)."],
+   ['¿Cómo se dice "cien"?',['desať','sto','tisíc','sto desať'],1,"'sto' = 100 (cien)."],
+   ['¿Qué número es "trinásť"?',['3','13','30','33'],1,"'trinásť' = 13 (trece). El sufijo '-násť' indica 'diez más'."]
+  ]
+ },
+ {id:'s3l4',ti:'La ropa',em:'👕',
+  sl:[
+   ['v','Ropa básica',[['tričko','camiseta','trich-ko'],['nohavice','pantalones','no-ha-vi-tse'],['topánky','zapatos','to-pan-ki'],['bunda','chaqueta','bun-da']]],
+   ['v','Más ropa',[['šaty','vestido','sha-ti'],['sukňa','falda','suk-nya'],['čiapka','gorro','chyap-ka'],['ponožky','calcetines','po-nozh-ki']]],
+   ['t','Plurales en eslovaco','Muchas prendas son siempre plurales en eslovaco: "nohavice" (pantalones), "topánky" (zapatos), "ponožky" (calcetines). ¡Como en español!']
+  ],
+  w:[['tričko','camiseta','👕'],['nohavice','pantalones','👖'],['topánky','zapatos','👟'],['bunda','chaqueta','🧥'],['šaty','vestido','👗'],['čiapka','gorro','🧢'],['sukňa','falda','👚'],['ponožky','calcetines','🧦']],
+  p:[
+   ['Tengo una chaqueta nueva','Mám novú bundu',[['Mám','Tengo'],['novú','nueva'],['bundu','chaqueta']],['tričko','topánky'],"'novú' es la forma femenina acusativa de 'nový' (nuevo), porque concuerda con 'bundu'."],
+   ['Los zapatos son bonitos','Topánky sú pekné',[['Topánky','Los zapatos'],['sú','son'],['pekné','bonitos']],['nohavice','ponožky'],"'sú' = son (plural de 'byť'). 'pekné' concuerda en plural."]
+  ],
+  mc:[
+   ['¿Qué significa "nohavice"?',['camiseta','pantalones','zapatos','calcetines'],1,"'nohavice' = pantalones. Viene de 'noha' = pierna."],
+   ['¿Cómo se dice "zapatos"?',['topánky','ponožky','sukňa','čiapka'],0,"'topánky' = zapatos. 'ponožky' = calcetines."],
+   ['¿Qué prenda es "čiapka"?',['vestido','falda','gorro','chaqueta'],2,"'čiapka' = gorro. Muy útil en el invierno eslovaco."]
+  ]
+ },
+ {id:'s3l5',ti:'De compras',em:'🛍️',
+  sl:[
+   ['v','En la tienda',[['obchod','tienda','ob-chod'],['peniaze','dinero','pe-nya-ze'],['cena','precio','tse-na'],['pokladňa','caja','po-klad-nya']]],
+   ['v','Verbos de compra',[['kupovať','comprar','ku-po-vat'],['platiť','pagar','pla-tit'],['drahý','caro','dra-hee'],['lacný','barato','lats-nee']]],
+   ['g','Preguntar el precio','Para preguntar cuánto cuesta algo:',[['¿Cuánto cuesta?','Koľko to stojí?'],['Cuesta diez euros','Stojí to desať eur'],['Es muy caro','Je to veľmi drahé'],['Es barato','Je to lacné']]]
+  ],
+  w:[['obchod','tienda','🏪'],['peniaze','dinero','💰'],['cena','precio','🏷️'],['kupovať','comprar','🛒'],['platiť','pagar','💳'],['drahý','caro','💎'],['lacný','barato','🪙']],
+  p:[
+   ['¿Cuánto cuesta esto?','Koľko to stojí?',[['Koľko','Cuánto'],['to','esto'],['stojí','cuesta']],['drahé','lacné'],"'Koľko' = cuánto. Frase clave para ir de compras."],
+   ['Es muy caro','Je to veľmi drahé',[['Je to','Es'],['veľmi','muy'],['drahé','caro']],['lacné','pekné'],"'veľmi' = muy. 'drahé' concuerda con 'to' (neutro)."]
+  ],
+  mc:[
+   ['¿Cómo preguntas el precio?',['Kde je obchod?','Koľko to stojí?','Čo robíš?','Mám peniaze'],1,"'Koľko to stojí?' = ¿Cuánto cuesta esto?"],
+   ['¿Qué significa "lacný"?',['caro','barato','gratis','nuevo'],1,"'lacný' = barato. 'drahý' = caro."],
+   ['¿Cómo se dice "comprar"?',['platiť','predávať','kupovať','mať'],2,"'kupovať' = comprar. 'platiť' = pagar."]
+  ]
+ },
+ {id:'s3l6',ti:'Pasatiempos',em:'🎯',
+  sl:[
+   ['v','Actividades',[['čítať','leer','chee-tat'],['hrať','jugar','hrat'],['spievať','cantar','spye-vat'],['tancovať','bailar','tan-tso-vat']]],
+   ['v','Más actividades',[['plávať','nadar','pla-vat'],['behať','correr','be-hat'],['kresliť','dibujar','kres-lit'],['variť','cocinar','va-rit']]],
+   ['g','Expresar gustos: rád / rada','En eslovaco, para decir que algo te gusta hacer, usas "rád" (hombres) o "rada" (mujeres) + verbo en presente.',[['(M) Me gusta leer','Rád čítam'],['(F) Me gusta leer','Rada čítam'],['(M) Me gusta nadar','Rád plávam'],['(F) Me gusta bailar','Rada tancujem']]]
+  ],
+  w:[['čítať','leer','📖'],['hrať','jugar','🎮'],['spievať','cantar','🎤'],['tancovať','bailar','💃'],['plávať','nadar','🏊'],['behať','correr','🏃'],['kresliť','dibujar','🎨'],['variť','cocinar','👨‍🍳']],
+  p:[
+   ['Me gusta leer libros','Rád čítam knihy',[['Rád','Me gusta (m.)'],['čítam','leo'],['knihy','libros']],['hrám','spievam'],"'Rád' lo usa un hombre. Una mujer diría 'Rada'. Estructura única del eslovaco."],
+   ['Me gusta nadar y correr','Rád plávam a behám',[['Rád','Me gusta (m.)'],['plávam','nado'],['a','y'],['behám','corro']],['tancujem','kreslím'],"Se pueden encadenar varias actividades con 'a' (y)."]
+  ],
+  mc:[
+   ['¿Qué significa "tancovať"?',['cantar','bailar','jugar','dibujar'],1,"'tancovať' = bailar."],
+   ['¿Cómo dice un hombre "me gusta"?',['Rada','Rád','Mám','Som'],1,"Un hombre usa 'Rád', una mujer 'Rada'."],
+   ['¿Qué significa "variť"?',['leer','nadar','cocinar','correr'],2,"'variť' = cocinar."]
+  ]
+ },
+ {id:'s3l7',ti:'Preguntas y direcciones',em:'🧭',
+  sl:[
+   ['v','Palabras de pregunta',[['kto','quién','kto'],['čo','qué','cho'],['kde','dónde','kde'],['kedy','cuándo','ke-di'],['prečo','por qué','pre-cho'],['ako','cómo','a-ko']]],
+   ['v','Direcciones',[['vľavo','a la izquierda','vlya-vo'],['vpravo','a la derecha','vpra-vo'],['rovno','recto','rov-no'],['blízko','cerca','bleez-ko'],['ďaleko','lejos','dya-le-ko']]],
+   ['t','Pidiendo direcciones','Frase clave: "Choďte rovno a potom vľavo." (Vaya recto y luego a la izquierda). "Choďte" es la forma formal de "ir" en imperativo.']
+  ],
+  w:[['kto','quién','🙋'],['čo','qué','❓'],['kde','dónde','📍'],['kedy','cuándo','⏰'],['prečo','por qué','🤔'],['vľavo','izquierda','⬅️'],['vpravo','derecha','➡️'],['rovno','recto','⬆️']],
+  p:[
+   ['¿Dónde está el banco?','Kde je banka?',[['Kde','Dónde'],['je','está'],['banka','el banco']],['čo','kedy'],"Repaso de 'Kde je...?' con vocabulario nuevo."],
+   ['Vaya recto y luego a la derecha','Choďte rovno a potom vpravo',[['Choďte','Vaya'],['rovno','recto'],['a potom','y luego'],['vpravo','a la derecha']],['vľavo','ďaleko'],"'Choďte' = vaya (formal/imperativo)."]
+  ],
+  mc:[
+   ['¿Qué significa "kedy"?',['quién','cuándo','dónde','por qué'],1,"'kedy' = cuándo."],
+   ['¿Cómo se dice "a la izquierda"?',['vpravo','rovno','vľavo','blízko'],2,"'vľavo' = a la izquierda. 'vpravo' = a la derecha."],
+   ['¿Qué significa "ďaleko"?',['cerca','lejos','recto','aquí'],1,"'ďaleko' = lejos. 'blízko' = cerca."]
+  ]
+ },
+ {id:'s3l8',ti:'Adjetivos y descripciones',em:'🎭',
+  sl:[
+   ['v','Adjetivos comunes (masc.)',[['veľký','grande','vel-kee'],['malý','pequeño','ma-lee'],['pekný','bonito','pek-nee'],['starý','viejo','sta-ree'],['nový','nuevo','no-vee'],['dobrý','bueno','dob-ree']]],
+   ['g','Concordancia de género','Los adjetivos cambian su terminación según el género del sustantivo: masculino -ý, femenino -á, neutro -é.',[['grande (m./f./n.)','veľký / veľká / veľké'],['nuevo (m./f./n.)','nový / nová / nové'],['Un perro grande (m.)','veľký pes'],['Una habitación grande (f.)','veľká izba'],['Un coche grande (n.)','veľké auto']]],
+   ['t','Truco para recordar','-ý → masculino, -á → femenino, -é → neutro. ¡Es el mismo patrón que viste con los colores en la Sección 1!']
+  ],
+  w:[['veľký','grande','🐘'],['malý','pequeño','🐭'],['pekný','bonito','✨'],['starý','viejo','👴'],['nový','nuevo','🆕'],['dobrý','bueno','👍']],
+  p:[
+   ['Tengo una habitación grande','Mám veľkú izbu',[['Mám','Tengo'],['veľkú','grande'],['izbu','habitación']],['malú','novú'],"'veľkú' es la forma femenina acusativa, porque 'izba' (habitación) es femenino."],
+   ['El perro es viejo','Pes je starý',[['Pes','El perro'],['je','es'],['starý','viejo']],['nový','malý'],"'starý' concuerda con 'pes' (masculino)."]
+  ],
+  mc:[
+   ['¿Cómo se dice "grande" con un sustantivo masculino?',['veľká','veľké','veľký','veľkí'],2,"'veľký' = grande (masculino). '-ý' es la terminación masculina."],
+   ['¿Qué significa "starý"?',['nuevo','viejo','bonito','pequeño'],1,"'starý' = viejo. 'nový' = nuevo."],
+   ['¿Cuál es la forma femenina de "pekný"?',['pekné','pekná','pekný','pekní'],1,"'pekná' = bonita (femenino). Termina en '-á'."]
+  ]
+ },
+ {id:'s3test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Tercer examen!','Vas a responder 15 preguntas de toda la Sección 3. Necesitas 12 correctas (80%) para desbloquear la Sección 4. ¡Sigue así!'],
+   ['g','Repaso rápido','Todo lo aprendido en la Sección 3:',[['Verbos','mám, robím, pracujem'],['Números','jedenásť...sto'],['Ropa','tričko, nohavice, topánky'],['Adjetivos','veľký, malý, pekný, nový']]],
+   ['t','¡Vas genial!','Ya dominas verbos en presente, números hasta cien y adjetivos básicos. ¡La base de tu eslovaco es cada vez más sólida!']
+  ],
+  w:[],p:[],mc:[]
+ }
 ]}
 ];
 

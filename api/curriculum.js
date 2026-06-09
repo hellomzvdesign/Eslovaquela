@@ -34,6 +34,7 @@ module.exports = async (req, res) => {
       ti: sec.title,
       em: sec.emoji,
       col: sec.color,
+      gr: sec.grammar_ref || {},
       ls: lessonsBySection[sec.id] || []
     }));
 

@@ -36,7 +36,10 @@ function normalizeUserRow(row) {
     hearts: row.hearts,
     heartsRegen: Number(row.hearts_regen || Date.now()),
     completed: row.completed || [],
-    testsPassed: row.tests_passed || []
+    testsPassed: row.tests_passed || [],
+    streak: row.streak || 0,
+    lastActive: row.last_active || '',
+    grammarUnlocked: row.grammar_unlocked || []
   };
 }
 
@@ -66,10 +69,14 @@ module.exports = async (req, res) => {
       const heartsRegen = Number(body.heartsRegen) || Date.now();
       const completed = JSON.stringify(safeArray(body.completed));
       const testsPassed = JSON.stringify(safeArray(body.testsPassed));
+      const streak = Number(body.streak) || 0;
+      const lastActive = String(body.lastActive || '');
+      const grammarUnlocked = JSON.stringify(safeArray(body.grammarUnlocked));
 
       const result = await execute(
-        `UPDATE users SET xp = $1, hearts = $2, hearts_regen = $3, completed = $4, tests_passed = $5 WHERE username = $6 RETURNING *`,
-        [xp, hearts, heartsRegen, completed, testsPassed, payload.username]
+        `UPDATE users SET xp=$1, hearts=$2, hearts_regen=$3, completed=$4, tests_passed=$5,
+         streak=$6, last_active=$7, grammar_unlocked=$8 WHERE username=$9 RETURNING *`,
+        [xp, hearts, heartsRegen, completed, testsPassed, streak, lastActive, grammarUnlocked, payload.username]
       );
       if (!result.rowCount) return sendJson(res, 404, { error: 'Usuario no encontrado' });
       return sendJson(res, 200, { user: normalizeUserRow(result.rows[0]) });

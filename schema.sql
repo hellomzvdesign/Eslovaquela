@@ -7,7 +7,10 @@ CREATE TABLE IF NOT EXISTS users (
   hearts integer NOT NULL DEFAULT 5,
   hearts_regen bigint NOT NULL DEFAULT (extract(epoch from now())::bigint * 1000),
   completed jsonb NOT NULL DEFAULT '[]',
-  tests_passed jsonb NOT NULL DEFAULT '[]'
+  tests_passed jsonb NOT NULL DEFAULT '[]',
+  streak integer NOT NULL DEFAULT 0,
+  last_active text NOT NULL DEFAULT '',
+  grammar_unlocked jsonb NOT NULL DEFAULT '[]'
 );
 
 CREATE TABLE IF NOT EXISTS sections (
@@ -15,7 +18,8 @@ CREATE TABLE IF NOT EXISTS sections (
   sort_order integer NOT NULL,
   title text NOT NULL,
   emoji text NOT NULL,
-  color text NOT NULL
+  color text NOT NULL,
+  grammar_ref jsonb NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE IF NOT EXISTS lessons (

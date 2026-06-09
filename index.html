@@ -23,7 +23,7 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto;min-height:100dvh;overflow-x:hidden;font-family:'Rubik',sans-serif}
+body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!important;min-height:100dvh;overflow-x:hidden;font-family:'Rubik',sans-serif}
 .screen{display:none;min-height:100dvh;flex-direction:column}
 .screen.active{display:flex}
 .has-nav{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
@@ -135,6 +135,7 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto;min-heig
 }
 .nav-btn.active{color:var(--or);background:var(--or-l)}
 .nav-icon{font-size:1.25rem;line-height:1}
+#nav-logo{display:none;align-items:center;gap:8px;padding:6px 14px 18px;font-weight:900;font-size:1.15rem;color:var(--or);letter-spacing:-.01em}
 
 /* ── GRAMMAR TABLES ── */
 .gram-table-wrap{background:var(--su);border-radius:14px;border:1.5px solid var(--bo);overflow:hidden;margin-bottom:14px;box-shadow:0 2px 0 rgba(28,23,16,.06)}
@@ -172,21 +173,75 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto;min-heig
 /* ── XPBAR LABEL ── */
 .xp-label{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:rgba(255,255,255,.8);margin-bottom:4px}
 
-/* ── DESKTOP PHONE FRAME ── */
+/* ── DESKTOP LAYOUT ── */
 @media (min-width:500px){
   html{background:#B8AFA5}
-  body{box-shadow:0 0 0 1.5px rgba(0,0,0,.08),0 8px 80px rgba(0,0,0,.28)}
+  html,body{height:100dvh;overflow:hidden}
+  body{
+    max-width:660px;
+    display:flex;
+    align-items:stretch;
+    min-height:unset;
+    background:var(--bg);
+    box-shadow:0 0 0 1.5px rgba(0,0,0,.08),0 8px 80px rgba(0,0,0,.28);
+    margin:0 auto!important;
+  }
+  #sc-wrap{flex:1;min-width:0;overflow-y:auto;overflow-x:hidden;height:100dvh;position:relative}
+  /* side nav */
+  .bottom-nav:not(.hidden){
+    position:relative!important;
+    top:auto!important;bottom:auto!important;left:auto!important;
+    transform:none!important;
+    width:176px!important;max-width:none!important;
+    height:100dvh!important;
+    flex-direction:column!important;align-items:stretch!important;
+    border-top:none!important;
+    border-right:1.5px solid var(--bo)!important;
+    padding:24px 10px 20px!important;
+    gap:4px!important;
+    z-index:1!important;
+    overflow-y:auto!important;
+    flex-shrink:0!important;
+  }
+  .nav-btn{
+    flex-direction:row!important;
+    justify-content:flex-start!important;
+    gap:10px!important;
+    padding:12px 14px!important;
+    font-size:.88rem!important;
+    border-radius:12px!important;
+    width:100%;
+  }
+  .nav-icon{font-size:1.3rem!important}
+  #nav-logo{display:flex!important}
+  .has-nav{padding-bottom:16px!important}
+  .toast{bottom:20px!important}
 }
 </style>
 </head>
 <body>
 
+<!-- ─────────────── BOTTOM/SIDE NAV ─────────────── -->
+<nav class="bottom-nav hidden" id="bottom-nav">
+  <div id="nav-logo"><span>🇸🇰</span><span>Eslovaquela</span></div>
+  <button class="nav-btn active" id="nav-map" onclick="showTab('map')">
+    <span class="nav-icon">🗺️</span><span>Mapa</span>
+  </button>
+  <button class="nav-btn" id="nav-vocab" onclick="showTab('vocab')">
+    <span class="nav-icon">📖</span><span>Vocabulario</span>
+  </button>
+  <button class="nav-btn" id="nav-grammar" onclick="showTab('grammar')">
+    <span class="nav-icon">📚</span><span>Gramática</span>
+  </button>
+</nav>
+
+<div id="sc-wrap">
+
 <!-- ─────────────── AUTH ─────────────── -->
 <div id="sc-auth" class="screen active">
   <div class="flex flex-col items-center justify-center flex-1 p-6 gap-5">
     <div class="text-center" style="margin-bottom:4px">
-      <div style="font-size:3.8rem;margin-bottom:6px">🇸🇰</div>
-      <h1 style="font-size:2.4rem;font-weight:900;color:var(--or);letter-spacing:-.02em;line-height:1">Eslovaquela</h1>
+      <img src="assets/logo.webp" alt="Eslovaquela" style="width:min(80%,260px);height:auto;display:block;margin:0 auto">
       <p style="color:var(--mu);font-size:.95rem;margin-top:5px">Aprende eslovaco paso a paso</p>
     </div>
     <div class="w-full card flex flex-col gap-4">
@@ -339,20 +394,9 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto;min-heig
   </div>
 </div>
 
-<!-- ─────────────── BOTTOM NAV ─────────────── -->
-<nav class="bottom-nav hidden" id="bottom-nav">
-  <button class="nav-btn active" id="nav-map" onclick="showTab('map')">
-    <span class="nav-icon">🗺️</span><span>Mapa</span>
-  </button>
-  <button class="nav-btn" id="nav-vocab" onclick="showTab('vocab')">
-    <span class="nav-icon">📖</span><span>Vocabulario</span>
-  </button>
-  <button class="nav-btn" id="nav-grammar" onclick="showTab('grammar')">
-    <span class="nav-icon">📚</span><span>Gramática</span>
-  </button>
-</nav>
-
 <div class="toast" id="toast"></div>
+
+</div><!-- /#sc-wrap -->
 
 <script>
 // ─── GLOBALS ────────────────────────────────────────────────────────

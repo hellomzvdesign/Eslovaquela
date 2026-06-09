@@ -4,8 +4,8 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
+    "dev": "node -e \"console.log('Use: npx vercel dev')\"",
+    "start": "node -e \"console.log('Use: npx vercel dev')\""
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2",
