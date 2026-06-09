@@ -2,7 +2,29 @@
 const { execute } = require('./api/db');
 
 const CURRICULUM = [
-{id:'s1',ti:'¡Hola, Eslovaquia!',em:'🇸🇰',col:'#FF6B35',ls:[
+{id:'s1',ti:'¡Hola, Eslovaquia!',em:'🇸🇰',col:'#FF6B35',
+gr:{
+  intro:'La Sección 1 cubre los fundamentos del eslovaco: saludos, identidad, números, colores, familia y vocabulario cotidiano.',
+  tables:[
+    {title:'Pronombres personales',note:'En eslovaco los pronombres a menudo se omiten porque el verbo indica la persona.',
+     h:['Persona','Eslovaco','Español'],
+     r:[['1ª singular','ja','yo'],['2ª singular','ty','tú'],['3ª sing. masc.','on','él'],['3ª sing. fem.','ona','ella'],['3ª sing. neutro','ono','ello'],['1ª plural','my','nosotros/as'],['2ª plural','vy','vosotros / Usted (formal)'],['3ª plural','oni / ony','ellos / ellas']]},
+    {title:'Verbo byť — ser / estar',note:"A diferencia del español, 'byť' cumple las funciones de ser Y estar.",
+     h:['Pronombre','Forma','Ejemplo'],
+     r:[['ja','som','Ja som Martin. → Yo soy Martín.'],['ty','si','Ty si priateľ. → Tú eres amigo.'],['on/ona/ono','je','On je doma. → Él está en casa.'],['my','sme','My sme Slováci. → Somos eslovacos.'],['vy','ste','Vy ste tu. → Vosotros estáis aquí.'],['oni/ony','sú','Oni sú tam. → Ellos están allí.']]},
+    {title:'Saludos: formal vs. informal',
+     h:['Situación','Saludo','Despedida'],
+     r:[['Con amigos / familia','Ahoj · Čau · Servus','Čau · Dovidenia'],['Con adultos / desconocidos','Dobrý deň','Dovidenia'],['Mañana (formal)','Dobré ráno','Dovidenia'],['Tarde/noche (formal)','Dobrý večer','Dobrú noc']]},
+    {title:'Números 1–10',
+     h:['Número','Eslovaco','Pronunciación'],
+     r:[['1','jeden (m.) / jedna (f.)','YE-den'],['2','dva (m.) / dve (f./n.)','dva / dve'],['3','tri','tri'],['4','štyri','SHTY-ri'],['5','päť','pyach'],['6','šesť','shest'],['7','sedem','SE-dem'],['8','osem','O-sem'],['9','deväť','DE-vyach'],['10','desať','DE-sach']]},
+    {title:'Géneros gramaticales',note:'El eslovaco tiene 3 géneros. Conocerlos ayuda a usar los adjetivos correctamente.',
+     h:['Género','Terminaciones típicas','Ejemplos'],
+     r:[['Masculino','consonante (mayoría)','muž, pes, brat'],['Femenino','-a, -ia, -esť','žena, mama, sestra'],['Neutro','-o, -e, -ie','auto, srdce, more']]}
+  ],
+  tips:["🔑 El eslovaco NO tiene artículos definidos ni indefinidos. 'Pes' = el perro / un perro / perro.","🔑 Usa 'Dobrý deň' con personas mayores o desconocidas. 'Ahoj' es solo para amigos.","🔑 Los números 1–4 cambian de forma según el género del sustantivo que acompañan. Del 5 en adelante son invariables.","🔑 'byť' equivale a ser Y estar del español. El contexto indica cuál usar."]
+},
+ls:[
  {id:'s1l1',ti:'Primeros saludos',em:'👋',
   sl:[
    ['v','Saludos básicos',[['Ahoj','Hola (informal)','a-hoy'],['Dobrý deň','Buenos días','dob-ree deñ'],['Čau','Chau','chau'],['Dovidenia','Adiós','do-vi-de-nia']]],
@@ -128,7 +150,29 @@ const CURRICULUM = [
   w:[],p:[],mc:[]
  }
 ]},
-{id:'s2',ti:'El mundo a tu alrededor',em:'🌍',col:'#4361EE',ls:[
+{id:'s2',ti:'El mundo a tu alrededor',em:'🌍',col:'#4361EE',
+gr:{
+  intro:'La Sección 2 amplía tu eslovaco con tiempo, ciudad, cuerpo humano, clima, restaurante y frases de supervivencia.',
+  tables:[
+    {title:'Días de la semana',note:'Se escriben en minúsculas en eslovaco, al contrario que en inglés.',
+     h:['Día','Eslovaco','Origen / tip'],
+     r:[['Lunes','pondelok','Del antiguo concepto de inicio de semana'],['Martes','utorok',"De 'utor' = segundo"],['Miércoles','streda',"De 'stred' = centro de la semana"],['Jueves','štvrtok',"De 'štvrtý' = cuarto"],['Viernes','piatok',"De 'piaty' = quinto"],['Sábado','sobota',"Del hebreo 'Shabbat'"],['Domingo','nedeľa',"De 'ne-deľa' = sin trabajo"]]},
+    {title:'Meses del año',
+     h:['Mes','Eslovaco','Mes','Eslovaco'],
+     r:[['Enero','január','Julio','júl'],['Febrero','február','Agosto','august'],['Marzo','marec','Septiembre','september'],['Abril','apríl','Octubre','október'],['Mayo','máj','Noviembre','november'],['Junio','jún','Diciembre','december']]},
+    {title:'Las estaciones',
+     h:['Estación','Eslovaco','Descripción'],
+     r:[['Primavera','jar','Marzo–Mayo. Flores y temperaturas suaves.'],['Verano','leto','Junio–Agosto. Ideal para senderismo en los Tatras.'],['Otoño','jeseň','Septiembre–Noviembre. Bosques de colores.'],['Invierno','zima','Diciembre–Febrero. Nieve en los Alpes eslovacos.']]},
+    {title:'Expresiones de tiempo',
+     h:['Español','Eslovaco','Ejemplo'],
+     r:[['hoy','dnes','Dnes je pondelok. → Hoy es lunes.'],['mañana (día sig.)','zajtra','Zajtra idem. → Mañana voy.'],['ayer','včera','Včera bol piatok. → Ayer fue viernes.'],['esta mañana','dnes ráno','—'],['esta tarde/noche','dnes večer','—'],['esta semana','tento týždeň','—']]},
+    {title:'Frases de supervivencia esenciales',note:'Aprende estas frases de memoria. Pueden salvarte en cualquier situación.',
+     h:['Español','Eslovaco','Pronunciación'],
+     r:[['No entiendo.','Nerozumiem.','ne-ro-ZU-myem'],['¿Habla inglés?','Hovoríte po anglicky?','ho-vo-REE-te'],['¿Dónde está...?','Kde je...?','kde ye'],['¿Cuánto cuesta?','Koľko stojí?','KOL-ko STO-yi'],['¡Ayuda!','Pomoc!','PO-mots'],['Me duele [parte].','Bolí ma [parte].','bo-LEE ma'],['Llame a la policía.','Zavolajte políciu.','za-vo-LAY-te']]}
+  ],
+  tips:["🔑 Los días y los meses se escriben en minúscula en eslovaco.","🔑 Para expresar tiempo, usa el sustantivo temporal directamente, sin preposición: 'Dnes ráno', 'Zajtra večer'.","🔑 'Nerozumiem' (No entiendo) y 'Pomoc!' (¡Ayuda!) son las frases más importantes si viajas a Eslovaquia.","🔑 Para preguntar la hora: 'Koľko je hodín?' Para responder: 'Je [una hora]' / 'Sú [dos o más] hodiny'."]
+},
+ls:[
  {id:'s2l1',ti:'Los días y los meses',em:'📅',
   sl:[
    ['v','Días de la semana',[['pondelok','lunes','pon-de-lok'],['utorok','martes','u-to-rok'],['streda','miércoles','stre-da'],['štvrtok','jueves','shtver-tok'],['piatok','viernes','pya-tok'],['sobota','sábado','so-bo-ta'],['nedeľa','domingo','ne-de-lya']]],
@@ -263,8 +307,8 @@ async function seed() {
   for (let si = 0; si < CURRICULUM.length; si++) {
     const sec = CURRICULUM[si];
     await execute(
-      'INSERT INTO sections (id, sort_order, title, emoji, color) VALUES ($1, $2, $3, $4, $5)',
-      [sec.id, si + 1, sec.ti, sec.em, sec.col]
+      'INSERT INTO sections (id, sort_order, title, emoji, color, grammar_ref) VALUES ($1, $2, $3, $4, $5, $6)',
+      [sec.id, si + 1, sec.ti, sec.em, sec.col, JSON.stringify(sec.gr || {})]
     );
     for (let li = 0; li < sec.ls.length; li++) {
       const les = sec.ls[li];
@@ -289,7 +333,9 @@ async function seed() {
   }
 
   console.log('Done.');
-  process.exit(0);
 }
 
-seed().catch(err => { console.error(err); process.exit(1); });
+if (require.main === module) {
+  seed().then(() => process.exit(0)).catch(err => { console.error(err); process.exit(1); });
+}
+module.exports = { seed };
