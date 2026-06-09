@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FF6B35">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Eslovaquela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{--or:#FF6B35;--in:#4361EE;--gr:#06D6A0;--re:#FF4B4B;--yw:#FFD60A;--pu:#7B2FBE;--cr:#FFF8F0;--dk:#1A1A2E;font-family:'Nunito',sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--cr);color:var(--dk);max-width:480px;margin:0 auto;min-height:100dvh;overflow-x:hidden}
+.screen{display:none;min-height:100dvh;flex-direction:column}
+.screen.active{display:flex}
+.btn{border:none;border-radius:16px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:600;padding:14px 24px;transition:all .15s;position:relative;top:0;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.btn:active{top:3px;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.btn-or{background:var(--or);color:#fff}
+.btn-in{background:var(--in);color:#fff}
+.btn-gr{background:var(--gr);color:#fff}
+.btn-re{background:var(--re);color:#fff}
+.btn-yw{background:var(--yw);color:#1a1a2e}
+.btn-ghost{background:transparent;border:2px solid #ddd;color:#666;box-shadow:none}
+.btn-ghost:active{top:0}
+.tile{background:#fff;border:2px solid #e0e0e0;border-radius:12px;cursor:pointer;font-size:1rem;font-weight:600;padding:10px 16px;transition:all .15s;box-shadow:0 2px 0 #ccc}
+.tile.sel{background:#e8f4fd;border-color:var(--in);box-shadow:0 2px 0 var(--in)}
+.tile:active{transform:scale(.96)}
+.opt-btn{background:#fff;border:3px solid #e0e0e0;border-radius:16px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:600;padding:14px;text-align:left;transition:all .15s;width:100%}
+.opt-btn.ok{background:#e8fff6;border-color:var(--gr)}
+.opt-btn.err{background:#fff0f0;border-color:var(--re)}
+.opt-btn:active{transform:scale(.98)}
+.heart{font-size:1.4rem;transition:all .3s}
+.heart.empty{filter:grayscale(1);opacity:.4}
+.progress-bar{background:#e0e0e0;border-radius:99px;height:12px;overflow:hidden}
+.progress-fill{background:linear-gradient(90deg,var(--gr),var(--in));border-radius:99px;height:100%;transition:width .4s}
+.xp-badge{background:linear-gradient(135deg,var(--yw),#ff9f1c);border-radius:99px;color:#1a1a2e;font-weight:700;padding:4px 12px;font-size:.9rem}
+.slide-dot{width:8px;height:8px;border-radius:50%;background:#ddd;transition:all .3s}
+.slide-dot.active{background:var(--or);width:24px}
+.vocab-row{align-items:center;background:#fff;border-radius:12px;display:flex;gap:12px;margin-bottom:8px;padding:12px 16px}
+.vocab-sk{color:var(--in);font-size:1.1rem;font-weight:700}
+.vocab-es{color:#666;font-size:.95rem}
+.vocab-pron{color:var(--or);font-size:.85rem}
+.note-card{background:linear-gradient(135deg,#e8f4fd,#f0e8ff);border-radius:16px;border-left:4px solid var(--in);padding:16px}
+.result-banner{border-radius:20px;margin-bottom:16px;padding:20px;text-align:center}
+.result-banner.ok{background:linear-gradient(135deg,#e8fff6,#d4f7e7);border:2px solid var(--gr)}
+.result-banner.err{background:linear-gradient(135deg,#fff0f0,#ffd4d4);border:2px solid var(--re)}
+.map-node{align-items:center;border-radius:50%;border:3px solid #ddd;display:flex;font-size:1.5rem;height:56px;justify-content:center;transition:all .3s;width:56px;box-shadow:0 3px 0 #ccc;background:#fff;cursor:pointer}
+.map-node.done{border-color:var(--gr);box-shadow:0 3px 0 #04a07a;background:#e8fff6}
+.map-node.active{border-color:var(--or);box-shadow:0 3px 0 #c44e1f;background:#fff3ee;animation:pulse 2s infinite}
+.map-node.lock{opacity:.4;cursor:not-allowed}
+.map-node.test.active{border-color:var(--yw);box-shadow:0 3px 0 #c9a100;background:#fffbe8}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.confetti-piece{position:fixed;border-radius:2px;animation:fall 3s linear forwards;pointer-events:none;z-index:999}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.input-field{background:#fff;border:2px solid #ddd;border-radius:12px;font-family:'Nunito',sans-serif;font-size:1.1rem;padding:14px 16px;width:100%;outline:none;transition:border .2s}
+.input-field:focus{border-color:var(--in)}
+.toast{background:#1a1a2e;border-radius:12px;bottom:80px;color:#fff;font-weight:600;left:50%;padding:12px 20px;position:fixed;transform:translateX(-50%) translateY(20px);opacity:0;transition:all .3s;z-index:100;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div id="sc-auth" class="screen active">
+  <div class="flex flex-col items-center justify-center flex-1 p-6 gap-6">
+    <div class="text-center">
+      <div style="font-size:4rem">🇸🇰</div>
+      <h1 style="font-size:2.2rem;font-weight:700;color:var(--or)" class="mt-2">Eslovaquela</h1>
+      <p style="color:#888;font-size:1rem">Aprende eslovaco paso a paso</p>
+    </div>
+    <div class="w-full bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+      <div class="flex gap-2 mb-2">
+        <button onclick="setTab('login')" id="tab-login" class="flex-1 btn btn-or">Entrar</button>
+        <button onclick="setTab('reg')" id="tab-reg" class="flex-1 btn btn-ghost">Registrarse</button>
+      </div>
+      <div>
+        <label style="font-size:.9rem;color:#666;font-weight:600">Nombre de usuario</label>
+        <input id="auth-user" class="input-field mt-1" placeholder="Tu nombre" autocomplete="username">
+      </div>
+      <div>
+        <label style="font-size:.9rem;color:#666;font-weight:600">Contraseña</label>
+        <input id="auth-pass" class="input-field mt-1" type="password" placeholder="Contraseña" autocomplete="current-password">
+      </div>
+      <div id="auth-err" style="color:var(--re);font-size:.9rem;display:none"></div>
+      <button onclick="doAuth()" class="btn btn-or w-full" style="margin-top:4px">¡Empezar!</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAP SCREEN -->
+<div id="sc-map" class="screen">
+  <div style="background:linear-gradient(135deg,var(--or),#ff9a3c);padding:20px 20px 28px" class="text-white">
+    <div class="flex justify-between items-center">
+      <div>
+        <p style="font-size:.85rem;opacity:.8">Bienvenido,</p>
+        <h2 id="map-username" style="font-size:1.4rem;font-weight:700"></h2>
+      </div>
+      <div class="flex gap-3 items-center">
+        <div class="xp-badge" id="map-xp">0 XP</div>
+        <button onclick="logout()" style="background:rgba(255,255,255,.2);border:none;border-radius:10px;color:#fff;cursor:pointer;font-family:'Nunito',sans-serif;font-size:.85rem;padding:6px 12px">Salir</button>
+      </div>
+    </div>
+    <div class="flex gap-1 mt-3" id="map-hearts"></div>
+    <p id="map-regen" style="font-size:.78rem;opacity:.7;margin-top:4px"></p>
+  </div>
+  <div id="map-body" class="flex-1 overflow-y-auto p-4"></div>
+</div>
+
+<!-- SLIDES SCREEN -->
+<div id="sc-slides" class="screen">
+  <div style="background:linear-gradient(135deg,var(--in),var(--pu));padding:20px" class="text-white">
+    <div class="flex items-center gap-3">
+      <button onclick="goMap()" style="background:rgba(255,255,255,.2);border:none;border-radius:10px;color:#fff;cursor:pointer;font-size:1.2rem;padding:6px 12px">←</button>
+      <div class="flex-1">
+        <p id="sl-section" style="font-size:.8rem;opacity:.7"></p>
+        <h2 id="sl-lesson" style="font-size:1.2rem;font-weight:700"></h2>
+      </div>
+    </div>
+    <div class="flex justify-center gap-2 mt-4" id="sl-dots"></div>
+  </div>
+  <div id="sl-body" class="flex-1 overflow-y-auto p-4"></div>
+  <div class="p-4 flex gap-3">
+    <button id="sl-prev" onclick="slideNav(-1)" class="btn btn-ghost flex-1">← Anterior</button>
+    <button id="sl-next" onclick="slideNav(1)" class="btn btn-or flex-1">Siguiente →</button>
+  </div>
+</div>
+
+<!-- LESSON SCREEN -->
+<div id="sc-lesson" class="screen">
+  <div style="padding:16px 16px 8px" class="flex flex-col gap-2">
+    <div class="flex items-center gap-3">
+      <button onclick="exitLesson()" style="background:transparent;border:none;cursor:pointer;font-size:1.3rem;color:#999">✕</button>
+      <div class="progress-bar flex-1"><div class="progress-fill" id="les-prog" style="width:0%"></div></div>
+      <div class="flex gap-1" id="les-hearts"></div>
+    </div>
+  </div>
+  <div id="les-body" class="flex-1 overflow-y-auto p-4"></div>
+  <div id="les-footer" class="p-4"></div>
+</div>
+
+<!-- HEARTS PRACTICE -->
+<div id="sc-hearts" class="screen">
+  <div style="background:linear-gradient(135deg,var(--re),#ff7b5c);padding:20px" class="text-white text-center">
+    <div style="font-size:3rem">💔</div>
+    <h2 style="font-size:1.5rem;font-weight:700;margin-top:8px">¡Sin corazones!</h2>
+    <p style="opacity:.85;font-size:.95rem;margin-top:4px">Practica para ganar corazones</p>
+  </div>
+  <div class="p-4 flex flex-col gap-4">
+    <div id="hp-intro">
+      <div class="bg-white rounded-2xl p-4 text-center shadow-sm" style="margin-bottom:16px">
+        <p style="font-size:.9rem;color:#888">Corazones ganados esta sesión</p>
+        <div class="flex justify-center gap-2 mt-2" id="hp-hearts"></div>
+        <p style="font-size:.8rem;color:#aaa;margin-top:4px">5 respuestas correctas = ❤️ (máx. 5)</p>
+      </div>
+      <div style="background:var(--cr);border-radius:16px;border:2px solid #f0e0d0;padding:14px;margin-bottom:16px">
+        <p style="font-size:.85rem;color:#888;margin-bottom:4px">O espera la recarga automática:</p>
+        <p id="hp-regen" style="font-weight:600;color:var(--or)"></p>
+      </div>
+      <button onclick="startHpExercise()" class="btn btn-or w-full">¡Empezar a practicar!</button>
+    </div>
+    <div id="hp-body"></div>
+    <div id="hp-footer"></div>
+    <button onclick="goMap()" class="btn btn-ghost w-full">Volver al mapa</button>
+  </div>
+</div>
+
+<!-- COMPLETE SCREEN -->
+<div id="sc-complete" class="screen">
+  <div class="flex-1 flex flex-col items-center justify-center p-6 gap-4">
+    <div style="font-size:4rem" id="cmp-emoji">🎉</div>
+    <h2 id="cmp-title" style="font-size:1.8rem;font-weight:700;text-align:center"></h2>
+    <p id="cmp-sub" style="color:#888;text-align:center"></p>
+    <div class="flex gap-6 mt-2">
+      <div class="text-center"><div style="font-size:2rem;font-weight:700;color:var(--yw)" id="cmp-xp"></div><div style="font-size:.8rem;color:#aaa">XP ganado</div></div>
+      <div class="text-center"><div style="font-size:2rem;font-weight:700;color:var(--gr)" id="cmp-acc"></div><div style="font-size:.8rem;color:#aaa">Precisión</div></div>
+      <div class="text-center"><div style="font-size:2rem;font-weight:700;color:var(--or)" id="cmp-stars"></div><div style="font-size:.8rem;color:#aaa">Estrellas</div></div>
+    </div>
+    <button onclick="goMap()" class="btn btn-or w-full mt-4" style="font-size:1.2rem">¡Continuar! 🚀</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── CURRICULUM ────────────────────────────────────────────────────
+// sl: [[type, title, data]]  type: 'v'=vocab, 'g'=grammar, 't'=tip
+// w:  [[sk, es, emoji]]
+// p:  [[es, sk, [[sk,es],...], [distractors], explanation]]
+// mc: [[question, [options], correctIdx, explanation]]
+const C=[
+{id:'s1',ti:'¡Hola, Eslovaquia!',em:'🇸🇰',col:'#FF6B35',ls:[
+ {id:'s1l1',ti:'Primeros saludos',em:'👋',
+  sl:[
+   ['v','Saludos básicos',[['Ahoj','Hola (informal)','a-hoy'],['Dobrý deň','Buenos días','dob-ree deñ'],['Čau','Chau','chau'],['Dovidenia','Adiós','do-vi-de-nia']]],
+   ['v','Palabras esenciales',[['Ďakujem','Gracias','dya-ku-yem'],['Prosím','Por favor','pro-seem'],['Áno','Sí','a-no'],['Nie','No','nie']]],
+   ['g','Formal vs. Informal','En eslovaco el nivel de formalidad cambia el saludo completamente.',[['Hola (amigos)','Ahoj / Čau'],['Buenos días (formal)','Dobrý deň'],['Adiós (formal)','Dovidenia'],['Chau (informal)','Čau']]]
+  ],
+  w:[['Ahoj','Hola','👋'],['Ďakujem','Gracias','🙏'],['Prosím','Por favor','🤲'],['Áno','Sí','✅'],['Nie','No','❌'],['Dovidenia','Adiós','🚶']],
+  p:[
+   ['Buenos días','Dobrý deň',[['Dobrý','Buenos'],['deň','días']],['Áno','Nie'],"'Dobrý'=bueno, 'deň'=día. Juntos forman el saludo formal."],
+   ['Gracias, por favor','Ďakujem, prosím',[['Ďakujem','Gracias'],['prosím','por favor']],['Ahoj','Čau'],'Estas dos palabras juntas son muy útiles en cualquier situación.']
+  ],
+  mc:[
+   ['¿Cuál es el saludo FORMAL?',['Ahoj','Čau','Dobrý deň','Servus'],2,"'Dobrý deň' es el saludo formal. 'Ahoj' y 'Čau' son informales."],
+   ['¿Cómo se dice "Gracias"?',['Prosím','Áno','Nie','Ďakujem'],3,"'Ďakujem' = Gracias. 'Prosím' = Por favor."],
+   ['¿Qué significa "Áno"?',['No','Adiós','Por favor','Sí'],3,"'Áno' = Sí. 'Nie' = No."]
+  ]
+ },
+ {id:'s1l2',ti:'¿Quién eres tú?',em:'🆔',
+  sl:[
+   ['v','Personas',[['muž','hombre','mush'],['žena','mujer','zhe-na'],['chlapec','chico','chla-pets'],['dievča','chica','dyev-cha']]],
+   ['v','Identidad',[['meno','nombre','me-no'],['krajina','país','kra-yi-na'],['priateľ','amigo','prya-tel'],['ja som','yo soy','ya som']]],
+   ['t','Presentarse','Para presentarte di: "Ja som [nombre]." (Yo soy [nombre]). Para preguntar: "Ako sa voláš?" (¿Cómo te llamas?).']
+  ],
+  w:[['muž','hombre','👨'],['žena','mujer','👩'],['chlapec','chico','👦'],['dievča','chica','👧'],['priateľ','amigo','🤝'],['krajina','país','🌍']],
+  p:[
+   ['Yo soy amigo','Ja som priateľ',[['Ja','Yo'],['som','soy'],['priateľ','amigo']],['muž','žena'],'La estructura es igual al español: sujeto + verbo + sustantivo.'],
+   ['Él es hombre','On je muž',[['On','Él'],['je','es'],['muž','hombre']],['žena','chlapec'],"'On'=él, 'je'=es. El verbo 'byť'(ser) cambia según la persona."]
+  ],
+  mc:[
+   ['¿Cómo se dice "mujer"?',['muž','chlapec','žena','dievča'],2,"'žena' = mujer. 'muž' = hombre."],
+   ['¿Qué significa "krajina"?',['nombre','amigo','chico','país'],3,"'krajina' = país. ¡Eslovaquia se dice 'Slovensko'!"],
+   ['¿Cómo dices "Yo soy"?',['On je','Ja som','Ty si','My sme'],1,"'Ja som' = Yo soy. 'Ty si' = Tú eres."]
+  ]
+ },
+ {id:'s1l3',ti:'Los números 1–10',em:'🔢',
+  sl:[
+   ['v','Números 1-5',[['jeden','uno','ye-den'],['dva','dos','dva'],['tri','tres','tri'],['štyri','cuatro','shtee-ri'],['päť','cinco','pyach']]],
+   ['v','Números 6-10',[['šesť','seis','shest'],['sedem','siete','se-dem'],['osem','ocho','o-sem'],['deväť','nueve','de-vyach'],['desať','diez','de-sach']]],
+   ['t','Curiosidad numérica','Los números eslovacos 1-4 cambian de forma según el género del sustantivo. Por ahora aprende la forma básica y ya estás listo para contar.']
+  ],
+  w:[['jeden','uno','1️⃣'],['dva','dos','2️⃣'],['tri','tres','3️⃣'],['štyri','cuatro','4️⃣'],['päť','cinco','5️⃣'],['šesť','seis','6️⃣'],['sedem','siete','7️⃣'],['osem','ocho','8️⃣'],['deväť','nueve','9️⃣'],['desať','diez','🔟']],
+  p:[
+   ['Uno, dos, tres','jeden, dva, tri',[['jeden','uno'],['dva','dos'],['tri','tres']],['štyri','päť'],'Cuenta como en español pero con palabras eslovacas.']
+  ],
+  mc:[
+   ['¿Qué número es "päť"?',['3','7','5','9'],2,"'päť' = 5 (cinco)."],
+   ['¿Cómo se dice "ocho"?',['sedem','osem','deväť','šesť'],1,"'osem' = 8 (ocho)."],
+   ['¿Qué número es "deväť"?',['6','8','9','10'],2,"'deväť' = 9 (nueve)."]
+  ]
+ },
+ {id:'s1l4',ti:'Los colores',em:'🎨',
+  sl:[
+   ['v','Colores básicos',[['červená','rojo','cher-ve-na'],['modrá','azul','mod-ra'],['zelená','verde','ze-le-na'],['žltá','amarillo','zhel-ta']]],
+   ['v','Más colores',[['biela','blanco','bye-la'],['čierna','negro','chyer-na'],['oranžová','naranja','o-ran-zho-va'],['ružová','rosa','ru-zho-va']]],
+   ['g','Géneros en los colores','Los colores cambian según el género. La forma mostrada es femenina. Para masculino cambia la terminación: -á → -ý, para neutro: -á → -é.',[['Rojo (masc.)','červený'],['Rojo (fem.)','červená'],['Rojo (neutro)','červené'],['Azul (masc.)','modrý'],['Azul (fem.)','modrá'],['Azul (neutro)','modré']]]
+  ],
+  w:[['červená','rojo','🔴'],['modrá','azul','🔵'],['zelená','verde','🟢'],['žltá','amarillo','🟡'],['biela','blanco','⚪'],['čierna','negro','⚫'],['oranžová','naranja','🟠'],['ružová','rosa','🌸']],
+  p:[
+   ['Rojo y azul','červená a modrá',[['červená','rojo'],['a','y'],['modrá','azul']],['zelená','žltá'],"'a' = y. Muy fácil de recordar."]
+  ],
+  mc:[
+   ['¿Qué color es "zelená"?',['azul','rojo','amarillo','verde'],3,"'zelená' = verde. 'zelen' está relacionado con vegetación."],
+   ['¿Cómo se dice "negro"?',['biela','ružová','čierna','oranžová'],2,"'čierna' = negro. 'biela' = blanco."],
+   ['¿Qué color es "žltá"?',['naranja','rosa','verde','amarillo'],3,"'žltá' = amarillo. ¡El sol es žltý!"]
+  ]
+ },
+ {id:'s1l5',ti:'Mi familia',em:'👨‍👩‍👧‍👦',
+  sl:[
+   ['v','Familia cercana',[['mama','mamá','ma-ma'],['otec','papá','o-tets'],['brat','hermano','brat'],['sestra','hermana','ses-tra']]],
+   ['v','Familia extendida',[['babička','abuela','ba-bich-ka'],['dedko','abuelo','ded-ko'],['syn','hijo','sin'],['dcéra','hija','dtse-ra']]],
+   ['t','Vocabulario familiar','¡"Mama" suena igual en español y eslovaco! "Otec" es similar al latín "pater". Los idiomas indoeuropeos comparten raíces.']
+  ],
+  w:[['mama','mamá','👩'],['otec','papá','👨'],['brat','hermano','👦'],['sestra','hermana','👧'],['babička','abuela','👵'],['dedko','abuelo','👴'],['syn','hijo','🧒'],['dcéra','hija','👶']],
+  p:[
+   ['Mi mamá y papá','Moja mama a otec',[['Moja','Mi'],['mama','mamá'],['a','y'],['otec','papá']],['brat','sestra'],"'Moja' = Mi (femenino). 'Môj' = Mi (masculino)."],
+   ['Mi hermano y hermana','Môj brat a sestra',[['Môj','Mi'],['brat','hermano'],['a','y'],['sestra','hermana']],['mama','otec'],"'Môj' se usa antes de sustantivos masculinos como 'brat'."]
+  ],
+  mc:[
+   ['¿Cómo se dice "abuela"?',['dedko','sestra','syn','babička'],3,"'babička' = abuela. 'dedko' = abuelo."],
+   ['¿Qué significa "brat"?',['hermana','hijo','hermano','hija'],2,"'brat' = hermano. 'sestra' = hermana."],
+   ['¿Cómo se dice "hija"?',['syn','dcéra','brat','mama'],1,"'dcéra' = hija. 'syn' = hijo."]
+  ]
+ },
+ {id:'s1l6',ti:'Animales y objetos',em:'🐾',
+  sl:[
+   ['v','Animales',[['pes','perro','pes'],['mačka','gato','mach-ka'],['vták','pájaro','vtak'],['ryba','pez','ri-ba']]],
+   ['v','Objetos cotidianos',[['dom','casa','dom'],['auto','coche','au-to'],['kniha','libro','kni-ha'],['telefón','teléfono','te-le-fon']]],
+   ['t','¡Palabras similares!','¿Notaste que "auto" y "telefón" son casi iguales al español? El eslovaco tomó préstamos del latín, griego e inglés.']
+  ],
+  w:[['pes','perro','🐶'],['mačka','gato','🐱'],['vták','pájaro','🐦'],['ryba','pez','🐟'],['dom','casa','🏠'],['auto','coche','🚗'],['kniha','libro','📚'],['telefón','teléfono','📱']],
+  p:[
+   ['El perro en casa','Pes je doma',[['Pes','El perro'],['je','está'],['doma','en casa']],['mačka','vták'],"'doma' = en casa (forma adverbial de 'dom')."]
+  ],
+  mc:[
+   ['¿Qué significa "mačka"?',['perro','pájaro','gato','pez'],2,"'mačka' = gato. 'pes' = perro."],
+   ['¿Cómo se dice "libro"?',['auto','dom','telefón','kniha'],3,"'kniha' = libro. Los libros son muy valorados en la cultura eslovaca."],
+   ['¿Qué significa "vták"?',['pez','pájaro','gato','perro'],1,"'vták' = pájaro. Los bosques eslovacos están llenos de pájaros."]
+  ]
+ },
+ {id:'s1l7',ti:'Comida y bebidas',em:'🍽️',
+  sl:[
+   ['v','Comida',[['chlieb','pan','chlyeb'],['mäso','carne','mye-so'],['jablko','manzana','yab-lko'],['syr','queso','sir']]],
+   ['v','Bebidas',[['voda','agua','vo-da'],['mlieko','leche','mlye-ko'],['káva','café','ka-va'],['čaj','té','chai']]],
+   ['t','La cocina eslovaca','El plato nacional es "bryndzové halušky" (ñoquis con queso de oveja). El "syr" (queso) es fundamental. ¡El "pivo" (cerveza) también es muy popular!']
+  ],
+  w:[['chlieb','pan','🍞'],['mäso','carne','🥩'],['jablko','manzana','🍎'],['voda','agua','💧'],['mlieko','leche','🥛'],['káva','café','☕'],['pivo','cerveza','🍺'],['čaj','té','🍵']],
+  p:[
+   ['Pan y queso','Chlieb a syr',[['Chlieb','Pan'],['a','y'],['syr','queso']],['mäso','jablko'],'Una combinación clásica eslovaca.'],
+   ['Café con leche','Káva s mliekom',[['Káva','Café'],['s','con'],['mliekom','leche']],['voda','čaj'],"'s' = con. 'mliekom' es la forma instrumental de 'mlieko'."]
+  ],
+  mc:[
+   ['¿Qué significa "voda"?',['leche','café','té','agua'],3,"'voda' = agua. Muy similar al ruso 'вода'."],
+   ['¿Cómo se dice "pan"?',['mäso','syr','chlieb','jablko'],2,"'chlieb' = pan. El pan es básico en la dieta eslovaca."],
+   ['¿Qué bebida es "pivo"?',['café','leche','té','cerveza'],3,"'pivo' = cerveza. ¡Eslovaquia tiene excelentes cervezas!"]
+  ]
+ },
+ {id:'s1test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Hora del examen!','Vas a responder 15 preguntas de toda la Sección 1. Necesitas 12 correctas (80%) para desbloquear la Sección 2. ¡Tú puedes!'],
+   ['g','Repaso rápido','Todo lo que aprendiste en la Sección 1:',[['Saludos','Ahoj, Dobrý deň, Ďakujem'],['Números','jeden...desať'],['Familia','mama, otec, brat, sestra'],['Comida','chlieb, voda, káva, pivo']]],
+   ['t','Consejo final','Lee con calma. Si no sabes, piensa en el sonido de la palabra. ¡Muchas palabras suenan similar a cómo se escriben!']
+  ]
+ }
+]},
+{id:'s2',ti:'El mundo a tu alrededor',em:'🌍',col:'#4361EE',ls:[
+ {id:'s2l1',ti:'Los días y los meses',em:'📅',
+  sl:[
+   ['v','Días de la semana',[['pondelok','lunes','pon-de-lok'],['utorok','martes','u-to-rok'],['streda','miércoles','stre-da'],['štvrtok','jueves','shtver-tok'],['piatok','viernes','pya-tok'],['sobota','sábado','so-bo-ta'],['nedeľa','domingo','ne-de-lya']]],
+   ['v','Meses seleccionados',[['január','enero','ya-nu-ar'],['február','febrero','feb-ru-ar'],['jún','junio','yun'],['december','diciembre','de-tsem-ber']]],
+   ['t','Curiosidad','Los días de la semana no van en mayúscula en eslovaco. "Pondelok" (lunes) viene de un concepto antiguo de inicio de semana.']
+  ],
+  w:[['pondelok','lunes','😴'],['utorok','martes','💼'],['streda','miércoles','⚡'],['štvrtok','jueves','🚀'],['piatok','viernes','🎉'],['sobota','sábado','🏖️'],['nedeľa','domingo','⛪']],
+  p:[
+   ['Hoy es lunes','Dnes je pondelok',[['Dnes','Hoy'],['je','es'],['pondelok','lunes']],['utorok','streda'],"'Dnes' = hoy. Estructura igual al español."]
+  ],
+  mc:[
+   ['¿Qué día es "piatok"?',['miércoles','jueves','sábado','viernes'],3,"'piatok' = viernes."],
+   ['¿Cómo se dice "domingo"?',['sobota','pondelok','nedeľa','štvrtok'],2,"'nedeľa' = domingo. 'sobota' = sábado."],
+   ['¿Qué significa "streda"?',['martes','miércoles','jueves','lunes'],1,"'streda' = miércoles. Viene de 'stred' = centro."]
+  ]
+ },
+ {id:'s2l2',ti:'¿Qué hora es?',em:'🕐',
+  sl:[
+   ['v','Partes del día',[['ráno','mañana','ra-no'],['poludnie','mediodía','po-lud-nie'],['večer','tarde/noche','ve-cher'],['noc','noche','nots']]],
+   ['v','Tiempo',[['hodina','hora','ho-di-na'],['minúta','minuto','mi-nu-ta'],['dnes','hoy','dnes'],['zajtra','mañana (día)','zay-tra']]],
+   ['g','Preguntar la hora','Para preguntar la hora: "Koľko je hodín?" Para responder: "[número] hodín".',[['Son las dos','Sú dve hodiny'],['Son las cinco','Je päť hodín'],['¿Qué hora es?','Koľko je hodín?'],['A las tres','O tretej']]]
+  ],
+  w:[['ráno','mañana','🌅'],['poludnie','mediodía','☀️'],['večer','tarde','🌆'],['noc','noche','🌙'],['hodina','hora','🕐'],['minúta','minuto','⏱️']],
+  p:[
+   ['Hoy por la mañana','Dnes ráno',[['Dnes','Hoy'],['ráno','mañana']],['večer','noc'],'Las expresiones de tiempo van sin preposición en eslovaco.'],
+   ['Mañana por la noche','Zajtra večer',[['Zajtra','Mañana'],['večer','noche']],['dnes','ráno'],"'Zajtra' = mañana (día siguiente). No confundir con 'ráno' = mañana (momento)."]
+  ],
+  mc:[
+   ['¿Qué significa "noc"?',['mañana','mediodía','tarde','noche'],3,"'noc' = noche. 'večer' = tarde/noche temprana."],
+   ['¿Cómo se dice "hora"?',['minúta','hodina','dnes','zajtra'],1,"'hodina' = hora. 'minúta' = minuto."],
+   ['¿Qué significa "zajtra"?',['hoy','ayer','mañana','ahora'],2,"'zajtra' = mañana (día siguiente). 'dnes' = hoy."]
+  ]
+ },
+ {id:'s2l3',ti:'En la ciudad',em:'🏙️',
+  sl:[
+   ['v','Lugares esenciales',[['obchod','tienda','ob-chod'],['banka','banco','ban-ka'],['nemocnica','hospital','ne-mots-ni-tsa'],['škola','escuela','shko-la']]],
+   ['v','Más lugares',[['reštaurácia','restaurante','resh-tau-ra-tsya'],['hotel','hotel','ho-tel'],['letisko','aeropuerto','le-tis-ko'],['stanica','estación','sta-ni-tsa']]],
+   ['t','Bratislava','La capital eslovaca tiene un hermoso casco histórico. El "hrad" (castillo) domina la ciudad. Se puede ir a pie desde el centro en 15 minutos.']
+  ],
+  w:[['obchod','tienda','🏪'],['banka','banco','🏦'],['nemocnica','hospital','🏥'],['škola','escuela','🏫'],['reštaurácia','restaurante','🍽️'],['hotel','hotel','🏨'],['letisko','aeropuerto','✈️'],['stanica','estación','🚉']],
+  p:[
+   ['¿Dónde está el banco?','Kde je banka?',[['Kde','Dónde'],['je','está'],['banka','el banco']],['obchod','hotel'],"'Kde' = dónde. 'je' = está. ¡Frase esencial para turistas!"]
+  ],
+  mc:[
+   ['¿Qué significa "letisko"?',['estación','hospital','banco','aeropuerto'],3,"'letisko' = aeropuerto. Viene de 'lietať' = volar."],
+   ['¿Cómo se dice "hospital"?',['banka','škola','nemocnica','obchod'],2,"'nemocnica' = hospital. 'nemocný' = enfermo."],
+   ['¿Qué lugar es "stanica"?',['aeropuerto','hotel','estación','restaurante'],2,"'stanica' = estación de tren o autobús."]
+  ]
+ },
+ {id:'s2l4',ti:'El cuerpo humano',em:'🧍',
+  sl:[
+   ['v','Cabeza y cara',[['hlava','cabeza','hla-va'],['oko','ojo','o-ko'],['ucho','oído','u-cho'],['nos','nariz','nos']]],
+   ['v','Cuerpo',[['ruka','brazo/mano','ru-ka'],['noha','pierna/pie','no-ha'],['srdce','corazón','srd-tse'],['krk','cuello','kerk']]],
+   ['t','En el médico','Si necesitas ayuda médica di: "Bolí ma [parte]." (Me duele [parte]). "Bolí ma hlava." = Me duele la cabeza.']
+  ],
+  w:[['hlava','cabeza','🧠'],['oko','ojo','👁️'],['ucho','oído','👂'],['nos','nariz','👃'],['ruka','brazo','💪'],['noha','pierna','🦵'],['srdce','corazón','❤️'],['krk','cuello','🩺']],
+  p:[
+   ['Me duele la cabeza','Bolí ma hlava',[['Bolí','Duele'],['ma','me'],['hlava','la cabeza']],['ruka','noha'],'Frase esencial para situaciones médicas.']
+  ],
+  mc:[
+   ['¿Qué significa "srdce"?',['cabeza','nariz','ojo','corazón'],3,"'srdce' = corazón. ¡La palabra más poética del eslovaco!"],
+   ['¿Cómo se dice "ojo"?',['ucho','nos','oko','hlava'],2,"'oko' = ojo. Plural: 'oči' (ojos)."],
+   ['¿Qué parte del cuerpo es "noha"?',['brazo','cabeza','pierna','cuello'],2,"'noha' = pierna/pie. 'ruka' = brazo/mano."]
+  ]
+ },
+ {id:'s2l5',ti:'El tiempo y las estaciones',em:'🌤️',
+  sl:[
+   ['v','Fenómenos del tiempo',[['slnko','sol','sln-ko'],['dážď','lluvia','dazhdz'],['sneh','nieve','sneh'],['vietor','viento','vye-tor']]],
+   ['v','Las estaciones',[['jar','primavera','yar'],['leto','verano','le-to'],['jeseň','otoño','ye-sen'],['zima','invierno','zi-ma']]],
+   ['t','El clima eslovaco','Eslovaquia tiene 4 estaciones bien diferenciadas. Los Tatras en invierno son perfectos para esquiar. Los veranos son cálidos y perfectos para senderismo.']
+  ],
+  w:[['slnko','sol','☀️'],['dážď','lluvia','🌧️'],['sneh','nieve','❄️'],['vietor','viento','💨'],['jar','primavera','🌸'],['leto','verano','🏖️'],['jeseň','otoño','🍂'],['zima','invierno','⛄']],
+  p:[
+   ['Hoy hay sol','Dnes je slnko',[['Dnes','Hoy'],['je','hay'],['slnko','sol']],['dážď','sneh'],"Para hablar del tiempo usa 'je' + fenómeno."]
+  ],
+  mc:[
+   ['¿Qué estación es "leto"?',['primavera','otoño','invierno','verano'],3,"'leto' = verano. 'zima' = invierno."],
+   ['¿Cómo se dice "nieve"?',['dážď','vietor','slnko','sneh'],3,"'sneh' = nieve. ¡Los Tatras tienen mucha nieve en invierno!"],
+   ['¿Qué significa "jar"?',['otoño','invierno','primavera','verano'],2,"'jar' = primavera. 'jeseň' = otoño."]
+  ]
+ },
+ {id:'s2l6',ti:'En el restaurante',em:'🍽️',
+  sl:[
+   ['v','En la mesa',[['jedlo','comida','yed-lo'],['nápoj','bebida','na-poy'],['polievka','sopa','po-lyev-ka'],['dezert','postre','de-zert']]],
+   ['v','Frases útiles',[['stôl','mesa','stol'],['účet','cuenta','u-chet'],['chcem','quiero','kh-tsem'],['prosím','por favor','pro-seem']]],
+   ['g','Pedir en el restaurante','Para pedir usa: "[plato], prosím." Para pedir algo específico: "Chcem [plato]."',[['Quiero agua','Chcem vodu.'],['La cuenta','Účet, prosím.'],['¿Tiene mesa?','Máte stôl?'],['¡Buen provecho!','Dobrú chuť!']]]
+  ],
+  w:[['jedlo','comida','🍛'],['nápoj','bebida','🥤'],['polievka','sopa','🍜'],['dezert','postre','🍰'],['stôl','mesa','🍽️'],['účet','cuenta','🧾']],
+  p:[
+   ['Quiero sopa, por favor','Chcem polievku, prosím',[['Chcem','Quiero'],['polievku','sopa'],['prosím','por favor']],['jedlo','dezert'],"'polievku' es la forma acusativa de 'polievka'. Normal con verbos de querer."],
+   ['La cuenta, por favor','Účet, prosím',[['Účet','La cuenta'],['prosím','por favor']],['stôl','nápoj'],'Frase indispensable en cualquier restaurante eslovaco.']
+  ],
+  mc:[
+   ['¿Cómo pides "la cuenta"?',['Jedlo, prosím','Stôl, prosím','Účet, prosím','Chcem dezert'],2,"'Účet, prosím.' = La cuenta, por favor."],
+   ['¿Qué significa "dezert"?',['sopa','bebida','comida','postre'],3,"'dezert' = postre. ¡Casi igual al español!"],
+   ['¿Cómo se dice "quiero"?',['prosím','máte','chcem','ďakujem'],2,"'chcem' = quiero. 'Prosím' = por favor."]
+  ]
+ },
+ {id:'s2l7',ti:'Frases de supervivencia',em:'🆘',
+  sl:[
+   ['v','Emergencias',[['pomoc','ayuda','po-mots'],['polícia','policía','po-li-tsya'],['lekár','médico','le-kar'],['záchranár','paramédico','zakh-ra-nar']]],
+   ['v','Frases esenciales',[['Nerozumiem','No entiendo','ne-ro-zu-myem'],['Kde je...?','¿Dónde está...?','kde ye'],['Koľko stojí?','¿Cuánto cuesta?','kol-ko sto-yi'],['Hovorím po španielsky','Hablo español','ho-vo-reem']]],
+   ['t','Frases de oro','Con "Nerozumiem" (No entiendo) y "Hovoríte po anglicky?" (¿Habla inglés?) puedes sobrevivir cualquier situación. ¡Apréndetelas de memoria!']
+  ],
+  w:[['pomoc','ayuda','🆘'],['polícia','policía','👮'],['nemocnica','hospital','🏥'],['lekár','médico','👨‍⚕️'],['záchranár','paramédico','🚑'],['nebezpečenstvo','peligro','⚠️']],
+  p:[
+   ['¡Ayuda, llama a la policía!','Pomoc, zavolajte políciu!',[['Pomoc','Ayuda'],['zavolajte','llame'],['políciu','policía']],['lekár','nemocnica'],'Frase de emergencia esencial. Apréndetela de memoria.']
+  ],
+  mc:[
+   ['¿Cómo dices "No entiendo"?',['Nerozumiem','Neviem','Nie','Ďakujem'],0,"'Nerozumiem' = No entiendo. 'Neviem' = No sé."],
+   ['¿Qué significa "pomoc"?',['policía','médico','ayuda','peligro'],2,"'pomoc' = ayuda. ¡Palabra de emergencia!"],
+   ['¿Cómo preguntas el precio?',['Kde je?','Koľko stojí?','Ako sa voláš?','Čo je to?'],1,"'Koľko stojí?' = ¿Cuánto cuesta?"]
+  ]
+ },
+ {id:'s2test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Gran examen!','Vas a responder 15 preguntas de toda la Sección 2. Necesitas 12 correctas (80%) para pasar. ¡Eres capaz!'],
+   ['g','Repaso rápido','Todo lo aprendido en la Sección 2:',[['Días','pondelok...nedeľa'],['Ciudad','banka, škola, letisko'],['Cuerpo','hlava, oko, srdce'],['Restaurante','jedlo, účet, chcem']]],
+   ['t','¡Eres increíble!','Has aprendido más de 80 palabras en eslovaco. ¡Muy pocos hispanohablantes llegan tan lejos!']
+  ]
+ }
+]}
+];
+
+// ─── STATE ─────────────────────────────────────────────────────────
+const API_BASE='/api';
+const TOKEN_KEY='slovako_token';
+let ST={current:null,token:null,user:null};
+let curLesson=null,curSection=null;
+let exQueue=[],exIdx=0,curEx=null;
+let nCorr=0,nErr=0,selTiles=[];
+let slideIdx=0;
+let hpCorr=0,hpHearts=0,hpMode=false;
+
+function loadST(){ST.token=localStorage.getItem(TOKEN_KEY);}
+function saveST(){if(ST.token)localStorage.setItem(TOKEN_KEY,ST.token);else localStorage.removeItem(TOKEN_KEY);}
+function getUser(){return ST.user;}
+function setUser(u){
+  ST.current=u.username;
+  ST.user={
+    username:u.username,
+    name:u.name,
+    xp:u.xp||0,
+    hearts:u.hearts||0,
+    heartsRegen:Number(u.heartsRegen||Date.now()),
+    completed:Array.isArray(u.completed)?u.completed:[],
+    testsPassed:Array.isArray(u.testsPassed)?u.testsPassed:[]
+  };
+  saveST();
+}
+
+async function authFetch(url, opts={}){
+  opts.headers={
+    'Content-Type':'application/json',
+    ...(opts.headers||{}),
+    ...(ST.token?{Authorization:`Bearer ${ST.token}`}:{}),
+  };
+  const res=await fetch(url,opts);
+  const text=await res.text();
+  const data=text?JSON.parse(text):{};
+  if(!res.ok)throw data;
+  return data;
+}
+
+async function updateProgress(){
+  const u=getUser();
+  if(!u||!ST.token) return;
+  const payload={
+    xp:u.xp||0,
+    hearts:u.hearts||0,
+    heartsRegen:u.heartsRegen||Date.now(),
+    completed:u.completed||[],
+    testsPassed:u.testsPassed||[]
+  };
+  const data=await authFetch(`${API_BASE}/progress`,{method:'POST',body:JSON.stringify(payload)});
+  setUser(data.user);
+}
+
+async function loadSession(){
+  loadST();
+  if(!ST.token) return;
+  try{
+    const data=await authFetch(`${API_BASE}/progress`,{method:'GET'});
+    setUser(data.user);
+    goMap();
+  }catch(e){
+    ST.token=null;ST.current=null;ST.user=null;saveST();
+    show('sc-auth');
+  }
+}
+
+// ─── AUTH ───────────────────────────────────────────────────────────
+let authMode='login';
+function setTab(m){
+  authMode=m;
+  document.getElementById('tab-login').className='flex-1 btn '+(m==='login'?'btn-or':'btn-ghost');
+  document.getElementById('tab-reg').className='flex-1 btn '+(m==='reg'?'btn-or':'btn-ghost');
+  document.getElementById('auth-err').style.display='none';
+}
+async function doAuth(){
+  const rawName=document.getElementById('auth-user').value.trim();
+  const u=rawName.toLowerCase();
+  const p=document.getElementById('auth-pass').value;
+  if(!rawName||!p){showAuthErr('Completa todos los campos.');return;}
+  try{
+    const data=await authFetch(`${API_BASE}/auth`,{
+      method:'POST',
+      body:JSON.stringify({mode:authMode==='reg'?'register':'login',username:u,password:p,name:rawName})
+    });
+    ST.token=data.token;
+    setUser(data.user);
+    goMap();
+  }catch(err){
+    showAuthErr(err?.error||'Error al iniciar sesión.');
+  }
+}
+function showAuthErr(msg){const e=document.getElementById('auth-err');e.textContent=msg;e.style.display='block';}
+function logout(){ST.current=null;ST.token=null;ST.user=null;saveST();show('sc-auth');}
+
+// ─── HEARTS REGEN ───────────────────────────────────────────────────
+function checkRegen(){
+  const u=getUser();if(!u||u.hearts>=5)return;
+  const ms3h=3*60*60*1000;
+  const elapsed=Date.now()-(u.heartsRegen||Date.now());
+  const add=Math.floor(elapsed/ms3h);
+  if(add>0){
+    u.hearts=Math.min(5,u.hearts+add);
+    u.heartsRegen=(u.heartsRegen||Date.now())+add*ms3h;
+    setUser(u);
+    updateProgress().catch(()=>{});
+  }
+}
+function regenText(){
+  const u=getUser();if(!u||u.hearts>=5)return '';
+  const ms3h=3*60*60*1000;
+  const diff=(u.heartsRegen||Date.now())+ms3h-Date.now();
+  if(diff<=0)return '¡Corazón listo!';
+  const h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000);
+  return `Próximo ❤️ en ${h>0?h+'h ':''}${m}min`;
+}
+
+// ─── MAP ────────────────────────────────────────────────────────────
+function goMap(){
+  checkRegen();
+  const u=getUser();
+  document.getElementById('map-username').textContent=(u&&u.name)?u.name:ST.current;
+  document.getElementById('map-xp').textContent=(u.xp||0)+' XP';
+  renderHeartsEl('map-hearts',u.hearts);
+  document.getElementById('map-regen').textContent=regenText();
+  renderMap();
+  show('sc-map');
+}
+function renderHeartsEl(id,n){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.innerHTML=[...Array(5)].map((_,i)=>`<span class="heart${i<n?'':' empty'}">❤️</span>`).join('');
+}
+function renderMap(){
+  const u=getUser();
+  const body=document.getElementById('map-body');
+  body.innerHTML='';
+  C.forEach((sec,si)=>{
+    const secLocked=si>0&&!isSecUnlocked(si);
+    const sdiv=document.createElement('div');
+    sdiv.style.marginBottom='24px';
+    const head=document.createElement('div');
+    head.style.cssText=`background:linear-gradient(135deg,${sec.col},${sec.col}99);border-radius:16px;padding:14px 16px;margin-bottom:12px;color:#fff;display:flex;align-items:center;gap:12px;${secLocked?'opacity:.5':''}`;
+    head.innerHTML=`<span style="font-size:1.8rem">${sec.em}</span><div><div style="font-weight:700;font-size:1.1rem">${sec.ti}</div><div style="font-size:.8rem;opacity:.8">${sec.ls.length} lecciones</div></div>`;
+    sdiv.appendChild(head);
+    sec.ls.forEach((les,li)=>{
+      const done=u.completed.includes(les.id)||(les.isTest&&u.testsPassed.includes(les.id));
+      const prevDone=li===0?!secLocked:(()=>{const prev=sec.ls[li-1];return u.completed.includes(prev.id)||(prev.isTest&&u.testsPassed.includes(prev.id));})();
+      const locked=secLocked||!prevDone;
+      const active=!done&&!locked;
+      const row=document.createElement('div');
+      row.style.cssText='display:flex;align-items:center;gap:12px;margin-bottom:8px;padding:8px;background:#fff;border-radius:14px;border:2px solid '+(done?'var(--gr)':active?'var(--or)':'#eee');
+      if(!locked)row.style.cursor='pointer';
+      if(!locked)row.onclick=()=>startLesson(sec,les);
+      const node=document.createElement('div');
+      node.className='map-node'+(done?' done':active?les.isTest?' test active':' active':' lock');
+      node.textContent=done?'✅':les.em;
+      const info=document.createElement('div');
+      info.style.flex='1';
+      info.innerHTML=`<div style="font-weight:700;color:${locked?'#bbb':'var(--dk)'}">${les.ti}</div><div style="font-size:.82rem;color:${done?'var(--gr)':locked?'#ccc':'#888'}">${done?'✓ Completado':locked?'🔒 Bloqueado':les.isTest?'¡Supera el test!':'¡Disponible!'}</div>`;
+      row.appendChild(node);row.appendChild(info);
+      sdiv.appendChild(row);
+    });
+    body.appendChild(sdiv);
+  });
+}
+function isSecUnlocked(si){
+  if(si===0)return true;
+  const u=getUser();
+  const prev=C[si-1];
+  const testL=prev.ls[prev.ls.length-1];
+  return testL.isTest&&u.testsPassed.includes(testL.id);
+}
+
+// ─── SLIDES ─────────────────────────────────────────────────────────
+function startLesson(sec,les){
+  curSection=sec;curLesson=les;slideIdx=0;
+  document.getElementById('sl-section').textContent=sec.ti;
+  document.getElementById('sl-lesson').textContent=les.ti;
+  renderSlide();
+  show('sc-slides');
+}
+function renderSlide(){
+  const sl=curLesson.sl||[];
+  document.getElementById('sl-dots').innerHTML=sl.map((_,i)=>`<div class="slide-dot${i===slideIdx?' active':''}"></div>`).join('');
+  document.getElementById('sl-prev').style.display=slideIdx===0?'none':'flex';
+  document.getElementById('sl-next').textContent=slideIdx===sl.length-1?'¡Empezar! 🚀':'Siguiente →';
+  const body=document.getElementById('sl-body');
+  const s=sl[slideIdx];
+  if(!s){body.innerHTML='';return;}
+  const[type,...args]=s;
+  if(type==='v'){
+    const[title,words]=args;
+    body.innerHTML=`<h3 style="font-size:1.3rem;font-weight:700;margin-bottom:16px">${title}</h3>`+
+      words.map(([sk,es,pron])=>`<div class="vocab-row"><div style="font-size:1.4rem">🔤</div><div style="flex:1"><div class="vocab-sk">${sk}</div><div class="vocab-es">${es}</div>${pron?`<div class="vocab-pron">/${pron}/</div>`:''}</div><button onclick="speak('${sk.replace(/'/g,"\\'")}');event.stopPropagation()" style="background:none;border:none;cursor:pointer;font-size:1.2rem;padding:4px">🔊</button></div>`).join('');
+  } else if(type==='g'){
+    const[title,bodyT,pairs]=args;
+    body.innerHTML=`<div class="note-card mb-4"><h3 style="font-size:1.2rem;font-weight:700;margin-bottom:8px">${title}</h3><p style="color:#555;font-size:.95rem;line-height:1.5">${bodyT}</p></div>`+
+      (pairs?`<div>${pairs.map(([es,sk])=>`<div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:8px"><span style="color:#666">${es}</span><span style="color:var(--in);font-weight:700">${sk}</span></div>`).join('')}</div>`:'');
+  } else if(type==='t'){
+    const[title,bodyT]=args;
+    body.innerHTML=`<div style="text-align:center;margin-bottom:20px"><div style="font-size:3rem">💡</div><h3 style="font-size:1.3rem;font-weight:700;margin-top:8px">${title}</h3></div><div class="note-card"><p style="color:#555;line-height:1.6">${bodyT}</p></div>`;
+  }
+}
+function slideNav(dir){
+  const sl=curLesson.sl||[];
+  if(dir>0&&slideIdx===sl.length-1){beginExercises();return;}
+  slideIdx=Math.max(0,Math.min(sl.length-1,slideIdx+dir));
+  renderSlide();
+}
+
+// ─── EXERCISES ─────────────────────────────────────────────────────
+const ALL_SK=[];
+function buildAllSk(){
+  if(ALL_SK.length)return;
+  C.forEach(s=>s.ls.forEach(l=>(l.w||[]).forEach(([sk])=>ALL_SK.push(sk))));
+}
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function makeOpts(correct,all,n){
+  const pool=shuffle(all.filter(x=>x!==correct));
+  return shuffle([correct,...pool.slice(0,n-1)]);
+}
+function makeDistr(correct,all,n){
+  return shuffle(all.filter(x=>x!==correct)).slice(0,n);
+}
+
+function buildExercises(les){
+  buildAllSk();
+  const pool=[];
+  (les.w||[]).forEach(([sk,es,em])=>{
+    pool.push({t:'img',es,sk,em,opts:makeOpts(sk,ALL_SK,4),x:`'${sk}' significa '${es}'.`});
+    pool.push({t:'wd',es,sk,w:[{sk,es}],dis:makeDistr(sk,ALL_SK,3),x:`'${sk}' = '${es}'.`});
+  });
+  (les.p||[]).forEach(([es,sk,ws,dis,x])=>{
+    pool.push({t:'wd',es,sk,w:ws.map(([s,e])=>({sk:s,es:e})),dis,x});
+  });
+  (les.mc||[]).forEach(([q,opts,ci,x])=>{
+    pool.push({t:'mc',q,opts,ci,x});
+  });
+  return shuffle(pool).slice(0,15);
+}
+function buildTestExercises(sec){
+  buildAllSk();
+  const pool=[];
+  sec.ls.filter(l=>!l.isTest).forEach(les=>{
+    const sub=[];
+    (les.w||[]).slice(0,2).forEach(([sk,es,em])=>{
+      sub.push({t:'img',es,sk,em,opts:makeOpts(sk,ALL_SK,4),x:`'${sk}' = '${es}'.`});
+    });
+    (les.mc||[]).slice(0,2).forEach(([q,opts,ci,x])=>{
+      sub.push({t:'mc',q,opts,ci,x});
+    });
+    pool.push(...shuffle(sub).slice(0,2));
+  });
+  return shuffle(pool).slice(0,15);
+}
+
+function beginExercises(){
+  const u=getUser();
+  if(u.hearts<=0){showHeartsScreen();return;}
+  hpMode=false;
+  exQueue=curLesson.isTest?buildTestExercises(curSection):buildExercises(curLesson);
+  exIdx=0;nCorr=0;nErr=0;
+  show('sc-lesson');
+  renderEx();
+}
+
+function renderProg(){
+  document.getElementById('les-prog').style.width=Math.round(exIdx/Math.max(exQueue.length,1)*100)+'%';
+  renderHeartsEl('les-hearts',getUser().hearts);
+}
+function renderEx(){
+  renderProg();
+  if(exIdx>=exQueue.length){showComplete();return;}
+  curEx=exQueue[exIdx];
+  const body=document.getElementById('les-body');
+  document.getElementById('les-footer').innerHTML='';
+  selTiles=[];
+  if(curEx.t==='img') renderImg(curEx,body);
+  else if(curEx.t==='wd') renderWd(curEx,body);
+  else renderMc(curEx,body);
+}
+
+function renderImg(ex,body){
+  body.innerHTML=`
+    <div style="text-align:center;margin-bottom:16px">
+      <div style="font-size:5rem;margin-bottom:8px">${ex.em||'🔤'}</div>
+      <p style="font-size:.9rem;color:#888">¿Cómo se dice en eslovaco?</p>
+      <p style="font-size:1.3rem;font-weight:700;color:var(--dk)">${ex.es}</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      ${ex.opts.map(o=>`<button class="opt-btn" onclick="pickImg(this,'${o.replace(/'/g,"\\'")}','${ex.sk.replace(/'/g,"\\'")}')">${o}</button>`).join('')}
+    </div>`;
+}
+function pickImg(btn,opt,correct){
+  document.querySelectorAll('#les-body .opt-btn').forEach(b=>b.disabled=true);
+  const ok=opt===correct;
+  btn.classList.add(ok?'ok':'err');
+  if(!ok) document.querySelectorAll('#les-body .opt-btn').forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('ok');});
+  speak(correct);
+  showResult(ok,curEx.x,correct);
+}
+
+function renderWd(ex,body){
+  const bank=shuffle([...( ex.dis||[]),...ex.w.map(w=>w.sk)]);
+  body.innerHTML=`
+    <div style="margin-bottom:16px">
+      <p style="font-size:.9rem;color:#888;margin-bottom:4px">Traduce al eslovaco:</p>
+      <p style="font-size:1.3rem;font-weight:700">${ex.es}</p>
+    </div>
+    <div id="sel-area" style="min-height:56px;background:#fff;border:2px dashed #ddd;border-radius:14px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px"></div>
+    <div id="bank-area" style="display:flex;flex-wrap:wrap;gap:6px">${bank.map(t=>`<div class="tile" data-word="${t}" onclick="tileClick(this,'${t.replace(/'/g,"\\'")}')">${t}</div>`).join('')}</div>`;
+  document.getElementById('les-footer').innerHTML=`<button onclick="checkWd()" class="btn btn-in w-full">Comprobar</button>`;
+}
+function tileClick(el,word){
+  if(el.classList.contains('sel')){
+    el.classList.remove('sel');
+    selTiles=selTiles.filter(t=>t!==word);
+    document.querySelectorAll('#sel-area [data-chip]').forEach(c=>{if(c.dataset.word===word)c.remove();});
+  } else {
+    el.classList.add('sel');selTiles.push(word);
+    const chip=document.createElement('div');
+    chip.className='tile sel';chip.dataset.chip='1';chip.dataset.word=word;chip.textContent=word;
+    chip.onclick=()=>tileClick(el,word);
+    document.getElementById('sel-area').appendChild(chip);
+  }
+}
+function checkWd(){
+  const correct=curEx.w.map(w=>w.sk).join(' ');
+  const ok=selTiles.join(' ').toLowerCase()===correct.toLowerCase();
+  speak(correct);
+  if(!ok) exQueue.push({...curEx});
+  showResult(ok,curEx.x,correct);
+}
+
+function renderMc(ex,body){
+  body.innerHTML=`
+    <div style="margin-bottom:16px">
+      <p style="font-size:.9rem;color:#888;margin-bottom:4px">Pregunta:</p>
+      <p style="font-size:1.2rem;font-weight:700">${ex.q}</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      ${ex.opts.map((o,i)=>`<button class="opt-btn" onclick="pickMc(this,${i},${ex.ci})">${o}</button>`).join('')}
+    </div>`;
+}
+function pickMc(btn,idx,ci){
+  document.querySelectorAll('#les-body .opt-btn').forEach(b=>b.disabled=true);
+  const ok=idx===ci;
+  btn.classList.add(ok?'ok':'err');
+  if(!ok) document.querySelectorAll('#les-body .opt-btn')[ci].classList.add('ok');
+  showResult(ok,curEx.x,curEx.opts[ci]);
+}
+
+function showResult(ok,explanation,correctSk){
+  const u=getUser();
+  if(ok){nCorr++;}
+  else{nErr++;if(!hpMode){u.hearts=Math.max(0,u.hearts-1);setUser(u);renderHeartsEl('les-hearts',u.hearts);updateProgress().catch(()=>{});}}
+  const foot=document.getElementById('les-footer');
+  foot.innerHTML=`<div class="result-banner ${ok?'ok':'err'}"><div style="font-size:1.4rem">${ok?'✅':'❌'}</div><div style="font-weight:700;font-size:1.05rem;margin-top:4px">${ok?'¡Correcto!':'Respuesta correcta: '+correctSk}</div>${explanation?`<div style="font-size:.88rem;color:#555;margin-top:8px;line-height:1.4">${explanation}</div>`:''}</div><div style="display:flex;gap:10px"><button onclick="speak('${correctSk.replace(/'/g,"\\'")}');event.stopPropagation()" class="btn btn-ghost" style="flex:1">🔊 Escuchar</button><button onclick="nextEx()" class="btn ${ok?'btn-gr':'btn-in'}" style="flex:1">Continuar →</button></div>`;
+  if(u.hearts<=0&&!hpMode) setTimeout(()=>showHeartsScreen(),1200);
+}
+function nextEx(){exIdx++;renderEx();}
+function exitLesson(){if(confirm('¿Salir? Perderás el progreso actual.'))goMap();}
+
+function showComplete(){
+  const u=getUser();
+  const total=nCorr+nErr;
+  const acc=total>0?Math.round(nCorr/total*100):100;
+  const stars=acc>=90?'⭐⭐⭐':acc>=70?'⭐⭐':'⭐';
+  const xpGain=nCorr*10+(curLesson.isTest?50:0);
+  u.xp=(u.xp||0)+xpGain;
+  if(curLesson.isTest){
+    if(acc>=80){
+      if(!u.testsPassed.includes(curLesson.id))u.testsPassed.push(curLesson.id);
+      document.getElementById('cmp-emoji').textContent='🏆';
+      document.getElementById('cmp-title').textContent='¡Test superado!';
+      document.getElementById('cmp-sub').textContent='¡Desbloqueaste la siguiente sección!';
+    } else {
+      document.getElementById('cmp-emoji').textContent='📚';
+      document.getElementById('cmp-title').textContent='¡Sigue practicando!';
+      document.getElementById('cmp-sub').textContent=`Necesitas 80%. Obtuviste ${acc}%. ¡Inténtalo de nuevo!`;
+    }
+  } else {
+    if(!u.completed.includes(curLesson.id))u.completed.push(curLesson.id);
+    document.getElementById('cmp-emoji').textContent=acc>=90?'🎉':acc>=70?'👍':'💪';
+    document.getElementById('cmp-title').textContent=acc>=90?'¡Excelente!':acc>=70?'¡Muy bien!':'¡Lo lograste!';
+    document.getElementById('cmp-sub').textContent=`Completaste: ${curLesson.ti}`;
+  }
+  setUser(u);
+  updateProgress().catch(()=>{});
+  document.getElementById('cmp-xp').textContent='+'+xpGain;
+  document.getElementById('cmp-acc').textContent=acc+'%';
+  document.getElementById('cmp-stars').textContent=stars;
+  if(acc>=70) confetti();
+  show('sc-complete');
+}
+
+// ─── HEARTS PRACTICE ───────────────────────────────────────────────
+function showHeartsScreen(){
+  hpCorr=0;hpHearts=0;hpMode=true;
+  document.getElementById('hp-regen').textContent=regenText()||'¡Ya tienes corazones disponibles!';
+  renderHpHearts();
+  document.getElementById('hp-intro').style.display='';
+  document.getElementById('hp-body').innerHTML='';
+  document.getElementById('hp-footer').innerHTML='';
+  show('sc-hearts');
+}
+function startHpExercise(){
+  document.getElementById('hp-intro').style.display='none';
+  buildHpEx();
+}
+function renderHpHearts(){
+  document.getElementById('hp-hearts').innerHTML=[...Array(5)].map((_,i)=>`<span style="font-size:1.4rem;${i<hpHearts?'':'filter:grayscale(1);opacity:.3'}">❤️</span>`).join('');
+}
+function buildHpEx(){
+  buildAllSk();
+  const u=getUser();
+  const allLes=C.flatMap(s=>s.ls.filter(l=>!l.isTest&&(u.completed||[]).includes(l.id)));
+  if(!allLes.length){renderHpEx(null);return;}
+  const les=allLes[Math.floor(Math.random()*allLes.length)];
+  const pool=[];
+  (les.w||[]).slice(0,4).forEach(([sk,es,em])=>{pool.push({t:'img',es,sk,em,opts:makeOpts(sk,ALL_SK,4),x:`'${sk}' = '${es}'.`});});
+  (les.mc||[]).slice(0,2).forEach(([q,opts,ci,x])=>{pool.push({t:'mc',q,opts,ci,x});});
+  renderHpEx(shuffle(pool)[0]||pool[0]);
+}
+function renderHpEx(ex){
+  if(!ex){document.getElementById('hp-body').innerHTML='';return;}
+  let html='';
+  if(ex.t==='img'){
+    html=`<div style="background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)"><div style="text-align:center;font-size:4rem;margin-bottom:8px">${ex.em||'🔤'}</div><p style="text-align:center;font-weight:700;font-size:1.1rem;margin-bottom:12px">${ex.es}</p><div style="display:flex;flex-direction:column;gap:8px">${ex.opts.map(o=>`<button class="opt-btn" onclick="hpPick(this,'${o.replace(/'/g,"\\'")}','${ex.sk.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div></div>`;
+  } else {
+    html=`<div style="background:#fff;border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)"><p style="font-weight:700;font-size:1.1rem;margin-bottom:12px">${ex.q}</p><div style="display:flex;flex-direction:column;gap:8px">${ex.opts.map((o,i)=>`<button class="opt-btn" onclick="hpPickMc(this,${i},${ex.ci},'${(ex.x||'').replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div></div>`;
+  }
+  document.getElementById('hp-body').innerHTML=html;
+  document.getElementById('hp-footer').innerHTML='';
+  // store for callback
+  window._hpEx=ex;
+}
+function hpPick(btn,opt,correct){
+  document.querySelectorAll('#hp-body .opt-btn').forEach(b=>b.disabled=true);
+  const ok=opt===correct;
+  btn.classList.add(ok?'ok':'err');
+  if(!ok) document.querySelectorAll('#hp-body .opt-btn').forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('ok');});
+  speak(correct);hpResult(ok,(window._hpEx||{}).x||'');
+}
+function hpPickMc(btn,idx,ci,expl){
+  document.querySelectorAll('#hp-body .opt-btn').forEach(b=>b.disabled=true);
+  const ok=idx===ci;
+  btn.classList.add(ok?'ok':'err');
+  if(!ok) document.querySelectorAll('#hp-body .opt-btn')[ci].classList.add('ok');
+  hpResult(ok,expl);
+}
+function hpResult(ok,expl){
+  if(ok){
+    hpCorr++;
+    if(hpCorr%5===0&&hpHearts<5){
+      hpHearts++;
+      const u=getUser();u.hearts=Math.min(5,u.hearts+1);setUser(u);updateProgress().catch(()=>{});
+      renderHpHearts();showToast('¡Ganaste un corazón! ❤️');
+    }
+  }
+  document.getElementById('hp-footer').innerHTML=
+    `<div class="result-banner ${ok?'ok':'err'}" style="margin-top:12px"><span style="font-weight:700">${ok?'✅ ¡Correcto!':'❌'}</span> ${expl||''}</div>`+
+    `<button onclick="buildHpEx()" class="btn btn-or w-full" style="margin-top:10px">Siguiente →</button>`;
+}
+
+// ─── SPEECH ────────────────────────────────────────────────────────
+function speak(text){
+  if(!window.speechSynthesis)return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='sk-SK';u.rate=0.82;
+  speechSynthesis.speak(u);
+}
+
+// ─── CONFETTI ──────────────────────────────────────────────────────
+function confetti(){
+  const colors=['#FF6B35','#4361EE','#06D6A0','#FFD60A','#FF4B4B','#7B2FBE'];
+  for(let i=0;i<50;i++){
+    setTimeout(()=>{
+      const el=document.createElement('div');
+      el.className='confetti-piece';
+      el.style.cssText=`left:${Math.random()*100}vw;top:-10px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*.5}s`;
+      document.body.appendChild(el);setTimeout(()=>el.remove(),4000);
+    },i*40);
+  }
+}
+
+// ─── TOAST ─────────────────────────────────────────────────────────
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ─── SCREEN ────────────────────────────────────────────────────────
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active');s.style.display='none';});
+  const sc=document.getElementById(id);sc.style.display='flex';sc.classList.add('active');
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────
+loadSession();
+document.getElementById('auth-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doAuth();});
+document.getElementById('auth-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('auth-pass').focus();});
+</script>
+</body>
+</html>
