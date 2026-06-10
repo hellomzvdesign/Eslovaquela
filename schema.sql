@@ -10,7 +10,11 @@ CREATE TABLE IF NOT EXISTS users (
   tests_passed jsonb NOT NULL DEFAULT '[]',
   streak integer NOT NULL DEFAULT 0,
   last_active text NOT NULL DEFAULT '',
-  grammar_unlocked jsonb NOT NULL DEFAULT '[]'
+  grammar_unlocked jsonb NOT NULL DEFAULT '[]',
+  streak_freezes integer NOT NULL DEFAULT 0,
+  freeze_tier integer NOT NULL DEFAULT 0,
+  last_reward_streak integer NOT NULL DEFAULT 0,
+  used_bonus_decks jsonb NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE IF NOT EXISTS user_mistakes (

@@ -118,6 +118,47 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 .map-row.test-active .map-node{border-color:var(--yw);background:var(--yw-l);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 
+/* Companion reactions */
+@keyframes bounceIn{
+  0%{transform:scale(0) translateY(40px);opacity:0}
+  55%{transform:scale(1.15) translateY(-12px);opacity:1}
+  75%{transform:scale(.95) translateY(4px)}
+  100%{transform:scale(1) translateY(0)}
+}
+@keyframes floatLoop{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes wiggle{
+  0%,100%{transform:rotate(0)}
+  20%{transform:rotate(-10deg)}
+  60%{transform:rotate(10deg)}
+  80%{transform:rotate(-4deg)}
+}
+@keyframes tada{
+  0%{transform:scale(1) rotate(0)}
+  10%,20%{transform:scale(.9) rotate(-3deg)}
+  30%,50%,70%,90%{transform:scale(1.1) rotate(3deg)}
+  40%,60%,80%{transform:scale(1.1) rotate(-3deg)}
+  100%{transform:scale(1) rotate(0)}
+}
+@keyframes spinPop{
+  0%{transform:scale(0) rotate(-160deg);opacity:0}
+  70%{transform:scale(1.2) rotate(8deg);opacity:1}
+  100%{transform:scale(1) rotate(0)}
+}
+.anim-bounceIn{display:inline-block;animation:bounceIn .7s cubic-bezier(.34,1.56,.64,1) both, floatLoop 2.4s ease-in-out .7s infinite}
+.anim-wiggle{display:inline-block;animation:wiggle 1.6s ease-in-out infinite}
+.anim-floatLoop{display:inline-block;animation:floatLoop 2.2s ease-in-out infinite}
+.anim-tada{display:inline-block;animation:tada 1.4s ease-in-out infinite}
+
+.cmp-emoji-combo{font-size:4.5rem;line-height:1}
+.cmp-reaction{position:relative;display:inline-flex}
+.cmp-badge{position:absolute;bottom:-4px;right:-16px;font-size:1.8rem;display:none;animation:spinPop .6s cubic-bezier(.34,1.56,.64,1) .35s both}
+
+.companion-banner{display:flex;align-items:center;gap:12px;background:var(--or-l);border:2px solid var(--or);border-radius:16px;margin:14px 16px 0;padding:12px 14px}
+.companion-banner .cmp-emoji-combo{font-size:2.2rem}
+.companion-banner-text{flex:1;min-width:0}
+.companion-banner-text .cb-title{font-weight:900;font-size:.95rem;margin:0;color:var(--tx)}
+.companion-banner-text .cb-sub{font-size:.78rem;color:var(--mu);margin:2px 0 0}
+
 /* Grammar unlock badge on map */
 .gram-unlock-badge{
   background:linear-gradient(135deg,var(--bl),var(--pu));
@@ -186,6 +227,17 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 
 /* ── XPBAR LABEL ── */
 .xp-label{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:rgba(255,255,255,.8);margin-bottom:4px}
+
+/* ── STREAK POP ── */
+@keyframes streakPop{0%{transform:scale(1)}30%{transform:scale(1.4) rotate(-8deg)}60%{transform:scale(0.9) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
+.streak-pop{animation:streakPop .6s ease}
+
+/* ── BONUS PICKER CARDS ── */
+.bonus-pick-card{display:flex;align-items:center;gap:14px;background:var(--su);border:1.5px solid var(--bo);border-radius:14px;padding:16px;cursor:pointer;transition:all .15s;box-shadow:0 2px 0 rgba(28,23,16,.06)}
+.bonus-pick-card:active{transform:scale(.98)}
+.bonus-pick-emoji{font-size:2.2rem;flex-shrink:0}
+.bonus-pick-title{font-weight:700;font-size:1rem}
+.bonus-pick-sub{color:var(--mu);font-size:.8rem;margin-top:2px}
 
 /* ── DESKTOP LAYOUT ── */
 @media (min-width:500px){
@@ -334,6 +386,13 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
     </div>
     <div style="display:flex;justify-content:center;gap:6px;margin-top:14px" id="sl-dots"></div>
   </div>
+  <div id="sl-companion" class="companion-banner">
+    <span class="cmp-emoji-combo" id="sl-companion-emoji"></span>
+    <div class="companion-banner-text">
+      <p class="cb-title" id="sl-companion-title"></p>
+      <p class="cb-sub" id="sl-companion-sub"></p>
+    </div>
+  </div>
   <div id="sl-body" class="scroll-body p-4"></div>
   <div style="padding:14px 16px;display:flex;gap:10px;background:var(--su);border-top:1.5px solid var(--bo)">
     <button id="sl-prev" onclick="slideNav(-1)" class="btn btn-ghost flex-1">← Anterior</button>
@@ -383,9 +442,13 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 <!-- ─────────────── COMPLETE ─────────────── -->
 <div id="sc-complete" class="screen">
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 20px;gap:16px">
-    <div style="font-size:4.5rem" id="cmp-emoji">🎉</div>
+    <div class="cmp-reaction" id="cmp-reaction">
+      <span class="cmp-emoji-combo" id="cmp-reaction-emoji"></span>
+      <span class="cmp-badge" id="cmp-badge"></span>
+    </div>
     <h2 id="cmp-title" style="font-size:1.9rem;font-weight:900;text-align:center;letter-spacing:-.02em;margin:0"></h2>
     <p id="cmp-sub" style="color:var(--mu);text-align:center;margin:0;font-size:.95rem"></p>
+    <p id="cmp-test-note" style="display:none;color:var(--mu);text-align:center;margin:-8px 0 0;font-size:.82rem;font-weight:700"></p>
     <div style="display:flex;gap:10px;width:100%;margin-top:4px">
       <div class="stat-box"><div id="cmp-xp" style="font-size:1.8rem;font-weight:900;color:var(--yw)"></div><div style="font-size:.72rem;color:var(--mu);margin-top:2px">XP ganado</div></div>
       <div class="stat-box"><div id="cmp-acc" style="font-size:1.8rem;font-weight:900;color:var(--gr)"></div><div style="font-size:.72rem;color:var(--mu);margin-top:2px">Precisión</div></div>
@@ -401,7 +464,42 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
         </div>
       </div>
     </div>
-    <button onclick="goMap(true)" class="btn btn-or w-full" style="font-size:1.1rem;margin-top:4px">¡Continuar! 🚀</button>
+    <!-- Streak section (hidden if streak is 0) -->
+    <div id="cmp-streak" style="display:none;width:100%;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px">
+        <span id="cmp-streak-flame" style="font-size:2rem">🔥</span>
+        <span id="cmp-streak-num" style="font-size:1.6rem;font-weight:900"></span>
+      </div>
+      <p id="cmp-streak-msg" style="font-size:.85rem;color:var(--mu);margin:6px 0 0"></p>
+      <div class="prog-track" style="margin-top:8px"><div class="prog-fill" id="cmp-streak-bar" style="width:0%"></div></div>
+    </div>
+    <button onclick="continueFromComplete()" class="btn btn-or w-full" style="font-size:1.1rem;margin-top:4px">¡Continuar! 🚀</button>
+  </div>
+</div>
+
+<!-- ─────────────── BONUS: ELEGIR RECOMPENSA ─────────────── -->
+<div id="sc-bonus-pick" class="screen">
+  <div style="background:linear-gradient(145deg,var(--yw),#ffd166);padding:22px 20px;text-align:center;color:#fff">
+    <div style="font-size:3rem">🎁</div>
+    <h2 id="bp-title" style="font-size:1.4rem;font-weight:900;margin:8px 0 4px"></h2>
+    <p style="opacity:.9;font-size:.9rem;margin:0">Elige tu recompensa especial</p>
+  </div>
+  <div id="bp-body" class="scroll-body p-4" style="display:flex;flex-direction:column;gap:10px"></div>
+</div>
+
+<!-- ─────────────── BONUS: PAQUETE (carrusel + quiz) ─────────────── -->
+<div id="sc-bonus-deck" class="screen">
+  <div style="background:linear-gradient(145deg,var(--yw),#ffd166);padding:18px 18px 20px" class="text-white">
+    <div style="display:flex;align-items:center;gap:10px">
+      <button onclick="exitBonusDeck()" style="background:rgba(255,255,255,.25);border:none;border-radius:10px;color:#fff;cursor:pointer;font-size:1.1rem;padding:6px 11px;font-family:'Rubik',sans-serif">←</button>
+      <h2 id="bd-title" style="font-size:1.1rem;font-weight:700;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></h2>
+    </div>
+    <div style="display:flex;justify-content:center;gap:6px;margin-top:14px" id="bd-dots"></div>
+  </div>
+  <div id="bd-body" class="scroll-body p-4"></div>
+  <div style="padding:14px 16px;display:flex;gap:10px;background:var(--su);border-top:1.5px solid var(--bo)">
+    <button id="bd-prev" onclick="bonusCardNav(-1)" class="btn btn-ghost flex-1">← Anterior</button>
+    <button id="bd-next" onclick="bonusCardNav(1)" class="btn btn-or flex-1">Siguiente →</button>
   </div>
 </div>
 
@@ -433,6 +531,80 @@ let slideIdx = 0;
 let hpCorr = 0, hpHearts = 0, hpMode = false;
 let activeTab = 'map';
 let curGramTab = 0;
+let curCompanion = null;
+let BONUS = null;
+let pendingBonusPicker = false;
+let curBonusCat = null, curBonusDeckObj = null, bonusCardIdx = 0, bonusQuizIdx = 0, bonusQuizCorrect = 0;
+
+// ─── COMPAÑEROS DE LECCIÓN (Venezuela x Eslovaquia) ────────────────
+const COMPANIONS = [
+  {id:'polly',  name:'Polly',  emoji:'🦜'}, // guacamayo del logo
+  {id:'pana',   name:'Pana',   emoji:'🤠'}, // el cuate del sombrero
+  {id:'brynda', name:'Brynda', emoji:'🐑'}, // ovejita de los Tatras (bryndza)
+];
+const MOODS = {
+  greet:    {anim:'floatLoop', extra:['👋','✨','😊','🎒']},
+  practice: {anim:'wiggle',    extra:['😅','💦','🌀','🤔']},
+  good:     {anim:'bounceIn',  extra:['👍','✨','🎶','😄']},
+  perfect:  {anim:'tada',      extra:['🤩','🎉','🌟','🥳']},
+};
+const REACTIONS = {
+  greet: [
+    {title:'¡Vamos a darle!', sub:'Esta lección está más fresca que un jugo de patilla.'},
+    {title:'¿List@ para esto?', sub:'Ni los Tatras te detienen ahora.'},
+    {title:'¡Dale, pana!', sub:'Aprender eslovaco nunca fue tan chévere.'},
+    {title:'¡A practicar!', sub:'Esto va a estar más bueno que unos halušky calienticos.'},
+    {title:'¡Aquí vamos!', sub:'Tu cerebro está a punto de subir de nivel.'},
+    {title:'¡Vamos con todo!', sub:'Ni Bratislava se lo espera.'},
+  ],
+  practice: [
+    {title:'¡Tranqui!', sub:'Hasta el oso de los Tatras necesitó practicar.'},
+    {title:'¡Casi!', sub:'Los pretzels eslovacos tampoco salen perfectos al primer intento.'},
+    {title:'¡Vas bien!', sub:'Roma no se construyó en un día... ni Bratislava.'},
+    {title:'¡Sigue así!', sub:'Hasta hablar con la boca llena de halušky cuesta al principio.'},
+    {title:'¡No te rindas!', sub:'El eslovaco es difícil, pero tú eres más terco.'},
+    {title:'¡Una más!', sub:'Cada error te acerca un pasito a Eslovaquia.'},
+  ],
+  good: [
+    {title:'¡Sólido!', sub:'Tan sólido como un buen syr (queso).'},
+    {title:'¡Buen ritmo!', sub:'¡Bailaste esta lección como llama en fiesta!'},
+    {title:'¡Muy bien!', sub:"Hasta un eslovaco te diría 'super'."},
+    {title:'¡Vas que vuelas!', sub:'Directo rumbo a Bratislava.'},
+    {title:'¡Eso es!', sub:'Un pasito más y llegas a la cima de los Tatras.'},
+    {title:'¡Bien ahí!', sub:'Tu eslovaco ya suena mejor que el de un turista perdido.'},
+  ],
+  perfect: [
+    {title:'¡Impresionante!', sub:'El loro está impresionado, y eso que es difícil.'},
+    {title:'¡Wow!', sub:'Esto se festeja con una kofola bien fría.'},
+    {title:'¡Perfecto!', sub:'Nivel eslovaco desbloqueado: casi nativ@.'},
+    {title:'¡Excelente!', sub:'Hasta el Castillo de Bratislava aplaude.'},
+    {title:'¡Brutal!', sub:'Si esto fuera fútbol, sería gol de media cancha.'},
+    {title:'¡De otro nivel!', sub:'Te mereces un plato extra de halušky.'},
+  ],
+  testFail: [
+    {title:'¡Casi llegas!', sub:'Te perdiste un poco en el camino a Eslovaquia. ¡Otra vez!'},
+    {title:'¡Un repasito más!', sub:'Y lo tienes asegurado. Vuelve cuando quieras.'},
+    {title:'¡Tan cerca!', sub:'Hasta los trenes eslovacos a veces se atrasan. Inténtalo de nuevo.'},
+    {title:'¡Sigue practicando!', sub:'El examen no se va a ningún lado. ¡Tú tampoco!'},
+    {title:'¡Casi perfecto!', sub:'Repasa un toque y vas a arrasar.'},
+  ],
+};
+function pickCompanion() { return COMPANIONS[Math.floor(Math.random()*COMPANIONS.length)]; }
+function pickReaction(pool, key) {
+  let idx = Math.floor(Math.random()*pool.length);
+  if (pool.length > 1) {
+    const last = localStorage.getItem('lastReact_'+key);
+    while (String(idx) === last) idx = Math.floor(Math.random()*pool.length);
+  }
+  localStorage.setItem('lastReact_'+key, idx);
+  return pool[idx];
+}
+function renderCompanion(elId, companion, mood) {
+  const m = MOODS[mood];
+  const el = document.getElementById(elId);
+  el.textContent = companion.emoji + m.extra[Math.floor(Math.random()*m.extra.length)];
+  el.className = 'cmp-emoji-combo anim-' + m.anim;
+}
 
 // ─── BLOQUES (18 bloques x 5 secciones) ────────────────────────────
 const BLOCKS = [
@@ -523,6 +695,10 @@ function setUser(u) {
     streak: u.streak || 0,
     lastActive: u.lastActive || '',
     grammarUnlocked: Array.isArray(u.grammarUnlocked) ? u.grammarUnlocked : [],
+    streakFreezes: u.streakFreezes || 0,
+    freezeTier: u.freezeTier || 0,
+    lastRewardStreak: u.lastRewardStreak || 0,
+    usedBonusDecks: (u.usedBonusDecks && typeof u.usedBonusDecks === 'object') ? u.usedBonusDecks : {},
   };
   saveST();
 }
@@ -546,6 +722,8 @@ async function updateProgress() {
       completed: u.completed, testsPassed: u.testsPassed,
       streak: u.streak, lastActive: u.lastActive,
       grammarUnlocked: u.grammarUnlocked,
+      streakFreezes: u.streakFreezes, freezeTier: u.freezeTier,
+      lastRewardStreak: u.lastRewardStreak, usedBonusDecks: u.usedBonusDecks,
     })
   });
   setUser(data.user);
@@ -557,7 +735,6 @@ async function loadSession() {
   try {
     const data = await authFetch(`${API_BASE}/progress`, { method:'GET' });
     setUser(data.user);
-    updateStreak();
     goMap();
   } catch(e) {
     ST.token = null; ST.user = null; saveST();
@@ -566,16 +743,51 @@ async function loadSession() {
 }
 
 // ─── STREAK ─────────────────────────────────────────────────────────
-function updateStreak() {
-  const u = getUser(); if (!u) return;
-  const today = new Date().toISOString().slice(0, 10);
-  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-  const last = u.lastActive || '';
-  if (last === today) return;
-  u.streak = (last === yesterday) ? (u.streak || 0) + 1 : 1;
+function dateStr(offsetDays=0) {
+  return new Date(Date.now() + offsetDays*86400000).toISOString().slice(0,10);
+}
+// Racha "viva" para mostrar, sin modificar el estado guardado.
+function effectiveStreak(u) {
+  if (!u || !u.lastActive) return 0;
+  const today = dateStr(0), yesterday = dateStr(-1), twoAgo = dateStr(-2);
+  if (u.lastActive === today || u.lastActive === yesterday) return u.streak || 0;
+  if (u.lastActive === twoAgo && (u.streakFreezes||0) > 0) return u.streak || 0;
+  return 0;
+}
+// Se llama solo al completar una lección/test. Devuelve info para la animación.
+function registerStreakActivity(u) {
+  const today = dateStr(0), yesterday = dateStr(-1), twoAgo = dateStr(-2);
+  const prevDisplay = effectiveStreak(u);
+  let freezeUsed = false;
+  if (u.lastActive === today) {
+    // ya contó hoy, no cambia
+  } else if (u.lastActive === yesterday) {
+    u.streak = (u.streak||0) + 1;
+  } else if (u.lastActive === twoAgo && (u.streakFreezes||0) > 0) {
+    u.streakFreezes -= 1;
+    u.streak = (u.streak||0) + 1;
+    freezeUsed = true;
+  } else {
+    u.streak = 1;
+  }
   u.lastActive = today;
-  setUser(u);
-  updateProgress().catch(() => {});
+  const newStreak = u.streak || 0;
+  let milestone = false;
+  if (newStreak > 0 && newStreak % 7 === 0 && newStreak > (u.lastRewardStreak||0)) {
+    u.lastRewardStreak = newStreak;
+    milestone = true;
+  }
+  return { prevDisplay, newStreak, freezeUsed, milestone };
+}
+// Concede 1 streak freeze cada 500 XP acumulados (máx. 1 en stock).
+function checkFreezeGrant(u) {
+  const TIER = 500;
+  const tier = Math.floor((u.xp||0) / TIER);
+  if (tier > (u.freezeTier||0)) {
+    u.freezeTier = tier;
+    if ((u.streakFreezes||0) < 1) { u.streakFreezes = 1; return true; }
+  }
+  return false;
 }
 
 // ─── AUTH ────────────────────────────────────────────────────────────
@@ -598,7 +810,6 @@ async function doAuth() {
     });
     ST.token = data.token;
     setUser(data.user);
-    updateStreak();
     goMap();
   } catch(err) { showAuthErr(err?.error || 'Error al iniciar sesión.'); }
 }
@@ -647,7 +858,7 @@ function goMap(scrollToActive) {
   activeTab = 'map';
   const u = getUser();
   document.getElementById('map-username').textContent = u?.name || u?.username || '';
-  document.getElementById('map-streak').textContent = '🔥 ' + (u?.streak || 0);
+  document.getElementById('map-streak').textContent = '🔥 ' + effectiveStreak(u) + ((u?.streakFreezes||0) > 0 ? ' 🧊' : '');
   renderHeartsEl('map-hearts', u?.hearts || 0);
   document.getElementById('map-regen').textContent = regenText();
   const xp = u?.xp || 0;
@@ -779,14 +990,20 @@ function repairGrammarUnlocks(u) {
 // ─── SLIDES ──────────────────────────────────────────────────────────
 function startLesson(sec, les) {
   curSection = sec; curLesson = les; slideIdx = 0;
+  curCompanion = pickCompanion();
   document.getElementById('sl-section').textContent = sec.ti;
   document.getElementById('sl-lesson').textContent = les.ti;
+  const greet = pickReaction(REACTIONS.greet, 'greet');
+  renderCompanion('sl-companion-emoji', curCompanion, 'greet');
+  document.getElementById('sl-companion-title').textContent = greet.title;
+  document.getElementById('sl-companion-sub').textContent = greet.sub;
   renderSlide();
   show('sc-slides');
   showBottomNav(false);
 }
 function renderSlide() {
   const sl = curLesson.sl || [];
+  document.getElementById('sl-companion').style.display = slideIdx === 0 ? 'flex' : 'none';
   const dots = document.getElementById('sl-dots');
   dots.innerHTML = sl.map((_,i) => `<div class="sdot${i===slideIdx?' active':''}"></div>`).join('');
   document.getElementById('sl-prev').style.display = slideIdx === 0 ? 'none' : 'flex';
@@ -1170,6 +1387,9 @@ function showComplete() {
   const xpGain = nCorr * 10 + (curLesson.isTest ? 50 : 0);
   u.xp = (u.xp||0) + xpGain;
 
+  const freezeGranted = checkFreezeGrant(u);
+  const streakInfo = registerStreakActivity(u);
+
   let gramUnlocked = false;
   let prevUnlockedIds = [];
   if (!curLesson.isTest) {
@@ -1181,22 +1401,32 @@ function showComplete() {
     }
   }
 
+  let mood, pool, key, badge = '';
+  document.getElementById('cmp-test-note').style.display = 'none';
+
   if (curLesson.isTest) {
     if (acc >= 80) {
       if (!u.testsPassed.includes(curLesson.id)) u.testsPassed.push(curLesson.id);
-      document.getElementById('cmp-emoji').textContent = '🏆';
-      document.getElementById('cmp-title').textContent = '¡Test superado!';
-      document.getElementById('cmp-sub').textContent = '¡Has desbloqueado la siguiente sección!';
+      mood = 'perfect'; pool = REACTIONS.perfect; key = 'perfect'; badge = '🏆';
     } else {
-      document.getElementById('cmp-emoji').textContent = '📚';
-      document.getElementById('cmp-title').textContent = '¡Sigue practicando!';
-      document.getElementById('cmp-sub').textContent = `Necesitas 80%. Obtuviste ${acc}%. ¡Inténtalo de nuevo!`;
+      mood = 'practice'; pool = REACTIONS.testFail; key = 'testFail';
+      document.getElementById('cmp-test-note').textContent = `Necesitas 80%. Obtuviste ${acc}%.`;
+      document.getElementById('cmp-test-note').style.display = 'block';
     }
+  } else if (gramUnlocked) {
+    mood = 'perfect'; pool = REACTIONS.perfect; key = 'perfect'; badge = '🎓';
   } else {
-    document.getElementById('cmp-emoji').textContent = gramUnlocked ? '🎓' : (acc>=90?'🎉':acc>=70?'👍':'💪');
-    document.getElementById('cmp-title').textContent = gramUnlocked ? '¡Lección completada!' : (acc>=90?'¡Excelente!':acc>=70?'¡Muy bien!':'¡Lo lograste!');
-    document.getElementById('cmp-sub').textContent = gramUnlocked ? 'Has completado todas las lecciones de esta sección.' : `Completado: ${curLesson.ti}`;
+    mood = acc >= 90 ? 'perfect' : acc >= 70 ? 'good' : 'practice';
+    pool = mood === 'perfect' ? REACTIONS.perfect : mood === 'good' ? REACTIONS.good : REACTIONS.practice;
+    key = mood;
   }
+
+  const reaction = pickReaction(pool, key);
+  renderCompanion('cmp-reaction-emoji', curCompanion || pickCompanion(), mood);
+  document.getElementById('cmp-title').textContent = reaction.title;
+  document.getElementById('cmp-sub').textContent = reaction.sub;
+  document.getElementById('cmp-badge').textContent = badge;
+  document.getElementById('cmp-badge').style.display = badge ? 'flex' : 'none';
 
   setUser(u);
   updateProgress().catch(()=>{});
@@ -1206,10 +1436,212 @@ function showComplete() {
   document.getElementById('cmp-stars').textContent = stars;
   document.getElementById('cmp-gram-unlock').style.display = gramUnlocked ? 'block' : 'none';
 
+  renderStreakSection(u, streakInfo);
+  pendingBonusPicker = streakInfo.milestone;
+
+  if (streakInfo.freezeUsed) {
+    setTimeout(() => showToast('🧊 ¡Usamos tu congelación de racha! Tu racha sigue viva.'), 600);
+  } else if (freezeGranted) {
+    setTimeout(() => showToast('🧊 ¡Ganaste una congelación de racha!'), 600);
+  }
+
   if (acc >= 70) confetti();
   show('sc-complete');
   showBottomNav(false);
   if (gramUnlocked) setTimeout(() => showGramPopup(curSection, prevUnlockedIds), 600);
+}
+
+// ─── ANIMACIÓN DE RACHA ─────────────────────────────────────────────
+function renderStreakSection(u, info) {
+  const el = document.getElementById('cmp-streak');
+  if (info.newStreak <= 0) { el.style.display = 'none'; return; }
+  el.style.display = 'block';
+  const flame = document.getElementById('cmp-streak-flame');
+  const numEl = document.getElementById('cmp-streak-num');
+  const msgEl = document.getElementById('cmp-streak-msg');
+  const bar = document.getElementById('cmp-streak-bar');
+  if (info.newStreak !== info.prevDisplay) {
+    flame.classList.remove('streak-pop'); void flame.offsetWidth; flame.classList.add('streak-pop');
+    animateCount(numEl, info.prevDisplay, info.newStreak, 600);
+  } else {
+    numEl.textContent = info.newStreak;
+  }
+  if (info.milestone) {
+    msgEl.textContent = `🎉 ¡${info.newStreak} días seguidos! Elige tu recompensa especial...`;
+    bar.style.width = '100%';
+  } else {
+    const toNext = 7 - (info.newStreak % 7);
+    msgEl.textContent = `${info.newStreak} día${info.newStreak===1?'':'s'} seguido${info.newStreak===1?'':'s'}. ` +
+      (toNext===1 ? '¡1 día más' : `${toNext} días más`) + ' para desbloquear contenido especial 🎁';
+    bar.style.width = Math.round((info.newStreak % 7) / 7 * 100) + '%';
+  }
+}
+function animateCount(el, from, to, dur) {
+  if (from === to) { el.textContent = to; return; }
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min(1, (now-start)/dur);
+    el.textContent = Math.round(from + (to-from)*p);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+function continueFromComplete() {
+  if (pendingBonusPicker) { pendingBonusPicker = false; showBonusPicker(); return; }
+  goMap(true);
+}
+
+// ─── RECOMPENSAS DE RACHA (paquetes bonus) ──────────────────────────
+const BONUS_CATS = [
+  {id:'romantic', label:'Romance'},
+  {id:'slang', label:'Jerga'},
+  {id:'slovakia', label:'Eslovaquia'},
+];
+function showBonusPicker() {
+  const u = getUser();
+  const used = u.usedBonusDecks || {};
+  const options = [];
+  BONUS_CATS.forEach(cat => {
+    const decks = (BONUS && BONUS[cat.id]) || [];
+    const usedIds = used[cat.id] || [];
+    const next = decks.find(d => !usedIds.includes(d.id));
+    if (next) options.push({cat: cat.id, deck: next});
+  });
+  document.getElementById('bp-title').textContent = `¡Racha de ${u.streak} días!`;
+  const body = document.getElementById('bp-body');
+  if (!options.length) {
+    body.innerHTML = `<div style="text-align:center;padding:40px 20px;color:var(--mu)">
+      <div style="font-size:3rem;margin-bottom:12px">🏆</div>
+      <p style="font-weight:700;margin:0 0 6px">¡Has desbloqueado todo el contenido especial!</p>
+      <p style="font-size:.85rem;margin:0">Vuelve pronto por más sorpresas.</p>
+      <button onclick="goMap(true)" class="btn btn-or w-full" style="margin-top:18px">¡Continuar! 🚀</button>
+    </div>`;
+  } else {
+    body.innerHTML = options.map(o => `
+      <div class="bonus-pick-card" onclick="openBonusDeck('${o.cat}','${o.deck.id}')">
+        <div class="bonus-pick-emoji">${o.deck.emoji}</div>
+        <div>
+          <div class="bonus-pick-title">${o.deck.title}</div>
+          <div class="bonus-pick-sub">${o.deck.cards.length} tarjetas + mini quiz</div>
+        </div>
+      </div>`).join('');
+  }
+  show('sc-bonus-pick');
+  showBottomNav(false);
+}
+
+// ─── PAQUETE BONUS: CARRUSEL + QUIZ ─────────────────────────────────
+function openBonusDeck(catId, deckId) {
+  curBonusCat = catId;
+  curBonusDeckObj = (BONUS[catId]||[]).find(d => d.id === deckId);
+  if (!curBonusDeckObj) return;
+  bonusCardIdx = 0;
+  document.getElementById('bd-title').textContent = curBonusDeckObj.title;
+  renderBonusCard();
+  show('sc-bonus-deck');
+  showBottomNav(false);
+}
+function renderBonusCard() {
+  const cards = curBonusDeckObj.cards || [];
+  const dots = document.getElementById('bd-dots');
+  dots.innerHTML = cards.map((_,i) => `<div class="sdot${i===bonusCardIdx?' active':''}"></div>`).join('');
+  document.getElementById('bd-prev').style.display = bonusCardIdx === 0 ? 'none' : 'flex';
+  document.getElementById('bd-next').textContent = bonusCardIdx === cards.length-1 ? '¡Al quiz! 📝' : 'Siguiente →';
+  const body = document.getElementById('bd-body');
+  const c = cards[bonusCardIdx];
+  if (curBonusCat === 'slovakia') {
+    body.innerHTML = `
+      <div class="card" style="padding:0;overflow:hidden">
+        <img src="${c.img}" alt="${c.place}" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block" onerror="this.style.display='none'">
+        <div style="padding:16px">
+          <h3 style="font-size:1.15rem;font-weight:800;margin:0 0 10px">${c.place}</h3>
+          <div class="note-card" style="margin-bottom:10px"><p style="margin:0;font-size:.88rem;line-height:1.5"><strong>💡 Qué hacer:</strong> ${c.tip}</p></div>
+          <div class="note-card" style="background:linear-gradient(135deg,var(--yw-l),#fff7e0);border-left-color:var(--yw)"><p style="margin:0;font-size:.88rem;line-height:1.5"><strong>✨ Curiosidad:</strong> ${c.fact}</p></div>
+        </div>
+      </div>`;
+  } else {
+    const [sk, es, pron] = c;
+    body.innerHTML = `
+      <div class="sl-vocab" style="padding:18px">
+        <div style="flex:1">
+          <div style="color:var(--bl);font-weight:700;font-size:1.25rem">${sk}</div>
+          <div style="color:var(--mu);font-size:.95rem;margin-top:4px">${es}</div>
+          ${pron?`<div style="color:var(--or);font-size:.8rem;margin-top:2px">/${pron}/</div>`:''}
+        </div>
+        <button onclick="speak('${sk.replace(/'/g,"\\'")}')" style="background:none;border:none;cursor:pointer;font-size:1.6rem;padding:4px;color:var(--mu)">🔊</button>
+      </div>`;
+  }
+}
+function bonusCardNav(dir) {
+  const cards = curBonusDeckObj.cards || [];
+  if (dir > 0 && bonusCardIdx === cards.length-1) { startBonusQuiz(); return; }
+  bonusCardIdx = Math.max(0, Math.min(cards.length-1, bonusCardIdx+dir));
+  renderBonusCard();
+}
+function exitBonusDeck() {
+  if (confirm('¿Salir? Perderás el progreso de este paquete.')) { goMap(true); showBottomNav(true); }
+}
+function startBonusQuiz() {
+  bonusQuizIdx = 0; bonusQuizCorrect = 0;
+  document.getElementById('bd-dots').innerHTML = '';
+  document.getElementById('bd-prev').style.display = 'none';
+  document.getElementById('bd-next').style.display = 'none';
+  renderBonusQuiz();
+}
+function renderBonusQuiz() {
+  const quiz = curBonusDeckObj.quiz || [];
+  const q = quiz[bonusQuizIdx];
+  const body = document.getElementById('bd-body');
+  if (!q) { finishBonusDeck(); return; }
+  body.innerHTML = `
+    <div style="margin-bottom:18px">
+      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">Pregunta ${bonusQuizIdx+1} de ${quiz.length}</p>
+      <p style="font-size:1.15rem;font-weight:700;margin:0;line-height:1.4">${q.q}</p>
+    </div>
+    <div id="bd-quiz-opts" style="display:flex;flex-direction:column;gap:9px">
+      ${q.opts.map((o,i)=>`<button class="opt" onclick="pickBonusQuiz(this,${i},${q.ci})">${o}</button>`).join('')}
+    </div>
+    <div id="bd-quiz-result" style="margin-top:14px"></div>`;
+}
+function pickBonusQuiz(btn, idx, ci) {
+  document.querySelectorAll('#bd-quiz-opts .opt').forEach(b=>b.disabled=true);
+  const ok = idx === ci;
+  btn.classList.add(ok?'ok':'err');
+  if (!ok) document.querySelectorAll('#bd-quiz-opts .opt')[ci].classList.add('ok');
+  if (ok) bonusQuizCorrect++;
+  const q = curBonusDeckObj.quiz[bonusQuizIdx];
+  document.getElementById('bd-quiz-result').innerHTML = `
+    <div class="${ok?'res-ok':'res-err'}" style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+        <span style="font-size:1.3rem">${ok?'✅':'❌'}</span>
+        <span style="font-weight:700;font-size:1rem">${ok?'¡Correcto!':'Respuesta correcta arriba'}</span>
+      </div>
+      ${q.x?`<p style="font-size:.83rem;color:var(--mu);margin:4px 0 0;line-height:1.4">${q.x}</p>`:''}
+    </div>
+    <button onclick="nextBonusQuiz()" class="btn ${ok?'btn-gr':'btn-bl'} w-full">Continuar →</button>`;
+}
+function nextBonusQuiz() { bonusQuizIdx++; renderBonusQuiz(); }
+function finishBonusDeck() {
+  const u = getUser();
+  const xpGain = Math.min(15, bonusQuizCorrect * 5);
+  u.xp = (u.xp||0) + xpGain;
+  u.usedBonusDecks = u.usedBonusDecks || {};
+  u.usedBonusDecks[curBonusCat] = u.usedBonusDecks[curBonusCat] || [];
+  if (!u.usedBonusDecks[curBonusCat].includes(curBonusDeckObj.id)) u.usedBonusDecks[curBonusCat].push(curBonusDeckObj.id);
+  setUser(u);
+  updateProgress().catch(()=>{});
+  document.getElementById('bd-dots').innerHTML = '';
+  document.getElementById('bd-prev').style.display = 'none';
+  document.getElementById('bd-next').style.display = 'none';
+  document.getElementById('bd-body').innerHTML = `
+    <div style="text-align:center;padding:30px 20px">
+      <div style="font-size:3.5rem;margin-bottom:12px">🎉</div>
+      <h3 style="font-size:1.3rem;font-weight:900;margin:0 0 6px">¡Paquete completado!</h3>
+      <p style="color:var(--mu);font-size:.9rem;margin:0 0 18px">Acertaste ${bonusQuizCorrect} de ${(curBonusDeckObj.quiz||[]).length} preguntas.</p>
+      <div class="stat-box" style="margin-bottom:18px"><div style="font-size:1.8rem;font-weight:900;color:var(--yw)">+${xpGain}</div><div style="font-size:.72rem;color:var(--mu);margin-top:2px">XP ganado</div></div>
+      <button onclick="goMap(true)" class="btn btn-or w-full">¡Continuar! 🚀</button>
+    </div>`;
+  if (xpGain >= 10) confetti();
 }
 
 // ─── HEARTS PRACTICE ─────────────────────────────────────────────────
@@ -1424,6 +1856,10 @@ async function init() {
     const res = await fetch('/api/curriculum');
     if (!res.ok) throw new Error('curriculum fetch failed');
     C = await res.json();
+    try {
+      const bres = await fetch('/api/bonus');
+      if (bres.ok) BONUS = await bres.json();
+    } catch(e2) { /* opcional: si falla, simplemente no hay paquetes bonus */ }
   } catch(e) {
     document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;min-height:100dvh;flex-direction:column;gap:16px;padding:24px;text-align:center"><div style="font-size:3rem">⚠️</div><p style="font-weight:700;font-size:1.1rem">Error al cargar las lecciones</p><p style="color:var(--mu);font-size:.9rem">Comprueba tu conexión e intenta de nuevo.</p><button onclick="location.reload()" style="background:var(--or);color:#fff;border:none;border-radius:12px;padding:12px 24px;font-size:1rem;cursor:pointer;font-weight:700">Reintentar</button></div>';
     return;

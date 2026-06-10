@@ -39,7 +39,11 @@ function normalizeUserRow(row) {
     testsPassed: row.tests_passed || [],
     streak: row.streak || 0,
     lastActive: row.last_active || '',
-    grammarUnlocked: row.grammar_unlocked || []
+    grammarUnlocked: row.grammar_unlocked || [],
+    streakFreezes: row.streak_freezes || 0,
+    freezeTier: row.freeze_tier || 0,
+    lastRewardStreak: row.last_reward_streak || 0,
+    usedBonusDecks: row.used_bonus_decks || {}
   };
 }
 
@@ -72,11 +76,17 @@ module.exports = async (req, res) => {
       const streak = Number(body.streak) || 0;
       const lastActive = String(body.lastActive || '');
       const grammarUnlocked = JSON.stringify(safeArray(body.grammarUnlocked));
+      const streakFreezes = Math.max(0, Math.min(1, Number(body.streakFreezes) || 0));
+      const freezeTier = Math.max(0, Number(body.freezeTier) || 0);
+      const lastRewardStreak = Math.max(0, Number(body.lastRewardStreak) || 0);
+      const usedBonusDecks = JSON.stringify(body.usedBonusDecks && typeof body.usedBonusDecks === 'object' ? body.usedBonusDecks : {});
 
       const result = await execute(
         `UPDATE users SET xp=$1, hearts=$2, hearts_regen=$3, completed=$4, tests_passed=$5,
-         streak=$6, last_active=$7, grammar_unlocked=$8 WHERE username=$9 RETURNING *`,
-        [xp, hearts, heartsRegen, completed, testsPassed, streak, lastActive, grammarUnlocked, payload.username]
+         streak=$6, last_active=$7, grammar_unlocked=$8, streak_freezes=$9, freeze_tier=$10,
+         last_reward_streak=$11, used_bonus_decks=$12 WHERE username=$13 RETURNING *`,
+        [xp, hearts, heartsRegen, completed, testsPassed, streak, lastActive, grammarUnlocked,
+         streakFreezes, freezeTier, lastRewardStreak, usedBonusDecks, payload.username]
       );
       if (!result.rowCount) return sendJson(res, 404, { error: 'Usuario no encontrado' });
       return sendJson(res, 200, { user: normalizeUserRow(result.rows[0]) });

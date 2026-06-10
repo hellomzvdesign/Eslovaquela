@@ -7,6 +7,10 @@ async function migrate() {
     "ALTER TABLE users ADD COLUMN IF NOT EXISTS streak integer NOT NULL DEFAULT 0",
     "ALTER TABLE users ADD COLUMN IF NOT EXISTS last_active text NOT NULL DEFAULT ''",
     "ALTER TABLE users ADD COLUMN IF NOT EXISTS grammar_unlocked jsonb NOT NULL DEFAULT '[]'",
+    "ALTER TABLE users ADD COLUMN IF NOT EXISTS streak_freezes integer NOT NULL DEFAULT 0",
+    "ALTER TABLE users ADD COLUMN IF NOT EXISTS freeze_tier integer NOT NULL DEFAULT 0",
+    "ALTER TABLE users ADD COLUMN IF NOT EXISTS last_reward_streak integer NOT NULL DEFAULT 0",
+    "ALTER TABLE users ADD COLUMN IF NOT EXISTS used_bonus_decks jsonb NOT NULL DEFAULT '{}'",
     `CREATE TABLE IF NOT EXISTS user_mistakes (
       username text REFERENCES users(username),
       concept_tag text NOT NULL,
