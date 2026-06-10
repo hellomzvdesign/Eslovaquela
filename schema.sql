@@ -13,29 +13,6 @@ CREATE TABLE IF NOT EXISTS users (
   grammar_unlocked jsonb NOT NULL DEFAULT '[]'
 );
 
-CREATE TABLE IF NOT EXISTS sections (
-  id text PRIMARY KEY,
-  sort_order integer NOT NULL,
-  title text NOT NULL,
-  emoji text NOT NULL,
-  color text NOT NULL,
-  grammar_ref jsonb NOT NULL DEFAULT '{}'
-);
-
-CREATE TABLE IF NOT EXISTS lessons (
-  id text PRIMARY KEY,
-  section_id text NOT NULL REFERENCES sections(id),
-  sort_order integer NOT NULL,
-  title text NOT NULL,
-  emoji text NOT NULL,
-  is_test boolean NOT NULL DEFAULT false,
-  slides jsonb NOT NULL DEFAULT '[]',
-  words jsonb NOT NULL DEFAULT '[]',
-  phrases jsonb NOT NULL DEFAULT '[]',
-  multiple_choice jsonb NOT NULL DEFAULT '[]',
-  test_questions jsonb NOT NULL DEFAULT '[]'
-);
-
 CREATE TABLE IF NOT EXISTS user_mistakes (
   username text REFERENCES users(username),
   concept_tag text NOT NULL,

@@ -1,6 +1,3 @@
-// Run: DATABASE_URL=<your-neon-url> node seed.js
-const { execute } = require('./api/db');
-
 const CURRICULUM = [
 {id:'s1',ti:'¡Hola, Eslovaquia!',em:'🇸🇰',col:'#FF6B35',
 gr:{
@@ -1245,45 +1242,4 @@ ls:[
 ]}
 ];
 
-async function seed() {
-  console.log('Seeding curriculum...');
-
-  await execute('DELETE FROM lessons');
-  await execute('DELETE FROM sections');
-
-  for (let si = 0; si < CURRICULUM.length; si++) {
-    const sec = CURRICULUM[si];
-    await execute(
-      'INSERT INTO sections (id, sort_order, title, emoji, color, grammar_ref) VALUES ($1, $2, $3, $4, $5, $6)',
-      [sec.id, si + 1, sec.ti, sec.em, sec.col, JSON.stringify(sec.gr || {})]
-    );
-    for (let li = 0; li < sec.ls.length; li++) {
-      const les = sec.ls[li];
-      await execute(
-        `INSERT INTO lessons (id, section_id, sort_order, title, emoji, is_test, slides, words, phrases, multiple_choice, test_questions)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
-        [
-          les.id,
-          sec.id,
-          li + 1,
-          les.ti,
-          les.em,
-          !!les.isTest,
-          JSON.stringify(les.sl || []),
-          JSON.stringify(les.w || []),
-          JSON.stringify(les.p || []),
-          JSON.stringify(les.mc || []),
-          JSON.stringify(les.tq || [])
-        ]
-      );
-    }
-    console.log(`  ✓ Section ${sec.id}: ${sec.ls.length} lessons`);
-  }
-
-  console.log('Done.');
-}
-
-if (require.main === module) {
-  seed().then(() => process.exit(0)).catch(err => { console.error(err); process.exit(1); });
-}
-module.exports = { seed };
+module.exports = { CURRICULUM };
