@@ -156,155 +156,169 @@ ls:[
   ]
  }
 ]},
-{id:'s2',ti:'El mundo a tu alrededor',em:'🌍',col:'#4361EE',
+{id:'s2',ti:'El cuerpo humano',em:'🧍',col:'#4361EE',
 gr:{
-  intro:'La Sección 2 amplía tu eslovaco con tiempo, ciudad, cuerpo humano, clima, restaurante y frases de supervivencia.',
+  intro:'La Sección 2 amplía tu eslovaco con las partes del cuerpo humano y los tres géneros gramaticales del eslovaco (masculino, femenino, neutro). También conoces el pronombre "ona" (ella) y repasas frases de supervivencia esenciales.',
   patches:[
-    {op:'newTable', category:'cisla-cas', tableId:'dni-tyzdna',
-     title:'Días de la semana',note:'Se escriben en minúsculas en eslovaco, al contrario que en inglés.',
-     h:['Día','Eslovaco','Origen / tip'],
-     r:[['Lunes','pondelok','Del antiguo concepto de inicio de semana'],['Martes','utorok',"De 'utor' = segundo"],['Miércoles','streda',"De 'stred' = centro de la semana"],['Jueves','štvrtok',"De 'štvrtý' = cuarto"],['Viernes','piatok',"De 'piaty' = quinto"],['Sábado','sobota',"Del hebreo 'Shabbat'"],['Domingo','nedeľa',"De 'ne-deľa' = sin trabajo"]]},
-    {op:'newTable', category:'cisla-cas', tableId:'mesiace',
-     title:'Meses del año',
-     h:['Mes','Eslovaco','Mes','Eslovaco'],
-     r:[['Enero','január','Julio','júl'],['Febrero','február','Agosto','august'],['Marzo','marec','Septiembre','september'],['Abril','apríl','Octubre','október'],['Mayo','máj','Noviembre','november'],['Junio','jún','Diciembre','december']]},
-    {op:'newTable', category:'cisla-cas', tableId:'rocne-obdobia',
-     title:'Las estaciones',
-     h:['Estación','Eslovaco','Descripción'],
-     r:[['Primavera','jar','Marzo–Mayo. Flores y temperaturas suaves.'],['Verano','leto','Junio–Agosto. Ideal para senderismo en los Tatras.'],['Otoño','jeseň','Septiembre–Noviembre. Bosques de colores.'],['Invierno','zima','Diciembre–Febrero. Nieve en los Alpes eslovacos.']]},
-    {op:'newTable', category:'cisla-cas', tableId:'casove-vyrazy',
-     title:'Expresiones de tiempo',
-     h:['Español','Eslovaco','Ejemplo'],
-     r:[['hoy','dnes','Dnes je pondelok. → Hoy es lunes.'],['mañana (día sig.)','zajtra','Zajtra idem. → Mañana voy.'],['ayer','včera','Včera bol piatok. → Ayer fue viernes.'],['esta mañana','dnes ráno','—'],['esta tarde/noche','dnes večer','—'],['esta semana','tento týždeň','—']]},
+    {op:'addRows', category:'zamena', tableId:'zamena-osobne-basico',
+     r:[['3ª sing. fem.','ona','ella']]},
+    {op:'addRows', category:'byt-pritomny', tableId:'byt-basico',
+     r:[['ona','je','Ona je doma. → Ella está en casa.']]},
+    {op:'newTable', category:'pady', tableId:'rody-zaklady',
+     title:'Géneros gramaticales (básico)', note:'Cada sustantivo eslovaco tiene un género: masculino, femenino o neutro. La terminación de la palabra suele indicarlo.',
+     h:['Género','Terminación típica','Ejemplos (cuerpo)'],
+     r:[['Mužský (masculino)','consonante','nos, krk, zub'],['Ženský (femenino)','-a (o excepción)','hlava, ruka, noha, tvár'],['Stredný (neutro)','-o / -e','oko, ucho, srdce, brucho']]},
     {op:'newTable', category:'frazy', tableId:'prezivanie',
      title:'Frases de supervivencia esenciales',note:'Aprende estas frases de memoria. Pueden salvarte en cualquier situación.',
      h:['Español','Eslovaco','Pronunciación'],
      r:[['No entiendo.','Nerozumiem.','ne-ro-ZU-myem'],['¿Habla inglés?','Hovoríte po anglicky?','ho-vo-REE-te'],['¿Dónde está...?','Kde je...?','kde ye'],['¿Cuánto cuesta?','Koľko stojí?','KOL-ko STO-yi'],['¡Ayuda!','Pomoc!','PO-mots'],['Me duele [parte].','Bolí ma [parte].','bo-LEE ma'],['Llame a la policía.','Zavolajte políciu.','za-vo-LAY-te']]}
   ],
-  tips:["🔑 Los días y los meses se escriben en minúscula en eslovaco.","🔑 Para expresar tiempo, usa el sustantivo temporal directamente, sin preposición: 'Dnes ráno', 'Zajtra večer'.","🔑 'Nerozumiem' (No entiendo) y 'Pomoc!' (¡Ayuda!) son las frases más importantes si viajas a Eslovaquia.","🔑 Para preguntar la hora: 'Koľko je hodín?' Para responder: 'Je [una hora]' / 'Sú [dos o más] hodiny'."]
+  tips:["🔑 'Ona' (ella) usa la misma forma de byť que 'on': 'Ona je doma' = Ella está en casa.","🔑 En eslovaco cada sustantivo tiene un género: las palabras en -a suelen ser femeninas, en -o/-e neutras, y en consonante masculinas.","🔑 'Bolí ma [parte]' = Me duele [parte]. Es una frase fija: solo cambia la parte del cuerpo.","🔑 'tvár' (cara) termina en consonante pero es femenina — una excepción que verás más adelante con otras palabras terminadas en '-ár', '-ň', '-ť'."]
 },
 ls:[
- {id:'s2l1',ti:'Los días y los meses',em:'📅',
+ {id:'s2l1',ti:'La cabeza',em:'🧠',
   sl:[
-   ['v','Días de la semana',[['pondelok','lunes','pon-de-lok'],['utorok','martes','u-to-rok'],['streda','miércoles','stre-da'],['štvrtok','jueves','shtver-tok'],['piatok','viernes','pya-tok'],['sobota','sábado','so-bo-ta'],['nedeľa','domingo','ne-de-lya']]],
-   ['v','Meses seleccionados',[['január','enero','ya-nu-ar'],['február','febrero','feb-ru-ar'],['jún','junio','yun'],['december','diciembre','de-tsem-ber']]],
-   ['t','Curiosidad','Los días de la semana no van en mayúscula en eslovaco. "Pondelok" (lunes) viene de un concepto antiguo de inicio de semana.']
+   ['v','La cabeza',[['hlava','cabeza','hla-va'],['oko','ojo','o-ko']]],
+   ['g','Género: hlava y oko','"hlava" termina en -a → femenino. "oko" termina en -o → neutro. El género determina cómo cambian las palabras en eslovaco.',[['La cabeza (femenino)','hlava'],['El ojo (neutro)','oko']]],
+   ['t','Ona = ella','Ahora puedes decir "ona" (ella), igual que "on" (él). "Ona je doma." = Ella está en casa.']
   ],
-  w:[['pondelok','lunes','😴'],['utorok','martes','💼'],['streda','miércoles','⚡'],['štvrtok','jueves','🚀'],['piatok','viernes','🎉'],['sobota','sábado','🏖️'],['nedeľa','domingo','⛪']],
+  w:[['hlava','cabeza','🧠'],['oko','ojo','👁️']],
   p:[
-   ['Hoy es lunes','Dnes je pondelok',[['Dnes','Hoy'],['je','es'],['pondelok','lunes']],['utorok','streda'],"'Dnes' = hoy. Estructura igual al español."]
+   ['Me duele la cabeza','Bolí ma hlava',[['Bolí ma','Me duele'],['hlava','la cabeza']],['oko','ucho'],"'Bolí ma' = me duele. Es una frase fija: solo cambia la parte del cuerpo."],
+   ['Ella está en casa','Ona je doma',[['Ona','Ella'],['je','está'],['doma','en casa']],['On','Ty'],"'Ona' usa 'je', igual que 'on'."]
   ],
   mc:[
-   ['¿Qué día es "piatok"?',['miércoles','jueves','sábado','viernes'],3,"'piatok' = viernes."],
-   ['¿Cómo se dice "domingo"?',['sobota','pondelok','nedeľa','štvrtok'],2,"'nedeľa' = domingo. 'sobota' = sábado."],
-   ['¿Qué significa "streda"?',['martes','miércoles','jueves','lunes'],1,"'streda' = miércoles. Viene de 'stred' = centro."]
+   ['¿Qué significa "hlava"?',['ojo','cabeza','oído','nariz'],1,"'hlava' = cabeza."],
+   ['¿Cómo se dice "ojo"?',['hlava','oko','ucho','nos'],1,"'oko' = ojo. Termina en -o → género neutro."],
+   ['¿Cómo se dice "ella"?',['on','ona','ono','ja'],1,"'ona' = ella. 'on' = él."]
   ]
  },
- {id:'s2l2',ti:'¿Qué hora es?',em:'🕐',
+ {id:'s2l2',ti:'Los oídos y la nariz',em:'👂',
   sl:[
-   ['v','Partes del día',[['ráno','mañana','ra-no'],['poludnie','mediodía','po-lud-nie'],['večer','tarde/noche','ve-cher'],['noc','noche','nots']]],
-   ['v','Tiempo',[['hodina','hora','ho-di-na'],['minúta','minuto','mi-nu-ta'],['dnes','hoy','dnes'],['zajtra','mañana (día)','zay-tra']]],
-   ['g','Preguntar la hora','Para preguntar la hora: "Koľko je hodín?" Para responder: "[número] hodín".',[['Son las dos','Sú dve hodiny'],['Son las cinco','Je päť hodín'],['¿Qué hora es?','Koľko je hodín?'],['A las tres','O tretej']]]
+   ['v','La cara',[['ucho','oído','u-cho'],['nos','nariz','nos']]],
+   ['g','Género: ucho y nos','"ucho" termina en -o → neutro, igual que "oko". "nos" termina en consonante → masculino.',[['El oído (neutro)','ucho'],['La nariz (masculino)','nos']]],
+   ['t','Plural curioso','El plural de "ucho" (oído) es "uši" y el de "oko" (ojo) es "oči" — formas especiales que no siguen la regla normal.']
   ],
-  w:[['ráno','mañana','🌅'],['poludnie','mediodía','☀️'],['večer','tarde','🌆'],['noc','noche','🌙'],['hodina','hora','🕐'],['minúta','minuto','⏱️']],
+  w:[['ucho','oído','👂'],['nos','nariz','👃']],
   p:[
-   ['Hoy por la mañana','Dnes ráno',[['Dnes','Hoy'],['ráno','mañana']],['večer','noc'],'Las expresiones de tiempo van sin preposición en eslovaco.'],
-   ['Mañana por la noche','Zajtra večer',[['Zajtra','Mañana'],['večer','noche']],['dnes','ráno'],"'Zajtra' = mañana (día siguiente). No confundir con 'ráno' = mañana (momento)."]
+   ['Me duele el oído','Bolí ma ucho',[['Bolí ma','Me duele'],['ucho','el oído']],['nos','hlava'],"'Bolí ma' no cambia, solo cambia la parte del cuerpo."]
   ],
   mc:[
-   ['¿Qué significa "noc"?',['mañana','mediodía','tarde','noche'],3,"'noc' = noche. 'večer' = tarde/noche temprana."],
-   ['¿Cómo se dice "hora"?',['minúta','hodina','dnes','zajtra'],1,"'hodina' = hora. 'minúta' = minuto."],
-   ['¿Qué significa "zajtra"?',['hoy','ayer','mañana','ahora'],2,"'zajtra' = mañana (día siguiente). 'dnes' = hoy."]
+   ['¿Qué significa "ucho"?',['ojo','oído','nariz','cabeza'],1,"'ucho' = oído."],
+   ['¿Cómo se dice "nariz"?',['ucho','oko','nos','hlava'],2,"'nos' = nariz. Muy parecido al español 'nasal'."],
+   ['¿Qué significa "Bolí ma nos"?',['Me duele la cabeza','Me duele el oído','Me duele la nariz','Me duele el ojo'],2,"'Bolí ma nos' = Me duele la nariz."]
   ]
  },
- {id:'s2l3',ti:'En la ciudad',em:'🏙️',
+ {id:'s2l3',ti:'El brazo',em:'💪',
   sl:[
-   ['v','Lugares esenciales',[['obchod','tienda','ob-chod'],['banka','banco','ban-ka'],['nemocnica','hospital','ne-mots-ni-tsa'],['škola','escuela','shko-la']]],
-   ['v','Más lugares',[['reštaurácia','restaurante','resh-tau-ra-tsya'],['hotel','hotel','ho-tel'],['letisko','aeropuerto','le-tis-ko'],['stanica','estación','sta-ni-tsa']]],
-   ['t','Bratislava','La capital eslovaca tiene un hermoso casco histórico. El "hrad" (castillo) domina la ciudad. Se puede ir a pie desde el centro en 15 minutos.']
+   ['v','Brazos y manos',[['ruka','brazo/mano','ru-ka']]],
+   ['g','Género: ruka','"ruka" termina en -a → femenino, igual que "hlava".',[['El brazo/la mano (femenino)','ruka'],['La cabeza (femenino)','hlava']]],
+   ['t','Una palabra, dos significados','"ruka" significa tanto "brazo" como "mano" — el eslovaco no distingue estas dos partes con palabras diferentes.']
   ],
-  w:[['obchod','tienda','🏪'],['banka','banco','🏦'],['nemocnica','hospital','🏥'],['škola','escuela','🏫'],['reštaurácia','restaurante','🍽️'],['hotel','hotel','🏨'],['letisko','aeropuerto','✈️'],['stanica','estación','🚉']],
+  w:[['ruka','brazo/mano','💪']],
   p:[
-   ['¿Dónde está el banco?','Kde je banka?',[['Kde','Dónde'],['je','está'],['banka','el banco']],['obchod','hotel'],"'Kde' = dónde. 'je' = está. ¡Frase esencial para turistas!"]
+   ['Me duele el brazo','Bolí ma ruka',[['Bolí ma','Me duele'],['ruka','el brazo']],['noha','hlava'],"'ruka' también significa 'mano'."]
   ],
   mc:[
-   ['¿Qué significa "letisko"?',['estación','hospital','banco','aeropuerto'],3,"'letisko' = aeropuerto. Viene de 'lietať' = volar."],
-   ['¿Cómo se dice "hospital"?',['banka','škola','nemocnica','obchod'],2,"'nemocnica' = hospital. 'nemocný' = enfermo."],
-   ['¿Qué lugar es "stanica"?',['aeropuerto','hotel','estación','restaurante'],2,"'stanica' = estación de tren o autobús."]
+   ['¿Qué significa "ruka"?',['pierna','brazo/mano','cuello','corazón'],1,"'ruka' = brazo/mano."],
+   ['¿Qué género tiene "ruka"?',['Masculino','Femenino','Neutro','No tiene género'],1,"Termina en -a → femenino, como 'hlava'."],
+   ['¿Cómo se dice "ella" en eslovaco?',['on','ona','ja','ty'],1,"'ona' = ella (Sección 2)."]
   ]
  },
- {id:'s2l4',ti:'El cuerpo humano',em:'🧍',
+ {id:'s2l4',ti:'La pierna y el corazón',em:'❤️',
   sl:[
-   ['v','Cabeza y cara',[['hlava','cabeza','hla-va'],['oko','ojo','o-ko'],['ucho','oído','u-cho'],['nos','nariz','nos']]],
-   ['v','Cuerpo',[['ruka','brazo/mano','ru-ka'],['noha','pierna/pie','no-ha'],['srdce','corazón','srd-tse'],['krk','cuello','kerk']]],
-   ['t','En el médico','Si necesitas ayuda médica di: "Bolí ma [parte]." (Me duele [parte]). "Bolí ma hlava." = Me duele la cabeza.']
+   ['v','Piernas y corazón',[['noha','pierna/pie','no-ha'],['srdce','corazón','srd-tse']]],
+   ['g','Género: noha y srdce','"noha" termina en -a → femenino. "srdce" termina en -e → neutro.',[['La pierna/el pie (femenino)','noha'],['El corazón (neutro)','srdce']]],
+   ['t','Repaso de géneros','Ya conoces ejemplos de los tres géneros: masculino (nos), femenino (hlava, ruka, noha) y neutro (oko, ucho, srdce).']
   ],
-  w:[['hlava','cabeza','🧠'],['oko','ojo','👁️'],['ucho','oído','👂'],['nos','nariz','👃'],['ruka','brazo','💪'],['noha','pierna','🦵'],['srdce','corazón','❤️'],['krk','cuello','🩺']],
+  w:[['noha','pierna/pie','🦵'],['srdce','corazón','❤️']],
   p:[
-   ['Me duele la cabeza','Bolí ma hlava',[['Bolí','Duele'],['ma','me'],['hlava','la cabeza']],['ruka','noha'],'Frase esencial para situaciones médicas.']
+   ['Me duele la pierna','Bolí ma noha',[['Bolí ma','Me duele'],['noha','la pierna']],['ruka','srdce'],"—"],
+   ['Ella está bien','Ona je dobre',[['Ona','Ella'],['je','está'],['dobre','bien']],['On','Ja'],"Repaso: 'ona je' + adjetivo (Sección 1: 'dobre' = bien)."]
   ],
   mc:[
-   ['¿Qué significa "srdce"?',['cabeza','nariz','ojo','corazón'],3,"'srdce' = corazón. ¡La palabra más poética del eslovaco!"],
-   ['¿Cómo se dice "ojo"?',['ucho','nos','oko','hlava'],2,"'oko' = ojo. Plural: 'oči' (ojos)."],
-   ['¿Qué parte del cuerpo es "noha"?',['brazo','cabeza','pierna','cuello'],2,"'noha' = pierna/pie. 'ruka' = brazo/mano."]
+   ['¿Qué significa "srdce"?',['cabeza','corazón','pierna','brazo'],1,"'srdce' = corazón. ¡La palabra más poética del eslovaco!"],
+   ['¿Cómo se dice "pierna"?',['ruka','noha','nos','krk'],1,"'noha' = pierna/pie."],
+   ['¿Qué significa "Bolí ma srdce"?',['Me duele la pierna','Me duele el corazón','Me duele el brazo','Me duele la cabeza'],1,"'srdce' = corazón."]
   ]
  },
- {id:'s2l5',ti:'El tiempo y las estaciones',em:'🌤️',
+ {id:'s2l5',ti:'El cuello',em:'🩺',
   sl:[
-   ['v','Fenómenos del tiempo',[['slnko','sol','sln-ko'],['dážď','lluvia','dazhdz'],['sneh','nieve','sneh'],['vietor','viento','vye-tor']]],
-   ['v','Las estaciones',[['jar','primavera','yar'],['leto','verano','le-to'],['jeseň','otoño','ye-sen'],['zima','invierno','zi-ma']]],
-   ['t','El clima eslovaco','Eslovaquia tiene 4 estaciones bien diferenciadas. Los Tatras en invierno son perfectos para esquiar. Los veranos son cálidos y perfectos para senderismo.']
+   ['v','El cuello',[['krk','cuello','kerk']]],
+   ['g','Género: krk','"krk" termina en consonante → masculino, igual que "nos".',[['El cuello (masculino)','krk'],['La nariz (masculino)','nos']]],
+   ['t','Masculino vs. neutro','Tanto "krk" como "nos" terminan en consonante y son masculinos. Pero "srdce" termina en -e y es neutro — ¡cuidado con las terminaciones en -e!']
   ],
-  w:[['slnko','sol','☀️'],['dážď','lluvia','🌧️'],['sneh','nieve','❄️'],['vietor','viento','💨'],['jar','primavera','🌸'],['leto','verano','🏖️'],['jeseň','otoño','🍂'],['zima','invierno','⛄']],
+  w:[['krk','cuello','🩺']],
   p:[
-   ['Hoy hay sol','Dnes je slnko',[['Dnes','Hoy'],['je','hay'],['slnko','sol']],['dážď','sneh'],"Para hablar del tiempo usa 'je' + fenómeno."]
+   ['Me duele el cuello','Bolí ma krk',[['Bolí ma','Me duele'],['krk','el cuello']],['hlava','nos'],"—"]
   ],
   mc:[
-   ['¿Qué estación es "leto"?',['primavera','otoño','invierno','verano'],3,"'leto' = verano. 'zima' = invierno."],
-   ['¿Cómo se dice "nieve"?',['dážď','vietor','slnko','sneh'],3,"'sneh' = nieve. ¡Los Tatras tienen mucha nieve en invierno!"],
-   ['¿Qué significa "jar"?',['otoño','invierno','primavera','verano'],2,"'jar' = primavera. 'jeseň' = otoño."]
+   ['¿Qué significa "krk"?',['oído','cuello','corazón','pierna'],1,"'krk' = cuello."],
+   ['¿Qué género tiene "krk"?',['Femenino','Neutro','Masculino','No tiene género'],2,"Termina en consonante → masculino."],
+   ['¿Cómo se dice "no" en eslovaco?',['áno','nie','dobre','ako'],1,"'nie' = no (Sección 1)."]
   ]
  },
- {id:'s2l6',ti:'En el restaurante',em:'🍽️',
+ {id:'s2l6',ti:'Los dientes y la cara',em:'🦷',
   sl:[
-   ['v','En la mesa',[['jedlo','comida','yed-lo'],['nápoj','bebida','na-poy'],['polievka','sopa','po-lyev-ka'],['dezert','postre','de-zert']]],
-   ['v','Frases útiles',[['stôl','mesa','stol'],['účet','cuenta','u-chet'],['chcem','quiero','kh-tsem'],['prosím','por favor','pro-seem']]],
-   ['g','Pedir en el restaurante','Para pedir usa: "[plato], prosím." Para pedir algo específico: "Chcem [plato]."',[['Quiero agua','Chcem vodu.'],['La cuenta','Účet, prosím.'],['¿Tiene mesa?','Máte stôl?'],['¡Buen provecho!','Dobrú chuť!']]]
+   ['v','Dientes y cara',[['zub','diente','zub'],['tvár','cara','tvaar']]],
+   ['g','La excepción: tvár','"tvár" termina en consonante pero es FEMENINO — una excepción a la regla. Existen otras palabras femeninas terminadas en consonante suave (-ár, -ň, -ť...).',[['La cara (femenino, excepción)','tvár'],['El cuello (masculino, regular)','krk']]],
+   ['t','Cuida tus dientes','El plural de "zub" (diente) es "zuby" (dientes).']
   ],
-  w:[['jedlo','comida','🍛'],['nápoj','bebida','🥤'],['polievka','sopa','🍜'],['dezert','postre','🍰'],['stôl','mesa','🍽️'],['účet','cuenta','🧾']],
+  w:[['zub','diente','🦷'],['tvár','cara','😊']],
   p:[
-   ['Quiero sopa, por favor','Chcem polievku, prosím',[['Chcem','Quiero'],['polievku','sopa'],['prosím','por favor']],['jedlo','dezert'],"'polievku' es la forma acusativa de 'polievka'. Normal con verbos de querer."],
-   ['La cuenta, por favor','Účet, prosím',[['Účet','La cuenta'],['prosím','por favor']],['stôl','nápoj'],'Frase indispensable en cualquier restaurante eslovaco.']
+   ['Me duele un diente','Bolí ma zub',[['Bolí ma','Me duele'],['zub','un diente']],['tvár','krk'],"—"],
+   ['Mi amigo está en casa','Priateľ je doma',[['Priateľ','Amigo'],['je','está'],['doma','en casa']],['On','Ona'],"Repaso de la Sección 1: 'priateľ' = amigo, 'doma' = en casa."]
   ],
   mc:[
-   ['¿Cómo pides "la cuenta"?',['Jedlo, prosím','Stôl, prosím','Účet, prosím','Chcem dezert'],2,"'Účet, prosím.' = La cuenta, por favor."],
-   ['¿Qué significa "dezert"?',['sopa','bebida','comida','postre'],3,"'dezert' = postre. ¡Casi igual al español!"],
-   ['¿Cómo se dice "quiero"?',['prosím','máte','chcem','ďakujem'],2,"'chcem' = quiero. 'Prosím' = por favor."]
+   ['¿Qué significa "zub"?',['cara','diente','cuello','oído'],1,"'zub' = diente."],
+   ['¿Qué género tiene "tvár"?',['Masculino','Femenino (excepción)','Neutro','No tiene género'],1,"'tvár' termina en consonante pero es femenino — una excepción."],
+   ['¿Cómo se dice "amigo"?',['priateľ','doma','dobre','ako'],0,"'priateľ' = amigo (Sección 1)."]
   ]
  },
- {id:'s2l7',ti:'Frases de supervivencia',em:'🆘',
+ {id:'s2l7',ti:'La barriga, todo junto',em:'🫃',
   sl:[
-   ['v','Emergencias',[['pomoc','ayuda','po-mots'],['polícia','policía','po-li-tsya'],['lekár','médico','le-kar'],['záchranár','paramédico','zakh-ra-nar']]],
-   ['v','Frases esenciales',[['Nerozumiem','No entiendo','ne-ro-zu-myem'],['Kde je...?','¿Dónde está...?','kde ye'],['Koľko stojí?','¿Cuánto cuesta?','kol-ko sto-yi'],['Hovorím po španielsky','Hablo español','ho-vo-reem']]],
-   ['t','Frases de oro','Con "Nerozumiem" (No entiendo) y "Hovoríte po anglicky?" (¿Habla inglés?) puedes sobrevivir cualquier situación. ¡Apréndetelas de memoria!']
+   ['v','La barriga',[['brucho','barriga/panza','bru-cho']]],
+   ['g','Repaso final de géneros','Masculino (consonante): nos, krk, zub. Femenino (-a o excepción): hlava, ruka, noha, tvár. Neutro (-o/-e): oko, ucho, srdce, brucho.',[['Masculino','nos, krk, zub'],['Femenino','hlava, ruka, noha, tvár'],['Neutro','oko, ucho, srdce, brucho']]],
+   ['t','¡El cuerpo completo!','Ya conoces 11 partes del cuerpo en eslovaco. Si te sientes mal, recuerda: "Bolí ma [parte]." es tu frase de oro.']
   ],
-  w:[['pomoc','ayuda','🆘'],['polícia','policía','👮'],['nemocnica','hospital','🏥'],['lekár','médico','👨‍⚕️'],['záchranár','paramédico','🚑'],['nebezpečenstvo','peligro','⚠️']],
+  w:[['brucho','barriga/panza','🫃']],
   p:[
-   ['¡Ayuda, llama a la policía!','Pomoc, zavolajte políciu!',[['Pomoc','Ayuda'],['zavolajte','llame'],['políciu','policía']],['lekár','nemocnica'],'Frase de emergencia esencial. Apréndetela de memoria.']
+   ['Me duele la barriga','Bolí ma brucho',[['Bolí ma','Me duele'],['brucho','la barriga']],['srdce','noha'],"—"],
+   ['¿Cómo está ella?','Ako je ona?',[['Ako','Cómo'],['je','está'],['ona','ella']],['on','ty'],"Repaso: 'Ako' (cómo, Sección 1) + 'je' + pronombre."]
   ],
   mc:[
-   ['¿Cómo dices "No entiendo"?',['Nerozumiem','Neviem','Nie','Ďakujem'],0,"'Nerozumiem' = No entiendo. 'Neviem' = No sé."],
-   ['¿Qué significa "pomoc"?',['policía','médico','ayuda','peligro'],2,"'pomoc' = ayuda. ¡Palabra de emergencia!"],
-   ['¿Cómo preguntas el precio?',['Kde je?','Koľko stojí?','Ako sa voláš?','Čo je to?'],1,"'Koľko stojí?' = ¿Cuánto cuesta?"]
+   ['¿Qué significa "brucho"?',['corazón','barriga/panza','pierna','cara'],1,"'brucho' = barriga/panza."],
+   ['¿Qué género tiene "brucho"?',['Masculino','Femenino','Neutro','No tiene género'],2,"Termina en -o → neutro, como 'oko' y 'ucho'."],
+   ['¿Cuál es la frase para decir que algo te duele?',['Ako sa máš?','Bolí ma...','Kde je...?','Koľko stojí?'],1,"'Bolí ma [parte]' = Me duele [parte]."]
   ]
  },
  {id:'s2test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
-   ['t','¡Gran examen!','Vas a responder unas 18 preguntas de repaso de toda la Sección 2. Necesitas 80% correctas para pasar. ¡Eres capaz!'],
-   ['g','Repaso rápido','Todo lo aprendido en la Sección 2:',[['Días','pondelok...nedeľa'],['Ciudad','banka, škola, letisko'],['Cuerpo','hlava, oko, srdce'],['Restaurante','jedlo, účet, chcem']]],
-   ['t','¡Eres increíble!','Has aprendido más de 80 palabras en eslovaco. ¡Muy pocos hispanohablantes llegan tan lejos!']
+   ['t','¡Hora del examen!','Vas a responder unas 18 preguntas de repaso de toda la Sección 2. Necesitas 80% correctas para desbloquear la Sección 3. ¡Tú puedes!'],
+   ['g','Repaso rápido','Las 11 palabras de la Sección 2:',[['Cabeza/cara','hlava, oko, ucho, nos'],['Cuerpo','ruka, noha, srdce, krk'],['Más','zub, tvár, brucho'],['Pronombre','ona = ella']]],
+   ['t','Consejo final',"Recuerda los géneros: -a → femenino, -o/-e → neutro, consonante → masculino (¡con la excepción de 'tvár'!)."]
   ],
-  w:[],p:[],mc:[]
+  w:[],p:[],mc:[],
+  tq:[
+   {id:'s2t-01',category:'new',type:'mc',skill:'vocab',concept_tag:'vocab_telo',question:'¿Qué significa "hlava"?',options:['ojo','cabeza','oído','nariz'],answer:1,audio:null,skippable:false,accept:[],explanation:"'hlava' = cabeza."},
+   {id:'s2t-02',category:'new',type:'mc',skill:'vocab',concept_tag:'vocab_telo',question:'¿Cómo se dice "ojo"?',options:['ucho','oko','nos','krk'],answer:1,audio:null,skippable:false,accept:[],explanation:"'oko' = ojo."},
+   {id:'s2t-03',category:'new',type:'fill',skill:'vocab',concept_tag:'vocab_telo',question:'Completa: "Bolí ma ___." (Me duele el oído)',options:[],answer:'ucho',audio:null,skippable:false,accept:['ucho'],explanation:"'ucho' = oído."},
+   {id:'s2t-04',category:'new',type:'type',skill:'vocab',concept_tag:'vocab_telo',question:'Escribe en eslovaco: "brazo/mano"',options:[],answer:'ruka',audio:null,skippable:false,accept:['ruka'],explanation:"'ruka' = brazo/mano."},
+   {id:'s2t-05',category:'new',type:'listen',skill:'vocab',concept_tag:'vocab_telo',question:'Escucha y elige la traducción correcta.',options:['Me duele la pierna','Me duele el corazón','Me duele la cabeza','Me duele el cuello'],answer:0,audio:'Bolí ma noha',skippable:true,accept:[],explanation:"'Bolí ma noha' = Me duele la pierna."},
+   {id:'s2t-06',category:'new',type:'mc',skill:'grammar',concept_tag:'rody_gramaticke',question:'¿Qué género tiene "krk" (cuello)?',options:['Femenino','Neutro','Masculino','No tiene'],answer:2,audio:null,skippable:false,accept:[],explanation:"'krk' termina en consonante → masculino."},
+   {id:'s2t-07',category:'new',type:'mc',skill:'grammar',concept_tag:'rody_gramaticke',question:'¿Qué terminación es típica del género neutro?',options:['consonante','-a','-o / -e','-y'],answer:2,audio:null,skippable:false,accept:[],explanation:"Las palabras neutras suelen terminar en -o o -e: oko, srdce."},
+   {id:'s2t-08',category:'new',type:'mc',skill:'grammar',concept_tag:'rody_gramaticke',question:'¿Cuál de estas palabras es FEMENINA aunque termina en consonante?',options:['krk','nos','tvár','zub'],answer:2,audio:null,skippable:false,accept:[],explanation:"'tvár' (cara) es femenino, una excepción a la terminación en consonante."},
+   {id:'s2t-09',category:'new',type:'mc',skill:'grammar',concept_tag:'zamena_ona',question:'¿Cómo se dice "ella"?',options:['on','ona','ono','ony'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ona' = ella."},
+   {id:'s2t-10',category:'new',type:'fill',skill:'grammar',concept_tag:'zamena_ona',question:'Completa: "Ona ___ doma." (Ella está en casa)',options:[],answer:'je',audio:null,skippable:false,accept:['je'],explanation:"'Ona je' = ella es/está, igual que 'on je'."},
+   {id:'s2t-11',category:'new',type:'mc',skill:'grammar',concept_tag:'boli_ma',question:'¿Cómo se dice "Me duele la barriga"?',options:['Ja som brucho','Bolí ma brucho','Brucho je ja','Mám brucho'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Bolí ma [parte]' = Me duele [parte]."},
+   {id:'s2t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_presente',question:'¿Cómo se dice "Yo soy / Yo estoy"?',options:['Ty si','Ja som','On je','Ona je'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ja som' = Yo soy / Yo estoy (Sección 1)."},
+   {id:'s2t-13',category:'old_review',type:'fill',skill:'grammar',concept_tag:'negacion_byt',question:'Completa: "On ___ je." (Él no está)',options:[],answer:'nie',audio:null,skippable:false,accept:['nie'],explanation:"La negación 'nie' va justo antes del verbo (Sección 1)."},
+   {id:'s2t-14',category:'old_review',type:'mc',skill:'vocab',concept_tag:'pronombres_personales',question:'¿Qué significa "ty"?',options:['yo','tú','él','ella'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ty' = tú (Sección 1)."},
+   {id:'s2t-15',category:'random_review',type:'listen',skill:'vocab',concept_tag:'preguntas_como_estas',question:'Escucha y elige la traducción correcta.',options:['¿Cómo estás?','Estoy bien','Estoy en casa','Soy amigo'],answer:0,audio:'Ako si?',skippable:true,accept:[],explanation:"'Ako si?' = ¿Cómo estás? (Sección 1)."},
+   {id:'s2t-16',category:'random_review',type:'type',skill:'vocab',concept_tag:'vocab_basico_s1',question:'Escribe en eslovaco: "amigo"',options:[],answer:'priateľ',audio:null,skippable:false,accept:['priateľ','priatel'],explanation:"'priateľ' = amigo (Sección 1)."},
+   {id:'s2t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'rody_gramaticke',question:'Elige el género CORRECTO de "oko" (ojo)',options:['Masculino','Femenino','Neutro','No tiene género'],answer:2,audio:null,skippable:false,accept:[],explanation:"'oko' termina en -o → neutro."},
+   {id:'s2t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'zamena_ona',question:'Corrige el error: "Ona som doma." (debería significar "Ella está en casa")',options:[],answer:'Ona je doma',audio:null,skippable:false,accept:['Ona je doma','ona je doma'],explanation:"Con 'ona' se usa 'je', no 'som'. 'som' es solo para 'ja'."}
+  ]
  }
 ]},
 {id:'s3',ti:'La vida diaria',em:'🗓️',col:'#00A86B',
@@ -1183,9 +1197,11 @@ gr:{
      h:['Español','Eslovaco'],
      r:[['Tengo hambre.','Mám hlad.'],['Tengo sed.','Mám smäd.'],['¡Buen provecho!','Dobrú chuť!'],['Está rico / me gusta.','Chutí mi to.']]},
     {op:'addRows', category:'pady', tableId:'akuzativ',
-     r:[['Stredný','mäso','mäso','Jem mäso. = Como carne.'],['Ženský (-a)','voda','vodu','Pijem vodu. = Bebo agua.']]}
+     r:[['Stredný','mäso','mäso','Jem mäso. = Como carne.'],['Ženský (-a)','voda','vodu','Pijem vodu. = Bebo agua.'],['Mužský neživotný','syr','syr','Jem syr. = Como queso.'],['Stredný','pivo','pivo','Pijem pivo. = Bebo cerveza.']]},
+    {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
+     r:[['Me gusta [cosa] (hombre)','mám rád + sustantivo (acus.)','Mám rád kávu. = Me gusta el café.'],['Me gusta [cosa] (mujer)','mám rada + sustantivo (acus.)','Mám rada čaj. = Me gusta el té.'],['¿Te gusta [cosa]?','máš rád/rada + sustantivo (acus.)','Máš rád kávu? = ¿Te gusta el café?']]}
   ],
-  tips:["🔑 'jesť' (comer) y 'piť' (beber) son irregulares: ja jem/pijem, ty ješ/piješ, on je/pije.","🔑 ¡Cuidado! 'je' significa 'es/está' (byť) Y 'come' (jesť) — el contexto lo aclara.","🔑 Los sustantivos neutros de comida (mäso, jablko) NO cambian en acusativo, igual que 'auto' y 'okno'.","🔑 'voda' (femenino -a) cambia a -u en acusativo: Pijem vodu, igual que 'izba'→'izbu'."]
+  tips:["🔑 'jesť' (comer) y 'piť' (beber) son irregulares: ja jem/pijem, ty ješ/piješ, on je/pije.","🔑 ¡Cuidado! 'je' significa 'es/está' (byť) Y 'come' (jesť) — el contexto lo aclara.","🔑 Los sustantivos neutros de comida (mäso, jablko, mlieko, pivo) NO cambian en acusativo, igual que 'auto' y 'okno'.","🔑 'voda' y 'káva' (femenino -a) cambian a -u en acusativo: Pijem vodu, Mám rád kávu, igual que 'izba'→'izbu'.","🔑 'Mám rád/rada' + sustantivo en acusativo = 'me gusta [una cosa]', distinto de 'rád/rada' + verbo (= 'me gusta hacer algo', Sección 3)."]
 },
 ls:[
  {id:'s8l1',ti:'Como pan',em:'🍞',
@@ -1237,6 +1253,102 @@ ls:[
    ['¿Cómo se dice "carne"?',['jablko','mäso','chlieb','voda'],1,"'mäso' = carne."],
    ['¿Cuál es el acusativo de "jablko" (manzana)?',['jablko','jablká','jablka','jablku'],0,"'jablko' (neutro) no cambia en acusativo."],
    ['¿Qué significa "Jem mäso a jablko"?',['Bebo carne y manzana','Tengo carne y manzana','Como carne y manzana','¿Comes carne y manzana?'],2,"'Jem mäso a jablko' = Como carne y manzana."]
+  ]
+ },
+ {id:'s8l4',ti:'Queso y leche',em:'🧀',
+  sl:[
+   ['v','Más comida',[['syr','queso','syr'],['mlieko','leche','mlye-ko']]],
+   ['g','Repaso: sin cambio en acusativo','"syr" (masculino inanimado) y "mlieko" (neutro) NO cambian en acusativo, igual que "chlieb" y "mäso".',[['Como queso.','Jem syr.'],['Bebo leche.','Pijem mlieko.'],['No bebo leche, bebo agua.','Nepijem mlieko, pijem vodu.']]]
+  ],
+  w:[['syr','queso','🧀'],['mlieko','leche','🥛']],
+  p:[
+   ['Como queso.','Jem syr.',[['Jem','Como'],['syr','queso']],['syru','mlieka'],"'syr' (masculino inanimado) NO cambia en acusativo."],
+   ['Bebo leche.','Pijem mlieko.',[['Pijem','Bebo'],['mlieko','leche']],['mliekom','syra'],"'mlieko' (neutro) NO cambia en acusativo, igual que 'auto' y 'mäso'."],
+   ['No bebo leche, bebo agua.','Nepijem mlieko, pijem vodu.',[['Nepijem','No bebo'],['mlieko','leche'],['pijem','bebo'],['vodu','agua']],['syr','čaj'],"Repaso de la negación 'ne-' (s4) + dos sustantivos en acusativo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "queso"?',['mlieko','syr','mäso','chlieb'],1,"'syr' = queso."],
+   ['¿Cuál es el acusativo de "mlieko" (leche)?',['mlieko','mlieku','mlieka','mliekom'],0,"'mlieko' (neutro) no cambia en acusativo."],
+   ['¿Qué significa "Nepijem mlieko"?',['Bebo leche','No bebo leche','No tengo leche','Como leche'],1,"'Nepijem mlieko' = No bebo leche."]
+  ]
+ },
+ {id:'s8l5',ti:'Tomo café',em:'☕',
+  sl:[
+   ['v','Una bebida más',[['káva','café','ka-va']]],
+   ['g','"Mám rád/rada" + sustantivo','Cuando "rád/rada" va seguido de un SUSTANTIVO (no de un verbo), ese sustantivo va en acusativo: "mám rád/rada" + acusativo = "me gusta [una cosa]".',[['Me gusta el café. (hombre)','Mám rád kávu.'],['Me gusta el café. (mujer)','Mám rada kávu.'],['Me gusta leer. (verbo, repaso s3)','Rád čítam.'],['¿Te gusta el café?','Máš rád/rada kávu?']]]
+  ],
+  w:[['káva','café','☕']],
+  p:[
+   ['Me gusta el café.','Mám rád kávu.',[['Mám rád','Me gusta'],['kávu','el café']],['vodu','čaj'],"'Mám rád' + acusativo (sustantivo) = me gusta [una cosa]."],
+   ['Bebo café por la mañana.','Ráno pijem kávu.',[['Ráno','Por la mañana'],['pijem','bebo'],['kávu','café']],['večer','mlieko'],"Repaso de 'ráno' (s5) + 'pijem' + 'kávu' (femenino -a → -u)."],
+   ['¿Te gusta el café?','Máš rád kávu?',[['Máš rád','¿Te gusta'],['kávu?','el café?']],['Mám rada','vodu'],"'Máš rád/rada' + acusativo = ¿te gusta [una cosa]? (2ª persona)."]
+  ],
+  mc:[
+   ['¿Cómo se dice "café"?',['čaj','mlieko','káva','voda'],2,"'káva' = café."],
+   ['¿Cómo dice un hombre "me gusta el café"?',['Rád kávu','Mám rád kávu','Mám káva','Rád pijem'],1,"'Mám rád' + acusativo (sustantivo) = me gusta [una cosa]."],
+   ['¿Cuál es el acusativo de "káva"?',['káva','kávu','kávy','káve'],1,"'káva'→'kávu' (femenino -a → -u)."]
+  ]
+ },
+ {id:'s8l6',ti:'El té',em:'🍵',
+  sl:[
+   ['v','Otra bebida caliente',[['čaj','té','chai']]],
+   ['t','Repaso: "Mám rád/rada" + acusativo','"čaj" (masculino inanimado) NO cambia en acusativo. Repasa: Mám rád čaj. (Me gusta el té.) / Nemám rada čaj. (No me gusta el té, mujer.)']
+  ],
+  w:[['čaj','té','🍵']],
+  p:[
+   ['Bebo té por la noche.','Večer pijem čaj.',[['Večer','Por la noche'],['pijem','bebo'],['čaj','té']],['ráno','kávu'],"'čaj' (masculino inanimado) NO cambia en acusativo."],
+   ['No me gusta el té, me gusta el café.','Nemám rada čaj, mám rada kávu.',[['Nemám rada','No me gusta (f.)'],['čaj','el té'],['mám rada','me gusta (f.)'],['kávu','el café']],['pijem','jem'],"'nemám rada' = negación de 'mám rada' + acusativo."],
+   ['Tengo té y café en casa.','Mám doma čaj a kávu.',[['Mám','Tengo'],['doma','en casa'],['čaj','té'],['a','y'],['kávu','café']],['mlieko','vodu'],"Combina 'doma' (s1) con dos sustantivos en acusativo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "té"?',['káva','čaj','mlieko','voda'],1,"'čaj' = té."],
+   ['¿Cuál es el acusativo de "čaj"?',['čaj','čaju','čaja','čajom'],0,"'čaj' (masculino inanimado) no cambia en acusativo."],
+   ['¿Cómo dice una mujer "no me gusta el té"?',['Nerada čaj','Nemám rád čaj','Nemám rada čaj','Nie rada čaj'],2,"'Nemám rada' + acusativo = no me gusta [una cosa] (mujer)."]
+  ]
+ },
+ {id:'s8l7',ti:'La cerveza, en resumen',em:'🍺',
+  sl:[
+   ['v','Última palabra de la sección',[['pivo','cerveza','pi-vo']]],
+   ['t','¡Sección 8 completa!','Ya conoces 11 palabras nuevas: jesť, chlieb, piť, voda, mäso, jablko, syr, mlieko, káva, čaj, pivo. Y dos estructuras: "jem/pijem" + acusativo, y "mám rád/rada" + acusativo. ¡A practicar para el test!']
+  ],
+  w:[['pivo','cerveza','🍺']],
+  p:[
+   ['Bebo cerveza los viernes.','Pijem pivo v piatok.',[['Pijem','Bebo'],['pivo','cerveza'],['v piatok','los viernes']],['vodu','v sobotu'],"'pivo' (neutro) no cambia en acusativo. Repaso de los días (s2)."],
+   ['No bebo cerveza, bebo agua.','Nepijem pivo, pijem vodu.',[['Nepijem','No bebo'],['pivo','cerveza'],['pijem','bebo'],['vodu','agua']],['mlieko','čaj'],"'ne-' + 'pijem' = 'nepijem' (s4)."],
+   ['¿Qué comes y qué bebes?','Čo ješ a čo piješ?',[['Čo','Qué'],['ješ','comes'],['a','y'],['čo','qué'],['piješ?','bebes?']],['jem','pijem'],"Repaso de 'čo' (s3l7) + los verbos 'jesť' y 'piť'."]
+  ],
+  mc:[
+   ['¿Cómo se dice "cerveza"?',['víno','pivo','mlieko','voda'],1,"'pivo' = cerveza."],
+   ['¿Cuál es el acusativo de "pivo"?',['pivo','piva','pivu','pivom'],0,"'pivo' (neutro) no cambia en acusativo."],
+   ['¿Cuántas palabras nuevas tiene la Sección 8?',['7','9','11','13'],2,"jesť, chlieb, piť, voda, mäso, jablko, syr, mlieko, káva, čaj, pivo = 11 palabras."]
+  ]
+ },
+ {id:'s8test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Hora del examen!','Vas a responder preguntas de repaso de toda la Sección 8: los verbos "jesť"/"piť", el vocabulario de comida y "mám rád/rada" + acusativo. Necesitas 80% correctas para desbloquear la Sección 9. ¡Tú puedes!'],
+   ['g','Repaso rápido','Lo aprendido en la Sección 8:',[['jesť / piť','jem, ješ, je / pijem, piješ, pije'],['Acusativo sin cambio','chlieb, mäso, jablko, syr, mlieko, pivo'],['Acusativo -a → -u','voda→vodu, káva→kávu'],['Mám rád/rada + acus.','Mám rád kávu. Mám rada čaj.']]],
+   ['t','Consejo final',"Antes de decir 'mám rád/rada ___', recuerda que el sustantivo va en acusativo, igual que después de 'mám' o 'jem/pijem'."]
+  ],
+  w:[],p:[],mc:[],
+  tq:[
+   {id:'s8t-01',category:'new',type:'mc',skill:'grammar',concept_tag:'jest_pit_konjugacia',question:'¿Cómo se dice "Yo bebo"?',options:['jem','pijem','piješ','ješ'],answer:1,audio:null,skippable:false,accept:[],explanation:"'pijem' = yo bebo (1ª persona de 'piť')."},
+   {id:'s8t-02',category:'new',type:'fill',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Completa: "Pijem ___." (agua)',options:[],answer:'vodu',audio:null,skippable:false,accept:['vodu'],explanation:"'voda'→'vodu' (femenino -a → -u)."},
+   {id:'s8t-03',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'¿Cuál es el acusativo de "mäso" (carne)?',options:['mäso','mäsa','mäsu','mäsom'],answer:0,audio:null,skippable:false,accept:[],explanation:"'mäso' (neutro) no cambia en acusativo."},
+   {id:'s8t-04',category:'new',type:'type',skill:'vocab',concept_tag:'vocab_jedlo',question:'Escribe en eslovaco: "queso"',options:[],answer:'syr',audio:null,skippable:false,accept:['syr'],explanation:"'syr' = queso."},
+   {id:'s8t-05',category:'new',type:'mc',skill:'vocab',concept_tag:'vocab_jedlo',question:'¿Qué significa "jablko"?',options:['pan','manzana','carne','queso'],answer:1,audio:null,skippable:false,accept:[],explanation:"'jablko' = manzana."},
+   {id:'s8t-06',category:'new',type:'listen',skill:'grammar',concept_tag:'rad_s_akuzativom',question:'Escucha y elige la traducción correcta.',options:['Me gusta el café','Bebo café','Tengo café','No me gusta el café'],answer:0,audio:'Mám rád kávu',skippable:true,accept:[],explanation:"'Mám rád kávu' = Me gusta el café."},
+   {id:'s8t-07',category:'new',type:'mc',skill:'grammar',concept_tag:'rad_s_akuzativom',question:'¿Cómo dice una mujer "me gusta el té"?',options:['Rada čaj','Mám rada čaj','Mám rád čaj','Nemám rada čaj'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Mám rada' + acusativo = me gusta [una cosa] (mujer)."},
+   {id:'s8t-08',category:'new',type:'fill',skill:'grammar',concept_tag:'jest_pit_konjugacia',question:'Completa: "On ___ chlieb." (come)',options:[],answer:'je',audio:null,skippable:false,accept:['je'],explanation:"'je' = come (3ª persona de 'jesť')."},
+   {id:'s8t-09',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'¿Cuál es el acusativo de "mlieko" (leche)?',options:['mlieko','mlieka','mlieku','mliekom'],answer:0,audio:null,skippable:false,accept:[],explanation:"'mlieko' (neutro) no cambia en acusativo."},
+   {id:'s8t-10',category:'new',type:'type',skill:'vocab',concept_tag:'vocab_jedlo',question:'Escribe en eslovaco: "Bebo cerveza."',options:[],answer:'Pijem pivo',audio:null,skippable:false,accept:['Pijem pivo','pijem pivo'],explanation:"'Pijem pivo' = Bebo cerveza."},
+   {id:'s8t-11',category:'new',type:'mc',skill:'vocab',concept_tag:'jedlo_frazy',question:'¿Qué significa "Mám hlad"?',options:['Tengo sed','Tengo hambre','Tengo frío','Tengo sueño'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Mám hlad' = Tengo hambre."},
+   {id:'s8t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'akuzativ_muzsky_zivotny',question:'¿Cuál es el acusativo de "pes" (perro)?',options:['pes','psa','psy','pesa'],answer:1,audio:null,skippable:false,accept:[],explanation:"'pes'→'psa' (masculino animado, -Ø → -a)."},
+   {id:'s8t-13',category:'old_review',type:'fill',skill:'vocab',concept_tag:'opytovacie_zamena',question:'Completa: "___ je kúpeľňa?" (¿Dónde está...?)',options:[],answer:'Kde',audio:null,skippable:false,accept:['Kde'],explanation:"'Kde' = dónde (s3)."},
+   {id:'s8t-14',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cómo se dice "No tengo"?',options:['nie som','nemám','neviem','nerobím'],answer:1,audio:null,skippable:false,accept:[],explanation:"'nemám' = no tengo (s4)."},
+   {id:'s8t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'dni_tyzdna',question:'¿Qué significa "streda"?',options:['martes','miércoles','jueves','lunes'],answer:1,audio:null,skippable:false,accept:[],explanation:"'streda' = miércoles."},
+   {id:'s8t-16',category:'random_review',type:'listen',skill:'grammar',concept_tag:'ist_konjugacia',question:'Escucha y elige la traducción correcta.',options:['Voy a casa','Estoy en casa','Voy al cine','Tengo una casa'],answer:0,audio:'Idem domov',skippable:true,accept:[],explanation:"'Idem domov' = Voy a casa."},
+   {id:'s8t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Elige la frase CORRECTA para "Bebo agua"',options:['Pijem voda','Pijem vodu','Pijem vode','Pijem vody'],answer:1,audio:null,skippable:false,accept:[],explanation:"Femenino -a → -u en acusativo: 'voda'→'vodu'."},
+   {id:'s8t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'Corrige el error: "Jem mäsa."',options:[],answer:'Jem mäso',audio:null,skippable:false,accept:['Jem mäso'],explanation:"'mäso' (neutro) NO cambia en acusativo: 'Jem mäso', no 'Jem mäsa'."}
   ]
  }
 ]}

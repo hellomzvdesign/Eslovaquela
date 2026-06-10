@@ -141,3 +141,19 @@ compartido que guía los 4 ciclos.
 - `LESSON_EXERCISE_COUNT`/`PREVIOUS_LESSON_EXERCISE_COUNT` y el mecanismo de
   `buildExercises`/`buildTestExercises` (ya ajustados según
   [2026-06-10-exercise-pacing-standard-design.md](2026-06-10-exercise-pacing-standard-design.md)).
+
+## Nota para el ciclo de s5 (dependencia de gr.patches)
+
+La sección `s2` (ya migrada) **dejó de crear** la tabla
+`{category:'cisla-cas', tableId:'dni-tyzdna'}` (Días de la semana), porque los
+7 días de la semana ahora son palabras canónicas de `s5`. Actualmente `s5`
+tiene un patch:
+
+```javascript
+{op:'addRows', category:'cisla-cas', tableId:'dni-tyzdna', r:[...]}
+```
+
+que dependía de que `s2` creara esa tabla primero. Al migrar `s5`, **cambia
+ese patch de `addRows` a `newTable`** (con `title`, `note`, `h` y `r`
+completos), ya que `s5` ahora es la primera sección que introduce los días de
+la semana.

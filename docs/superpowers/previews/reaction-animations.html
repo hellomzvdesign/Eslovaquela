@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vista previa: animaciones de reacciones</title>
+<style>
+  :root{
+    --or:#FF6B35;--or-d:#C94E1C;--or-l:#FFF0E8;
+    --bl:#2952CC;--bl-l:#EEF3FF;
+    --gr:#00A86B;--gr-d:#006b45;--gr-l:#E6FBF4;
+    --re:#E0344B;--re-l:#FFEDF0;
+    --yw:#F0A500;--yw-l:#FFF7E0;
+    --pu:#7B2FBE;
+    --bg:#FFFBF6;--bo:#E8E0D4;--tx:#1C1710;--mu:#7A6E62;
+  }
+  *{box-sizing:border-box;font-family:-apple-system,'Segoe UI',Roboto,sans-serif}
+  body{background:var(--bg);color:var(--tx);margin:0;padding:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
+  h1{font-size:1.3rem;margin:0 0 4px}
+  p.lead{color:var(--mu);font-size:.9rem;margin:0 0 8px;text-align:center;max-width:480px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;width:100%;max-width:900px}
+  .card{background:#fff;border:2px solid var(--bo);border-radius:18px;padding:20px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;box-shadow:0 3px 0 var(--bo);position:relative;overflow:hidden;min-height:170px;justify-content:center}
+  .tier{position:absolute;top:8px;left:12px;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+  .emojis{font-size:3rem;line-height:1;display:flex;gap:6px;justify-content:center}
+  .title{font-weight:900;font-size:1.05rem;margin-top:4px}
+  .sub{font-size:.8rem;color:var(--mu)}
+  .replay{margin-top:6px;border:none;background:var(--or-l);color:var(--or-d);font-weight:700;font-size:.75rem;padding:5px 12px;border-radius:99px;cursor:pointer}
+  .replay:active{transform:translateY(1px)}
+
+  .ai-card{background:linear-gradient(135deg,var(--bl-l),#ede8ff);border:2px dashed var(--bl);border-radius:18px;padding:20px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;min-height:170px;justify-content:center}
+  .ai-tag{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--bl);background:#fff;padding:3px 10px;border-radius:99px}
+
+  /* ── Animations ── */
+  @keyframes bounceIn{
+    0%{transform:scale(0) translateY(40px);opacity:0}
+    55%{transform:scale(1.15) translateY(-12px);opacity:1}
+    75%{transform:scale(.95) translateY(4px)}
+    100%{transform:scale(1) translateY(0)}
+  }
+  @keyframes floatLoop{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+  }
+  @keyframes wiggle{
+    0%,100%{transform:rotate(0)}
+    20%{transform:rotate(-10deg)}
+    60%{transform:rotate(10deg)}
+    80%{transform:rotate(-4deg)}
+  }
+  @keyframes tada{
+    0%{transform:scale(1) rotate(0)}
+    10%,20%{transform:scale(.9) rotate(-3deg)}
+    30%,50%,70%,90%{transform:scale(1.1) rotate(3deg)}
+    40%,60%,80%{transform:scale(1.1) rotate(-3deg)}
+    100%{transform:scale(1) rotate(0)}
+  }
+  @keyframes spinPop{
+    0%{transform:scale(0) rotate(-160deg);opacity:0}
+    70%{transform:scale(1.2) rotate(8deg);opacity:1}
+    100%{transform:scale(1) rotate(0)}
+  }
+  @keyframes shakeYes{
+    0%,100%{transform:translateX(0) rotate(0)}
+    20%,60%{transform:translateX(-7px) rotate(-4deg)}
+    40%,80%{transform:translateX(7px) rotate(4deg)}
+  }
+
+  .anim-bounceIn{animation:bounceIn .7s cubic-bezier(.34,1.56,.64,1) both, floatLoop 2.4s ease-in-out .7s infinite}
+  .anim-wiggle{animation:wiggle 1.6s ease-in-out infinite}
+  .anim-floatLoop{animation:floatLoop 2.2s ease-in-out infinite}
+  .anim-tada{animation:tada 1.4s ease-in-out infinite}
+  .anim-spinPop{animation:spinPop .8s cubic-bezier(.34,1.56,.64,1) both, floatLoop 2.6s ease-in-out .8s infinite}
+  .anim-shakeYes{animation:shakeYes 1.8s ease-in-out infinite}
+</style>
+</head>
+<body>
+  <h1>🎬 Vista previa de animaciones — pantalla "Lección completada"</h1>
+  <p class="lead">Cada tarjeta muestra un ejemplo del tipo de animación + combo de emojis + texto que se sortearía aleatoriamente para esa categoría. Pulsa "Repetir" para volver a ver la animación de entrada.</p>
+
+  <div class="grid">
+    <div class="card">
+      <span class="tier">Practice (&lt;70%)</span>
+      <div class="emojis anim-wiggle" data-anim="wiggle">🦥💤</div>
+      <div class="title">¡Tranqui!</div>
+      <div class="sub">Hasta el oso de los Tatras necesitó practicar.</div>
+      <button class="replay">Repetir</button>
+    </div>
+
+    <div class="card">
+      <span class="tier">Practice (&lt;70%)</span>
+      <div class="emojis anim-spinPop" data-anim="spinPop">🥨🌀</div>
+      <div class="title">¡Casi!</div>
+      <div class="sub">Los pretzels eslovacos tampoco salen perfectos al primer intento.</div>
+      <button class="replay">Repetir</button>
+    </div>
+
+    <div class="card">
+      <span class="tier">Good (70-89%)</span>
+      <div class="emojis anim-bounceIn" data-anim="bounceIn">🧀✨</div>
+      <div class="title">¡Sólido!</div>
+      <div class="sub">Tan sólido como un buen syr (queso).</div>
+      <button class="replay">Repetir</button>
+    </div>
+
+    <div class="card">
+      <span class="tier">Good (70-89%)</span>
+      <div class="emojis anim-shakeYes" data-anim="shakeYes">🦙🎶</div>
+      <div class="title">¡Buen ritmo!</div>
+      <div class="sub">¡Bailaste esta lección como llama en fiesta!</div>
+      <button class="replay">Repetir</button>
+    </div>
+
+    <div class="card">
+      <span class="tier">Perfect (90-100%)</span>
+      <div class="emojis anim-spinPop" data-anim="spinPop">🌟🦜</div>
+      <div class="title">¡Impresionante!</div>
+      <div class="sub">El loro está impresionado, y eso que es difícil.</div>
+      <button class="replay">Repetir</button>
+    </div>
+
+    <div class="card">
+      <span class="tier">Perfect (90-100%)</span>
+      <div class="emojis anim-tada" data-anim="tada">🥳🎊</div>
+      <div class="title">¡Wow!</div>
+      <div class="sub">Esto se festeja con una kofola.</div>
+      <button class="replay">Repetir</button>
+    </div>
+
+    <div class="card">
+      <span class="tier">Test Fail (&lt;80%)</span>
+      <div class="emojis anim-floatLoop" data-anim="floatLoop">🧭🔄</div>
+      <div class="title">¡Casi llegas!</div>
+      <div class="sub">Te perdiste un poco en el camino a Eslovaquia. ¡Otra vez!</div>
+      <button class="replay">Repetir</button>
+    </div>
+
+    <div class="ai-card">
+      <span class="ai-tag">AI · Test Pass</span>
+      <div class="emojis anim-tada">🏆🦜</div>
+      <div class="title">¡Test superado!</div>
+      <div class="sub">Aquí iría una ilustración animada (WebP/GIF) de los mascots celebrando con trofeo y confeti.</div>
+    </div>
+
+    <div class="ai-card">
+      <span class="ai-tag">AI · Gramática desbloqueada</span>
+      <div class="emojis anim-spinPop">🎓📖</div>
+      <div class="title">¡Gramática desbloqueada!</div>
+      <div class="sub">Aquí iría una ilustración animada de los mascots abriendo un libro/cofre brillante.</div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.replay').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.card');
+        const el = card.querySelector('.emojis');
+        const anim = el.dataset.anim;
+        el.style.animation = 'none';
+        void el.offsetWidth; // reflow to restart animation
+        el.className = 'emojis anim-' + anim;
+      });
+    });
+  </script>
+</body>
+</html>

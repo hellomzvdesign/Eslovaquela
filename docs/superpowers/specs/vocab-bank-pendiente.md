@@ -28,3 +28,28 @@ colores, familia, animales/objetos y comida):
 
 (Nota: "meno" del s1l2 original no se usó como palabra canónica en la S1
 migrada, pero queda aquí como pendiente igualmente.)
+
+## De la Sección 2 (s2 → "El cuerpo humano", ~38 palabras retiradas)
+
+Canónicas (se quedan en S2): `hlava, oko, ucho, nos, ruka, noha, srdce, krk, zub,
+tvár, brucho`.
+
+Los 7 días de la semana (`pondelok, utorok, streda, štvrtok, piatok, sobota,
+nedeľa`) NO van al fondo: pasan directamente a la Sección 5 ("Mi semana"),
+según el plan de migración.
+
+Pendientes (agrupadas por tema — buenos candidatos para secciones 9+):
+
+- **Partes del día / horas**: ráno, poludnie, večer, noc, hodina, minúta
+- **La ciudad**: obchod, banka, škola, hotel, letisko, stanica, nemocnica
+- **El clima y las estaciones**: slnko, dážď, sneh, vietor, jar, leto, jeseň,
+  zima
+- **El restaurante**: jedlo, nápoj, polievka, dezert, účet, chcem, prosím
+- **Frases de emergencia**: pomoc, polícia, záchranár, nebezpečenstvo
+- **Meses del año**: január, február, marec, apríl, máj, jún, júl, august,
+  september, október, november, december
+- **Expresiones de tiempo**: dnes, zajtra, včera, tento týždeň
+
+(Nota: "lekár", "reštaurácia" y "stôl" del s2 original NO se incluyen aquí
+porque ya son palabras canónicas de otras secciones migradas (s4, s5, s6
+respectivamente).)
