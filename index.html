@@ -718,7 +718,19 @@ function slideNav(dir) {
   slideIdx = Math.max(0, Math.min(sl.length-1, slideIdx+dir));
   renderSlide();
 }
-function emojiForWord(sk) { return '🔤'; } // placeholder; emojis come from lesson.w
+function emojiForWord(sk) {
+  if (!sk) return '🔤';
+  const findEmoji = les => (les.w||[]).find(([word]) => word === sk);
+  const wordData = curLesson && findEmoji(curLesson);
+  if (wordData && wordData[2]) return wordData[2];
+  for (const sec of C) {
+    for (const les of sec.ls) {
+      const found = findEmoji(les);
+      if (found && found[2]) return found[2];
+    }
+  }
+  return '🔤';
+}
 
 // ─── EXERCISES ───────────────────────────────────────────────────────
 const ALL_SK = [];
