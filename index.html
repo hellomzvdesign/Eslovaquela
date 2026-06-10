@@ -106,6 +106,7 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 .map-row.test-active{border-color:var(--yw);box-shadow:0 3px 0 #c27a00}
 .map-node{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;border:2.5px solid var(--bo);background:var(--bg);transition:all .2s}
 .map-row.done .map-node{border-color:var(--gr);background:var(--gr-l)}
+.map-status{width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;color:var(--gr)}
 .map-row.active .map-node{border-color:var(--or);background:var(--or-l);animation:pulse 2s infinite}
 .map-row.test-active .map-node{border-color:var(--yw);background:var(--yw-l);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
@@ -634,13 +635,16 @@ function renderMap() {
       if (!locked) row.onclick = () => startLesson(sec, les);
       const node = document.createElement('div');
       node.className = 'map-node';
-      node.textContent = done ? '✅' : les.em;
+      node.textContent = les.em;
       const info = document.createElement('div');
       info.style.flex = '1';
       const statusColor = done ? 'var(--gr)' : locked ? 'var(--li)' : les.isTest ? '#c27a00' : 'var(--or)';
       const statusText = done ? '✓ Completado' : locked ? '🔒 Bloqueado' : les.isTest ? '⭐ Test final — ¡Supera el 80%!' : '¡Disponible!';
       info.innerHTML = `<div style="font-weight:700;font-size:.95rem;color:${locked?'var(--li)':'var(--tx)'}">${les.ti}</div><div style="font-size:.77rem;color:${statusColor};margin-top:2px">${statusText}</div>`;
-      row.appendChild(node); row.appendChild(info);
+      const statusBadge = document.createElement('div');
+      statusBadge.className = 'map-status';
+      statusBadge.textContent = done ? '✅' : '';
+      row.appendChild(node); row.appendChild(info); row.appendChild(statusBadge);
       sdiv.appendChild(row);
     });
     body.appendChild(sdiv);
