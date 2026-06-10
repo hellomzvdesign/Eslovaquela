@@ -1053,17 +1053,19 @@ function renderGrammar(tabIdx) {
   const u = getUser();
   repairGrammarUnlocks(u);
   const unlockedSections = (u.grammarUnlocked||[]);
-  const tabBar = document.getElementById('gram-tabs');
-  tabBar.innerHTML = C.map((sec,i) => {
-    const isUnlocked = unlockedSections.includes(sec.id);
-    return `<button class="gram-tab-btn${i===curGramTab?' active':''}" onclick="renderGrammar(${i})"${isUnlocked?'':' disabled style="opacity:.5;cursor:not-allowed"'}">${sec.em} ${sec.ti}</button>`;
-  }).join('');
-  const sec = C[curGramTab];
-  const body = document.getElementById('gram-body');
-  if (!unlockedSections.includes(sec.id)) {
-    body.innerHTML = '<p style="color:var(--mu);text-align:center;padding:40px 20px">Completa todas las lecciones de esta sección para desbloquear su gramática.</p>';
+  const availableSections = C.filter(sec => unlockedSections.includes(sec.id));
+  if (availableSections.length === 0) {
+    document.getElementById('gram-tabs').innerHTML = '';
+    document.getElementById('gram-body').innerHTML = '<p style="color:var(--mu);text-align:center;padding:40px 20px">Completa todas las lecciones de la primera sección para desbloquear la Gramática.</p>';
     return;
   }
+  curGramTab = Math.max(0, Math.min(curGramTab, availableSections.length - 1));
+  const tabBar = document.getElementById('gram-tabs');
+  tabBar.innerHTML = availableSections.map((sec,i) => {
+    return `<button class="gram-tab-btn${i===curGramTab?' active':''}" onclick="renderGrammar(${i})">${sec.em} ${sec.ti}</button>`;
+  }).join('');
+  const sec = availableSections[curGramTab];
+  const body = document.getElementById('gram-body');
   const gr = sec.gr || {};
   if (!gr.tables || !gr.tables.length) { body.innerHTML = '<p style="color:var(--mu);text-align:center;padding:40px 20px">Gramática no disponible para esta sección.</p>'; return; }
   let html = `<div style="margin-bottom:16px"><p style="font-size:.88rem;color:var(--mu);line-height:1.5;margin:0">${gr.intro||''}</p></div>`;
