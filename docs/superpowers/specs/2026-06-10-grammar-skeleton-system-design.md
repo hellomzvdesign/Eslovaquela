@@ -38,15 +38,15 @@ contenido:
 
 ```js
 const GRAMMAR_CATEGORIES = [
-  {id:'zamena',        em:'🙋', title:'Zámená a privlastňovanie'},
-  {id:'byt-pritomny',  em:'🟢', title:'Byť a prítomný čas'},
-  {id:'slovesa-casy',  em:'⏳', title:'Slovesné spôsoby a časy'},
-  {id:'pady',          em:'📐', title:'Pády a podstatné mená'},
-  {id:'pridavne',      em:'🎨', title:'Prídavné mená'},
-  {id:'cisla-cas',     em:'🔢', title:'Čísla, čas a kalendár'},
-  {id:'otazky-spojky', em:'❓', title:'Otázky a spojky'},
-  {id:'predlozky',     em:'🧭', title:'Predložky a smer'},
-  {id:'frazy',         em:'🤝', title:'Frázy a zdvorilosť'}
+  {id:'zamena',        em:'🙋', title:'Pronombres y posesivos'},
+  {id:'byt-pritomny',  em:'🟢', title:'Ser/estar y presente'},
+  {id:'slovesa-casy',  em:'⏳', title:'Modos y tiempos verbales'},
+  {id:'pady',          em:'📐', title:'Casos y sustantivos'},
+  {id:'pridavne',      em:'🎨', title:'Adjetivos'},
+  {id:'cisla-cas',     em:'🔢', title:'Números, hora y calendario'},
+  {id:'otazky-spojky', em:'❓', title:'Preguntas y conjunciones'},
+  {id:'predlozky',     em:'🧭', title:'Preposiciones y dirección'},
+  {id:'frazy',         em:'🤝', title:'Frases y cortesía'}
 ];
 ```
 
@@ -129,19 +129,19 @@ supervivencia, cortesía, instrucciones, etc.).
 
 | Categoría (id) | tableId | Título | Origen |
 |---|---|---|---|
-| 🙋 Zámená a privlastňovanie (`zamena`) | `zamena-osobne` | Osobné zámená | ✅ s1 |
+| 🙋 Pronombres y posesivos (`zamena`) | `zamena-osobne` | Osobné zámená | ✅ s1 |
 | | `zamena-privlastnovacie` | Privlastňovacie zámená (môj/tvoj/jeho...) | Block 4 |
 | | `zamena-ukazovacie` | Ukazovacie zámená (tento/tá/to...) | Block 4 |
-| 🟢 Byť a prítomný čas (`byt-pritomny`) | `byt` | Sloveso byť | ✅ s1 |
+| 🟢 Ser/estar y presente (`byt-pritomny`) | `byt` | Sloveso byť | ✅ s1 |
 | | `pritomny-vzory` | Vzory prítomného času (mať/robiť/-ovať...) | ✅ s3, +addRows Bloky 2-5 |
 | | `negacia` | Zápor (nie/ne-) | Block 1 |
-| ⏳ Slovesné spôsoby a časy (`slovesa-casy`) | `modalne-infinitiv` | Modálne slovesá + infinitív | Block 5 |
+| ⏳ Modos y tiempos verbales (`slovesa-casy`) | `modalne-infinitiv` | Modálne slovesá + infinitív | Block 5 |
 | | `minuly-cas` | Minulý čas | Block 7 |
 | | `buduci-cas` | Budúci čas | Block 8 |
 | | `zvratne-slovesa` | Zvratné slovesá (sa/si) | Block 11 |
 | | `imperativ` | Rozkazovací spôsob | Block 13 |
 | | `kondicional` | Podmieňovací spôsob | Block 15 |
-| 📐 Pády a podstatné mená (`pady`) | `rody` | Rody podstatných mien | ✅ s1 |
+| 📐 Casos y sustantivos (`pady`) | `rody` | Rody podstatných mien | ✅ s1 |
 | | `mnozne-cislo` | Množné číslo | Block 2 |
 | | `akuzativ` | Akuzatív (4. pád) | Block 2 |
 | | `lokal` | Lokál (6. pád) | Block 3 |
@@ -149,10 +149,10 @@ supervivencia, cortesía, instrucciones, etc.).
 | | `dativ` | Datív (3. pád) | Block 9 |
 | | `instrumental` | Inštrumentál (7. pád) | Block 10 |
 | | `prehlad-padov` | Prehľad skloňovania (vzorové slovo) | Block 2, +addRows Bloky 6,9,10,16-17 |
-| 🎨 Prídavné mená (`pridavne`) | `pridavne-zhoda` | Zhoda s podstatným menom (rod) | ✅ s3 |
+| 🎨 Adjetivos (`pridavne`) | `pridavne-zhoda` | Zhoda s podstatným menom (rod) | ✅ s3 |
 | | `pridavne-sklonovanie` | Skloňovanie príd. mien podľa pádov | crece junto con `pady` |
 | | `komparativ` | Stupňovanie (komparatív/superlatív) | Block 12 |
-| 🔢 Čísla, čas a kalendár (`cisla-cas`) | `cislovky-1-10` | Číslovky 1-10 | ✅ s1 |
+| 🔢 Números, hora y calendario (`cisla-cas`) | `cislovky-1-10` | Číslovky 1-10 | ✅ s1 |
 | | `cislovky-11-100` | Číslovky 11-100 | ✅ s3, +addRows Block 6 (100+) |
 | | `dni-tyzdna` | Dni v týždni | ✅ s2 |
 | | `mesiace` | Mesiace v roku | ✅ s2 |
@@ -160,12 +160,12 @@ supervivencia, cortesía, instrucciones, etc.).
 | | `casove-vyrazy` | Časové výrazy (dnes/zajtra/včera) | ✅ s2, +addRows Bloky 7-8 |
 | | `radove-cislovky` | Radové číslovky | Block 8 |
 | | `hodiny` | Hovorenie o čase | Block 8 |
-| ❓ Otázky a spojky (`otazky-spojky`) | `opytovacie-zamena` | Opytovacie slová | ✅ s3 |
+| ❓ Preguntas y conjunciones (`otazky-spojky`) | `opytovacie-zamena` | Opytovacie slová | ✅ s3 |
 | | `spojky` | Spojky (a/ale/alebo/lebo) | Block 14 |
 | | `zlozite-vety` | Vedľajšie vety (že/keď/aby) | Block 14 |
-| 🧭 Predložky a smer (`predlozky`) | `predlozky-miesto` | Predložky miesta | Block 3 |
+| 🧭 Preposiciones y dirección (`predlozky`) | `predlozky-miesto` | Predložky miesta | Block 3 |
 | | `prehlad-predlozky-pady` | Prehľad predložka→pád | Block 3, +addRows Bloky 16-17 |
-| 🤝 Frázy a zdvorilosť (`frazy`) | `pozdravy` | Formálne vs. neformálne | ✅ s1 |
+| 🤝 Frases y cortesía (`frazy`) | `pozdravy` | Formálne vs. neformálne | ✅ s1 |
 | | `prezivanie` | Frázy na prežitie | ✅ s2 |
 | | `rad-rada-radi` | rád/rada/radi | ✅ s3 |
 
@@ -263,9 +263,9 @@ gr:{
 
 | Kategória | Tabuľka | Zmena |
 |---|---|---|
-| 📐 Pády a podstatné mená | Genitív (2. pád) | 🆕 nová tabuľka |
-| 📐 Pády a podstatné mená | Prehľad skloňovania | +1 riadok (genitív) |
-| 🔢 Čísla, čas a kalendár | Číslovky 11–100 | +1 riadok (200, 1000) |
+| 📐 Casos y sustantivos | Genitív (2. pád) | 🆕 nová tabuľka |
+| 📐 Casos y sustantivos | Prehľad skloňovania | +1 riadok (genitív) |
+| 🔢 Números, hora y calendario | Číslovky 11–100 | +1 riadok (200, 1000) |
 
 > 🎉 **Nová gramatika zo Sekcie 6**
 > *La Sección 6 introduce el genitivo y amplía las cantidades y compras.*
@@ -278,10 +278,10 @@ gr:{
 > | Ženský | žena | ženy |
 > | Stredný | mesto | mesta |
 >
-> 📌 *Doplnené do: Pády a podstatné mená → Prehľad skloňovania*
+> 📌 *Doplnené do: Casos y sustantivos → Prehľad skloňovania*
 > | ... nový riadok ... |
 >
-> 📌 *Doplnené do: Čísla, čas a kalendár → Číslovky 11–100*
+> 📌 *Doplnené do: Números, hora y calendario → Číslovky 11–100*
 > | 200 | dvesto | 1000 | tisíc |
 >
 > 🔑 Kľúčové body

@@ -99,6 +99,12 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 .xp-track{background:rgba(255,255,255,.28);border-radius:99px;height:5px;overflow:hidden;margin-top:8px}
 .xp-fill{background:#fff;border-radius:99px;height:100%;transition:width .6s ease}
 
+.map-block-head{border-radius:18px;padding:16px 18px;margin:26px 0 14px;color:#fff;position:relative;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.map-block-head:first-child{margin-top:0}
+.map-block-num{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85;margin:0 0 2px}
+.map-block-title{font-size:1.3rem;font-weight:900;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;margin:0}
+.map-block-theme{font-size:.78rem;opacity:.9;margin:4px 0 0}
+.map-block-head.locked{opacity:.5}
 .map-sec-head{border-radius:15px;padding:13px 15px;margin-bottom:9px;display:flex;align-items:center;gap:12px;color:#fff}
 .map-row{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--su);border-radius:14px;border:2px solid var(--bo);margin-bottom:6px;cursor:pointer;transition:all .15s;box-shadow:0 2px 0 rgba(28,23,16,.06)}
 .map-row.done{border-color:#a7f3d0;background:#f0fdf7}
@@ -428,17 +434,39 @@ let hpCorr = 0, hpHearts = 0, hpMode = false;
 let activeTab = 'map';
 let curGramTab = 0;
 
+// ─── BLOQUES (18 bloques x 5 secciones) ────────────────────────────
+const BLOCKS = [
+  {name:'Primeros pasos',          theme:'Identidad, interacciones básicas',            em:'🚀', col:'#FF6B35', col2:'#ff9a3c'},
+  {name:'Mi mundo y mis cosas',    theme:'Casa, pertenencias, objetos cotidianos',       em:'🏠', col:'#4361EE', col2:'#7c93ff'},
+  {name:'Lugares y espacios',      theme:'Ciudad, casa, naturaleza, ubicaciones',        em:'🗺️', col:'#00A86B', col2:'#3dd9a0'},
+  {name:'Esto es mío',             theme:'Familia, descripciones, posesión',             em:'👪', col:'#9B5DE5', col2:'#c79bff'},
+  {name:'Quiero, puedo, debo',     theme:'Deseos, capacidades, permisos',                em:'💪', col:'#FFB627', col2:'#ffd166'},
+  {name:'Cantidades y posesión',   theme:'Compras, comida, cantidades',                  em:'🛒', col:'#EF476F', col2:'#ff8fa3'},
+  {name:'Ayer y antes',            theme:'Experiencias pasadas, relatos',                em:'⏪', col:'#06A77D', col2:'#4fd1ae'},
+  {name:'Mañana y planes',         theme:'Planes, predicciones',                         em:'📅', col:'#118AB2', col2:'#5fc3e0'},
+  {name:'Dar y compartir',         theme:'Relaciones, comunicación',                     em:'🎁', col:'#F77F00', col2:'#ffb15a'},
+  {name:'Herramientas y oficios',  theme:'Trabajo, transporte, medios',                  em:'🔧', col:'#7B2FBE', col2:'#b27ae0'},
+  {name:'Mi día a día',            theme:'Rutinas, cuerpo, autocuidado',                 em:'🪥', col:'#2EC4B6', col2:'#7be0d6'},
+  {name:'Comparando todo',         theme:'Opiniones, cualidades, diferencias',           em:'⚖️', col:'#E63946', col2:'#ff7d87'},
+  {name:'Órdenes y consejos',      theme:'Instrucciones, recetas, consejos',             em:'📋', col:'#457B9D', col2:'#84b3d1'},
+  {name:'Conectando ideas',        theme:'Narración, razonamiento',                      em:'🔗', col:'#D4A017', col2:'#ffd76a'},
+  {name:'Si pudiera...',           theme:'Deseos, hipótesis, cortesía',                  em:'💭', col:'#6A4C93', col2:'#a586c9'},
+  {name:'De viaje',                theme:'Viajes, direcciones, transporte',              em:'✈️', col:'#1B998B', col2:'#5ecdbd'},
+  {name:'Sociedad y tecnología',   theme:'Vida moderna, medios, entorno',                em:'💻', col:'#3A86FF', col2:'#86b6ff'},
+  {name:'Repaso final: todo en eslovaco', theme:'Integración, escenarios reales',        em:'🏆', col:'#D946EF', col2:'#f29bff'},
+];
+
 // ─── GRAMMAR SKELETON (categories + merge) ─────────────────────────
 const GRAMMAR_CATEGORIES = [
-  {id:'zamena',        em:'🙋', title:'Zámená a privlastňovanie'},
-  {id:'byt-pritomny',  em:'🟢', title:'Byť a prítomný čas'},
-  {id:'slovesa-casy',  em:'⏳', title:'Slovesné spôsoby a časy'},
-  {id:'pady',          em:'📐', title:'Pády a podstatné mená'},
-  {id:'pridavne',      em:'🎨', title:'Prídavné mená'},
-  {id:'cisla-cas',     em:'🔢', title:'Čísla, čas a kalendár'},
-  {id:'otazky-spojky', em:'❓', title:'Otázky a spojky'},
-  {id:'predlozky',     em:'🧭', title:'Predložky a smer'},
-  {id:'frazy',         em:'🤝', title:'Frázy a zdvorilosť'}
+  {id:'zamena',        em:'🙋', title:'Pronombres y posesivos'},
+  {id:'byt-pritomny',  em:'🟢', title:'Ser/estar y presente'},
+  {id:'slovesa-casy',  em:'⏳', title:'Modos y tiempos verbales'},
+  {id:'pady',          em:'📐', title:'Casos y sustantivos'},
+  {id:'pridavne',      em:'🎨', title:'Adjetivos'},
+  {id:'cisla-cas',     em:'🔢', title:'Números, hora y calendario'},
+  {id:'otazky-spojky', em:'❓', title:'Preguntas y conjunciones'},
+  {id:'predlozky',     em:'🧭', title:'Preposiciones y dirección'},
+  {id:'frazy',         em:'🤝', title:'Frases y cortesía'}
 ];
 function buildGrammarMap(unlockedSectionIds) {
   const map = {};   // category -> { tableId -> {title, note, h, r} }
@@ -650,6 +678,20 @@ function renderMap() {
   }
   C.forEach((sec, si) => {
     const secLocked = si > 0 && !isSecUnlocked(si);
+
+    // Block header (every 5 sections = 1 block)
+    if (si % 5 === 0) {
+      const blk = BLOCKS[Math.floor(si / 5)];
+      if (blk) {
+        const bhead = document.createElement('div');
+        bhead.className = 'map-block-head' + (secLocked ? ' locked' : '');
+        bhead.style.background = `linear-gradient(135deg, ${blk.col}, ${blk.col2})`;
+        bhead.innerHTML = `<p class="map-block-num">Bloque ${Math.floor(si / 5) + 1} / ${BLOCKS.length}</p>
+          <h3 class="map-block-title">${blk.em} ${blk.name}</h3>
+          <p class="map-block-theme">${blk.theme}</p>`;
+        body.appendChild(bhead);
+      }
+    }
     const sdiv = document.createElement('div');
     sdiv.style.marginBottom = '20px';
 

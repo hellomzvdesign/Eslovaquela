@@ -1,5 +1,11 @@
 # Eslovaquela — kľúčové fakty o kurikule
 
+Celá aplikácia je určená pre **španielsky hovoriacich** používateľov, ktorí sa
+učia slovenčinu. Všetky vysvetlenia, popisy, UI texty a názvy kategórií
+(napr. `GRAMMAR_CATEGORIES` v `index.html`) musia byť v **španielčine**.
+Slovenčina sa používa len ako jazykový obsah, ktorý sa študuje (slovíčka,
+vety, gramatické tabuľky).
+
 Pred plánovaním/tvorbou akejkoľvek sekcie si over tieto čísla (časté zdroje
 zámeny v minulosti):
 
