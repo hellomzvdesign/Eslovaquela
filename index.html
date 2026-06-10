@@ -161,6 +161,12 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 .toast{background:var(--tx);border-radius:12px;bottom:90px;color:#fff;font-weight:600;font-size:.88rem;left:50%;padding:10px 18px;position:fixed;transform:translateX(-50%) translateY(20px);opacity:0;transition:all .3s;z-index:200;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+/* ── GRAMMAR POPUP ── */
+.gram-popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:none;align-items:flex-end;justify-content:center}
+.gram-popup-card{background:var(--su);border-radius:18px 18px 0 0;max-width:480px;width:100%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 -4px 30px rgba(0,0,0,.2)}
+.gram-popup-header{padding:16px 18px;border-bottom:1.5px solid var(--bo);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gram-popup-body{padding:16px 18px;overflow-y:auto}
+
 /* ── CONFETTI ── */
 .cpx{position:fixed;border-radius:2px;animation:fall 3s linear forwards;pointer-events:none;z-index:999}
 @keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
@@ -395,6 +401,17 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 
 <div class="toast" id="toast"></div>
 
+<!-- ─────────────── NUEVA GRAMÁTICA POP-UP ─────────────── -->
+<div class="gram-popup-overlay" id="gram-popup">
+  <div class="gram-popup-card">
+    <div class="gram-popup-header">
+      <h3 id="gram-popup-title" style="font-size:1.05rem;font-weight:800;margin:0"></h3>
+      <button onclick="closeGramPopup()" style="background:transparent;border:none;cursor:pointer;font-size:1.3rem;color:var(--li);padding:4px">✕</button>
+    </div>
+    <div class="gram-popup-body" id="gram-popup-body"></div>
+  </div>
+</div>
+
 </div><!-- /#sc-wrap -->
 
 <script>
@@ -410,6 +427,37 @@ let slideIdx = 0;
 let hpCorr = 0, hpHearts = 0, hpMode = false;
 let activeTab = 'map';
 let curGramTab = 0;
+
+// ─── GRAMMAR SKELETON (categories + merge) ─────────────────────────
+const GRAMMAR_CATEGORIES = [
+  {id:'zamena',        em:'🙋', title:'Zámená a privlastňovanie'},
+  {id:'byt-pritomny',  em:'🟢', title:'Byť a prítomný čas'},
+  {id:'slovesa-casy',  em:'⏳', title:'Slovesné spôsoby a časy'},
+  {id:'pady',          em:'📐', title:'Pády a podstatné mená'},
+  {id:'pridavne',      em:'🎨', title:'Prídavné mená'},
+  {id:'cisla-cas',     em:'🔢', title:'Čísla, čas a kalendár'},
+  {id:'otazky-spojky', em:'❓', title:'Otázky a spojky'},
+  {id:'predlozky',     em:'🧭', title:'Predložky a smer'},
+  {id:'frazy',         em:'🤝', title:'Frázy a zdvorilosť'}
+];
+function buildGrammarMap(unlockedSectionIds) {
+  const map = {};   // category -> { tableId -> {title, note, h, r} }
+  const order = {}; // category -> [tableId en orden de primera aparición]
+  C.filter(sec => unlockedSectionIds.includes(sec.id)).forEach(sec => {
+    (sec.gr.patches || []).forEach(p => {
+      map[p.category] = map[p.category] || {};
+      order[p.category] = order[p.category] || [];
+      if (p.op === 'newTable') {
+        map[p.category][p.tableId] = {title: p.title, note: p.note, h: p.h, r: [...p.r]};
+        order[p.category].push(p.tableId);
+      } else if (p.op === 'addRows') {
+        const t = map[p.category][p.tableId];
+        if (t) t.r.push(...p.r);
+      }
+    });
+  });
+  return {map, order};
+}
 
 // ─── LEVEL SYSTEM ───────────────────────────────────────────────────
 const LEVELS = [
@@ -813,7 +861,7 @@ function buildExercises(les) {
   return shuffle([...pool, ...previousItems]).slice(0, LESSON_EXERCISE_COUNT);
 }
 
-function buildTestExercises(sec) {
+function buildLegacyTestExercises(sec) {
   buildAllSk();
   const pool = [];
   sec.ls.filter(l => !l.isTest).forEach(les => {
@@ -830,14 +878,65 @@ function buildTestExercises(sec) {
   return shuffle(pool).slice(0, 25);
 }
 
-function beginExercises() {
+function tqToEx(q) {
+  const base = {x: q.explanation || '', conceptTag: q.concept_tag || null, qid: q.id};
+  if (q.type === 'fill') return {...base, t:'fill', q:q.question, answer:q.answer, accept:q.accept||[]};
+  if (q.type === 'type') return {...base, t:'type', q:q.question, answer:q.answer, accept:q.accept||[]};
+  if (q.type === 'listen') return {...base, t:'listen', q:q.question, audio:q.audio, opts:q.options, ci:q.answer, skippable:!!q.skippable};
+  return {...base, t:'mc', q:q.question, opts:q.options||[], ci:q.answer};
+}
+
+async function fetchMistakes() {
+  if (!ST.token) return [];
+  try {
+    const data = await authFetch(`${API_BASE}/mistakes`);
+    return data.mistakes || [];
+  } catch (e) { return []; }
+}
+
+function findReviewQuestion(conceptTag, excludeIds) {
+  const candidates = [];
+  C.forEach(s => s.ls.forEach(l => (l.tq||[]).forEach(q => {
+    if (q.concept_tag === conceptTag && q.category !== 'error_pattern' && !excludeIds.includes(q.id)) candidates.push(q);
+  })));
+  if (!candidates.length) return null;
+  return shuffle(candidates)[0];
+}
+
+async function buildTestExercises(sec) {
+  const testLesson = sec.ls.find(l => l.isTest);
+  const tq = (testLesson && testLesson.tq) || [];
+  if (!tq.length) return buildLegacyTestExercises(sec);
+
+  const staticQs = tq.filter(q => q.category !== 'error_pattern');
+  const fallbackErrorQs = tq.filter(q => q.category === 'error_pattern');
+  let errorQs = fallbackErrorQs;
+
+  const mistakes = await fetchMistakes();
+  if (mistakes.length) {
+    const usedIds = staticQs.map(q => q.id);
+    const top = [...mistakes].sort((a,b) => b.wrong_count - a.wrong_count || b.last_wrong_at - a.last_wrong_at).slice(0,2);
+    const found = top.map(m => findReviewQuestion(m.concept_tag, usedIds)).filter(Boolean);
+    if (found.length) {
+      errorQs = found.map(q => ({...q, category:'error_pattern'}));
+      if (errorQs.length === 1 && fallbackErrorQs.length) errorQs.push(fallbackErrorQs[0]);
+    }
+  }
+
+  const all = shuffle([...staticQs, ...errorQs.slice(0,2)]).slice(0, 25);
+  return all.map(tqToEx);
+}
+
+async function beginExercises() {
   const u = getUser();
   if (u.hearts <= 0) { showHeartsScreen(); return; }
   hpMode = false;
-  exQueue = curLesson.isTest ? buildTestExercises(curSection) : buildExercises(curLesson);
-  exIdx = 0; nCorr = 0; nErr = 0;
   show('sc-lesson');
   showBottomNav(false);
+  document.getElementById('les-body').innerHTML = '<p style="text-align:center;color:var(--mu);padding:40px 0">Cargando...</p>';
+  document.getElementById('les-footer').innerHTML = '';
+  exQueue = curLesson.isTest ? await buildTestExercises(curSection) : buildExercises(curLesson);
+  exIdx = 0; nCorr = 0; nErr = 0;
   renderEx();
 }
 
@@ -854,7 +953,19 @@ function renderEx() {
   selTiles = [];
   if (curEx.t === 'img') renderImg(curEx, body);
   else if (curEx.t === 'wd') renderWd(curEx, body);
+  else if (curEx.t === 'fill') renderFill(curEx, body);
+  else if (curEx.t === 'type') renderType(curEx, body);
+  else if (curEx.t === 'listen') renderListen(curEx, body);
   else renderMc(curEx, body);
+}
+
+function normalizeAnswer(s) {
+  return String(s||'').trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+function checkFreeAnswer(input, ex) {
+  const norm = normalizeAnswer(input);
+  if (norm === normalizeAnswer(ex.answer)) return true;
+  return (ex.accept||[]).some(a => normalizeAnswer(a) === norm);
 }
 
 function renderImg(ex, body) {
@@ -908,6 +1019,62 @@ function checkWd() {
   showResult(ok, curEx.x, correct);
 }
 
+function renderFill(ex, body) {
+  body.innerHTML = `
+    <div style="margin-bottom:18px">
+      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">Completa la frase:</p>
+      <p style="font-size:1.2rem;font-weight:700;margin:0;line-height:1.4">${ex.q}</p>
+    </div>
+    <input id="free-input" class="inp" placeholder="Escribe tu respuesta..." autocomplete="off" autocapitalize="off">`;
+  document.getElementById('les-footer').innerHTML = `<button onclick="checkFreeEx()" class="btn btn-bl w-full">Comprobar ✓</button>`;
+  setTimeout(() => document.getElementById('free-input')?.focus(), 50);
+}
+
+function renderType(ex, body) {
+  body.innerHTML = `
+    <div style="margin-bottom:18px">
+      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">⌨️ Traduce / escribe en eslovaco:</p>
+      <p style="font-size:1.2rem;font-weight:700;margin:0;line-height:1.4">${ex.q}</p>
+    </div>
+    <input id="free-input" class="inp" placeholder="Escribe en eslovaco..." autocomplete="off" autocapitalize="off">`;
+  document.getElementById('les-footer').innerHTML = `<button onclick="checkFreeEx()" class="btn btn-bl w-full">Comprobar ✓</button>`;
+  setTimeout(() => document.getElementById('free-input')?.focus(), 50);
+}
+
+function checkFreeEx() {
+  const input = document.getElementById('free-input');
+  document.querySelectorAll('#les-body input').forEach(b=>b.disabled=true);
+  const ok = checkFreeAnswer(input.value, curEx);
+  input.style.borderColor = ok ? 'var(--gr)' : 'var(--re)';
+  showResult(ok, curEx.x, curEx.answer);
+}
+
+function renderListen(ex, body) {
+  body.innerHTML = `
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="font-size:5rem;margin-bottom:10px">🎧</div>
+      <p style="font-size:.82rem;color:var(--mu);margin:0 0 14px">${ex.q}</p>
+      <button onclick="speak('${(ex.audio||'').replace(/'/g,"\\'")}');event.stopPropagation()" class="btn btn-ghost" style="font-size:.95rem">🔊 Escuchar de nuevo</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
+      ${ex.opts.map((o,i)=>`<button class="opt" onclick="pickListen(this,${i},${ex.ci})">${o}</button>`).join('')}
+    </div>`;
+  document.getElementById('les-footer').innerHTML = ex.skippable ? `<button onclick="skipListen()" class="btn btn-ghost w-full">Preskočiť</button>` : '';
+  setTimeout(() => speak(ex.audio), 300);
+}
+function pickListen(btn, idx, ci) {
+  document.querySelectorAll('#les-body .opt').forEach(b=>b.disabled=true);
+  document.getElementById('les-footer').innerHTML = '';
+  const ok = idx === ci;
+  btn.classList.add(ok?'ok':'err');
+  if (!ok) document.querySelectorAll('#les-body .opt')[ci].classList.add('ok');
+  showResult(ok, curEx.x, curEx.opts[ci]);
+}
+function skipListen() {
+  exQueue.push({...curEx});
+  nextEx();
+}
+
 function renderMc(ex, body) {
   body.innerHTML = `
     <div style="margin-bottom:18px">
@@ -926,10 +1093,15 @@ function pickMc(btn, idx, ci) {
   showResult(ok, curEx.x, curEx.opts[ci]);
 }
 
+function postMistake(conceptTag) {
+  if (!ST.token || !conceptTag) return;
+  authFetch(`${API_BASE}/mistakes`, { method:'POST', body: JSON.stringify({conceptTag}) }).catch(()=>{});
+}
+
 function showResult(ok, explanation, correctSk) {
   const u = getUser();
   if (ok) { nCorr++; }
-  else { nErr++; if(!hpMode){ u.hearts=Math.max(0,u.hearts-1); setUser(u); renderHeartsEl('les-hearts',u.hearts); updateProgress().catch(()=>{}); } }
+  else { nErr++; if(!hpMode){ u.hearts=Math.max(0,u.hearts-1); setUser(u); renderHeartsEl('les-hearts',u.hearts); updateProgress().catch(()=>{}); } postMistake(curEx.conceptTag); }
   const foot = document.getElementById('les-footer');
   foot.innerHTML = `
     <div class="${ok?'res-ok':'res-err'}" style="margin-bottom:12px">
@@ -957,9 +1129,11 @@ function showComplete() {
   u.xp = (u.xp||0) + xpGain;
 
   let gramUnlocked = false;
+  let prevUnlockedIds = [];
   if (!curLesson.isTest) {
     if (!u.completed.includes(curLesson.id)) u.completed.push(curLesson.id);
     if (allLessonsDone(curSection, u) && !(u.grammarUnlocked||[]).includes(curSection.id)) {
+      prevUnlockedIds = [...(u.grammarUnlocked||[])];
       u.grammarUnlocked = [...(u.grammarUnlocked||[]), curSection.id];
       gramUnlocked = true;
     }
@@ -993,6 +1167,7 @@ function showComplete() {
   if (acc >= 70) confetti();
   show('sc-complete');
   showBottomNav(false);
+  if (gramUnlocked) setTimeout(() => showGramPopup(curSection, prevUnlockedIds), 600);
 }
 
 // ─── HEARTS PRACTICE ─────────────────────────────────────────────────
@@ -1053,39 +1228,69 @@ function hpResult(ok,expl){
 }
 
 // ─── GRAMMAR SCREEN ───────────────────────────────────────────────────
+function renderGramTable(tbl) {
+  let html = `<h3 style="font-size:1rem;font-weight:700;margin:0 0 6px;color:var(--tx)">${tbl.title||''}</h3>`;
+  if (tbl.note) html += `<p style="font-size:.8rem;color:var(--mu);margin:0 0 8px;background:var(--yw-l);border-left:3px solid var(--yw);border-radius:0 8px 8px 0;padding:7px 10px">${tbl.note}</p>`;
+  html += `<div class="gram-table-wrap"><table class="gram-table"><thead><tr>${tbl.h.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${tbl.r.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return html;
+}
 function renderGrammar(tabIdx) {
   if (tabIdx !== undefined) curGramTab = tabIdx;
   if (!C) return;
   const u = getUser();
   repairGrammarUnlocks(u);
   const unlockedSections = (u.grammarUnlocked||[]);
-  const availableSections = C.filter(sec => unlockedSections.includes(sec.id));
-  if (availableSections.length === 0) {
+  if (unlockedSections.length === 0) {
     document.getElementById('gram-tabs').innerHTML = '';
     document.getElementById('gram-body').innerHTML = '<p style="color:var(--mu);text-align:center;padding:40px 20px">Completa todas las lecciones de la primera sección para desbloquear la Gramática.</p>';
     return;
   }
-  curGramTab = Math.max(0, Math.min(curGramTab, availableSections.length - 1));
+  const {map, order} = buildGrammarMap(unlockedSections);
+  const availableCats = GRAMMAR_CATEGORIES.filter(c => order[c.id] && order[c.id].length);
+  if (!availableCats.length) {
+    document.getElementById('gram-tabs').innerHTML = '';
+    document.getElementById('gram-body').innerHTML = '<p style="color:var(--mu);text-align:center;padding:40px 20px">Gramática no disponible todavía.</p>';
+    return;
+  }
+  curGramTab = Math.max(0, Math.min(curGramTab, availableCats.length - 1));
   const tabBar = document.getElementById('gram-tabs');
-  tabBar.innerHTML = availableSections.map((sec,i) => {
-    return `<button class="gram-tab-btn${i===curGramTab?' active':''}" onclick="renderGrammar(${i})">${sec.em} ${sec.ti}</button>`;
+  tabBar.innerHTML = availableCats.map((cat,i) => {
+    return `<button class="gram-tab-btn${i===curGramTab?' active':''}" onclick="renderGrammar(${i})">${cat.em} ${cat.title}</button>`;
   }).join('');
-  const sec = availableSections[curGramTab];
+  const cat = availableCats[curGramTab];
   const body = document.getElementById('gram-body');
+  let html = '';
+  order[cat.id].forEach(tableId => { html += renderGramTable(map[cat.id][tableId]); });
+  body.innerHTML = html;
+}
+
+// ─── "NUEVA GRAMÁTICA" POP-UP ──────────────────────────────────────
+function showGramPopup(sec, prevUnlockedIds) {
   const gr = sec.gr || {};
-  if (!gr.tables || !gr.tables.length) { body.innerHTML = '<p style="color:var(--mu);text-align:center;padding:40px 20px">Gramática no disponible para esta sección.</p>'; return; }
-  let html = `<div style="margin-bottom:16px"><p style="font-size:.88rem;color:var(--mu);line-height:1.5;margin:0">${gr.intro||''}</p></div>`;
-  gr.tables.forEach(tbl => {
-    html += `<h3 style="font-size:1rem;font-weight:700;margin:0 0 6px;color:var(--tx)">${tbl.title}</h3>`;
-    if (tbl.note) html += `<p style="font-size:.8rem;color:var(--mu);margin:0 0 8px;background:var(--yw-l);border-left:3px solid var(--yw);border-radius:0 8px 8px 0;padding:7px 10px">${tbl.note}</p>`;
-    html += `<div class="gram-table-wrap"><table class="gram-table"><thead><tr>${tbl.h.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${tbl.r.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const {map} = buildGrammarMap([...prevUnlockedIds, sec.id]);
+  let html = `<div style="margin-bottom:14px"><p style="font-size:.88rem;color:var(--mu);line-height:1.5;margin:0">${gr.intro||''}</p></div>`;
+  (gr.patches||[]).forEach(p => {
+    if (p.op === 'newTable') {
+      html += renderGramTable(map[p.category][p.tableId]);
+    } else if (p.op === 'addRows') {
+      const cat = GRAMMAR_CATEGORIES.find(c => c.id === p.category);
+      const tbl = map[p.category][p.tableId];
+      const tblTitle = tbl ? tbl.title : p.tableId;
+      html += `<p style="font-size:.8rem;color:var(--mu);margin:0 0 6px">📌 Doplnené do: <strong>${cat?cat.title:p.category} → ${tblTitle}</strong></p>`;
+      html += `<div class="gram-table-wrap"><table class="gram-table"><tbody>${p.r.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    }
   });
   if (gr.tips && gr.tips.length) {
-    html += `<div style="margin-top:6px"><h3 style="font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);margin:0 0 8px">Claves para recordar</h3>`;
+    html += `<div style="margin-top:6px"><h3 style="font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);margin:0 0 8px">🔑 Kľúčové body</h3>`;
     html += gr.tips.map(t => `<div style="background:var(--bl-l);border-radius:10px;padding:10px 12px;margin-bottom:7px;font-size:.87rem;line-height:1.5;color:var(--tx)">${t}</div>`).join('');
     html += '</div>';
   }
-  body.innerHTML = html;
+  document.getElementById('gram-popup-body').innerHTML = html;
+  document.getElementById('gram-popup-title').textContent = `🎉 Nueva gramática: ${sec.ti}`;
+  document.getElementById('gram-popup').style.display = 'flex';
+}
+function closeGramPopup() {
+  document.getElementById('gram-popup').style.display = 'none';
 }
 
 // ─── VOCABULARY SCREEN ────────────────────────────────────────────────

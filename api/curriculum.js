@@ -26,6 +26,7 @@ module.exports = async (req, res) => {
         mc: row.multiple_choice
       };
       if (row.is_test) lesson.isTest = true;
+      if (row.test_questions && row.test_questions.length) lesson.tq = row.test_questions;
       lessonsBySection[row.section_id].push(lesson);
     }
 

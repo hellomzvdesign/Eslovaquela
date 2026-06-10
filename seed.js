@@ -5,20 +5,25 @@ const CURRICULUM = [
 {id:'s1',ti:'¡Hola, Eslovaquia!',em:'🇸🇰',col:'#FF6B35',
 gr:{
   intro:'La Sección 1 cubre los fundamentos del eslovaco: saludos, identidad, números, colores, familia y vocabulario cotidiano.',
-  tables:[
-    {title:'Pronombres personales',note:'En eslovaco los pronombres a menudo se omiten porque el verbo indica la persona.',
+  patches:[
+    {op:'newTable', category:'zamena', tableId:'zamena-osobne',
+     title:'Pronombres personales',note:'En eslovaco los pronombres a menudo se omiten porque el verbo indica la persona.',
      h:['Persona','Eslovaco','Español'],
      r:[['1ª singular','ja','yo'],['2ª singular','ty','tú'],['3ª sing. masc.','on','él'],['3ª sing. fem.','ona','ella'],['3ª sing. neutro','ono','ello'],['1ª plural','my','nosotros/as'],['2ª plural','vy','vosotros / Usted (formal)'],['3ª plural','oni / ony','ellos / ellas']]},
-    {title:'Verbo byť — ser / estar',note:"A diferencia del español, 'byť' cumple las funciones de ser Y estar.",
+    {op:'newTable', category:'byt-pritomny', tableId:'byt',
+     title:'Verbo byť — ser / estar',note:"A diferencia del español, 'byť' cumple las funciones de ser Y estar.",
      h:['Pronombre','Forma','Ejemplo'],
      r:[['ja','som','Ja som Martin. → Yo soy Martín.'],['ty','si','Ty si priateľ. → Tú eres amigo.'],['on/ona/ono','je','On je doma. → Él está en casa.'],['my','sme','My sme Slováci. → Somos eslovacos.'],['vy','ste','Vy ste tu. → Vosotros estáis aquí.'],['oni/ony','sú','Oni sú tam. → Ellos están allí.']]},
-    {title:'Saludos: formal vs. informal',
+    {op:'newTable', category:'frazy', tableId:'pozdravy',
+     title:'Saludos: formal vs. informal',
      h:['Situación','Saludo','Despedida'],
      r:[['Con amigos / familia','Ahoj · Čau · Servus','Čau · Dovidenia'],['Con adultos / desconocidos','Dobrý deň','Dovidenia'],['Mañana (formal)','Dobré ráno','Dovidenia'],['Tarde/noche (formal)','Dobrý večer','Dobrú noc']]},
-    {title:'Números 1–10',
+    {op:'newTable', category:'cisla-cas', tableId:'cislovky-1-10',
+     title:'Números 1–10',
      h:['Número','Eslovaco','Pronunciación'],
      r:[['1','jeden (m.) / jedna (f.)','YE-den'],['2','dva (m.) / dve (f./n.)','dva / dve'],['3','tri','tri'],['4','štyri','SHTY-ri'],['5','päť','pyach'],['6','šesť','shest'],['7','sedem','SE-dem'],['8','osem','O-sem'],['9','deväť','DE-vyach'],['10','desať','DE-sach']]},
-    {title:'Géneros gramaticales',note:'El eslovaco tiene 3 géneros. Conocerlos ayuda a usar los adjetivos correctamente.',
+    {op:'newTable', category:'pady', tableId:'rody',
+     title:'Géneros gramaticales',note:'El eslovaco tiene 3 géneros. Conocerlos ayuda a usar los adjetivos correctamente.',
      h:['Género','Terminaciones típicas','Ejemplos'],
      r:[['Masculino','consonante (mayoría)','muž, pes, brat'],['Femenino','-a, -ia, -esť','žena, mama, sestra'],['Neutro','-o, -e, -ie','auto, srdce, more']]}
   ],
@@ -153,20 +158,25 @@ ls:[
 {id:'s2',ti:'El mundo a tu alrededor',em:'🌍',col:'#4361EE',
 gr:{
   intro:'La Sección 2 amplía tu eslovaco con tiempo, ciudad, cuerpo humano, clima, restaurante y frases de supervivencia.',
-  tables:[
-    {title:'Días de la semana',note:'Se escriben en minúsculas en eslovaco, al contrario que en inglés.',
+  patches:[
+    {op:'newTable', category:'cisla-cas', tableId:'dni-tyzdna',
+     title:'Días de la semana',note:'Se escriben en minúsculas en eslovaco, al contrario que en inglés.',
      h:['Día','Eslovaco','Origen / tip'],
      r:[['Lunes','pondelok','Del antiguo concepto de inicio de semana'],['Martes','utorok',"De 'utor' = segundo"],['Miércoles','streda',"De 'stred' = centro de la semana"],['Jueves','štvrtok',"De 'štvrtý' = cuarto"],['Viernes','piatok',"De 'piaty' = quinto"],['Sábado','sobota',"Del hebreo 'Shabbat'"],['Domingo','nedeľa',"De 'ne-deľa' = sin trabajo"]]},
-    {title:'Meses del año',
+    {op:'newTable', category:'cisla-cas', tableId:'mesiace',
+     title:'Meses del año',
      h:['Mes','Eslovaco','Mes','Eslovaco'],
      r:[['Enero','január','Julio','júl'],['Febrero','február','Agosto','august'],['Marzo','marec','Septiembre','september'],['Abril','apríl','Octubre','október'],['Mayo','máj','Noviembre','november'],['Junio','jún','Diciembre','december']]},
-    {title:'Las estaciones',
+    {op:'newTable', category:'cisla-cas', tableId:'rocne-obdobia',
+     title:'Las estaciones',
      h:['Estación','Eslovaco','Descripción'],
      r:[['Primavera','jar','Marzo–Mayo. Flores y temperaturas suaves.'],['Verano','leto','Junio–Agosto. Ideal para senderismo en los Tatras.'],['Otoño','jeseň','Septiembre–Noviembre. Bosques de colores.'],['Invierno','zima','Diciembre–Febrero. Nieve en los Alpes eslovacos.']]},
-    {title:'Expresiones de tiempo',
+    {op:'newTable', category:'cisla-cas', tableId:'casove-vyrazy',
+     title:'Expresiones de tiempo',
      h:['Español','Eslovaco','Ejemplo'],
      r:[['hoy','dnes','Dnes je pondelok. → Hoy es lunes.'],['mañana (día sig.)','zajtra','Zajtra idem. → Mañana voy.'],['ayer','včera','Včera bol piatok. → Ayer fue viernes.'],['esta mañana','dnes ráno','—'],['esta tarde/noche','dnes večer','—'],['esta semana','tento týždeň','—']]},
-    {title:'Frases de supervivencia esenciales',note:'Aprende estas frases de memoria. Pueden salvarte en cualquier situación.',
+    {op:'newTable', category:'frazy', tableId:'prezivanie',
+     title:'Frases de supervivencia esenciales',note:'Aprende estas frases de memoria. Pueden salvarte en cualquier situación.',
      h:['Español','Eslovaco','Pronunciación'],
      r:[['No entiendo.','Nerozumiem.','ne-ro-ZU-myem'],['¿Habla inglés?','Hovoríte po anglicky?','ho-vo-REE-te'],['¿Dónde está...?','Kde je...?','kde ye'],['¿Cuánto cuesta?','Koľko stojí?','KOL-ko STO-yi'],['¡Ayuda!','Pomoc!','PO-mots'],['Me duele [parte].','Bolí ma [parte].','bo-LEE ma'],['Llame a la policía.','Zavolajte políciu.','za-vo-LAY-te']]}
   ],
@@ -299,20 +309,25 @@ ls:[
 {id:'s3',ti:'La vida diaria',em:'🗓️',col:'#00A86B',
 gr:{
   intro:'La Sección 3 introduce los verbos en presente, los números hasta 100, la ropa, las compras, los pasatiempos, las preguntas, las direcciones y los adjetivos con concordancia de género.',
-  tables:[
-    {title:'Verbos en presente — patrones principales',note:'"mať" y "robiť" son irregulares e imprescindibles. Los verbos en "-ovať" (como "pracovať") siguen un patrón muy productivo.',
+  patches:[
+    {op:'newTable', category:'byt-pritomny', tableId:'pritomny-vzory',
+     title:'Verbos en presente — patrones principales',note:'"mať" y "robiť" son irregulares e imprescindibles. Los verbos en "-ovať" (como "pracovať") siguen un patrón muy productivo.',
      h:['Pronombre','mať (tener)','robiť (hacer)','pracovať (-ovať)'],
      r:[['ja','mám','robím','pracujem'],['ty','máš','robíš','pracuješ'],['on/ona/ono','má','robí','pracuje'],['my','máme','robíme','pracujeme'],['vy','máte','robíte','pracujete'],['oni/ony','majú','robia','pracujú']]},
-    {title:'Números 11–100',
+    {op:'newTable', category:'cisla-cas', tableId:'cislovky-11-100',
+     title:'Números 11–100',
      h:['Número','Eslovaco','Número','Eslovaco'],
      r:[['11','jedenásť','17','sedemnásť'],['12','dvanásť','18','osemnásť'],['13','trinásť','19','devätnásť'],['14','štrnásť','20','dvadsať'],['15','pätnásť','30','tridsať'],['16','šestnásť','40','štyridsať'],['50','päťdesiat','80','osemdesiat'],['60','šesťdesiat','90','deväťdesiat'],['70','sedemdesiat','100','sto']]},
-    {title:'Adjetivos: concordancia de género',note:'La mayoría de adjetivos siguen el patrón -ý (masculino) / -á (femenino) / -é (neutro). Esta es la base de la declinación de adjetivos en eslovaco — vuelve aquí cuando necesites repasar las terminaciones.',
+    {op:'newTable', category:'pridavne', tableId:'pridavne-zhoda',
+     title:'Adjetivos: concordancia de género',note:'La mayoría de adjetivos siguen el patrón -ý (masculino) / -á (femenino) / -é (neutro). Esta es la base de la declinación de adjetivos en eslovaco — vuelve aquí cuando necesites repasar las terminaciones.',
      h:['Masculino','Femenino','Neutro','Español'],
      r:[['veľký','veľká','veľké','grande'],['malý','malá','malé','pequeño'],['pekný','pekná','pekné','bonito'],['starý','stará','staré','viejo'],['nový','nová','nové','nuevo'],['dobrý','dobrá','dobré','bueno']]},
-    {title:'Palabras interrogativas',
+    {op:'newTable', category:'otazky-spojky', tableId:'opytovacie-zamena',
+     title:'Palabras interrogativas',
      h:['Eslovaco','Español'],
      r:[['kto','quién'],['čo','qué'],['kde','dónde'],['kedy','cuándo'],['prečo','por qué'],['ako','cómo'],['koľko','cuánto']]},
-    {title:'Expresar gustos: rád / rada / radi',note:'"Rád" (hombre), "rada" (mujer) o "radi" (plural/grupo) + verbo en presente = "me/nos gusta hacer algo".',
+    {op:'newTable', category:'frazy', tableId:'rad-rada-radi',
+     title:'Expresar gustos: rád / rada / radi',note:'"Rád" (hombre), "rada" (mujer) o "radi" (plural/grupo) + verbo en presente = "me/nos gusta hacer algo".',
      h:['Sujeto','Forma','Ejemplo'],
      r:[['Yo (hombre)','rád + verbo','Rád čítam. = Me gusta leer.'],['Yo (mujer)','rada + verbo','Rada tancujem. = Me gusta bailar.'],['Nosotros','radi + verbo','Radi plávame. = Nos gusta nadar.']]}
   ],
@@ -463,6 +478,358 @@ ls:[
   ],
   w:[],p:[],mc:[]
  }
+]},
+{id:'s4',ti:'¿Cómo estás?',em:'😊',col:'#9B5DE5',
+gr:{
+  intro:'La Sección 4 introduce la negación (nie/ne-) y el vocabulario de emociones, estados de ánimo y profesiones — combinando estos temas nuevos con la identidad, el presente y "rád/rada/radi" ya conocidos.',
+  patches:[
+    {op:'newTable', category:'byt-pritomny', tableId:'negacia',
+     title:'Zápor (negácia)', note:'Para negar un verbo, añade el prefijo "ne-" delante. La única excepción es "byť": "som" → "nie som" (con espacio).',
+     h:['Forma afirmativa','Forma negativa','Ejemplo'],
+     r:[['som','nie som','Nie som lekár. = No soy médico.'],['mám','nemám','Nemám čas. = No tengo tiempo.'],['robím','nerobím','Nerobím nič. = No hago nada.'],['viem','neviem','Neviem. = No sé.'],['môžem','nemôžem','Nemôžem dnes. = No puedo hoy.'],['pracujem','nepracujem','Nepracujem cez víkend. = No trabajo el fin de semana.'],['hovorím','nehovorím','Nehovorím po nemecky. = No hablo alemán.']]},
+    {op:'newTable', category:'pady', tableId:'povolania-rod',
+     title:'Povolania: mužský a ženský rod', note:'La mayoría de profesiones forman el femenino añadiendo "-ka" a la forma masculina.',
+     h:['Mužský','Ženský','Español'],
+     r:[['lekár','lekárka','médico/a'],['učiteľ','učiteľka','profesor/a'],['študent','študentka','estudiante'],['kuchár','kuchárka','cocinero/a'],['predavač','predavačka','vendedor/a'],['vodič','vodička','conductor/a'],['policajt','policajtka','policía'],['právnik','právnička','abogado/a'],['umelec','umelkyňa','artista'],['inžinier','inžinierka','ingeniero/a']]},
+    {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
+     r:[['Yo (hombre, negativo)','nerád + verbo','Nerád varím. = No me gusta cocinar.'],['Yo (mujer, negativo)','nerada + verbo','Nerada behám. = No me gusta correr.'],['Nosotros (negativo)','neradi + verbo','Neradi čakáme. = No nos gusta esperar.']]},
+    {op:'addRows', category:'pridavne', tableId:'pridavne-zhoda',
+     r:[['šťastný','šťastná','šťastné','feliz'],['smutný','smutná','smutné','triste'],['unavený','unavená','unavené','cansado'],['chorý','chorá','choré','enfermo']]},
+    {op:'addRows', category:'otazky-spojky', tableId:'opytovacie-zamena',
+     r:[['aký / aká / aké','qué tipo de / cómo es']]}
+  ],
+  tips:["🔑 Para negar un verbo añade 'ne-' delante: 'mám'→'nemám', 'viem'→'neviem'. La única excepción es 'byť': 'som'→'nie som' (con espacio).","🔑 Los adjetivos de emociones (šťastný, smutný, unavený...) siguen el mismo patrón -ý/-á/-é que los adjetivos de la Sección 3.","🔑 La mayoría de profesiones forman el femenino añadiendo '-ka': učiteľ→učiteľka, lekár→lekárka.","🔑 'Nerád/nerada/neradi' + verbo = 'no me/nos gusta hacer algo'. Es la negación de 'rád/rada/radi' (Sección 3)."]
+},
+ls:[
+ {id:'s4l1',ti:'La negación',em:'🚫',
+  sl:[
+   ['v','Verbos en negativo',[['nie som','no soy','nye som'],['nemám','no tengo','ne-mam'],['nerobím','no hago','ne-ro-beem'],['neviem','no sé','ne-vyem']]],
+   ['g','La regla del "ne-"','En eslovaco, para negar un verbo simplemente añades el prefijo "ne-" delante. "Som"→"Nie som", "mám"→"nemám", "viem"→"neviem".',[['soy / no soy','som / nie som'],['tengo / no tengo','mám / nemám'],['hago / no hago','robím / nerobím'],['sé / no sé','viem / neviem'],['puedo / no puedo','môžem / nemôžem']]],
+   ['t','Excepción importante','El verbo "byť" (ser/estar) es la única excepción: su negación es "nie som" (con espacio), no "nesom". Todos los demás verbos se escriben juntos: "nemám", "nerobím".']
+  ],
+  w:[['nie som','no soy','🚫'],['nemám','no tengo','🙅'],['nerobím','no hago','🚫'],['neviem','no sé','🤷'],['nemôžem','no puedo','🙅‍♂️'],['nepracujem','no trabajo','🚫'],['nehovorím','no hablo','🤐']],
+  p:[
+   ['No soy estudiante','Nie som študent',[['Nie som','No soy'],['študent','estudiante']],['učiteľ','lekár'],"'Nie som' es la negación de 'som' (soy/estoy). Recuerda el espacio."],
+   ['No tengo tiempo','Nemám čas',[['Nemám','No tengo'],['čas','tiempo']],['peniaze','prácu'],"'Nemám' = no tengo. El prefijo 'ne-' va pegado al verbo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "no sé"?',['nemám','neviem','nemôžem','nerobím'],1,"'neviem' = no sé. 'nemám' = no tengo."],
+   ['¿Cuál es la negación de "som"?',['nesom','nie som','som nie','nieje'],1,"'byť' es la excepción: 'nie som', con espacio."],
+   ['¿Qué significa "nepracujem"?',['no puedo','no trabajo','no hago','no hablo'],1,"'nepracujem' = no trabajo. 'pracovať' = trabajar (s3l2)."]
+  ]
+ },
+ {id:'s4l2',ti:'Cómo te sientes',em:'😊',
+  sl:[
+   ['v','Estados de ánimo',[['šťastný','feliz','shtyast-nee'],['smutný','triste','smut-nee'],['unavený','cansado','u-na-ve-nee'],['nervózny','nervioso','ner-voz-nee']]],
+   ['v','Más estados',[['hladný','hambriento','hlad-nee'],['smädný','sediento','smyad-nee'],['chorý','enfermo','kho-ree']]],
+   ['g','Concordancia con byť','Estos adjetivos funcionan como los de la Sección 3: cambian de terminación según el género (-ý/-á/-é) y se usan con "byť".',[['Estoy feliz (m.)','Som šťastný'],['Estoy feliz (f.)','Som šťastná'],['Estoy cansado (m.)','Som unavený'],['No estoy cansada (f.)','Nie som unavená']]]
+  ],
+  w:[['šťastný','feliz','😄'],['smutný','triste','😢'],['unavený','cansado','😴'],['nervózny','nervioso','😬'],['hladný','hambriento','🍽️'],['smädný','sediento','🥤'],['chorý','enfermo','🤒']],
+  p:[
+   ['Estoy cansado','Som unavený',[['Som','Estoy'],['unavený','cansado']],['šťastný','smutný'],"Estructura igual a 'Som učiteľ' (s1), pero con un adjetivo de estado."],
+   ['No estoy enfermo, estoy bien','Nie som chorý, som v poriadku',[['Nie som','No estoy'],['chorý','enfermo'],['som v poriadku','estoy bien']],['unavený','smutný'],"Combina la negación de la lección anterior con un adjetivo nuevo."]
+  ],
+  mc:[
+   ['¿Qué significa "smutný"?',['feliz','cansado','triste','nervioso'],2,"'smutný' = triste. 'šťastný' = feliz."],
+   ['¿Cómo se dice "tengo hambre" (lit. "estoy hambriento")?',['Som smädný','Som hladný','Som unavený','Som chorý'],1,"'Som hladný' = estoy hambriento/tengo hambre."],
+   ['¿Cuál es la forma femenina de "unavený"?',['unavená','unavené','unavený','unavení'],0,"'unavená' = cansada (femenino). Termina en '-á'."]
+  ]
+ },
+ {id:'s4l3',ti:'¿Cómo te sientes?',em:'💬',
+  sl:[
+   ['v','Preguntar y responder',[['Ako sa máš?','¿Cómo estás?','a-ko sa mash'],['Mám sa dobre','Estoy bien','mam sa dob-re'],['Mám sa zle','Estoy mal','mam sa zle']]],
+   ['v','Más palabras',[['nálada','humor / ánimo','na-la-da'],['trochu','un poco','tro-khu'],['veľmi','muy','vel-mi'],['vôbec nie','para nada','voo-bets nye']]],
+   ['t','"Mám sa..." vs "Som..."','"Ako sa máš?" pregunta por tu estado general (lit. "¿cómo te tienes?"). "Som unavený" describe un estado concreto. Ambas son correctas y muy usadas.']
+  ],
+  w:[['Ako sa máš?','¿Cómo estás?','❓'],['Mám sa dobre','Estoy bien','👍'],['Mám sa zle','Estoy mal','👎'],['nálada','humor','🎭'],['trochu','un poco','🤏'],['veľmi','muy','💯'],['vôbec nie','para nada','❌']],
+  p:[
+   ['¿Cómo estás? Estoy un poco cansado','Ako sa máš? Som trochu unavený',[['Ako sa máš?','¿Cómo estás?'],['Som','Estoy'],['trochu','un poco'],['unavený','cansado']],['veľmi','vôbec nie'],"'trochu' suaviza el adjetivo: 'un poco cansado' en vez de 'muy cansado'."],
+   ['No estoy nada nervioso','Som vôbec nie nervózny',[['Som','Estoy'],['vôbec nie','para nada'],['nervózny','nervioso']],['trochu','veľmi'],"'vôbec nie' refuerza la negación: 'para nada' / 'en absoluto'."]
+  ],
+  mc:[
+   ['¿Cómo preguntas "¿Cómo estás?"?',['Ako sa voláš?','Kto si?','Ako sa máš?','Čo robíš?'],2,"'Ako sa máš?' = ¿Cómo estás?. 'Ako sa voláš?' = ¿Cómo te llamas? (s1)."],
+   ['¿Qué significa "veľmi"?',['un poco','muy','para nada','siempre'],1,"'veľmi' = muy. 'trochu' = un poco."],
+   ['¿Cómo se dice "estoy mal"?',['Mám sa dobre','Som dobrý','Mám sa zle','Nie som dobrý'],2,"'Mám sa zle' = estoy mal. 'Mám sa dobre' = estoy bien."]
+  ]
+ },
+ {id:'s4l4',ti:'Las profesiones',em:'💼',
+  sl:[
+   ['v','Profesiones (1)',[['lekár / lekárka','médico/a','le-kar / le-kar-ka'],['učiteľ / učiteľka','profesor/a','u-chi-tel / u-chi-tel-ka'],['študent / študentka','estudiante','shtu-dent']]],
+   ['v','Profesiones (2)',[['kuchár / kuchárka','cocinero/a','ku-khar'],['predavač / predavačka','vendedor/a','pre-da-vach'],['vodič / vodička','conductor/a','vo-dich'],['policajt / policajtka','policía','po-li-tsayt']]],
+   ['g','Femenino con "-ka"','La mayoría de profesiones forman el femenino añadiendo "-ka" (a veces con pequeños cambios) a la forma masculina.',[['médico → médica','lekár → lekárka'],['profesor → profesora','učiteľ → učiteľka'],['cocinero → cocinera','kuchár → kuchárka'],['conductor → conductora','vodič → vodička']]]
+  ],
+  w:[['lekár','médico','👨‍⚕️'],['učiteľ','profesor','🧑‍🏫'],['študent','estudiante','🎓'],['kuchár','cocinero','👨‍🍳'],['predavač','vendedor','🧑‍💼'],['vodič','conductor','🚗'],['policajt','policía','👮']],
+  p:[
+   ['Soy profesor, no soy médico','Som učiteľ, nie som lekár',[['Som','Soy'],['učiteľ','profesor'],['nie som','no soy'],['lekár','médico']],['kuchár','vodič'],"Combina identidad (s1) + negación (s4l1) con vocabulario nuevo de profesiones."],
+   ['Ella es vendedora','Ona je predavačka',[['Ona','Ella'],['je','es'],['predavačka','vendedora']],['učiteľka','lekárka'],"'predavačka' es la forma femenina de 'predavač', con '-ka'."]
+  ],
+  mc:[
+   ['¿Cómo se dice "estudiante"?',['učiteľ','lekár','študent','vodič'],2,"'študent' = estudiante. Muy parecido al español."],
+   ['¿Cuál es la forma femenina de "kuchár"?',['kuchárka','kuchár','kuchára','kuchári'],0,"'kuchárka' = cocinera. Se forma añadiendo '-ka'."],
+   ['¿Qué significa "policajt"?',['profesor','policía','vendedor','médico'],1,"'policajt' = policía. Recuerda 'polícia' (s2) = la institución."]
+  ]
+ },
+ {id:'s4l5',ti:'¿A qué te dedicas?',em:'🧑‍💼',
+  sl:[
+   ['v','Hablar de tu trabajo',[['povolanie','profesión','po-vo-la-nye'],['Aké je tvoje povolanie?','¿Cuál es tu profesión?','a-ke ye tvo-ye po-vo-la-nye'],['pracovať ako','trabajar de/como','pra-tso-vat a-ko']]],
+   ['v','Más profesiones',[['právnik / právnička','abogado/a','prav-nik'],['umelec / umelkyňa','artista','u-me-lets'],['inžinier / inžinierka','ingeniero/a','in-zhi-nyer'],['herec / herečka','actor/actriz','he-rets']]],
+   ['t','Sin artículo','Igual que con nacionalidades, en eslovaco no se usa artículo con profesiones: "Som lekár" = "Soy médico" (no "Soy UN médico").']
+  ],
+  w:[['povolanie','profesión','💼'],['právnik','abogado','⚖️'],['umelec','artista','🎨'],['inžinier','ingeniero','⚙️'],['herec','actor','🎬'],['pracovať ako','trabajar de','🛠️'],['Aké je tvoje povolanie?','¿Cuál es tu profesión?','❓']],
+  p:[
+   ['¿Cuál es tu profesión? Soy ingeniero','Aké je tvoje povolanie? Som inžinier',[['Aké je tvoje povolanie?','¿Cuál es tu profesión?'],['Som','Soy'],['inžinier','ingeniero']],['právnik','herec'],"Pregunta neutra para profesión, sin necesidad del caso instrumental."],
+   ['Trabajo de cocinero, no de policía','Pracujem ako kuchár, nie ako policajt',[['Pracujem ako','Trabajo de'],['kuchár','cocinero'],['nie ako','no de'],['policajt','policía']],['vodič','predavač'],"'pracovať ako' + profesión = 'trabajar de/como' + profesión."]
+  ],
+  mc:[
+   ['¿Cómo se dice "profesión"?',['práca','povolanie','pracovať','pracovník'],1,"'povolanie' = profesión. 'pracovať' = trabajar (verbo)."],
+   ['¿Qué significa "umelec"?',['abogado','ingeniero','artista','actor'],2,"'umelec' = artista. 'umelkyňa' es la forma femenina."],
+   ['¿Cómo dirías "trabajo de profesor"?',['Som učiteľ','Pracujem ako učiteľ','Učím','Mám učiteľa'],1,"'Pracujem ako učiteľ' = trabajo de/como profesor."]
+  ]
+ },
+ {id:'s4l6',ti:'Lo que no me gusta',em:'🙅',
+  sl:[
+   ['v','Nuevas actividades',[['cestovať','viajar','tses-to-vat'],['počúvať','escuchar','po-choo-vat'],['hudba','música','hud-ba'],['pozerať','ver/mirar','po-ze-rat']]],
+   ['v','Más palabras',[['televízia','televisión','te-le-vee-zya'],['film','película','film'],['dlho','mucho tiempo','dl-ho']]],
+   ['g','Negación de "rád/rada/radi"','Para decir que algo NO te gusta hacer, usa "nerád" (hombre), "nerada" (mujer) o "neradi" (nosotros) + verbo en presente.',[['(M) No me gusta cocinar','Nerád varím'],['(F) No me gusta correr','Nerada behám'],['No nos gusta esperar','Neradi čakáme'],['(M) Me gusta viajar','Rád cestujem'],['(M) No me gusta viajar','Nerád cestujem']]]
+  ],
+  w:[['cestovať','viajar','✈️'],['počúvať','escuchar','👂'],['hudba','música','🎵'],['pozerať','ver/mirar','📺'],['televízia','televisión','📺'],['film','película','🎬'],['dlho','mucho tiempo','⏳']],
+  p:[
+   ['Me gusta escuchar música','Rád počúvam hudbu',[['Rád','Me gusta (m.)'],['počúvam','escucho'],['hudbu','música']],['pozerám','čítam'],"'hudbu' es la forma acusativa de 'hudba'. Repaso de 'rád' (s3l6)."],
+   ['No me gusta ver televisión mucho tiempo','Nerád pozerám televíziu dlho',[['Nerád','No me gusta (m.)'],['pozerám','veo'],['televíziu','televisión'],['dlho','mucho tiempo']],['počúvam','cestujem'],"'Nerád' es la negación de 'rád'. Una mujer diría 'Nerada'."]
+  ],
+  mc:[
+   ['¿Cómo dice una mujer "no me gusta"?',['Nerád','Nerada','Neradi','Nie rada'],1,"Un hombre dice 'Nerád', una mujer 'Nerada'."],
+   ['¿Qué significa "cestovať"?',['escuchar','viajar','ver','descansar'],1,"'cestovať' = viajar. Relacionado con 'cesta' = camino/viaje."],
+   ['¿Cómo se dice "música"?',['film','televízia','hudba','divadlo'],2,"'hudba' = música. 'film' = película."]
+  ]
+ },
+ {id:'s4l7',ti:'Todo junto',em:'🔀',
+  sl:[
+   ['v','Conectores útiles',[['ale','pero','a-le'],['pretože','porque','pre-to-zhe'],['aj','también','ay'],['naozaj','de verdad','na-o-zay']]],
+   ['v','Una palabra más',[['super','genial','su-per']]],
+   ['t','Diálogo de repaso','— Ako sa máš? — Mám sa dobre, ale som trochu unavený, pretože pracujem veľa. — Si lekár? — Nie, nie som lekár, som učiteľ. Rád učím, ale nerád pracujem cez víkend.']
+  ],
+  w:[['ale','pero','🔀'],['pretože','porque','❓'],['aj','también','➕'],['naozaj','de verdad','✅'],['super','genial','🌟']],
+  p:[
+   ['Estoy cansado porque trabajo mucho','Som unavený, pretože pracujem veľa',[['Som unavený','Estoy cansado'],['pretože','porque'],['pracujem','trabajo'],['veľa','mucho']],['veľmi','trochu'],"'pretože' introduce la causa. 'veľa' = mucho (cantidad)."],
+   ['No soy médico, pero también soy estudiante','Nie som lekár, ale aj som študent',[['Nie som lekár','No soy médico'],['ale','pero'],['aj','también'],['som študent','soy estudiante']],['učiteľ','umelec'],"Combina negación + 'ale' (pero) + 'aj' (también)."]
+  ],
+  mc:[
+   ['¿Cómo se dice "porque"?',['ale','pretože','aj','naozaj'],1,"'pretože' = porque. 'prečo' (s3l7) = por qué."],
+   ['¿Qué significa "naozaj"?',['quizás','genial','de verdad','también'],2,"'naozaj' = de verdad/realmente."],
+   ['¿Cómo dirías "pero también"?',['pretože aj','ale aj','aj ale','naozaj ale'],1,"'ale aj' = pero también. 'ale' = pero, 'aj' = también."]
+  ]
+ },
+ {id:'s4test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Cuarto examen!','Vas a responder 25 preguntas de toda la Sección 4. Necesitas 80% para desbloquear la Sección 5. ¡Vamos!'],
+   ['g','Repaso rápido','Todo lo aprendido en la Sección 4:',[['Negación','nie som, nemám, nerobím, neviem'],['Emociones','šťastný, smutný, unavený, nervózny'],['Profesiones','lekár/lekárka, učiteľ/učiteľka'],['Nerád/nerada','Nerád varím. Nerada behám.']]],
+   ['t','¡Casi terminas el Bloque 1!','Negación, emociones y profesiones son piezas clave del A1. ¡Solo queda una sección para terminar el Bloque 1!']
+  ],
+  w:[],p:[],mc:[],
+  tq:[
+   {id:'s4t-01',category:'new',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cómo se dice "no tengo"?',options:['nie som','nemám','nerobím','neviem'],answer:1,audio:null,skippable:false,accept:[],explanation:"'nemám' = no tengo. 'ne-' + 'mám'."},
+   {id:'s4t-02',category:'new',type:'fill',skill:'grammar',concept_tag:'negacia_byt',question:'Completa: "Nie ___ lekár." (No soy médico)',options:[],answer:'som',audio:null,skippable:false,accept:['som'],explanation:"'Nie som' = no soy/estoy. Excepción de 'byť': se escribe con espacio."},
+   {id:'s4t-03',category:'new',type:'mc',skill:'vocab',concept_tag:'emociones_vocab',question:'¿Qué significa "nervózny"?',options:['feliz','triste','nervioso','cansado'],answer:2,audio:null,skippable:false,accept:[],explanation:"'nervózny' = nervioso."},
+   {id:'s4t-04',category:'new',type:'type',skill:'grammar',concept_tag:'emociones_genero',question:'Escribe en eslovaco: "estoy cansada" (mujer habla)',options:[],answer:'Som unavená',audio:null,skippable:false,accept:['Som unavená','som unavena'],explanation:"'unavená' es la forma femenina de 'unavený' (-á)."},
+   {id:'s4t-05',category:'new',type:'mc',skill:'grammar',concept_tag:'profesiones_genero',question:'¿Cómo se dice "médica" (mujer)?',options:['lekár','lekárka','lekári','lekáreň'],answer:1,audio:null,skippable:false,accept:[],explanation:"'lekárka' = médica. Femenino con '-ka'."},
+   {id:'s4t-06',category:'new',type:'fill',skill:'grammar',concept_tag:'profesiones_vocab',question:'Completa: "Pracujem ___ kuchár." (Trabajo de cocinero)',options:[],answer:'ako',audio:null,skippable:false,accept:['ako'],explanation:"'pracovať ako' + profesión = 'trabajar de/como'."},
+   {id:'s4t-07',category:'new',type:'listen',skill:'vocab',concept_tag:'emociones_vocab',question:'Escucha y elige la traducción correcta.',options:['Estoy feliz','Estoy triste','Estoy cansado','Estoy enfermo'],answer:1,audio:'Som smutný',skippable:true,accept:[],explanation:"'Som smutný' = estoy triste."},
+   {id:'s4t-08',category:'new',type:'mc',skill:'grammar',concept_tag:'rad_rada_radi_negativo',question:'¿Cómo dice una mujer "no me gusta cocinar"?',options:['Nerád varím','Nerada varím','Neradi varím','Nie rada varím'],answer:1,audio:null,skippable:false,accept:[],explanation:"Una mujer usa 'Nerada' + verbo."},
+   {id:'s4t-09',category:'new',type:'mc',skill:'vocab',concept_tag:'conectores',question:'¿Qué significa "pretože"?',options:['pero','también','porque','de verdad'],answer:2,audio:null,skippable:false,accept:[],explanation:"'pretože' = porque. 'prečo' = por qué."},
+   {id:'s4t-10',category:'new',type:'fill',skill:'vocab',concept_tag:'emociones_vocab',question:'Completa: "Som ___ unavený, ale šťastný." (un poco)',options:[],answer:'trochu',audio:null,skippable:false,accept:['trochu'],explanation:"'trochu' = un poco."},
+   {id:'s4t-11',category:'new',type:'type',skill:'vocab',concept_tag:'profesiones_vocab',question:'Escribe en eslovaco la profesión "policía" (hombre)',options:[],answer:'policajt',audio:null,skippable:false,accept:['policajt'],explanation:"'policajt' = policía."},
+   {id:'s4t-12',category:'new',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cuál es la negación de "môžem"?',options:['nemôžem','nemám','môžemnie','nie môžem'],answer:0,audio:null,skippable:false,accept:[],explanation:"'nemôžem' = no puedo."},
+   {id:'s4t-13',category:'new',type:'mc',skill:'vocab',concept_tag:'emociones_vocab',question:'"Ako sa máš?" significa...',options:['¿Cómo te llamas?','¿Cómo estás?','¿Quién eres?','¿Qué haces?'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ako sa máš?' = ¿Cómo estás?"},
+   {id:'s4t-14',category:'new',type:'fill',skill:'grammar',concept_tag:'negacia_byt',question:'Completa: "___ som lekár, som učiteľ." (No)',options:[],answer:'Nie',audio:null,skippable:false,accept:['Nie'],explanation:"'Nie som' = no soy."},
+   {id:'s4t-15',category:'new',type:'mc',skill:'vocab',concept_tag:'profesiones_vocab',question:'¿Qué significa "umelec"?',options:['abogado','ingeniero','artista','actor'],answer:2,audio:null,skippable:false,accept:[],explanation:"'umelec' = artista."},
+   {id:'s4t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_som_si_je',question:'"Vy ___ tu." (estáis)',options:['sme','ste','sú','je'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ste' = estáis (vy)."},
+   {id:'s4t-17',category:'old_review',type:'type',skill:'grammar',concept_tag:'pridavne_zhoda',question:'Escribe en eslovaco: "ella es bonita"',options:[],answer:'Ona je pekná',audio:null,skippable:false,accept:['Ona je pekná','ona je pekna'],explanation:"'pekná' es la forma femenina de 'pekný'."},
+   {id:'s4t-18',category:'old_review',type:'mc',skill:'vocab',concept_tag:'numbers_11_100',question:'¿Cómo se dice "veinte"?',options:['dvanásť','dvadsať','desať','dva'],answer:1,audio:null,skippable:false,accept:[],explanation:"'dvadsať' = veinte."},
+   {id:'s4t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'rad_rada_radi',question:'Completa: "Rád ___ knihy." (leo)',options:[],answer:'čítam',audio:null,skippable:false,accept:['čítam','citam'],explanation:"'Rád čítam' = me gusta leer (hombre)."},
+   {id:'s4t-20',category:'old_review',type:'mc',skill:'vocab',concept_tag:'opytovacie_zamena',question:'¿Qué significa "kde"?',options:['cuándo','dónde','por qué','cómo'],answer:1,audio:null,skippable:false,accept:[],explanation:"'kde' = dónde."},
+   {id:'s4t-21',category:'random_review',type:'mc',skill:'vocab',concept_tag:'greetings_formal_informal',question:'¿Cuál es el saludo FORMAL?',options:['Ahoj','Čau','Dobrý deň','Servus'],answer:2,audio:null,skippable:false,accept:[],explanation:"'Dobrý deň' es el saludo formal."},
+   {id:'s4t-22',category:'random_review',type:'mc',skill:'vocab',concept_tag:'body_vocab',question:'¿Qué significa "srdce"?',options:['cabeza','nariz','ojo','corazón'],answer:3,audio:null,skippable:false,accept:[],explanation:"'srdce' = corazón."},
+   {id:'s4t-23',category:'random_review',type:'mc',skill:'vocab',concept_tag:'clothes_vocab',question:'¿Cómo se dice "zapatos"?',options:['topánky','ponožky','sukňa','čiapka'],answer:0,audio:null,skippable:false,accept:[],explanation:"'topánky' = zapatos."},
+   {id:'s4t-24',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'negacia_byt',question:'¿Qué frase es CORRECTA?',options:['Nesom lekár.','Nie som lekár.','Som nie lekár.','Nieje lekár.'],answer:1,audio:null,skippable:false,accept:[],explanation:"'byť' es la excepción: 'Nie som', con espacio."},
+   {id:'s4t-25',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'negacia_slovesa',question:'Corrige el error: "Ja nie mám čas."',options:[],answer:'Nemám čas',audio:null,skippable:false,accept:['Nemám čas','Nemám čas.'],explanation:"Los verbos (excepto 'byť') niegan con 'ne-' pegado: 'nemám', no 'nie mám'."}
+  ]
+ }
+]},
+{id:'s5',ti:'Mi semana',em:'📆',col:'#FFB627',
+gr:{
+  intro:'La Sección 5 cierra el Bloque 1 con el tema "Môj týždeň" (Mi semana): vocabulario de tiempo y rutina, el verbo irregular "ísť" (ir), y mucho repaso de negación, rád/rada/radi, adjetivos y palabras interrogativas en nuevos contextos.',
+  patches:[
+    {op:'newTable', category:'slovesa-casy', tableId:'ist-slovesa',
+     title:"Sloveso 'ísť' (ir)", note:"'ísť' es un verbo irregular muy frecuente, usado para movimiento físico: 'voy/vas/va a...'.",
+     h:['Osoba','ísť','Español'],
+     r:[['ja','idem','voy'],['ty','ideš','vas'],['on / ona / ono','ide','va'],['my','ideme','vamos'],['vy','idete','vais'],['oni / ony','idú','van']]},
+    {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
+     r:[['Siempre + me gusta','vždy rád/rada/radi + verbo','Vždy rád pracujem. = Siempre me gusta trabajar.'],['Nunca + me gusta','nikdy nerád/nerada/neradi + verbo','Nikdy nerada upratujem. = Nunca me gusta limpiar.'],['A veces + me gusta','niekedy rád/rada/radi + verbo','Niekedy rada nakupujem. = A veces me gusta ir de compras.']]},
+    {op:'addRows', category:'cisla-cas', tableId:'dni-tyzdna',
+     r:[['dnes','hoy'],['zajtra','mañana'],['včera','ayer'],['víkend','fin de semana'],['pracovný deň','día laborable']]},
+    {op:'addRows', category:'pridavne', tableId:'pridavne-zhoda',
+     r:[['celý','celá','celé','entero / todo']]},
+    {op:'addRows', category:'otazky-spojky', tableId:'opytovacie-zamena',
+     r:[['Ako často?','¿con qué frecuencia?'],['Kedy?','¿cuándo?']]}
+  ],
+  tips:["🔑 'ísť' es irregular: idem, ideš, ide, ideme, idete, idú. Se usa para 'ir' a un lugar (movimiento físico).","🔑 Las palabras de frecuencia (vždy, často, niekedy, zriedka, nikdy) suelen ir justo antes del verbo: 'Nikdy nepracujem cez víkend.'","🔑 Para negar 'ísť' usa 'ne-' como con cualquier otro verbo: idem→nejdem, ideš→nejdeš.","🔑 'celý/celá/celé' (todo/entero) concuerda en género igual que los demás adjetivos: celý deň, celá rodina, celé ráno."]
+},
+ls:[
+ {id:'s5l1',ti:'Mi semana',em:'📅',
+  sl:[
+   ['v','El tiempo',[['deň','día','dyen'],['týždeň','semana','tee-zhden'],['víkend','fin de semana','vee-kend'],['pracovný deň','día laborable','pra-tsov-nee dyen']]],
+   ['v','Hoy, mañana, ayer',[['dnes','hoy','dnes'],['zajtra','mañana','zay-tra'],['včera','ayer','vche-ra']]],
+   ['t','Repaso de los días','Ya conoces pondelok, utorok, streda, štvrtok, piatok, sobota y nedeľa. Esta sección añade palabras para hablar DE esos días: dnes, zajtra, včera, týždeň, víkend.']
+  ],
+  w:[['deň','día','📆'],['týždeň','semana','🗓️'],['víkend','fin de semana','🏖️'],['pracovný deň','día laborable','💼'],['dnes','hoy','👉'],['zajtra','mañana','➡️'],['včera','ayer','⬅️']],
+  p:[
+   ['Hoy es lunes, mañana es martes','Dnes je pondelok, zajtra je utorok',[['Dnes','Hoy'],['je','es'],['pondelok','lunes'],['zajtra','mañana'],['utorok','martes']],['streda','piatok'],"'je' = es/está (3ª persona de 'byť'). Repaso de los días de la semana."],
+   ['El fin de semana no trabajo','Cez víkend nepracujem',[['Cez','Durante'],['víkend','el fin de semana'],['nepracujem','no trabajo']],['týždeň','deň'],"'cez' (s4l7) + 'víkend' = durante el fin de semana. 'nepracujem' repasa la negación (s4)."]
+  ],
+  mc:[
+   ['¿Qué significa "týždeň"?',['día','semana','fin de semana','mes'],1,"'týždeň' = semana."],
+   ['¿Cómo se dice "ayer"?',['dnes','zajtra','včera','teraz'],2,"'včera' = ayer. 'dnes' = hoy, 'zajtra' = mañana."],
+   ['¿Qué significa "pracovný deň"?',['fin de semana','día laborable','día festivo','toda la semana'],1,"'pracovný deň' = día laborable (día de trabajo)."]
+  ]
+ },
+ {id:'s5l2',ti:'¿Con qué frecuencia?',em:'🔁',
+  sl:[
+   ['v','Palabras de frecuencia',[['vždy','siempre','vzhdy'],['často','a menudo','chas-to'],['niekedy','a veces','nye-ke-dy'],['zriedka','raras veces','zryed-ka']]],
+   ['v','Más frecuencia',[['nikdy','nunca','nik-dy'],['obyčajne','normalmente','o-bee-chay-ne'],['každý deň','cada día','kazh-dee dyen']]],
+   ['g','Posición en la frase','Las palabras de frecuencia van normalmente justo ANTES del verbo: "Vždy pracujem" (Siempre trabajo), "Nikdy nešportujem" (Nunca hago deporte).',[['Siempre trabajo','Vždy pracujem'],['A menudo leo','Často čítam'],['Nunca tengo tiempo','Nikdy nemám čas'],['A veces cocino','Niekedy varím']]]
+  ],
+  w:[['vždy','siempre','♾️'],['často','a menudo','🔄'],['niekedy','a veces','🤏'],['zriedka','raras veces','🌧️'],['nikdy','nunca','🚫'],['obyčajne','normalmente','📋'],['každý deň','cada día','📅']],
+  p:[
+   ['Siempre trabajo los lunes','Vždy pracujem v pondelok',[['Vždy','Siempre'],['pracujem','trabajo'],['v pondelok','los lunes']],['často','niekedy'],"'vždy' va antes del verbo. 'v pondelok' = los lunes (con 'v')."],
+   ['Nunca tengo tiempo','Nikdy nemám čas',[['Nikdy','Nunca'],['nemám','no tengo'],['čas','tiempo']],['zriedka','často'],"'Nikdy' + verbo negado = 'nunca'. Repaso de 'nemám' (s4)."]
+  ],
+  mc:[
+   ['¿Qué significa "zriedka"?',['siempre','a menudo','raras veces','nunca'],2,"'zriedka' = raras veces."],
+   ['¿Cómo se dice "siempre"?',['vždy','často','niekedy','nikdy'],0,"'vždy' = siempre."],
+   ['¿Qué significa "každý deň"?',['cada semana','cada día','algunos días','nunca'],1,"'každý deň' = cada día."]
+  ]
+ },
+ {id:'s5l3',ti:'Las partes del día',em:'🌅',
+  sl:[
+   ['v','Mañana, tarde, noche',[['ráno','por la mañana','ra-no'],['doobeda','a media mañana','do-o-be-da'],['popoludní','por la tarde','po-po-lud-nee'],['večer','por la noche / tarde','ve-cher']]],
+   ['v','Más palabras',[['v noci','de noche','vno-tsi'],['cez deň','durante el día','tsez dyen'],['celý deň','todo el día','tse-lee dyen']]],
+   ['t','Día completo','Con estas palabras puedes describir todo tu día: "Ráno pracujem, popoludní som doma a večer oddychujem."']
+  ],
+  w:[['ráno','por la mañana','🌅'],['doobeda','a media mañana','☀️'],['popoludní','por la tarde','🌇'],['večer','por la noche','🌆'],['v noci','de noche','🌙'],['cez deň','durante el día','🕐'],['celý deň','todo el día','🔄']],
+  p:[
+   ['Por la mañana trabajo, por la noche estoy en casa','Ráno pracujem, večer som doma',[['Ráno','Por la mañana'],['pracujem','trabajo'],['večer','por la noche'],['som doma','estoy en casa']],['popoludní','v noci'],"Estructura paralela: [parte del día] + [verbo]."],
+   ['Hoy estoy en casa todo el día','Dnes som celý deň doma',[['Dnes','Hoy'],['som','estoy'],['celý deň','todo el día'],['doma','en casa']],['víkend','zajtra'],"'celý deň' = todo el día. 'celý' concuerda en género: celý/celá/celé."]
+  ],
+  mc:[
+   ['¿Qué significa "v noci"?',['por la mañana','por la tarde','de noche','todo el día'],2,"'v noci' = de noche."],
+   ['¿Cómo se dice "por la tarde"?',['ráno','doobeda','popoludní','večer'],2,"'popoludní' = por la tarde."],
+   ['¿Qué significa "cez deň"?',['todo el día','durante el día','cada día','el fin de semana'],1,"'cez deň' = durante el día."]
+  ]
+ },
+ {id:'s5l4',ti:'El tiempo libre',em:'🎮',
+  sl:[
+   ['v','Actividades de ocio',[['relaxovať','relajarse','re-la-xo-vat'],['stretávať sa','quedar (con amigos)','stre-ta-vat sa'],['nakupovať','ir de compras','na-ku-po-vat']]],
+   ['v','Más actividades',[['upratovať','limpiar','u-pra-to-vat'],['oddychovať','descansar','o-dee-kho-vat'],['hrať','jugar','hrat'],['voľný čas','tiempo libre','vol-nee chas']]],
+   ['g','Rád/rada/radi + nuevas actividades','Combina lo aprendido en la Sección 3 con este vocabulario nuevo.',[['Me gusta relajarme (m.)','Rád relaxujem'],['Me gusta ir de compras (f.)','Rada nakupujem'],['No nos gusta limpiar','Neradi upratujeme'],['Me gusta jugar (m.)','Rád hrám']]]
+  ],
+  w:[['relaxovať','relajarse','🛀'],['stretávať sa','quedar (con amigos)','🤝'],['nakupovať','ir de compras','🛍️'],['upratovať','limpiar','🧹'],['oddychovať','descansar','🛋️'],['hrať','jugar','🎮'],['voľný čas','tiempo libre','⏰']],
+  p:[
+   ['Me gusta jugar en mi tiempo libre','Rád hrám vo voľnom čase',[['Rád','Me gusta (m.)'],['hrám','juego'],['vo voľnom čase','en mi tiempo libre']],['relaxujem','nakupujem'],"'voľný čas' = tiempo libre. Repaso de 'rád' (s3)."],
+   ['No me gusta limpiar, me gusta relajarme','Nerada upratujem, rada relaxujem',[['Nerada','No me gusta (f.)'],['upratujem','limpio'],['rada','me gusta (f.)'],['relaxujem','me relajo']],['stretávam sa','nakupujem'],"Combina 'nerada' (negación de rada) y 'rada' en una misma frase."]
+  ],
+  mc:[
+   ['¿Qué significa "stretávať sa"?',['limpiar','quedar con amigos','descansar','jugar'],1,"'stretávať sa' = quedar/reunirse con amigos."],
+   ['¿Cómo se dice "ir de compras"?',['upratovať','relaxovať','nakupovať','oddychovať'],2,"'nakupovať' = ir de compras."],
+   ['¿Qué significa "voľný čas"?',['día laborable','tiempo libre','todo el día','fin de semana'],1,"'voľný čas' = tiempo libre."]
+  ]
+ },
+ {id:'s5l5',ti:'Planes de fin de semana',em:'🗺️',
+  sl:[
+   ['v','Lugares',[['kino','cine','ki-no'],['reštaurácia','restaurante','resh-tau-ra-tsya'],['príroda','naturaleza','pree-ro-da'],['hory','montañas','ho-ry']]],
+   ['v','Ir a/desde',[['ísť','ir','eest'],['domov','a casa (destino)','do-mov'],['von','afuera / salir','von']]],
+   ['g','El verbo "ísť" (ir)','"ísť" es irregular y se usa para movimiento: "Idem do kina" (Voy al cine).',[['voy','idem'],['vas','ideš'],['va','ide'],['vamos','ideme'],['vais','idete'],['van','idú'],['no voy','nejdem']]]
+  ],
+  w:[['ísť','ir','🚶'],['kino','cine','🎬'],['reštaurácia','restaurante','🍽️'],['príroda','naturaleza','🌳'],['hory','montañas','⛰️'],['domov','a casa','🏠'],['von','afuera','🚪']],
+  p:[
+   ['Voy al cine los sábados','Idem do kina v sobotu',[['Idem','Voy'],['do kina','al cine'],['v sobotu','los sábados']],['reštaurácie','prírody'],"'idem' = voy (1ª persona de 'ísť'). 'do kina' = al cine."],
+   ['El fin de semana voy a la naturaleza','Cez víkend idem do prírody',[['Cez víkend','El fin de semana'],['idem','voy'],['do prírody','a la naturaleza']],['hôr','domov'],"Repaso de 'cez víkend' (s5l1) + 'idem' (ísť, nuevo)."]
+  ],
+  mc:[
+   ['¿Cómo se dice "voy" (yo)?',['ide','ideš','idem','idú'],2,"'idem' = voy. 1ª persona singular de 'ísť'."],
+   ['¿Qué significa "hory"?',['ríos','montañas','playas','bosques'],1,"'hory' = montañas."],
+   ['¿Cómo se dice "a casa" (destino)?',['doma','domov','dom','domáci'],1,"'domov' = a casa (movimiento hacia). 'doma' = en casa (ubicación)."]
+  ]
+ },
+ {id:'s5l6',ti:'¿Con qué frecuencia...?',em:'❓',
+  sl:[
+   ['v','Preguntar por frecuencia',[['Ako často?','¿con qué frecuencia?','a-ko chas-to'],['Kedy?','¿cuándo?','ke-dy'],['niekoľkokrát','varias veces','nye-kol-ko-krat']]],
+   ['v','Más palabras',[['mesačne','mensualmente','me-sach-ne'],['týždenne','semanalmente','tee-zhden-ne'],['denne','diariamente','den-ne'],['spolu','juntos','spo-lu']]],
+   ['t','Conversación de ejemplo','— Ako často ideš do kina? — Idem niekoľkokrát mesačne. A ty? — Ja idem zriedka, ale rád pozerám filmy doma.']
+  ],
+  w:[['Ako často?','¿con qué frecuencia?','❓'],['Kedy?','¿cuándo?','⏰'],['niekoľkokrát','varias veces','🔢'],['mesačne','mensualmente','🗓️'],['týždenne','semanalmente','📆'],['denne','diariamente','☀️'],['spolu','juntos','👥']],
+  p:[
+   ['¿Con qué frecuencia vas al cine?','Ako často ideš do kina?',[['Ako často','¿Con qué frecuencia'],['ideš','vas'],['do kina?','al cine?']],['Kedy','Prečo'],"'Ako často' + verbo en 2ª persona = pregunta por frecuencia."],
+   ['Hago deporte yo solo','Športujem sám',[['Športujem','Hago deporte'],['sám','solo (hombre)']],['sama','spolu'],"'sám' (hombre) / 'sama' (mujer) = solo/sola. Una mujer diría 'Športujem sama'."]
+  ],
+  mc:[
+   ['¿Qué significa "denne"?',['semanalmente','mensualmente','diariamente','nunca'],2,"'denne' = diariamente."],
+   ['¿Cómo se dice "varias veces"?',['vždy','niekoľkokrát','zriedka','spolu'],1,"'niekoľkokrát' = varias veces."],
+   ['¿Qué significa "spolu"?',['solo','siempre','juntos','a veces'],2,"'spolu' = juntos."]
+  ]
+ },
+ {id:'s5l7',ti:'Mi semana típica',em:'🔄',
+  sl:[
+   ['v','Conectar ideas',[['najprv','primero','nay-prv'],['potom','después','po-tom'],['nakoniec','finalmente','na-ko-nyets']]],
+   ['v','Más palabras',[['program','programa','pro-gram'],['plán','plan','plan'],['celkovo','en total','tsel-ko-vo']]],
+   ['t','¡Fin del Bloque 1!','Najprv pracujem, potom som doma a oddychujem, a nakoniec, cez víkend, idem do hôr alebo do kina. Môj plán na týždeň je celkovo dobrý!']
+  ],
+  w:[['najprv','primero','1️⃣'],['potom','después','2️⃣'],['nakoniec','finalmente','🏁'],['program','programa','📋'],['plán','plan','🗺️'],['celkovo','en total','📊']],
+  p:[
+   ['Primero trabajo, después descanso','Najprv pracujem, potom oddychujem',[['Najprv','Primero'],['pracujem','trabajo'],['potom','después'],['oddychujem','descanso']],['nakoniec','vždy'],"'najprv...potom...nakoniec' organizan una secuencia de acciones."],
+   ['Al final, el fin de semana voy a la naturaleza','Nakoniec, cez víkend idem do prírody',[['Nakoniec','Al final'],['cez víkend','el fin de semana'],['idem','voy'],['do prírody','a la naturaleza']],['domov','von'],"'nakoniec' cierra la secuencia de la lección."]
+  ],
+  mc:[
+   ['¿Qué significa "najprv"?',['después','primero','finalmente','en total'],1,"'najprv' = primero."],
+   ['¿Cómo se dice "finalmente"?',['najprv','potom','nakoniec','celkovo'],2,"'nakoniec' = finalmente/al final."],
+   ['¿Qué significa "plán"?',['programa','horario','plan','total'],2,"'plán' = plan."]
+  ]
+ },
+ {id:'s5test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Test final del Bloque 1!','25 preguntas sobre toda la Sección 5 (y repaso del Bloque 1 entero). Necesitas 80% para desbloquear el Bloque 2. ¡Mucha suerte!'],
+   ['g','Repaso rápido','Todo lo aprendido en la Sección 5:',[['Tiempo','dnes, zajtra, včera, týždeň, víkend'],['Frecuencia','vždy, často, niekedy, zriedka, nikdy'],['Partes del día','ráno, popoludní, večer, v noci'],['Verbo ísť','idem, ideš, ide, ideme, idete, idú']]],
+   ['t','¡Felicidades!','Has completado el Bloque 1: identidad, presente, géneros, negación, emociones, profesiones y rutina semanal. ¡El Bloque 2 te espera!']
+  ],
+  w:[],p:[],mc:[],
+  tq:[
+   {id:'s5t-01',category:'new',type:'mc',skill:'vocab',concept_tag:'dni_tyzdna',question:'¿Qué significa "týždeň"?',options:['día','semana','fin de semana','mes'],answer:1,audio:null,skippable:false,accept:[],explanation:"'týždeň' = semana."},
+   {id:'s5t-02',category:'new',type:'fill',skill:'vocab',concept_tag:'dni_tyzdna',question:'Completa: "Dnes je pondelok, ___ je utorok." (mañana)',options:[],answer:'zajtra',audio:null,skippable:false,accept:['zajtra'],explanation:"'zajtra' = mañana (día siguiente)."},
+   {id:'s5t-03',category:'new',type:'mc',skill:'vocab',concept_tag:'frekvencia_prislovky',question:'¿Cómo se dice "siempre"?',options:['často','vždy','niekedy','nikdy'],answer:1,audio:null,skippable:false,accept:[],explanation:"'vždy' = siempre."},
+   {id:'s5t-04',category:'new',type:'type',skill:'vocab',concept_tag:'frekvencia_prislovky',question:'Escribe en eslovaco: "nunca"',options:[],answer:'nikdy',audio:null,skippable:false,accept:['nikdy'],explanation:"'nikdy' = nunca."},
+   {id:'s5t-05',category:'new',type:'mc',skill:'vocab',concept_tag:'frekvencia_prislovky',question:'¿Qué significa "zriedka"?',options:['siempre','a menudo','raras veces','cada día'],answer:2,audio:null,skippable:false,accept:[],explanation:"'zriedka' = raras veces."},
+   {id:'s5t-06',category:'new',type:'fill',skill:'vocab',concept_tag:'casti_dna',question:'Completa: "Ráno pracujem, ___ som doma." (por la noche)',options:[],answer:'večer',audio:null,skippable:false,accept:['večer'],explanation:"'večer' = por la noche/tarde."},
+   {id:'s5t-07',category:'new',type:'mc',skill:'vocab',concept_tag:'casti_dna',question:'¿Cómo se dice "durante el día"?',options:['celý deň','cez deň','každý deň','v noci'],answer:1,audio:null,skippable:false,accept:[],explanation:"'cez deň' = durante el día."},
+   {id:'s5t-08',category:'new',type:'listen',skill:'vocab',concept_tag:'ist_konjugacia',question:'Escucha y elige la traducción correcta.',options:['Voy al cine','Voy a casa','Voy a las montañas','Voy de compras'],answer:0,audio:'Idem do kina',skippable:true,accept:[],explanation:"'Idem do kina' = Voy al cine."},
+   {id:'s5t-09',category:'new',type:'mc',skill:'grammar',concept_tag:'ist_konjugacia',question:'"Ja ___ do práce." (voy)',options:['ide','ideš','idem','idú'],answer:2,audio:null,skippable:false,accept:[],explanation:"'idem' = voy. 1ª persona de 'ísť'."},
+   {id:'s5t-10',category:'new',type:'type',skill:'grammar',concept_tag:'ist_konjugacia',question:'Conjuga "ísť" para "ty" (tú)',options:[],answer:'ideš',audio:null,skippable:false,accept:['ideš','idez'],explanation:"'ideš' = vas (2ª persona singular de 'ísť')."},
+   {id:'s5t-11',category:'new',type:'mc',skill:'vocab',concept_tag:'volny_cas_slovesa',question:'¿Qué significa "stretávať sa"?',options:['limpiar','quedar con amigos','descansar','jugar'],answer:1,audio:null,skippable:false,accept:[],explanation:"'stretávať sa' = quedar/reunirse con amigos."},
+   {id:'s5t-12',category:'new',type:'fill',skill:'grammar',concept_tag:'rad_rada_radi',question:'Completa (mujer): "Rada ___ cez víkend." (compro/voy de compras)',options:[],answer:'nakupujem',audio:null,skippable:false,accept:['nakupujem'],explanation:"'Rada nakupujem' = me gusta ir de compras (mujer)."},
+   {id:'s5t-13',category:'new',type:'mc',skill:'vocab',concept_tag:'volny_cas_slovesa',question:'¿Cómo se dice "limpiar"?',options:['relaxovať','upratovať','oddychovať','nakupovať'],answer:1,audio:null,skippable:false,accept:[],explanation:"'upratovať' = limpiar."},
+   {id:'s5t-14',category:'new',type:'mc',skill:'grammar',concept_tag:'opytovacie_kedy_akocasto',question:'¿Qué significa "Ako často?"?',options:['¿Cuándo?','¿Por qué?','¿Con qué frecuencia?','¿Cómo?'],answer:2,audio:null,skippable:false,accept:[],explanation:"'Ako často?' = ¿Con qué frecuencia?"},
+   {id:'s5t-15',category:'new',type:'fill',skill:'grammar',concept_tag:'frekvencia_prislovky',question:'Completa: "___ idem do hôr." (a veces)',options:[],answer:'Niekedy',audio:null,skippable:false,accept:['Niekedy'],explanation:"'Niekedy' = a veces."},
+   {id:'s5t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cuál es la negación de "mám"?',options:['nemám','nie mám','mám nie','nemam nie'],answer:0,audio:null,skippable:false,accept:[],explanation:"'nemám' = no tengo. 'ne-' + 'mám'."},
+   {id:'s5t-17',category:'old_review',type:'type',skill:'grammar',concept_tag:'rad_rada_radi',question:'Escribe en eslovaco (hombre): "no me gusta cocinar"',options:[],answer:'Nerád varím',audio:null,skippable:false,accept:['Nerád varím','Nerad varim'],explanation:"'Nerád' + verbo = no me gusta (hombre)."},
+   {id:'s5t-18',category:'old_review',type:'mc',skill:'grammar',concept_tag:'pridavne_zhoda',question:'¿Cuál es la forma femenina de "unavený"?',options:['unavená','unavené','unavený','unavení'],answer:0,audio:null,skippable:false,accept:[],explanation:"'unavená' = cansada (femenino, termina en -á)."},
+   {id:'s5t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'byt_som_si_je',question:'Completa: "Vy ___ tu." (estáis)',options:[],answer:'ste',audio:null,skippable:false,accept:['ste'],explanation:"'ste' = estáis (vy)."},
+   {id:'s5t-20',category:'old_review',type:'mc',skill:'vocab',concept_tag:'profesie_vocab',question:'¿Qué significa "kuchár"?',options:['médico','profesor','cocinero','vendedor'],answer:2,audio:null,skippable:false,accept:[],explanation:"'kuchár' = cocinero."},
+   {id:'s5t-21',category:'random_review',type:'mc',skill:'vocab',concept_tag:'greetings_formal_informal',question:'¿Cuál es el saludo FORMAL?',options:['Ahoj','Čau','Dobrý deň','Servus'],answer:2,audio:null,skippable:false,accept:[],explanation:"'Dobrý deň' es el saludo formal."},
+   {id:'s5t-22',category:'random_review',type:'mc',skill:'vocab',concept_tag:'numbers_1_10',question:'¿Cómo se dice "ocho"?',options:['sedem','osem','deväť','šesť'],answer:1,audio:null,skippable:false,accept:[],explanation:"'osem' = ocho."},
+   {id:'s5t-23',category:'random_review',type:'mc',skill:'vocab',concept_tag:'colors',question:'¿Qué significa "zelená"?',options:['roja','azul','verde','amarilla'],answer:2,audio:null,skippable:false,accept:[],explanation:"'zelená' = verde."},
+   {id:'s5t-24',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'frekvencia_prislovky',question:'¿Qué frase es CORRECTA?',options:['Idem nikdy do kina.','Nikdy nejdem do kina.','Nikdy idem nie do kina.','Nejdem nikdy do kina nie.'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Nikdy' + verbo negado: 'Nikdy nejdem' (idem→nejdem con 'ne-')."},
+   {id:'s5t-25',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'rad_rada_radi',question:'Corrige el error: "Som rád pracujem."',options:[],answer:'Rád pracujem',audio:null,skippable:false,accept:['Rád pracujem','Rad pracujem'],explanation:"'Rád/rada/radi' + verbo NO lleva 'som' delante: 'Rád pracujem' (no 'Som rád pracujem')."}
+  ]
+ }
 ]}
 ];
 
@@ -481,8 +848,8 @@ async function seed() {
     for (let li = 0; li < sec.ls.length; li++) {
       const les = sec.ls[li];
       await execute(
-        `INSERT INTO lessons (id, section_id, sort_order, title, emoji, is_test, slides, words, phrases, multiple_choice)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+        `INSERT INTO lessons (id, section_id, sort_order, title, emoji, is_test, slides, words, phrases, multiple_choice, test_questions)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
         [
           les.id,
           sec.id,
@@ -493,7 +860,8 @@ async function seed() {
           JSON.stringify(les.sl || []),
           JSON.stringify(les.w || []),
           JSON.stringify(les.p || []),
-          JSON.stringify(les.mc || [])
+          JSON.stringify(les.mc || []),
+          JSON.stringify(les.tq || [])
         ]
       );
     }

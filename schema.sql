@@ -32,5 +32,14 @@ CREATE TABLE IF NOT EXISTS lessons (
   slides jsonb NOT NULL DEFAULT '[]',
   words jsonb NOT NULL DEFAULT '[]',
   phrases jsonb NOT NULL DEFAULT '[]',
-  multiple_choice jsonb NOT NULL DEFAULT '[]'
+  multiple_choice jsonb NOT NULL DEFAULT '[]',
+  test_questions jsonb NOT NULL DEFAULT '[]'
+);
+
+CREATE TABLE IF NOT EXISTS user_mistakes (
+  username text REFERENCES users(username),
+  concept_tag text NOT NULL,
+  wrong_count integer NOT NULL DEFAULT 0,
+  last_wrong_at bigint NOT NULL,
+  PRIMARY KEY (username, concept_tag)
 );
