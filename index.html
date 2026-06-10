@@ -1087,13 +1087,12 @@ function renderVocab() {
           <div style="font-size:.75rem;color:var(--mu)">${secWords.length} palabras</div>
         </div>
       </div>`;
-    html += secWords.map(([sk,es,pron]) => `
+    html += secWords.map(([sk,es,icon]) => `
       <div class="vocab-item">
-        <div style="font-size:1.3rem">${pron || '🔤'}</div>
+        <div style="font-size:1.3rem">${icon || '🔤'}</div>
         <div style="flex:1">
           <div class="vocab-sk">${sk}</div>
           <div class="vocab-es">${es}</div>
-          ${pron?`<div class="vocab-pron">/${pron}/</div>`:''}
         </div>
         <button onclick="speak('${sk.replace(/'/g,"\\'")}');event.stopPropagation()" style="background:none;border:none;cursor:pointer;font-size:1.1rem;padding:4px;color:var(--mu)">🔊</button>
       </div>`).join('');
