@@ -6,6 +6,39 @@ učia slovenčinu. Všetky vysvetlenia, popisy, UI texty a názvy kategórií
 Slovenčina sa používa len ako jazykový obsah, ktorý sa študuje (slovíčka,
 vety, gramatické tabuľky).
 
+## Pravidlo: latinoamerická španielčina (TVRDÉ PRAVIDLO)
+
+Všetka španielčina v aplikácii (UI, vysvetlenia, príklady, preklady) musí byť
+**latinoamerická španielčina**, NIE peninsulárna (kastílska zo Španielska).
+Pred pridaním akéhokoľvek nového obsahu skontroluj, že nepoužívaš:
+
+- **`vosotros` a jeho tvary** (`estáis`, `sois`, `habéis`, `tenéis`, `vais`,
+  `vuestro/a`, ...). Slovenské `vy` (2. os. pl.) sa prekladá ako
+  `ustedes` (množné číslo, formálne aj neformálne) alebo `usted`
+  (formálne jednotné číslo). Slovesá pri `ustedes` majú tvar 3. os. pl.
+  (`están`, `son`, `tienen`, `van`, ...).
+- **Peninsulárnu slovnú zásobu** — namiesto nej použiť latinoamerické
+  ekvivalenty, napr.:
+  - `coche` → `auto` (univerzálne zrozumiteľné v LatAm; pekne sa zhoduje aj
+    so slovenským `auto`)
+  - `ordenador` → `computadora`
+  - `móvil` → `celular`
+  - `coger` (v LatAm vulgárne) → `tomar` / `agarrar`
+  - `vale` (súhlas) → `dale` / `bueno` / `está bien`
+  - `tío/tía` (slang pre "chlap/baba") → nepoužívať
+  - `patata` → `papa`
+  - `zumo` → `jugo`
+  - `piso` (byt) → `departamento` / `apartamento`
+  - `nevera` → `refrigerador` / `heladera`
+  - `fontanero` → `plomero`
+  - `billete` (cestovný lístok) → `boleto`
+  - `conducir` (auto) → `manejar` (v LatAm bežnejšie ako `conducir`)
+  - `calcetines` → `medias` (calcetines je výrazne španielske; medias je
+    bežnejšie naprieč LatAm)
+
+Ak si neistý, či je slovo/tvar peninsulárny, over si to a použij
+latinoamerický ekvivalent.
+
 Pred plánovaním/tvorbou akejkoľvek sekcie si over tieto čísla (časté zdroje
 zámeny v minulosti):
 
