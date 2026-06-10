@@ -587,6 +587,7 @@ function renderHeartsEl(id, n) {
 }
 function renderMap() {
   const u = getUser();
+  repairGrammarUnlocks(u);
   const body = document.getElementById('map-body');
   body.innerHTML = '';
   if (!C || !C.length) {
@@ -659,6 +660,24 @@ function isSecUnlocked(si) {
 }
 function allLessonsDone(sec, u) {
   return sec.ls.filter(l => !l.isTest).every(l => (u.completed||[]).includes(l.id));
+}
+
+function repairGrammarUnlocks(u) {
+  if (!u || !C) return false;
+  const unlocked = Array.isArray(u.grammarUnlocked) ? [...new Set(u.grammarUnlocked)] : [];
+  let changed = false;
+  C.forEach(sec => {
+    if (allLessonsDone(sec, u) && !unlocked.includes(sec.id)) {
+      unlocked.push(sec.id);
+      changed = true;
+    }
+  });
+  if (changed) {
+    u.grammarUnlocked = unlocked;
+    setUser(u);
+    updateProgress().catch(() => {});
+  }
+  return changed;
 }
 
 // ─── SLIDES ──────────────────────────────────────────────────────────
@@ -1032,6 +1051,7 @@ function renderGrammar(tabIdx) {
   if (tabIdx !== undefined) curGramTab = tabIdx;
   if (!C) return;
   const u = getUser();
+  repairGrammarUnlocks(u);
   const unlockedSections = (u.grammarUnlocked||[]);
   const tabBar = document.getElementById('gram-tabs');
   tabBar.innerHTML = C.map((sec,i) => {
