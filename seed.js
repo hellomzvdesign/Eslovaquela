@@ -834,6 +834,344 @@ ls:[
    {id:'s5t-25',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'rad_rada_radi',question:'Corrige el error: "Som rád pracujem."',options:[],answer:'Rád pracujem',audio:null,skippable:false,accept:['Rád pracujem','Rad pracujem'],explanation:"'Rád/rada/radi' + verbo NO lleva 'som' delante: 'Rád pracujem' (no 'Som rád pracujem')."}
   ]
  }
+]},
+{id:'s6',ti:'Mi casa',em:'🏠',col:'#06AED5',
+gr:{
+  intro:'La Sección 6 abre el Bloque 2 ("Mi mundo y mis cosas") con el acusativo (4. pád), el caso del objeto directo: lo que TIENES, VES o QUIERES. También aprendes las habitaciones y los muebles de tu casa.',
+  patches:[
+    {op:'newTable', category:'pady', tableId:'rody',
+     title:'Géneros gramaticales (repaso)', note:'Para usar el acusativo correctamente primero hay que reconocer el género del sustantivo.',
+     h:['Rod','Terminación típica','Ejemplos'],
+     r:[['Mužský (masculino)','consonante','dom, stôl, telefón'],['Ženský (femenino)','-a','izba, kuchyňa, stolička'],['Stredný (neutro)','-o / -e','okno, srdce']]},
+    {op:'newTable', category:'pady', tableId:'akuzativ',
+     title:'Akuzatív (4. pád) — singular', note:"El acusativo es el caso del objeto directo: responde a 'Koho? Čo?' (¿a quién? ¿qué?). Se usa después de verbos como 'mať' (tener).",
+     h:['Rod','Nominatív','Akuzatív','Príklad'],
+     r:[['Mužský neživotný','dom','dom','Mám dom. = Tengo una casa.'],['Ženský (-a)','izba','izbu','Mám izbu. = Tengo un cuarto.'],['Stredný','okno','okno','Mám okno. = Tengo una ventana.']]},
+    {op:'newTable', category:'pady', tableId:'prehlad-padov',
+     title:'Prehľad skloňovania (vzorové slovo: izba)', note:'Esta tabla irá creciendo con cada caso nuevo que aprendas.',
+     h:['Pád','Otázka','Forma','Príklad'],
+     r:[['Nominatív','Kto? Čo?','izba','To je moja izba. = Esto es mi cuarto.'],['Akuzatív','Koho? Čo?','izbu','Mám izbu. = Tengo un cuarto.']]},
+    {op:'addRows', category:'otazky-spojky', tableId:'opytovacie-zamena',
+     r:[['Koho? Čo?','¿a quién? ¿qué? (acusativo)']]},
+    {op:'addRows', category:'frazy', tableId:'prezivanie',
+     r:[['¿Dónde está el baño?','Kde je kúpeľňa?','kde ye KOO-pel-nya']]}
+  ],
+  tips:["🔑 El acusativo (4. pád) es el caso del OBJETO DIRECTO: lo que tienes, ves o quieres.","🔑 Sustantivos femeninos en -a cambian a -u en acusativo: izba→izbu, kuchyňa→kuchyňu.","🔑 Sustantivos masculinos inanimados y neutros NO cambian en acusativo: dom→dom, okno→okno.","🔑 'mám' + acusativo es la estructura más común para hablar de lo que tienes: 'Mám izbu, kuchyňu a kúpeľňu.'"]
+},
+ls:[
+ {id:'s6l1',ti:'Mi casa',em:'🏠',
+  sl:[
+   ['v','La casa',[['dom','casa','dom'],['izba','cuarto / habitación','iz-ba']]],
+   ['g','El acusativo: lo que TIENES','El acusativo es el caso de lo que tienes, ves o quieres. Compara:',[['Esto es una casa. (nominativo)','To je dom.'],['Tengo una casa. (acusativo)','Mám dom.'],['Esto es un cuarto. (nominativo)','To je izba.'],['Tengo un cuarto. (acusativo)','Mám izbu.']]]
+  ],
+  w:[['dom','casa','🏠'],['izba','cuarto / habitación','🚪']],
+  p:[
+   ['Tengo una casa.','Mám dom.',[['Mám','Tengo'],['dom','una casa']],['izbu','okno'],"'dom' (masculino inanimado) NO cambia en acusativo: dom→dom."],
+   ['Tengo un cuarto.','Mám izbu.',[['Mám','Tengo'],['izbu','un cuarto']],['dom','kuchyňu'],"'izba' (femenino -a) cambia a -u en acusativo: izba→izbu."],
+   ['No tengo casa.','Nemám dom.',[['Nemám','No tengo'],['dom','casa']],['izbu','si'],"Repaso de la negación 'ne-' (s4) + acusativo."]
+  ],
+  mc:[
+   ['¿Cuál es el acusativo de "izba" (cuarto)?',['izba','izbe','izbu','izby'],2,"'izba'→'izbu' en acusativo (femenino -a → -u)."],
+   ['¿Cómo se dice "Tengo una casa"?',['To je dom','Mám dom','Som dom','Dom mám si'],1,"'Mám dom' = Tengo una casa. 'dom' no cambia en acusativo."],
+   ['¿Qué significa "Mám izbu"?',['Esto es un cuarto','Tengo un cuarto','No tengo cuarto','Es mi cuarto'],1,"'Mám izbu' = Tengo un cuarto."]
+  ]
+ },
+ {id:'s6l2',ti:'La cocina y el dormitorio',em:'🍳',
+  sl:[
+   ['v','Más habitaciones',[['kuchyňa','cocina','ku-khi-nya'],['spálňa','dormitorio','spal-nya']]],
+   ['g','Más femeninos en -a','Igual que "izba", estas palabras también cambian -a → -u en acusativo.',[['Tengo una cocina.','Mám kuchyňu.'],['Tengo un dormitorio.','Mám spálňu.'],['No tengo dormitorio.','Nemám spálňu.']]]
+  ],
+  w:[['kuchyňa','cocina','🍳'],['spálňa','dormitorio','🛏️']],
+  p:[
+   ['Tengo una cocina.','Mám kuchyňu.',[['Mám','Tengo'],['kuchyňu','una cocina']],['izbu','spálňu'],"'kuchyňa'→'kuchyňu' (femenino -a → -u)."],
+   ['Tengo una cocina y un dormitorio.','Mám kuchyňu a spálňu.',[['Mám','Tengo'],['kuchyňu','una cocina'],['a','y'],['spálňu','un dormitorio']],['izbu','dom'],"Lista de objetos en acusativo conectados con 'a' (y)."],
+   ['¿Tienes un dormitorio?','Máš spálňu?',[['Máš','¿Tienes'],['spálňu?','un dormitorio?']],['kuchyňu','izbu'],"'Máš' = 2ª persona de 'mať' (s3) + acusativo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "cocina"?',['izba','kuchyňa','spálňa','dom'],1,"'kuchyňa' = cocina."],
+   ['¿Cuál es el acusativo de "spálňa"?',['spálňa','spálňu','spálne','spálni'],1,"'spálňa'→'spálňu' (femenino -a → -u)."],
+   ['¿Qué significa "Máš kuchyňu?"',['¿Tienes una cocina?','¿Es una cocina?','¿Hay una cocina?','¿Te gusta la cocina?'],0,"'Máš' = ¿tienes? + acusativo 'kuchyňu'."]
+  ]
+ },
+ {id:'s6l3',ti:'¿Dónde está el baño?',em:'🛁',
+  sl:[
+   ['v','El baño',[['kúpeľňa','baño','koo-pel-nya']]],
+   ['g','Preguntar "¿Dónde está...?"','Repaso de "kde" (s3) + "je" (byť, s1). El sustantivo se queda en NOMINATIVO porque es el sujeto, no el objeto directo.',[['¿Dónde está el baño?','Kde je kúpeľňa?'],['¿Dónde está la cocina?','Kde je kuchyňa?'],['El baño está aquí.','Kúpeľňa je tu.']]]
+  ],
+  w:[['kúpeľňa','baño','🛁']],
+  p:[
+   ['¿Dónde está el baño?','Kde je kúpeľňa?',[['Kde','Dónde'],['je','está'],['kúpeľňa?','el baño?']],['izba','spálňa'],"'Kde je...?' = ¿Dónde está...? 'kúpeľňa' está en nominativo (es el sujeto)."],
+   ['No tengo baño en casa.','Doma nemám kúpeľňu.',[['Doma','En casa'],['nemám','no tengo'],['kúpeľňu','baño']],['kuchyňu','izbu'],"'Doma' (s1) + 'nemám' (negación de 'mám') + acusativo."],
+   ['¿Tienes un baño?','Máš kúpeľňu?',[['Máš','¿Tienes'],['kúpeľňu?','un baño?']],['kuchyňu','spálňu'],"'kúpeľňa'→'kúpeľňu' en acusativo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "baño"?',['kuchyňa','spálňa','kúpeľňa','izba'],2,"'kúpeľňa' = baño."],
+   ['¿Cómo se dice "¿Dónde está el baño?"?',['Máš kúpeľňu?','Kde je kúpeľňa?','Mám kúpeľňu','Kúpeľňa je dom'],1,"'Kde je kúpeľňa?' = ¿Dónde está el baño?"],
+   ['¿Por qué "kúpeľňa" no cambia en "Kde je kúpeľňa?"',['Porque es plural','Porque es el sujeto, está en nominativo','Porque es masculino','Porque es una pregunta'],1,"En 'Kde je kúpeľňa?', 'kúpeľňa' es el sujeto (nominativo), no objeto directo."]
+  ]
+ },
+ {id:'s6l4',ti:'La sala y la mesa',em:'🛋️',
+  sl:[
+   ['v','Más muebles',[['obývačka','sala','o-bee-vach-ka'],['stôl','mesa','stol']]],
+   ['g','Masculino vs. femenino en acusativo','Compara los dos patrones que ya conoces:',[['Tengo una mesa. (masculino, no cambia)','Mám stôl.'],['Tengo una sala. (femenino -a→-u)','Mám obývačku.'],['Tengo una sala y una mesa.','Mám obývačku a stôl.']]]
+  ],
+  w:[['obývačka','sala','🛋️'],['stôl','mesa','🍽️']],
+  p:[
+   ['Tengo una mesa.','Mám stôl.',[['Mám','Tengo'],['stôl','una mesa']],['obývačku','dom'],"'stôl' (masculino inanimado) NO cambia en acusativo."],
+   ['Tengo una sala.','Mám obývačku.',[['Mám','Tengo'],['obývačku','una sala']],['stôl','kuchyňu'],"'obývačka'→'obývačku' (femenino -a → -u)."],
+   ['Tengo una sala y una mesa.','Mám obývačku a stôl.',[['Mám','Tengo'],['obývačku','una sala'],['a','y'],['stôl','una mesa']],['kuchyňu','izbu'],"Lista de dos objetos: uno femenino (obývačku) y uno masculino (stôl)."]
+  ],
+  mc:[
+   ['¿Cómo se dice "sala"?',['kuchyňa','obývačka','spálňa','kúpeľňa'],1,"'obývačka' = sala."],
+   ['¿Cuál es el acusativo de "stôl" (mesa)?',['stôl','stola','stôlu','stoly'],0,"'stôl' es masculino inanimado: no cambia en acusativo."],
+   ['¿Qué significa "Mám obývačku a stôl"?',['Tengo una sala y una mesa','Esto es una sala y una mesa','No tengo sala ni mesa','¿Tienes una sala y una mesa?'],0,"'Mám obývačku a stôl' = Tengo una sala y una mesa."]
+  ]
+ },
+ {id:'s6l5',ti:'La silla',em:'🪑',
+  sl:[
+   ['v','Un mueble más',[['stolička','silla','sto-lich-ka']]],
+   ['t','Patrón femenino otra vez','"stolička" termina en -a, así que sigue el mismo patrón: stolička→stoličku. Ya has visto este patrón con izba, kuchyňa, spálňa, kúpeľňa y obývačka — ¡son 6 palabras femeninas!']
+  ],
+  w:[['stolička','silla','🪑']],
+  p:[
+   ['Tengo una silla.','Mám stoličku.',[['Mám','Tengo'],['stoličku','una silla']],['stôl','obývačku'],"'stolička'→'stoličku' (femenino -a → -u, igual que izba→izbu)."],
+   ['No tengo silla, tengo una mesa.','Nemám stoličku, mám stôl.',[['Nemám','No tengo'],['stoličku','silla'],['mám','tengo'],['stôl','una mesa']],['kuchyňu','spálňu'],"Contraste: 'nemám stoličku' (femenino, cambia) vs 'mám stôl' (masculino, no cambia)."],
+   ['¿Tienes una mesa y una silla?','Máš stôl a stoličku?',[['Máš','¿Tienes'],['stôl','una mesa'],['a','y'],['stoličku?','una silla?']],['izbu','kuchyňu'],"Pregunta con 'máš' (2ª persona de 'mať') + dos objetos en acusativo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "silla"?',['stôl','stolička','posteľ','okno'],1,"'stolička' = silla."],
+   ['¿Cuál es el acusativo de "stolička"?',['stolička','stoličky','stoličku','stoličke'],2,"'stolička'→'stoličku' (femenino -a → -u)."],
+   ['¿Qué significa "Nemám stoličku"?',['Tengo una silla','No tengo silla','¿Tienes una silla?','Esto no es una silla'],1,"'Nemám stoličku' = No tengo silla."]
+  ]
+ },
+ {id:'s6l6',ti:'La cama y la ventana',em:'🛏️',
+  sl:[
+   ['v','Dos palabras nuevas',[['posteľ','cama','pos-tel'],['okno','ventana','ok-no']]],
+   ['g','Dos patrones que NO cambian','"posteľ" (femenino terminado en consonante blanda) y "okno" (neutro) NO cambian en acusativo, igual que "dom" y "stôl".',[['Tengo una cama. (no cambia)','Mám posteľ.'],['Tengo una ventana. (no cambia)','Mám okno.'],['Esto es mi cama.','To je moja posteľ.']]]
+  ],
+  w:[['posteľ','cama','🛏️'],['okno','ventana','🪟']],
+  p:[
+   ['Tengo una cama.','Mám posteľ.',[['Mám','Tengo'],['posteľ','una cama']],['posteľu','okná'],"'posteľ' (femenino en consonante blanda) NO cambia en acusativo."],
+   ['Tengo una ventana.','Mám okno.',[['Mám','Tengo'],['okno','una ventana']],['oknu','okná'],"'okno' (neutro) NO cambia en acusativo, igual que 'dom'."],
+   ['Tengo una cama y una ventana.','Mám posteľ a okno.',[['Mám','Tengo'],['posteľ','una cama'],['a','y'],['okno','una ventana']],['izbu','stôl'],"Dos palabras que NO cambian en acusativo: 'posteľ' y 'okno'."]
+  ],
+  mc:[
+   ['¿Cómo se dice "cama"?',['stolička','posteľ','okno','obývačka'],1,"'posteľ' = cama."],
+   ['¿Cuál es el acusativo de "okno" (ventana)?',['okno','okna','oknu','okná'],0,"'okno' (neutro) no cambia en acusativo: okno→okno."],
+   ['¿Cuál de estas palabras SÍ cambia en acusativo (-a → -u)?',['posteľ','okno','izba','dom'],2,"'izba' es femenino en -a, cambia a 'izbu'. Las demás no cambian."]
+  ]
+ },
+ {id:'s6l7',ti:'Mi casa completa',em:'🚪',
+  sl:[
+   ['v','Última palabra de la sección',[['skriňa','armario','skri-nya']]],
+   ['t','¡Sección 6 completa!','Ya conoces 11 palabras nuevas y el acusativo singular: dom, izba, kuchyňa, spálňa, kúpeľňa, obývačka, stôl, stolička, posteľ, okno, skriňa. ¡A practicar para el test!']
+  ],
+  w:[['skriňa','armario','🚪']],
+  p:[
+   ['Tengo un armario.','Mám skriňu.',[['Mám','Tengo'],['skriňu','un armario']],['posteľ','okno'],"'skriňa'→'skriňu' (femenino -a → -u)."],
+   ['Tengo una cocina, un dormitorio y un baño.','Mám kuchyňu, spálňu a kúpeľňu.',[['Mám','Tengo'],['kuchyňu','una cocina'],['spálňu','un dormitorio'],['kúpeľňu','un baño']],['obývačku','skriňu'],"Repaso de tres palabras femeninas en acusativo (-a→-u)."],
+   ['¿Qué tienes en tu casa?','Čo máš doma?',[['Čo','Qué'],['máš','tienes'],['doma?','en tu casa?']],['kde','ako'],"'Čo' (qué, acusativo) + 'máš' (s3) + 'doma' (s1)."]
+  ],
+  mc:[
+   ['¿Cómo se dice "armario"?',['posteľ','skriňa','okno','stolička'],1,"'skriňa' = armario."],
+   ['¿Cuál es el acusativo de "skriňa"?',['skriňa','skrini','skriňu','skrine'],2,"'skriňa'→'skriňu' (femenino -a → -u)."],
+   ['¿Cuántas palabras de esta sección son femeninas en -a→-u?',['3','5','7','9'],2,"izba, kuchyňa, spálňa, kúpeľňa, obývačka, stolička, skriňa = 7 palabras femeninas en -a→-u."]
+  ]
+ },
+ {id:'s6test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Hora del examen!','Vas a responder preguntas de repaso de toda la Sección 6: el acusativo y las 11 palabras de la casa. Necesitas 80% correctas para desbloquear la Sección 7. ¡Tú puedes!'],
+   ['g','Repaso rápido','El acusativo singular:',[['Mužský neživotný (no cambia)','dom, stôl, okno*'],['Ženský -a → -u','izba→izbu, kuchyňa→kuchyňu, skriňa→skriňu...'],['Mám + acusativo','Mám dom, izbu, kuchyňu...']]],
+   ['t','Consejo final',"Recuerda: solo los sustantivos femeninos terminados en -a cambian (-a→-u). Los demás se quedan igual."]
+  ],
+  w:[],p:[],mc:[],
+  tq:[
+   {id:'s6t-01',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'¿Cuál es el acusativo de "izba" (cuarto)?',options:['izba','izbe','izbu','izby'],answer:2,audio:null,skippable:false,accept:[],explanation:"'izba'→'izbu' (femenino -a → -u)."},
+   {id:'s6t-02',category:'new',type:'fill',skill:'vocab',concept_tag:'vocab_dom_izba',question:'Completa: "Mám ___." (Tengo una cocina)',options:[],answer:'kuchyňu',audio:null,skippable:false,accept:['kuchyňu'],explanation:"'kuchyňa'→'kuchyňu' = Tengo una cocina."},
+   {id:'s6t-03',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'¿Cuál es el acusativo de "dom" (casa)?',options:['domu','dom','doma','domy'],answer:1,audio:null,skippable:false,accept:[],explanation:"'dom' (masculino inanimado) no cambia en acusativo."},
+   {id:'s6t-04',category:'new',type:'mc',skill:'vocab',concept_tag:'vocab_dom_izba',question:'¿Qué significa "spálňa"?',options:['cocina','baño','dormitorio','sala'],answer:2,audio:null,skippable:false,accept:[],explanation:"'spálňa' = dormitorio."},
+   {id:'s6t-05',category:'new',type:'type',skill:'vocab',concept_tag:'vocab_dom_izba',question:'Escribe en eslovaco: "baño"',options:[],answer:'kúpeľňa',audio:null,skippable:false,accept:['kúpeľňa','kupelna'],explanation:"'kúpeľňa' = baño."},
+   {id:'s6t-06',category:'new',type:'listen',skill:'vocab',concept_tag:'vocab_dom_izba',question:'Escucha y elige la traducción correcta.',options:['Tengo una sala','Tengo una cocina','Tengo un armario','Tengo una cama'],answer:0,audio:'Mám obývačku',skippable:true,accept:[],explanation:"'Mám obývačku' = Tengo una sala."},
+   {id:'s6t-07',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'¿Cuál es el acusativo de "okno" (ventana)?',options:['okna','oknu','okno','okná'],answer:2,audio:null,skippable:false,accept:[],explanation:"'okno' (neutro) no cambia en acusativo."},
+   {id:'s6t-08',category:'new',type:'fill',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Completa: "Máš ___?" (¿Tienes una silla?)',options:[],answer:'stoličku',audio:null,skippable:false,accept:['stoličku'],explanation:"'stolička'→'stoličku' (femenino -a → -u)."},
+   {id:'s6t-09',category:'new',type:'mc',skill:'vocab',concept_tag:'opytovacie_kde_je',question:'¿Cómo se dice "¿Dónde está el baño?"?',options:['Mám kúpeľňu','Kde je kúpeľňa?','Máš kúpeľňu?','Kúpeľňa je tu'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Kde je...?' = ¿Dónde está...?"},
+   {id:'s6t-10',category:'new',type:'type',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Escribe el acusativo de "skriňa" (armario)',options:[],answer:'skriňu',audio:null,skippable:false,accept:['skriňu','skrinu'],explanation:"'skriňa'→'skriňu' (femenino -a → -u)."},
+   {id:'s6t-11',category:'new',type:'mc',skill:'grammar',concept_tag:'mat_s_akuzativom',question:'¿Cuál frase es CORRECTA para "Tengo una mesa y una silla"?',options:['Mám stôl a stoličku','Mám stôla a stoličku','Mám stôl a stolička','Mám stôl a stoličke'],answer:0,audio:null,skippable:false,accept:[],explanation:"'stôl' no cambia, 'stolička'→'stoličku'."},
+   {id:'s6t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cómo se dice "No tengo casa"?',options:['Nie mám dom','Mám nie dom','Nemám dom','Dom nemám nie'],answer:2,audio:null,skippable:false,accept:[],explanation:"'ne-' + 'mám' = 'nemám' (s4)."},
+   {id:'s6t-13',category:'old_review',type:'mc',skill:'grammar',concept_tag:'pritomny_vzory_mat',question:'¿Cómo se dice "tienes" (de "mať")?',options:['mám','máš','má','majú'],answer:1,audio:null,skippable:false,accept:[],explanation:"'máš' = tienes (2ª persona de 'mať', s3)."},
+   {id:'s6t-14',category:'old_review',type:'fill',skill:'vocab',concept_tag:'opytovacie_zamena',question:'Completa: "___ je kúpeľňa?" (¿Dónde está el baño?)',options:[],answer:'Kde',audio:null,skippable:false,accept:['Kde'],explanation:"'Kde' = dónde (s3)."},
+   {id:'s6t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'numbers_1_10',question:'¿Cómo se dice "tres"?',options:['dva','tri','štyri','päť'],answer:1,audio:null,skippable:false,accept:[],explanation:"'tri' = tres."},
+   {id:'s6t-16',category:'random_review',type:'listen',skill:'grammar',concept_tag:'rad_rada_radi',question:'Escucha y elige la traducción correcta.',options:['Me gusta trabajar','No me gusta trabajar','Trabajo mucho','Quiero trabajar'],answer:0,audio:'Rád pracujem',skippable:true,accept:[],explanation:"'Rád pracujem' = Me gusta trabajar (hombre)."},
+   {id:'s6t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Elige la frase CORRECTA para "Tengo un cuarto"',options:['Mám izba','Mám izbu','Mám izbe','Mám izby'],answer:1,audio:null,skippable:false,accept:[],explanation:"Femenino -a → -u en acusativo: 'izba'→'izbu'."},
+   {id:'s6t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'Corrige el error: "Mám domu."',options:[],answer:'Mám dom',audio:null,skippable:false,accept:['Mám dom'],explanation:"'dom' (masculino inanimado) NO cambia en acusativo: 'Mám dom', no 'Mám domu'."}
+  ]
+ }
+]},
+{id:'s7',ti:'Mis cosas',em:'🎒',col:'#EF476F',
+gr:{
+  intro:'La Sección 7 amplía el acusativo: ahora incluye los sustantivos masculinos ANIMADOS (personas, animales), que cambian -Ø → -a, y el plural de los tres géneros. También aprendes vocabulario de "mis cosas": mascotas, libros y aparatos.',
+  patches:[
+    {op:'addRows', category:'pady', tableId:'akuzativ',
+     r:[['Mužský životný','pes','psa','Mám psa. = Tengo un perro.']]},
+    {op:'newTable', category:'pady', tableId:'mnozne-cislo',
+     title:'Množné číslo (nominatív)', note:'El plural depende del género. Después de los números 2, 3 y 4 se usa esta misma forma.',
+     h:['Rod','Singular','Plural','Príklad'],
+     r:[['Mužský','dom','domy','Mám dva domy. = Tengo dos casas.'],['Ženský','izba','izby','Mám tri izby. = Tengo tres cuartos.'],['Stredný','okno','okná','Mám dve okná. = Tengo dos ventanas.']]},
+    {op:'addRows', category:'pady', tableId:'prehlad-padov',
+     r:[['Akuzatív (živ.)','Koho?','psa','Mám psa. = Tengo un perro.']]},
+    {op:'addRows', category:'frazy', tableId:'prezivanie',
+     r:[['¿Qué es esto?','Čo je to?','cho ye to']]}
+  ],
+  tips:["🔑 Los sustantivos masculinos ANIMADOS (personas, animales) cambian -Ø → -a en acusativo: pes→psa, brat→brata.","🔑 El plural depende del género: masculino -y (domy), femenino -y (izby), neutro -á (autá, okná, kreslá).","🔑 Después de los números 2, 3 y 4 se usa la forma plural: dva domy, tri izby, dve autá.","🔑 'Čo je to?' (¿Qué es esto?) es una pregunta útil para aprender vocabulario nuevo."]
+},
+ls:[
+ {id:'s7l1',ti:'El perro y el gato',em:'🐶',
+  sl:[
+   ['v','Mascotas',[['pes','perro','pes'],['mačka','gato / gata','mach-ka']]],
+   ['g','Acusativo: masculino ANIMADO','Los sustantivos masculinos ANIMADOS (personas, animales) cambian -Ø → -a en acusativo, ¡a diferencia de los inanimados!',[['Tengo un perro. (animado, -Ø→-a)','Mám psa.'],['Tengo una casa. (inanimado, no cambia)','Mám dom.'],['Tengo un gato/a. (femenino -a→-u)','Mám mačku.'],['Tengo un hermano. (animado, repaso s1)','Mám brata.']]]
+  ],
+  w:[['pes','perro','🐶'],['mačka','gato / gata','🐱']],
+  p:[
+   ['Tengo un perro.','Mám psa.',[['Mám','Tengo'],['psa','un perro']],['pes','mačku'],"'pes' (masculino animado) cambia -Ø → -a en acusativo: pes→psa."],
+   ['Tengo un gato.','Mám mačku.',[['Mám','Tengo'],['mačku','un gato/a']],['psa','knihu'],"'mačka' (femenino -a) cambia -a → -u: mačka→mačku."],
+   ['No tengo perro, tengo un gato.','Nemám psa, mám mačku.',[['Nemám','No tengo'],['psa','perro'],['mám','tengo'],['mačku','un gato/a']],['dom','izbu'],"Repaso de 'nemám' (s4) + dos patrones de acusativo distintos."]
+  ],
+  mc:[
+   ['¿Cuál es el acusativo de "pes" (perro)?',['pes','psa','psy','pesa'],1,"'pes' (masculino animado) → 'psa' en acusativo (-Ø → -a)."],
+   ['¿Por qué "pes" cambia diferente que "dom" en acusativo?',['Porque "pes" es femenino','Porque "pes" es un animal/persona (animado)','Porque "pes" es plural','No hay diferencia'],1,"Los sustantivos masculinos ANIMADOS (personas, animales) cambian -Ø→-a; los inanimados no cambian."],
+   ['¿Cómo se dice "Tengo un gato"?',['Mám mačka','Mám mačku','Mám mačke','Mám mačky'],1,"'mačka'→'mačku' (femenino -a → -u)."]
+  ]
+ },
+ {id:'s7l2',ti:'El libro y la bolsa',em:'📖',
+  sl:[
+   ['v','Cosas para llevar',[['kniha','libro','kni-ha'],['taška','bolsa / mochila','tash-ka']]],
+   ['t','Más femeninos en -a','"kniha" y "taška" siguen el mismo patrón que "izba" y "mačka": -a → -u en acusativo.']
+  ],
+  w:[['kniha','libro','📖'],['taška','bolsa / mochila','👜']],
+  p:[
+   ['Tengo un libro.','Mám knihu.',[['Mám','Tengo'],['knihu','un libro']],['mačku','tašku'],"'kniha'→'knihu' (femenino -a → -u)."],
+   ['Tengo una bolsa.','Mám tašku.',[['Mám','Tengo'],['tašku','una bolsa']],['knihu','psa'],"'taška'→'tašku' (femenino -a → -u)."],
+   ['Tengo un libro y una bolsa.','Mám knihu a tašku.',[['Mám','Tengo'],['knihu','un libro'],['a','y'],['tašku','una bolsa']],['psa','mačku'],"Lista de dos objetos femeninos en acusativo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "libro"?',['taška','kniha','pero','auto'],1,"'kniha' = libro."],
+   ['¿Cuál es el acusativo de "taška"?',['taška','tašku','tašky','taške'],1,"'taška'→'tašku' (femenino -a → -u)."],
+   ['¿Qué significa "Mám knihu a tašku"?',['Tengo un libro y una bolsa','¿Tienes un libro y una bolsa?','No tengo libro ni bolsa','Esto es un libro y una bolsa'],0,"'Mám knihu a tašku' = Tengo un libro y una bolsa."]
+  ]
+ },
+ {id:'s7l3',ti:'El teléfono',em:'📱',
+  sl:[
+   ['v','Un objeto importante',[['telefón','teléfono','te-le-fon']]],
+   ['g','Masculino inanimado: repaso','"telefón" es masculino inanimado, igual que "dom" y "stôl": NO cambia en acusativo.',[['Tengo un teléfono. (no cambia)','Mám telefón.'],['Tengo una casa. (no cambia, s6)','Mám dom.'],['Tengo un perro. (cambia, animado)','Mám psa.']]]
+  ],
+  w:[['telefón','teléfono','📱']],
+  p:[
+   ['Tengo un teléfono.','Mám telefón.',[['Mám','Tengo'],['telefón','un teléfono']],['telefónu','knihu'],"'telefón' (masculino inanimado) NO cambia en acusativo, igual que 'dom' y 'stôl'."],
+   ['No tengo teléfono.','Nemám telefón.',[['Nemám','No tengo'],['telefón','teléfono']],['psa','tašku'],"'nemám' (s4) + sustantivo masculino inanimado sin cambio."],
+   ['¿Tienes un teléfono y una bolsa?','Máš telefón a tašku?',[['Máš','¿Tienes'],['telefón','un teléfono'],['a','y'],['tašku?','una bolsa?']],['psa','knihu'],"Combina un masculino inanimado (sin cambio) y un femenino (-a→-u)."]
+  ],
+  mc:[
+   ['¿Cómo se dice "teléfono"?',['počítač','telefón','auto','pero'],1,"'telefón' = teléfono."],
+   ['¿Cuál es el acusativo de "telefón"?',['telefón','telefónu','telefóny','telefóna'],0,"'telefón' (masculino inanimado) no cambia en acusativo."],
+   ['¿Qué significa "Nemám telefón"?',['Tengo un teléfono','No tengo teléfono','¿Tienes un teléfono?','Esto no es un teléfono'],1,"'Nemám telefón' = No tengo teléfono."]
+  ]
+ },
+ {id:'s7l4',ti:'La computadora y el bolígrafo',em:'💻',
+  sl:[
+   ['v','Más objetos',[['počítač','computadora','po-chee-tach'],['pero','bolígrafo / lapicera','pe-ro']]],
+   ['g','Inanimado: masculino y neutro','"počítač" (masculino inanimado) y "pero" (neutro) — ninguno cambia en acusativo.',[['Tengo una computadora. (no cambia)','Mám počítač.'],['Tengo un bolígrafo. (no cambia)','Mám pero.'],['Tengo una computadora y un bolígrafo.','Mám počítač a pero.']]]
+  ],
+  w:[['počítač','computadora','💻'],['pero','bolígrafo / lapicera','🖊️']],
+  p:[
+   ['Tengo una computadora.','Mám počítač.',[['Mám','Tengo'],['počítač','una computadora']],['počítača','knihu'],"'počítač' (masculino inanimado) NO cambia en acusativo."],
+   ['Tengo un bolígrafo.','Mám pero.',[['Mám','Tengo'],['pero','un bolígrafo']],['pera','tašku'],"'pero' (neutro) NO cambia en acusativo, igual que 'okno'."],
+   ['Tengo una computadora y un bolígrafo.','Mám počítač a pero.',[['Mám','Tengo'],['počítač','una computadora'],['a','y'],['pero','un bolígrafo']],['psa','mačku'],"Dos sustantivos inanimados (masculino y neutro) que no cambian."]
+  ],
+  mc:[
+   ['¿Cómo se dice "computadora"?',['telefón','počítač','auto','kniha'],1,"'počítač' = computadora."],
+   ['¿Cuál es el acusativo de "pero" (bolígrafo)?',['pero','pera','perá','perom'],0,"'pero' (neutro) no cambia en acusativo."],
+   ['¿Qué significa "Mám počítač a pero"?',['Tengo una computadora y un bolígrafo','¿Tienes una computadora?','No tengo computadora','Esto es una computadora y un bolígrafo'],0,"'Mám počítač a pero' = Tengo una computadora y un bolígrafo."]
+  ]
+ },
+ {id:'s7l5',ti:'El auto y el plural',em:'🚗',
+  sl:[
+   ['v','Un vehículo',[['auto','auto / carro','au-to']]],
+   ['g','Množné číslo (plural)','¡Nuevo! Para hablar de VARIAS cosas, el sustantivo cambia de forma. Mira estos ejemplos:',[['una casa → dos casas','dom → domy'],['un cuarto → tres cuartos','izba → izby'],['una ventana → dos ventanas','okno → okná'],['un auto → dos autos','auto → autá']]]
+  ],
+  w:[['auto','auto / carro','🚗']],
+  p:[
+   ['Tengo un auto.','Mám auto.',[['Mám','Tengo'],['auto','un auto']],['autá','autom'],"'auto' (neutro) NO cambia en acusativo singular."],
+   ['Tengo dos autos.','Mám dve autá.',[['Mám','Tengo'],['dve','dos'],['autá','autos']],['auto','domy'],"Plural neutro: auto → autá. 'dve' = dos (con sustantivos neutros/femeninos)."],
+   ['Tengo dos casas y tres cuartos.','Mám dva domy a tri izby.',[['Mám','Tengo'],['dva domy','dos casas'],['a','y'],['tri izby','tres cuartos']],['autá','okná'],"Plural masculino: dom→domy. Plural femenino: izba→izby."]
+  ],
+  mc:[
+   ['¿Cómo se dice "auto/carro"?',['bicykel','auto','počítač','pero'],1,"'auto' = auto/carro."],
+   ['¿Cuál es el plural de "auto"?',['auto','autá','autos','auty'],1,"'auto'→'autá' (plural neutro)."],
+   ['¿Cuál es el plural de "izba" (cuarto)?',['izba','izbu','izby','izbá'],2,"'izba'→'izby' (plural femenino)."]
+  ]
+ },
+ {id:'s7l6',ti:'El sillón y la lámpara',em:'🛋️',
+  sl:[
+   ['v','Más muebles',[['kreslo','sillón','kres-lo'],['lampa','lámpara','lam-pa']]],
+   ['t','Repaso de patrones','"kreslo" (neutro, no cambia) y "lampa" (femenino -a→-u, cambia a "lampu") — los dos patrones que ya conoces muy bien.']
+  ],
+  w:[['kreslo','sillón','🛋️'],['lampa','lámpara','💡']],
+  p:[
+   ['Tengo un sillón.','Mám kreslo.',[['Mám','Tengo'],['kreslo','un sillón']],['kreslá','lampu'],"'kreslo' (neutro) NO cambia en acusativo."],
+   ['Tengo una lámpara.','Mám lampu.',[['Mám','Tengo'],['lampu','una lámpara']],['kreslo','tašku'],"'lampa'→'lampu' (femenino -a → -u)."],
+   ['Tengo dos sillones y una lámpara.','Mám dve kreslá a lampu.',[['Mám','Tengo'],['dve kreslá','dos sillones'],['a','y'],['lampu','una lámpara']],['domy','izby'],"Plural neutro 'kreslá' (kreslo→kreslá) + acusativo singular 'lampu'."]
+  ],
+  mc:[
+   ['¿Cómo se dice "sillón"?',['stolička','kreslo','posteľ','lampa'],1,"'kreslo' = sillón."],
+   ['¿Cuál es el acusativo de "lampa"?',['lampa','lampu','lampy','lampe'],1,"'lampa'→'lampu' (femenino -a → -u)."],
+   ['¿Cuál es el plural de "kreslo"?',['kreslo','kreslu','kreslá','kresly'],2,"'kreslo'→'kreslá' (plural neutro)."]
+  ]
+ },
+ {id:'s7l7',ti:'Mis cosas, en resumen',em:'🟫',
+  sl:[
+   ['v','Última palabra de la sección',[['koberec','alfombra','ko-be-rets']]],
+   ['t','¡Sección 7 completa!','Ya conoces 22 palabras de la casa (Secciones 6-7) y el acusativo singular completo: masculino animado (-Ø→-a), masculino inanimado (no cambia), femenino -a (-a→-u), neutro (no cambia) y femenino en consonante (no cambia), además del plural. ¡A practicar para el test!']
+  ],
+  w:[['koberec','alfombra','🟫']],
+  p:[
+   ['Tengo una alfombra.','Mám koberec.',[['Mám','Tengo'],['koberec','una alfombra']],['koberca','lampu'],"'koberec' (masculino inanimado) NO cambia en acusativo."],
+   ['Tengo un perro y un gato.','Mám psa a mačku.',[['Mám','Tengo'],['psa','un perro'],['a','y'],['mačku','un gato/a']],['knihu','tašku'],"Repaso: 'pes' (animado) → 'psa', 'mačka' → 'mačku'."],
+   ['¿Qué tienes?','Čo máš?',[['Čo','Qué'],['máš','tienes']],['kde','ako'],"Repaso de 'Čo máš?' (s6l7) — pregunta general sobre posesiones."]
+  ],
+  mc:[
+   ['¿Cómo se dice "alfombra"?',['kreslo','koberec','lampa','posteľ'],1,"'koberec' = alfombra."],
+   ['¿Cuál es el acusativo de "koberec"?',['koberec','koberca','kobercu','koberce'],0,"'koberec' (masculino inanimado) no cambia en acusativo."],
+   ['¿Qué tipo de sustantivo cambia -Ø → -a en acusativo?',['Masculino inanimado','Femenino en -a','Masculino animado','Neutro'],2,"Solo los sustantivos MASCULINOS ANIMADOS (personas, animales) cambian -Ø → -a: pes→psa, brat→brata."]
+  ]
+ },
+ {id:'s7test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
+  sl:[
+   ['t','¡Hora del examen!','Vas a responder preguntas de repaso de toda la Sección 7: el acusativo ampliado (animado + plural) y 11 palabras nuevas. Necesitas 80% correctas para desbloquear la Sección 8. ¡Tú puedes!'],
+   ['g','Repaso rápido','El acusativo, ampliado:',[['Mužský životný (-Ø → -a)','pes→psa, brat→brata'],['Mužský neživotný / Stredný (no cambia)','dom, telefón, auto, pero'],['Ženský -a → -u','mačka→mačku, kniha→knihu'],['Plurál','dom→domy, izba→izby, auto→autá']]],
+   ['t','Consejo final',"Antes de decir 'Mám ___', pregúntate: ¿es una persona o animal? Si sí, cambia -Ø → -a."]
+  ],
+  w:[],p:[],mc:[],
+  tq:[
+   {id:'s7t-01',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_muzsky_zivotny',question:'¿Cuál es el acusativo de "pes" (perro)?',options:['pes','psa','psy','pesa'],answer:1,audio:null,skippable:false,accept:[],explanation:"'pes' (masculino animado) → 'psa' (-Ø → -a)."},
+   {id:'s7t-02',category:'new',type:'fill',skill:'vocab',concept_tag:'vocab_moje_veci',question:'Completa: "Mám ___." (Tengo un libro)',options:[],answer:'knihu',audio:null,skippable:false,accept:['knihu'],explanation:"'kniha'→'knihu' = Tengo un libro."},
+   {id:'s7t-03',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'¿Cuál es el acusativo de "taška" (bolsa)?',options:['taška','tašku','tašky','taške'],answer:1,audio:null,skippable:false,accept:[],explanation:"'taška'→'tašku' (femenino -a → -u)."},
+   {id:'s7t-04',category:'new',type:'mc',skill:'vocab',concept_tag:'vocab_moje_veci',question:'¿Qué significa "počítač"?',options:['teléfono','computadora','bolígrafo','auto'],answer:1,audio:null,skippable:false,accept:[],explanation:"'počítač' = computadora."},
+   {id:'s7t-05',category:'new',type:'type',skill:'vocab',concept_tag:'vocab_moje_veci',question:'Escribe en eslovaco: "teléfono"',options:[],answer:'telefón',audio:null,skippable:false,accept:['telefón','telefon'],explanation:"'telefón' = teléfono."},
+   {id:'s7t-06',category:'new',type:'listen',skill:'vocab',concept_tag:'vocab_moje_veci',question:'Escucha y elige la traducción correcta.',options:['Tengo un perro y un gato','Tengo un libro y una bolsa','Tengo una computadora','No tengo perro'],answer:0,audio:'Mám psa a mačku',skippable:true,accept:[],explanation:"'Mám psa a mačku' = Tengo un perro y un gato."},
+   {id:'s7t-07',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'¿Cuál es el acusativo de "pero" (bolígrafo)?',options:['pero','pera','perá','perom'],answer:0,audio:null,skippable:false,accept:[],explanation:"'pero' (neutro) no cambia en acusativo."},
+   {id:'s7t-08',category:'new',type:'fill',skill:'grammar',concept_tag:'mnozne_cislo_nom',question:'Completa: "Mám dve ___." (Tengo dos autos)',options:[],answer:'autá',audio:null,skippable:false,accept:['autá','auta'],explanation:"'auto'→'autá' (plural neutro)."},
+   {id:'s7t-09',category:'new',type:'mc',skill:'grammar',concept_tag:'mnozne_cislo_nom',question:'¿Cuál es el plural de "izba" (cuarto)?',options:['izba','izbu','izby','izbá'],answer:2,audio:null,skippable:false,accept:[],explanation:"'izba'→'izby' (plural femenino)."},
+   {id:'s7t-10',category:'new',type:'type',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Escribe el acusativo de "mačka" (gato)',options:[],answer:'mačku',audio:null,skippable:false,accept:['mačku','macku'],explanation:"'mačka'→'mačku' (femenino -a → -u)."},
+   {id:'s7t-11',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_muzsky_zivotny',question:'¿Por qué "pes"→"psa" pero "dom"→"dom" en acusativo?',options:['"pes" es femenino','"pes" es animado (animal); "dom" es inanimado','"pes" es plural','No hay razón, son irregulares'],answer:1,audio:null,skippable:false,accept:[],explanation:"Los masculinos animados cambian -Ø→-a; los inanimados no cambian."},
+   {id:'s7t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'¿Cuál es el acusativo de "izba" (cuarto)?',options:['izba','izbe','izbu','izby'],answer:2,audio:null,skippable:false,accept:[],explanation:"Repaso de la Sección 6: izba→izbu."},
+   {id:'s7t-13',category:'old_review',type:'mc',skill:'vocab',concept_tag:'vocab_dom_izba',question:'¿Qué significa "kúpeľňa"?',options:['cocina','dormitorio','baño','sala'],answer:2,audio:null,skippable:false,accept:[],explanation:"'kúpeľňa' = baño (s6)."},
+   {id:'s7t-14',category:'old_review',type:'fill',skill:'grammar',concept_tag:'pritomny_vzory_mat',question:'Completa: "Ja ___ psa." (yo tengo)',options:[],answer:'mám',audio:null,skippable:false,accept:['mám'],explanation:"'mám' = tengo (1ª persona de 'mať', s3)."},
+   {id:'s7t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'colors',question:'¿Qué significa "modrá"?',options:['roja','azul','verde','negra'],answer:1,audio:null,skippable:false,accept:[],explanation:"'modrá' = azul."},
+   {id:'s7t-16',category:'random_review',type:'listen',skill:'grammar',concept_tag:'ist_konjugacia',question:'Escucha y elige la traducción correcta.',options:['Voy a casa','Estoy en casa','Voy al cine','Tengo una casa'],answer:0,audio:'Idem domov',skippable:true,accept:[],explanation:"'Idem domov' = Voy a casa."},
+   {id:'s7t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'akuzativ_muzsky_zivotny',question:'Elige la frase CORRECTA para "Tengo un perro"',options:['Mám pes','Mám psa','Mám psy','Mám pesa'],answer:1,audio:null,skippable:false,accept:[],explanation:"Masculino animado -Ø→-a: 'pes'→'psa'."},
+   {id:'s7t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'Corrige el error: "Mám telefónu."',options:[],answer:'Mám telefón',audio:null,skippable:false,accept:['Mám telefón'],explanation:"'telefón' (masculino inanimado) NO cambia en acusativo: 'Mám telefón', no 'Mám telefónu'."}
+  ]
+ }
 ]}
 ];
 
