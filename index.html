@@ -733,9 +733,10 @@ function makeOpts(correct, all, n) {
 }
 function makeDistr(correct, all, n) { return shuffle(all.filter(x => x !== correct)).slice(0, n); }
 
-function buildExercises(les) {
-  buildAllSk();
-  const pool = [];
+const LESSON_EXERCISE_COUNT = 20;
+const PREVIOUS_LESSON_EXERCISE_COUNT = 5;
+
+function addLessonItemsToPool(les, pool) {
   (les.w||[]).forEach(([sk,es,em]) => {
     pool.push({t:'img',es,sk,em,opts:makeOpts(sk,ALL_SK,4),x:`'${sk}' significa '${es}'.`});
     pool.push({t:'wd',es,sk,w:[{sk,es}],dis:makeDistr(sk,ALL_SK,3),x:`'${sk}' = '${es}'.`});
@@ -746,7 +747,31 @@ function buildExercises(les) {
   (les.mc||[]).forEach(([q,opts,ci,x]) => {
     pool.push({t:'mc',q,opts,ci,x});
   });
-  return shuffle(pool).slice(0, 15);
+}
+
+function buildPreviousPool(les) {
+  buildAllSk();
+  const prevPool = [];
+  for (const sec of C) {
+    if (sec.id === curSection?.id) break;
+    sec.ls.filter(l => !l.isTest).forEach(prev => addLessonItemsToPool(prev, prevPool));
+  }
+  if (curSection) {
+    for (const prev of curSection.ls) {
+      if (prev.id === les.id) break;
+      if (!prev.isTest) addLessonItemsToPool(prev, prevPool);
+    }
+  }
+  return prevPool;
+}
+
+function buildExercises(les) {
+  buildAllSk();
+  const pool = [];
+  addLessonItemsToPool(les, pool);
+  const previousPool = buildPreviousPool(les);
+  const previousItems = shuffle(previousPool).slice(0, PREVIOUS_LESSON_EXERCISE_COUNT);
+  return shuffle([...pool, ...previousItems]).slice(0, LESSON_EXERCISE_COUNT);
 }
 
 function buildTestExercises(sec) {
