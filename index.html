@@ -862,8 +862,8 @@ function makeOpts(correct, all, n) {
 }
 function makeDistr(correct, all, n) { return shuffle(all.filter(x => x !== correct)).slice(0, n); }
 
-const LESSON_EXERCISE_COUNT = 20;
-const PREVIOUS_LESSON_EXERCISE_COUNT = 5;
+const LESSON_EXERCISE_COUNT = 11;
+const PREVIOUS_LESSON_EXERCISE_COUNT = 6;
 
 function addLessonItemsToPool(les, pool) {
   (les.w||[]).forEach(([sk,es,em]) => {
@@ -917,7 +917,7 @@ function buildLegacyTestExercises(sec) {
       pool.push({t:'wd',es,sk,w:ws.map(([s,e])=>({sk:s,es:e})),dis,x});
     });
   });
-  return shuffle(pool).slice(0, 25);
+  return shuffle(pool).slice(0, 18);
 }
 
 function tqToEx(q) {
@@ -965,7 +965,7 @@ async function buildTestExercises(sec) {
     }
   }
 
-  const all = shuffle([...staticQs, ...errorQs.slice(0,2)]).slice(0, 25);
+  const all = shuffle([...staticQs, ...errorQs.slice(0,2)]).slice(0, 18);
   return all.map(tqToEx);
 }
 
@@ -1318,12 +1318,12 @@ function showGramPopup(sec, prevUnlockedIds) {
       const cat = GRAMMAR_CATEGORIES.find(c => c.id === p.category);
       const tbl = map[p.category][p.tableId];
       const tblTitle = tbl ? tbl.title : p.tableId;
-      html += `<p style="font-size:.8rem;color:var(--mu);margin:0 0 6px">📌 Doplnené do: <strong>${cat?cat.title:p.category} → ${tblTitle}</strong></p>`;
+      html += `<p style="font-size:.8rem;color:var(--mu);margin:0 0 6px">📌 Añadido a: <strong>${cat?cat.title:p.category} → ${tblTitle}</strong></p>`;
       html += `<div class="gram-table-wrap"><table class="gram-table"><tbody>${p.r.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     }
   });
   if (gr.tips && gr.tips.length) {
-    html += `<div style="margin-top:6px"><h3 style="font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);margin:0 0 8px">🔑 Kľúčové body</h3>`;
+    html += `<div style="margin-top:6px"><h3 style="font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);margin:0 0 8px">🔑 Puntos clave</h3>`;
     html += gr.tips.map(t => `<div style="background:var(--bl-l);border-radius:10px;padding:10px 12px;margin-bottom:7px;font-size:.87rem;line-height:1.5;color:var(--tx)">${t}</div>`).join('');
     html += '</div>';
   }

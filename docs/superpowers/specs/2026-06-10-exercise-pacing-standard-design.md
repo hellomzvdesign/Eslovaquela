@@ -87,6 +87,31 @@ tiene vocabulario en memoria:
 Suma de palabras nuevas en la Sección 1: 5 (lecciones 1-2) + 0 + 0 + 2 + 2 +
 2 (lecciones 5-7) = **11**, igual que cualquier otra sección.
 
+## 5bis. Nota de implementación (lecciones 1-7 vs. test)
+
+El runtime (`index.html`) NO usa un array estático `tq` con `concept_tag`
+para las lecciones 1-7 — genera los ejercicios dinámicamente a partir de
+`w`/`p`/`mc` de la lección actual + una muestra de lecciones anteriores
+(`buildExercises`). Para aplicar el estándar de la sección 2 sin reescribir
+ese motor:
+
+- `LESSON_EXERCISE_COUNT` (antes 20) → **11**: tamaño objetivo de la cola de
+  ejercicios de una lección.
+- `PREVIOUS_LESSON_EXERCISE_COUNT` (antes 5) → **6**: ítems tomados de
+  lecciones anteriores (aproxima el ~60% `old_review`).
+- Reducir `w`/`p`/`mc` de cada lección a 1-2 palabras nuevas + unas pocas
+  frases/preguntas hace que el "pool propio" de la lección sea pequeño
+  (~15-20% `new`), y el resto lo completa el pool de lecciones anteriores.
+- La categoría `error_pattern` (20%, personalización por errores) **solo
+  existe a nivel de test** (`tq` + `findReviewQuestion` + `user_mistakes`),
+  no por lección. Añadirla a las lecciones 1-7 requeriría dar a cada lección
+  su propio array `tq` y hacer asíncrona `buildExercises` — **fuera de
+  alcance de esta migración**, queda como mejora futura.
+
+Para la 8ª unidad (test), el array `tq` (formato rico con `concept_tag`,
+`category`, etc.) se mantiene, y el cap de selección baja de 25 a **18**
+(`buildTestExercises` y `buildLegacyTestExercises`).
+
 ## 5. Qué NO cambia
 
 - Numeración de bloques/secciones (18×5=90) y roles 1-5 dentro del bloque.

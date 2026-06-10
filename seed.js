@@ -4,155 +4,159 @@ const { execute } = require('./api/db');
 const CURRICULUM = [
 {id:'s1',ti:'¡Hola, Eslovaquia!',em:'🇸🇰',col:'#FF6B35',
 gr:{
-  intro:'La Sección 1 cubre los fundamentos del eslovaco: saludos, identidad, números, colores, familia y vocabulario cotidiano.',
+  intro:'La Sección 1 te da tus primeras 11 palabras del eslovaco: los pronombres ja/ty/on, el verbo "byť" (ser/estar) en sus formas más básicas (som/si/je), la negación "nie" y vocabulario esencial (dobre, ako, doma, priateľ).',
   patches:[
-    {op:'newTable', category:'zamena', tableId:'zamena-osobne',
-     title:'Pronombres personales',note:'En eslovaco los pronombres a menudo se omiten porque el verbo indica la persona.',
+    {op:'newTable', category:'zamena', tableId:'zamena-osobne-basico',
+     title:'Pronombres personales (básico)',note:'En eslovaco los pronombres a menudo se omiten porque el verbo ya indica la persona. Aquí empezamos solo con tres.',
      h:['Persona','Eslovaco','Español'],
-     r:[['1ª singular','ja','yo'],['2ª singular','ty','tú'],['3ª sing. masc.','on','él'],['3ª sing. fem.','ona','ella'],['3ª sing. neutro','ono','ello'],['1ª plural','my','nosotros/as'],['2ª plural','vy','vosotros / Usted (formal)'],['3ª plural','oni / ony','ellos / ellas']]},
-    {op:'newTable', category:'byt-pritomny', tableId:'byt',
-     title:'Verbo byť — ser / estar',note:"A diferencia del español, 'byť' cumple las funciones de ser Y estar.",
+     r:[['1ª singular','ja','yo'],['2ª singular','ty','tú'],['3ª sing. masc.','on','él']]},
+    {op:'newTable', category:'byt-pritomny', tableId:'byt-basico',
+     title:'Verbo byť — ser / estar (básico)',note:"A diferencia del español, 'byť' cumple las funciones de ser Y estar.",
      h:['Pronombre','Forma','Ejemplo'],
-     r:[['ja','som','Ja som Martin. → Yo soy Martín.'],['ty','si','Ty si priateľ. → Tú eres amigo.'],['on/ona/ono','je','On je doma. → Él está en casa.'],['my','sme','My sme Slováci. → Somos eslovacos.'],['vy','ste','Vy ste tu. → Vosotros estáis aquí.'],['oni/ony','sú','Oni sú tam. → Ellos están allí.']]},
-    {op:'newTable', category:'frazy', tableId:'pozdravy',
-     title:'Saludos: formal vs. informal',
-     h:['Situación','Saludo','Despedida'],
-     r:[['Con amigos / familia','Ahoj · Čau · Servus','Čau · Dovidenia'],['Con adultos / desconocidos','Dobrý deň','Dovidenia'],['Mañana (formal)','Dobré ráno','Dovidenia'],['Tarde/noche (formal)','Dobrý večer','Dobrú noc']]},
-    {op:'newTable', category:'cisla-cas', tableId:'cislovky-1-10',
-     title:'Números 1–10',
-     h:['Número','Eslovaco','Pronunciación'],
-     r:[['1','jeden (m.) / jedna (f.)','YE-den'],['2','dva (m.) / dve (f./n.)','dva / dve'],['3','tri','tri'],['4','štyri','SHTY-ri'],['5','päť','pyach'],['6','šesť','shest'],['7','sedem','SE-dem'],['8','osem','O-sem'],['9','deväť','DE-vyach'],['10','desať','DE-sach']]},
-    {op:'newTable', category:'pady', tableId:'rody',
-     title:'Géneros gramaticales',note:'El eslovaco tiene 3 géneros. Conocerlos ayuda a usar los adjetivos correctamente.',
-     h:['Género','Terminaciones típicas','Ejemplos'],
-     r:[['Masculino','consonante (mayoría)','muž, pes, brat'],['Femenino','-a, -ia, -esť','žena, mama, sestra'],['Neutro','-o, -e, -ie','auto, srdce, more']]}
+     r:[['ja','som','Ja som doma. → Yo estoy en casa.'],['ty','si','Ty si priateľ. → Tú eres amigo.'],['on','je','On je dobre. → Él está bien.']]},
+    {op:'newTable', category:'byt-pritomny', tableId:'byt-negacion',
+     title:'Negación de byť',note:"'nie' se coloca siempre justo antes del verbo.",
+     h:['Afirmativo','Negativo'],
+     r:[['Ja som (yo soy/estoy)','Ja nie som (yo no soy/estoy)'],['Ty si (tú eres/estás)','Ty nie si (tú no eres/estás)'],['On je (él es/está)','On nie je (él no es/está)']]},
+    {op:'newTable', category:'otazky-spojky', tableId:'pregunta-ako-si',
+     title:'Preguntar "¿cómo estás?"',note:"'Ako' (cómo) + 'byť' forma la pregunta sobre el estado de alguien.",
+     h:['Español','Eslovaco'],
+     r:[['¿Cómo estás?','Ako si?'],['Estoy bien.','Som dobre.'],['¿Cómo está él?','Ako je on?'],['Él está bien.','On je dobre.']]}
   ],
-  tips:["🔑 El eslovaco NO tiene artículos definidos ni indefinidos. 'Pes' = el perro / un perro / perro.","🔑 Usa 'Dobrý deň' con personas mayores o desconocidas. 'Ahoj' es solo para amigos.","🔑 Los números 1–4 cambian de forma según el género del sustantivo que acompañan. Del 5 en adelante son invariables.","🔑 'byť' equivale a ser Y estar del español. El contexto indica cuál usar."]
+  tips:["🔑 En eslovaco, pronombre + 'byť' ya forma una frase completa: 'Ja som' = 'Yo soy/estoy'.","🔑 'byť' equivale a SER y ESTAR del español al mismo tiempo. El contexto indica cuál.","🔑 La negación 'nie' va siempre justo antes del verbo: 'nie som', 'nie si', 'nie je'.","🔑 'Ako si?' (¿Cómo estás?) se responde con 'Som dobre.' (Estoy bien)."]
 },
 ls:[
- {id:'s1l1',ti:'Primeros saludos',em:'👋',
+ {id:'s1l1',ti:'Primeros pasos',em:'👋',
   sl:[
-   ['v','Saludos básicos',[['Ahoj','Hola (informal)','a-hoy'],['Dobrý deň','Buenos días','dob-ree deñ'],['Čau','Chau','chau'],['Dovidenia','Adiós','do-vi-de-nia']]],
-   ['v','Palabras esenciales',[['Ďakujem','Gracias','dya-ku-yem'],['Prosím','Por favor','pro-seem'],['Áno','Sí','a-no'],['Nie','No','nie']]],
-   ['g','Formal vs. Informal','En eslovaco el nivel de formalidad cambia el saludo completamente.',[['Hola (amigos)','Ahoj / Čau'],['Buenos días (formal)','Dobrý deň'],['Adiós (formal)','Dovidenia'],['Chau (informal)','Čau']]]
+   ['t','¡Bienvenido al eslovaco!','En esta primera lección solo tienes que MIRAR y ESCUCHAR 3 palabras nuevas. Todavía no hay preguntas — solo familiarízate con ellas.'],
+   ['v','Tus primeras 3 palabras',[['ja','yo','ya'],['ty','tú','ti'],['som','soy / estoy','som']]]
   ],
-  w:[['Ahoj','Hola','👋'],['Ďakujem','Gracias','🙏'],['Prosím','Por favor','🤲'],['Áno','Sí','✅'],['Nie','No','❌'],['Dovidenia','Adiós','🚶']],
+  w:[['ja','yo','🙋'],['ty','tú','👉'],['som','soy / estoy','✅']],
+  p:[],
+  mc:[]
+ },
+ {id:'s1l2',ti:'Dos palabras más',em:'🆗',
+  sl:[
+   ['v','Suma estas 2 palabras',[['si','eres / estás','si'],['nie','no','nie']]],
+   ['t','¡Ya tienes 5 palabras!','Repasa: ja=yo, ty=tú, som=soy/estoy, si=eres/estás, nie=no. En la próxima lección vas a empezar a combinarlas.']
+  ],
+  w:[['si','eres / estás','👍'],['nie','no','🚫']],
+  p:[],
+  mc:[]
+ },
+ {id:'s1l3',ti:'Ja som. Ty si.',em:'🔗',
+  sl:[
+   ['t','¡A combinar!','Ya conoces ja, ty, som, si y nie. Ahora vas a juntarlas en frases cortas.'],
+   ['g','Frases con byť','Pronombre + forma de "byť" ya es una frase completa.',[['Yo soy. / Yo estoy.','Ja som.'],['Tú eres. / Tú estás.','Ty si.'],['Yo no soy / no estoy.','Ja nie som.'],['Tú no eres / no estás.','Ty nie si.']]]
+  ],
+  w:[],
   p:[
-   ['Buenos días','Dobrý deň',[['Dobrý','Buenos'],['deň','días']],['Áno','Nie'],"'Dobrý'=bueno, 'deň'=día. Juntos forman el saludo formal."],
-   ['Gracias, por favor','Ďakujem, prosím',[['Ďakujem','Gracias'],['prosím','por favor']],['Ahoj','Čau'],'Estas dos palabras juntas son muy útiles en cualquier situación.']
+   ['Yo soy. / Yo estoy.','Ja som.',[['Ja','Yo'],['som','soy / estoy']],['ty','si'],"'Ja som' = pronombre 'ja' + 'som'."],
+   ['Tú eres. / Tú estás.','Ty si.',[['Ty','Tú'],['si','eres / estás']],['ja','som'],"'Ty si' = pronombre 'ty' + 'si'."],
+   ['Yo no soy. / Yo no estoy.','Ja nie som.',[['Ja','Yo'],['nie','no'],['som','soy / estoy']],['ty','si'],"La negación 'nie' va justo antes del verbo."],
+   ['Tú no eres. / Tú no estás.','Ty nie si.',[['Ty','Tú'],['nie','no'],['si','eres / estás']],['ja','som'],"Mismo patrón: 'nie' + 'si'."]
   ],
   mc:[
-   ['¿Cuál es el saludo FORMAL?',['Ahoj','Čau','Dobrý deň','Servus'],2,"'Dobrý deň' es el saludo formal. 'Ahoj' y 'Čau' son informales."],
-   ['¿Cómo se dice "Gracias"?',['Prosím','Áno','Nie','Ďakujem'],3,"'Ďakujem' = Gracias. 'Prosím' = Por favor."],
-   ['¿Qué significa "Áno"?',['No','Adiós','Por favor','Sí'],3,"'Áno' = Sí. 'Nie' = No."]
+   ['¿Cómo se dice "Yo soy / Yo estoy"?',['Ty si','Ja som','Nie som','Ja si'],1,"'Ja som' = Yo soy / Yo estoy."],
+   ['¿Cómo se dice "Tú no eres / no estás"?',['Ty nie si','Nie ty si','Ty si nie','Ja nie si'],0,"La negación 'nie' va antes del verbo: 'Ty nie si'."],
+   ['¿Qué significa "Ja nie som"?',['Tú no eres','Yo no soy / no estoy','Yo soy / estoy','Tú eres'],1,"'Ja nie som' = Yo no soy / Yo no estoy."]
   ]
  },
- {id:'s1l2',ti:'¿Quién eres tú?',em:'🆔',
+ {id:'s1l4',ti:'Ja som ja. Ty si ty.',em:'🔁',
   sl:[
-   ['v','Personas',[['muž','hombre','mush'],['žena','mujer','zhe-na'],['chlapec','chico','chla-pets'],['dievča','chica','dyev-cha']]],
-   ['v','Identidad',[['meno','nombre','me-no'],['krajina','país','kra-yi-na'],['priateľ','amigo','prya-tel'],['ja som','yo soy','ya som']]],
-   ['t','Presentarse','Para presentarte di: "Ja som [nombre]." (Yo soy [nombre]). Para preguntar: "Ako sa voláš?" (¿Cómo te llamas?).']
+   ['t','Más combinaciones','Sigamos practicando con las mismas 5 palabras: ja, ty, som, si, nie.'],
+   ['g','Afirmación y negación','Compara las formas afirmativas y negativas:',[['Yo soy / estoy','Ja som'],['Yo no soy / no estoy','Ja nie som'],['Tú eres / estás','Ty si'],['Tú no eres / no estás','Ty nie si']]]
   ],
-  w:[['muž','hombre','👨'],['žena','mujer','👩'],['chlapec','chico','👦'],['dievča','chica','👧'],['priateľ','amigo','🤝'],['krajina','país','🌍']],
+  w:[],
   p:[
-   ['Yo soy amigo','Ja som priateľ',[['Ja','Yo'],['som','soy'],['priateľ','amigo']],['muž','žena'],'La estructura es igual al español: sujeto + verbo + sustantivo.'],
-   ['Él es hombre','On je muž',[['On','Él'],['je','es'],['muž','hombre']],['žena','chlapec'],"'On'=él, 'je'=es. El verbo 'byť'(ser) cambia según la persona."]
+   ['Yo soy yo.','Ja som ja.',[['Ja','Yo'],['som','soy'],['ja','yo']],['ty','si'],"Frase sencilla para fijar 'ja' y 'som' juntos."],
+   ['Tú eres tú.','Ty si ty.',[['Ty','Tú'],['si','eres'],['ty','tú']],['ja','som'],"Mismo patrón con 'ty' y 'si'."],
+   ['Yo no soy tú.','Ja nie som ty.',[['Ja','Yo'],['nie','no'],['som','soy'],['ty','tú']],['si'],"Combina negación + los dos pronombres."],
+   ['Tú no eres yo.','Ty nie si ja.',[['Ty','Tú'],['nie','no'],['si','eres'],['ja','yo']],['som'],"Mismo patrón al revés."]
   ],
   mc:[
-   ['¿Cómo se dice "mujer"?',['muž','chlapec','žena','dievča'],2,"'žena' = mujer. 'muž' = hombre."],
-   ['¿Qué significa "krajina"?',['nombre','amigo','chico','país'],3,"'krajina' = país. ¡Eslovaquia se dice 'Slovensko'!"],
-   ['¿Cómo dices "Yo soy"?',['On je','Ja som','Ty si','My sme'],1,"'Ja som' = Yo soy. 'Ty si' = Tú eres."]
+   ['¿Cómo se dice "Yo soy yo"?',['Ty si ty','Ja som ja','Ja nie som','Ty nie si'],1,"'Ja som ja' = Yo soy yo."],
+   ['¿Cómo se dice "Tú no eres yo"?',['Ty nie si ja','Ja nie som ty','Ty si ja','Ja som ty'],0,"'Ty nie si ja' = Tú no eres yo."],
+   ['Elige la traducción de "Yo no soy tú"',['Ty nie si ja','Ja nie som ty','Ja som ty','Ty si ja'],1,"'Ja nie som ty' = Yo no soy tú."]
   ]
  },
- {id:'s1l3',ti:'Los números 1–10',em:'🔢',
+ {id:'s1l5',ti:'Él también',em:'🙆',
   sl:[
-   ['v','Números 1-5',[['jeden','uno','ye-den'],['dva','dos','dva'],['tri','tres','tri'],['štyri','cuatro','shtee-ri'],['päť','cinco','pyach']]],
-   ['v','Números 6-10',[['šesť','seis','shest'],['sedem','siete','se-dem'],['osem','ocho','o-sem'],['deväť','nueve','de-vyach'],['desať','diez','de-sach']]],
-   ['t','Curiosidad numérica','Los números eslovacos 1-4 cambian de forma según el género del sustantivo. Por ahora aprende la forma básica y ya estás listo para contar.']
+   ['v','Una persona más',[['on','él','on'],['je','es / está','ye']]],
+   ['g','La tercera persona','Ahora puedes hablar de otra persona, no solo de ti.',[['Él es. / Él está.','On je.'],['Él no es / no está.','On nie je.'],['Yo soy / estoy.','Ja som.'],['Tú eres / estás.','Ty si.']]]
   ],
-  w:[['jeden','uno','1️⃣'],['dva','dos','2️⃣'],['tri','tres','3️⃣'],['štyri','cuatro','4️⃣'],['päť','cinco','5️⃣'],['šesť','seis','6️⃣'],['sedem','siete','7️⃣'],['osem','ocho','8️⃣'],['deväť','nueve','9️⃣'],['desať','diez','🔟']],
+  w:[['on','él','🙆'],['je','es / está','✔️']],
   p:[
-   ['Uno, dos, tres','jeden, dva, tri',[['jeden','uno'],['dva','dos'],['tri','tres']],['štyri','päť'],'Cuenta como en español pero con palabras eslovacas.']
+   ['Él es. / Él está.','On je.',[['On','Él'],['je','es / está']],['ja','som'],"'On je' sigue el mismo patrón que 'ja som' y 'ty si'."],
+   ['Él no es. / Él no está.','On nie je.',[['On','Él'],['nie','no'],['je','es / está']],['ty','si'],"'nie' + 'je' = no es / no está."]
   ],
   mc:[
-   ['¿Qué número es "päť"?',['3','7','5','9'],2,"'päť' = 5 (cinco)."],
-   ['¿Cómo se dice "ocho"?',['sedem','osem','deväť','šesť'],1,"'osem' = 8 (ocho)."],
-   ['¿Qué número es "deväť"?',['6','8','9','10'],2,"'deväť' = 9 (nueve)."]
+   ['¿Cómo se dice "él"?',['ja','ty','on','si'],2,"'on' = él."],
+   ['¿Cómo se dice "Él es / Él está"?',['On si','On je','On som','Je on'],1,"'On je' = Él es / Él está."],
+   ['¿Qué significa "On nie je"?',['Él es / está','Él no es / no está','Yo no soy','Tú no eres'],1,"'On nie je' = Él no es / no está."]
   ]
  },
- {id:'s1l4',ti:'Los colores',em:'🎨',
+ {id:'s1l6',ti:'¿Cómo estás?',em:'😊',
   sl:[
-   ['v','Colores básicos',[['červená','rojo','cher-ve-na'],['modrá','azul','mod-ra'],['zelená','verde','ze-le-na'],['žltá','amarillo','zhel-ta']]],
-   ['v','Más colores',[['biela','blanco','bye-la'],['čierna','negro','chyer-na'],['oranžová','naranja','o-ran-zho-va'],['ružová','rosa','ru-zho-va']]],
-   ['g','Géneros en los colores','Los colores cambian según el género. La forma mostrada es femenina. Para masculino cambia la terminación: -á → -ý, para neutro: -á → -é.',[['Rojo (masc.)','červený'],['Rojo (fem.)','červená'],['Rojo (neutro)','červené'],['Azul (masc.)','modrý'],['Azul (fem.)','modrá'],['Azul (neutro)','modré']]]
+   ['v','Dos palabras nuevas',[['dobre','bien','do-bre'],['ako','cómo','a-ko']]],
+   ['g','Preguntar cómo está alguien','"Ako" + "byť" forma la pregunta "¿Cómo estás/está...?".',[['¿Cómo estás?','Ako si?'],['Estoy bien.','Som dobre.'],['¿Cómo está él?','Ako je on?'],['Él está bien.','On je dobre.']]]
   ],
-  w:[['červená','rojo','🔴'],['modrá','azul','🔵'],['zelená','verde','🟢'],['žltá','amarillo','🟡'],['biela','blanco','⚪'],['čierna','negro','⚫'],['oranžová','naranja','🟠'],['ružová','rosa','🌸']],
+  w:[['dobre','bien','👌'],['ako','cómo','❓']],
   p:[
-   ['Rojo y azul','červená a modrá',[['červená','rojo'],['a','y'],['modrá','azul']],['zelená','žltá'],"'a' = y. Muy fácil de recordar."]
+   ['¿Cómo estás?','Ako si?',[['Ako','Cómo'],['si','estás']],['som','je'],"'Ako' + 'si' = '¿Cómo estás?'."],
+   ['Estoy bien.','Som dobre.',[['Som','Estoy'],['dobre','bien']],['ja','ty'],"'Som dobre' = Estoy bien."],
+   ['Él está bien.','On je dobre.',[['On','Él'],['je','está'],['dobre','bien']],['ty','si'],"Mismo patrón con 'on je'."]
   ],
   mc:[
-   ['¿Qué color es "zelená"?',['azul','rojo','amarillo','verde'],3,"'zelená' = verde. 'zelen' está relacionado con vegetación."],
-   ['¿Cómo se dice "negro"?',['biela','ružová','čierna','oranžová'],2,"'čierna' = negro. 'biela' = blanco."],
-   ['¿Qué color es "žltá"?',['naranja','rosa','verde','amarillo'],3,"'žltá' = amarillo. ¡El sol es žltý!"]
+   ['¿Cómo se dice "bien"?',['ako','dobre','nie','je'],1,"'dobre' = bien."],
+   ['¿Cómo se dice "¿Cómo estás?"?',['Ako si?','Si ako?','Ako som?','Dobre si?'],0,"'Ako si?' = ¿Cómo estás?."],
+   ['¿Qué significa "On je dobre"?',['Yo estoy bien','Tú estás bien','Él está bien','Él no está bien'],2,"'On je dobre' = Él está bien."]
   ]
  },
- {id:'s1l5',ti:'Mi familia',em:'👨‍👩‍👧‍👦',
+ {id:'s1l7',ti:'Mi lugar, mi gente',em:'🏠',
   sl:[
-   ['v','Familia cercana',[['mama','mamá','ma-ma'],['otec','papá','o-tets'],['brat','hermano','brat'],['sestra','hermana','ses-tra']]],
-   ['v','Familia extendida',[['babička','abuela','ba-bich-ka'],['dedko','abuelo','ded-ko'],['syn','hijo','sin'],['dcéra','hija','dtse-ra']]],
-   ['t','Vocabulario familiar','¡"Mama" suena igual en español y eslovaco! "Otec" es similar al latín "pater". Los idiomas indoeuropeos comparten raíces.']
+   ['v','Últimas 2 palabras de la sección',[['doma','en casa','do-ma'],['priateľ','amigo','prya-tel']]],
+   ['t','¡Sección 1 completa!','Con estas 11 palabras (ja, ty, on, som, si, je, nie, ako, dobre, doma, priateľ) ya puedes formar muchas frases. ¡A practicar para el test final!']
   ],
-  w:[['mama','mamá','👩'],['otec','papá','👨'],['brat','hermano','👦'],['sestra','hermana','👧'],['babička','abuela','👵'],['dedko','abuelo','👴'],['syn','hijo','🧒'],['dcéra','hija','👶']],
+  w:[['doma','en casa','🏠'],['priateľ','amigo','🤝']],
   p:[
-   ['Mi mamá y papá','Moja mama a otec',[['Moja','Mi'],['mama','mamá'],['a','y'],['otec','papá']],['brat','sestra'],"'Moja' = Mi (femenino). 'Môj' = Mi (masculino)."],
-   ['Mi hermano y hermana','Môj brat a sestra',[['Môj','Mi'],['brat','hermano'],['a','y'],['sestra','hermana']],['mama','otec'],"'Môj' se usa antes de sustantivos masculinos como 'brat'."]
+   ['Estoy en casa.','Som doma.',[['Som','Estoy'],['doma','en casa']],['si','je'],"'Som doma' = Estoy en casa."],
+   ['Él es amigo.','On je priateľ.',[['On','Él'],['je','es'],['priateľ','amigo']],['ty','si'],"'On je priateľ' = Él es amigo."],
+   ['Tú no estás en casa.','Ty nie si doma.',[['Ty','Tú'],['nie','no'],['si','estás'],['doma','en casa']],['som'],"Negación + 'doma'."]
   ],
   mc:[
-   ['¿Cómo se dice "abuela"?',['dedko','sestra','syn','babička'],3,"'babička' = abuela. 'dedko' = abuelo."],
-   ['¿Qué significa "brat"?',['hermana','hijo','hermano','hija'],2,"'brat' = hermano. 'sestra' = hermana."],
-   ['¿Cómo se dice "hija"?',['syn','dcéra','brat','mama'],1,"'dcéra' = hija. 'syn' = hijo."]
-  ]
- },
- {id:'s1l6',ti:'Animales y objetos',em:'🐾',
-  sl:[
-   ['v','Animales',[['pes','perro','pes'],['mačka','gato','mach-ka'],['vták','pájaro','vtak'],['ryba','pez','ri-ba']]],
-   ['v','Objetos cotidianos',[['dom','casa','dom'],['auto','coche','au-to'],['kniha','libro','kni-ha'],['telefón','teléfono','te-le-fon']]],
-   ['t','¡Palabras similares!','¿Notaste que "auto" y "telefón" son casi iguales al español? El eslovaco tomó préstamos del latín, griego e inglés.']
-  ],
-  w:[['pes','perro','🐶'],['mačka','gato','🐱'],['vták','pájaro','🐦'],['ryba','pez','🐟'],['dom','casa','🏠'],['auto','coche','🚗'],['kniha','libro','📚'],['telefón','teléfono','📱']],
-  p:[
-   ['El perro en casa','Pes je doma',[['Pes','El perro'],['je','está'],['doma','en casa']],['mačka','vták'],"'doma' = en casa (forma adverbial de 'dom')."]
-  ],
-  mc:[
-   ['¿Qué significa "mačka"?',['perro','pájaro','gato','pez'],2,"'mačka' = gato. 'pes' = perro."],
-   ['¿Cómo se dice "libro"?',['auto','dom','telefón','kniha'],3,"'kniha' = libro. Los libros son muy valorados en la cultura eslovaca."],
-   ['¿Qué significa "vták"?',['pez','pájaro','gato','perro'],1,"'vták' = pájaro. Los bosques eslovacos están llenos de pájaros."]
-  ]
- },
- {id:'s1l7',ti:'Comida y bebidas',em:'🍽️',
-  sl:[
-   ['v','Comida',[['chlieb','pan','chlyeb'],['mäso','carne','mye-so'],['jablko','manzana','yab-lko'],['syr','queso','sir']]],
-   ['v','Bebidas',[['voda','agua','vo-da'],['mlieko','leche','mlye-ko'],['káva','café','ka-va'],['čaj','té','chai']]],
-   ['t','La cocina eslovaca','El plato nacional es "bryndzové halušky" (ñoquis con queso de oveja). El "syr" (queso) es fundamental. ¡El "pivo" (cerveza) también es muy popular!']
-  ],
-  w:[['chlieb','pan','🍞'],['mäso','carne','🥩'],['jablko','manzana','🍎'],['voda','agua','💧'],['mlieko','leche','🥛'],['káva','café','☕'],['pivo','cerveza','🍺'],['čaj','té','🍵']],
-  p:[
-   ['Pan y queso','Chlieb a syr',[['Chlieb','Pan'],['a','y'],['syr','queso']],['mäso','jablko'],'Una combinación clásica eslovaca.'],
-   ['Café con leche','Káva s mliekom',[['Káva','Café'],['s','con'],['mliekom','leche']],['voda','čaj'],"'s' = con. 'mliekom' es la forma instrumental de 'mlieko'."]
-  ],
-  mc:[
-   ['¿Qué significa "voda"?',['leche','café','té','agua'],3,"'voda' = agua. Muy similar al ruso 'вода'."],
-   ['¿Cómo se dice "pan"?',['mäso','syr','chlieb','jablko'],2,"'chlieb' = pan. El pan es básico en la dieta eslovaca."],
-   ['¿Qué bebida es "pivo"?',['café','leche','té','cerveza'],3,"'pivo' = cerveza. ¡Eslovaquia tiene excelentes cervezas!"]
+   ['¿Cómo se dice "amigo"?',['doma','dobre','priateľ','ako'],2,"'priateľ' = amigo."],
+   ['¿Qué significa "Som doma"?',['Estoy bien','Estoy en casa','Soy amigo','Él está en casa'],1,"'Som doma' = Estoy en casa."],
+   ['¿Cómo se dice "Tú no estás en casa"?',['Ty nie si doma','Ty si doma','Ty nie som doma','On nie je doma'],0,"'Ty nie si doma' = Tú no estás en casa."]
   ]
  },
  {id:'s1test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
-   ['t','¡Hora del examen!','Vas a responder 15 preguntas de toda la Sección 1. Necesitas 12 correctas (80%) para desbloquear la Sección 2. ¡Tú puedes!'],
-   ['g','Repaso rápido','Todo lo que aprendiste en la Sección 1:',[['Saludos','Ahoj, Dobrý deň, Ďakujem'],['Números','jeden...desať'],['Familia','mama, otec, brat, sestra'],['Comida','chlieb, voda, káva, pivo']]],
-   ['t','Consejo final','Lee con calma. Si no sabes, piensa en el sonido de la palabra. ¡Muchas palabras suenan similar a cómo se escriben!']
+   ['t','¡Hora del examen!','Vas a responder unas 18 preguntas de repaso de toda la Sección 1. Necesitas 80% correctas para desbloquear la Sección 2. ¡Tú puedes!'],
+   ['g','Repaso rápido','Las 11 palabras de la Sección 1:',[['Pronombres','ja, ty, on'],['Ser/estar','som, si, je'],['Negación','nie'],['Otras','ako, dobre, doma, priateľ']]],
+   ['t','Consejo final',"Lee con calma. Recuerda: 'nie' siempre va justo antes del verbo, y cada pronombre tiene su propia forma de byť."]
   ],
-  w:[],p:[],mc:[]
+  w:[],p:[],mc:[],
+  tq:[
+   {id:'s1t-01',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_presente',question:'¿Cómo se dice "Yo soy / Yo estoy"?',options:['Ty si','Ja som','On je','Nie som'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ja som' = Yo soy / Yo estoy."},
+   {id:'s1t-02',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_presente',question:'¿Cómo se dice "Tú eres / Tú estás"?',options:['Ja som','On je','Ty si','Nie si'],answer:2,audio:null,skippable:false,accept:[],explanation:"'Ty si' = Tú eres / Tú estás."},
+   {id:'s1t-03',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_presente',question:'¿Cómo se dice "Él es / Él está"?',options:['On je','Ja som','Ty si','On si'],answer:0,audio:null,skippable:false,accept:[],explanation:"'On je' = Él es / Él está."},
+   {id:'s1t-04',category:'old_review',type:'fill',skill:'grammar',concept_tag:'negacion_byt',question:'Completa: "Ja ___ som." (Yo no soy)',options:[],answer:'nie',audio:null,skippable:false,accept:['nie'],explanation:"La negación 'nie' va justo antes del verbo."},
+   {id:'s1t-05',category:'old_review',type:'fill',skill:'grammar',concept_tag:'negacion_byt',question:'Completa: "On nie ___." (Él no está)',options:[],answer:'je',audio:null,skippable:false,accept:['je'],explanation:"'On nie je' = Él no es / no está."},
+   {id:'s1t-06',category:'old_review',type:'type',skill:'grammar',concept_tag:'negacion_byt',question:'Escribe en eslovaco: "Tú no eres / no estás"',options:[],answer:'Ty nie si',audio:null,skippable:false,accept:['Ty nie si','ty nie si'],explanation:"'Ty nie si' = Tú no eres / no estás."},
+   {id:'s1t-07',category:'old_review',type:'mc',skill:'vocab',concept_tag:'pronombres_personales',question:'¿Qué significa "on"?',options:['yo','tú','él','no'],answer:2,audio:null,skippable:false,accept:[],explanation:"'on' = él."},
+   {id:'s1t-08',category:'old_review',type:'mc',skill:'vocab',concept_tag:'pronombres_personales',question:'¿Cómo se dice "tú"?',options:['ja','ty','on','si'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ty' = tú."},
+   {id:'s1t-09',category:'random_review',type:'listen',skill:'grammar',concept_tag:'byt_presente',question:'Escucha y elige la traducción correcta.',options:['Estoy en casa','Estás en casa','Está en casa','Soy amigo'],answer:0,audio:'Ja som doma',skippable:true,accept:[],explanation:"'Ja som doma' = Estoy en casa."},
+   {id:'s1t-10',category:'old_review',type:'mc',skill:'vocab',concept_tag:'preguntas_como_estas',question:'¿Cómo se dice "¿Cómo estás?"?',options:['Si ako?','Ako si?','Ako som?','Dobre si?'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ako si?' = ¿Cómo estás?"},
+   {id:'s1t-11',category:'old_review',type:'fill',skill:'vocab',concept_tag:'preguntas_como_estas',question:'Completa: "Som ___." (Estoy bien)',options:[],answer:'dobre',audio:null,skippable:false,accept:['dobre'],explanation:"'Som dobre' = Estoy bien."},
+   {id:'s1t-12',category:'old_review',type:'type',skill:'vocab',concept_tag:'vocab_basico_s1',question:'Escribe en eslovaco: "amigo"',options:[],answer:'priateľ',audio:null,skippable:false,accept:['priateľ','priatel'],explanation:"'priateľ' = amigo."},
+   {id:'s1t-13',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacion_byt',question:'¿Qué significa "Ty nie si doma"?',options:['Tú estás en casa','Tú no estás en casa','Él no está en casa','Yo no estoy en casa'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ty nie si doma' = Tú no estás en casa."},
+   {id:'s1t-14',category:'random_review',type:'mc',skill:'grammar',concept_tag:'byt_presente',question:'¿Qué significa "On je priateľ"?',options:['Él es amigo','Él está bien','Yo soy amigo','Tú eres amigo'],answer:0,audio:null,skippable:false,accept:[],explanation:"'On je priateľ' = Él es amigo."},
+   {id:'s1t-15',category:'old_review',type:'fill',skill:'grammar',concept_tag:'preguntas_como_estas',question:'Completa: "Ako ___ on?" (¿Cómo está él?)',options:[],answer:'je',audio:null,skippable:false,accept:['je'],explanation:"'Ako je on?' = ¿Cómo está él?"},
+   {id:'s1t-16',category:'random_review',type:'listen',skill:'vocab',concept_tag:'vocab_basico_s1',question:'Escucha y elige la traducción correcta.',options:['Soy amigo','Estoy en casa','Eres amigo','Él es amigo'],answer:0,audio:'Ja som priateľ',skippable:true,accept:[],explanation:"'Ja som priateľ' = Soy amigo."},
+   {id:'s1t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'negacion_byt',question:'Elige la frase CORRECTA para "Yo no soy / no estoy"',options:['Nie ja som','Ja nie som','Ja som nie','Nie som ja'],answer:1,audio:null,skippable:false,accept:[],explanation:"'nie' va siempre justo antes del verbo: 'Ja nie som'."},
+   {id:'s1t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'pronombres_personales',question:'Corrige el error: "Ty som doma." (debería significar "Tú estás en casa")',options:[],answer:'Ty si doma',audio:null,skippable:false,accept:['Ty si doma','ty si doma'],explanation:"Con 'ty' se usa 'si', no 'som'. 'som' es solo para 'ja'."}
+  ]
  }
 ]},
 {id:'s2',ti:'El mundo a tu alrededor',em:'🌍',col:'#4361EE',
@@ -299,7 +303,7 @@ ls:[
  },
  {id:'s2test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
-   ['t','¡Gran examen!','Vas a responder 15 preguntas de toda la Sección 2. Necesitas 12 correctas (80%) para pasar. ¡Eres capaz!'],
+   ['t','¡Gran examen!','Vas a responder unas 18 preguntas de repaso de toda la Sección 2. Necesitas 80% correctas para pasar. ¡Eres capaz!'],
    ['g','Repaso rápido','Todo lo aprendido en la Sección 2:',[['Días','pondelok...nedeľa'],['Ciudad','banka, škola, letisko'],['Cuerpo','hlava, oko, srdce'],['Restaurante','jedlo, účet, chcem']]],
    ['t','¡Eres increíble!','Has aprendido más de 80 palabras en eslovaco. ¡Muy pocos hispanohablantes llegan tan lejos!']
   ],
@@ -388,17 +392,17 @@ ls:[
  {id:'s3l4',ti:'La ropa',em:'👕',
   sl:[
    ['v','Ropa básica',[['tričko','camiseta','trich-ko'],['nohavice','pantalones','no-ha-vi-tse'],['topánky','zapatos','to-pan-ki'],['bunda','chaqueta','bun-da']]],
-   ['v','Más ropa',[['šaty','vestido','sha-ti'],['sukňa','falda','suk-nya'],['čiapka','gorro','chyap-ka'],['ponožky','calcetines','po-nozh-ki']]],
-   ['t','Plurales en eslovaco','Muchas prendas son siempre plurales en eslovaco: "nohavice" (pantalones), "topánky" (zapatos), "ponožky" (calcetines). ¡Como en español!']
+   ['v','Más ropa',[['šaty','vestido','sha-ti'],['sukňa','falda','suk-nya'],['čiapka','gorro','chyap-ka'],['ponožky','medias','po-nozh-ki']]],
+   ['t','Plurales en eslovaco','Muchas prendas son siempre plurales en eslovaco: "nohavice" (pantalones), "topánky" (zapatos), "ponožky" (medias). ¡Como en español!']
   ],
-  w:[['tričko','camiseta','👕'],['nohavice','pantalones','👖'],['topánky','zapatos','👟'],['bunda','chaqueta','🧥'],['šaty','vestido','👗'],['čiapka','gorro','🧢'],['sukňa','falda','👚'],['ponožky','calcetines','🧦']],
+  w:[['tričko','camiseta','👕'],['nohavice','pantalones','👖'],['topánky','zapatos','👟'],['bunda','chaqueta','🧥'],['šaty','vestido','👗'],['čiapka','gorro','🧢'],['sukňa','falda','👚'],['ponožky','medias','🧦']],
   p:[
    ['Tengo una chaqueta nueva','Mám novú bundu',[['Mám','Tengo'],['novú','nueva'],['bundu','chaqueta']],['tričko','topánky'],"'novú' es la forma femenina acusativa de 'nový' (nuevo), porque concuerda con 'bundu'."],
    ['Los zapatos son bonitos','Topánky sú pekné',[['Topánky','Los zapatos'],['sú','son'],['pekné','bonitos']],['nohavice','ponožky'],"'sú' = son (plural de 'byť'). 'pekné' concuerda en plural."]
   ],
   mc:[
-   ['¿Qué significa "nohavice"?',['camiseta','pantalones','zapatos','calcetines'],1,"'nohavice' = pantalones. Viene de 'noha' = pierna."],
-   ['¿Cómo se dice "zapatos"?',['topánky','ponožky','sukňa','čiapka'],0,"'topánky' = zapatos. 'ponožky' = calcetines."],
+   ['¿Qué significa "nohavice"?',['camiseta','pantalones','zapatos','medias'],1,"'nohavice' = pantalones. Viene de 'noha' = pierna."],
+   ['¿Cómo se dice "zapatos"?',['topánky','ponožky','sukňa','čiapka'],0,"'topánky' = zapatos. 'ponožky' = medias."],
    ['¿Qué prenda es "čiapka"?',['vestido','falda','gorro','chaqueta'],2,"'čiapka' = gorro. Muy útil en el invierno eslovaco."]
   ]
  },
@@ -456,7 +460,7 @@ ls:[
  {id:'s3l8',ti:'Adjetivos y descripciones',em:'🎭',
   sl:[
    ['v','Adjetivos comunes (masc.)',[['veľký','grande','vel-kee'],['malý','pequeño','ma-lee'],['pekný','bonito','pek-nee'],['starý','viejo','sta-ree'],['nový','nuevo','no-vee'],['dobrý','bueno','dob-ree']]],
-   ['g','Concordancia de género','Los adjetivos cambian su terminación según el género del sustantivo: masculino -ý, femenino -á, neutro -é.',[['grande (m./f./n.)','veľký / veľká / veľké'],['nuevo (m./f./n.)','nový / nová / nové'],['Un perro grande (m.)','veľký pes'],['Una habitación grande (f.)','veľká izba'],['Un coche grande (n.)','veľké auto']]],
+   ['g','Concordancia de género','Los adjetivos cambian su terminación según el género del sustantivo: masculino -ý, femenino -á, neutro -é.',[['grande (m./f./n.)','veľký / veľká / veľké'],['nuevo (m./f./n.)','nový / nová / nové'],['Un perro grande (m.)','veľký pes'],['Una habitación grande (f.)','veľká izba'],['Un auto grande (n.)','veľké auto']]],
    ['t','Truco para recordar','-ý → masculino, -á → femenino, -é → neutro. ¡Es el mismo patrón que viste con los colores en la Sección 1!']
   ],
   w:[['veľký','grande','🐘'],['malý','pequeño','🐭'],['pekný','bonito','✨'],['starý','viejo','👴'],['nový','nuevo','🆕'],['dobrý','bueno','👍']],
@@ -472,7 +476,7 @@ ls:[
  },
  {id:'s3test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
-   ['t','¡Tercer examen!','Vas a responder 15 preguntas de toda la Sección 3. Necesitas 12 correctas (80%) para desbloquear la Sección 4. ¡Sigue así!'],
+   ['t','¡Tercer examen!','Vas a responder unas 18 preguntas de repaso de toda la Sección 3. Necesitas 80% correctas para desbloquear la Sección 4. ¡Sigue así!'],
    ['g','Repaso rápido','Todo lo aprendido en la Sección 3:',[['Verbos','mám, robím, pracujem'],['Números','jedenásť...sto'],['Ropa','tričko, nohavice, topánky'],['Adjetivos','veľký, malý, pekný, nový']]],
    ['t','¡Vas genial!','Ya dominas verbos en presente, números hasta cien y adjetivos básicos. ¡La base de tu eslovaco es cada vez más sólida!']
   ],
@@ -484,12 +488,12 @@ gr:{
   intro:'La Sección 4 introduce la negación (nie/ne-) y el vocabulario de emociones, estados de ánimo y profesiones — combinando estos temas nuevos con la identidad, el presente y "rád/rada/radi" ya conocidos.',
   patches:[
     {op:'newTable', category:'byt-pritomny', tableId:'negacia',
-     title:'Zápor (negácia)', note:'Para negar un verbo, añade el prefijo "ne-" delante. La única excepción es "byť": "som" → "nie som" (con espacio).',
+     title:'Negación', note:'Para negar un verbo, añade el prefijo "ne-" delante. La única excepción es "byť": "som" → "nie som" (con espacio).',
      h:['Forma afirmativa','Forma negativa','Ejemplo'],
      r:[['som','nie som','Nie som lekár. = No soy médico.'],['mám','nemám','Nemám čas. = No tengo tiempo.'],['robím','nerobím','Nerobím nič. = No hago nada.'],['viem','neviem','Neviem. = No sé.'],['môžem','nemôžem','Nemôžem dnes. = No puedo hoy.'],['pracujem','nepracujem','Nepracujem cez víkend. = No trabajo el fin de semana.'],['hovorím','nehovorím','Nehovorím po nemecky. = No hablo alemán.']]},
     {op:'newTable', category:'pady', tableId:'povolania-rod',
-     title:'Povolania: mužský a ženský rod', note:'La mayoría de profesiones forman el femenino añadiendo "-ka" a la forma masculina.',
-     h:['Mužský','Ženský','Español'],
+     title:'Profesiones: género masculino y femenino', note:'La mayoría de profesiones forman el femenino añadiendo "-ka" a la forma masculina.',
+     h:['Masculino','Femenino','Español'],
      r:[['lekár','lekárka','médico/a'],['učiteľ','učiteľka','profesor/a'],['študent','študentka','estudiante'],['kuchár','kuchárka','cocinero/a'],['predavač','predavačka','vendedor/a'],['vodič','vodička','conductor/a'],['policajt','policajtka','policía'],['právnik','právnička','abogado/a'],['umelec','umelkyňa','artista'],['inžinier','inžinierka','ingeniero/a']]},
     {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
      r:[['Yo (hombre, negativo)','nerád + verbo','Nerád varím. = No me gusta cocinar.'],['Yo (mujer, negativo)','nerada + verbo','Nerada behám. = No me gusta correr.'],['Nosotros (negativo)','neradi + verbo','Neradi čakáme. = No nos gusta esperar.']]},
@@ -544,7 +548,7 @@ ls:[
   w:[['Ako sa máš?','¿Cómo estás?','❓'],['Mám sa dobre','Estoy bien','👍'],['Mám sa zle','Estoy mal','👎'],['nálada','humor','🎭'],['trochu','un poco','🤏'],['veľmi','muy','💯'],['vôbec nie','para nada','❌']],
   p:[
    ['¿Cómo estás? Estoy un poco cansado','Ako sa máš? Som trochu unavený',[['Ako sa máš?','¿Cómo estás?'],['Som','Estoy'],['trochu','un poco'],['unavený','cansado']],['veľmi','vôbec nie'],"'trochu' suaviza el adjetivo: 'un poco cansado' en vez de 'muy cansado'."],
-   ['No estoy nada nervioso','Som vôbec nie nervózny',[['Som','Estoy'],['vôbec nie','para nada'],['nervózny','nervioso']],['trochu','veľmi'],"'vôbec nie' refuerza la negación: 'para nada' / 'en absoluto'."]
+   ['No estoy nada nervioso','Vôbec nie som nervózny',[['Vôbec nie','Para nada'],['som','estoy'],['nervózny','nervioso']],['trochu','veľmi'],"'vôbec nie' refuerza la negación: 'para nada' / 'en absoluto'."]
   ],
   mc:[
    ['¿Cómo preguntas "¿Cómo estás?"?',['Ako sa voláš?','Kto si?','Ako sa máš?','Čo robíš?'],2,"'Ako sa máš?' = ¿Cómo estás?. 'Ako sa voláš?' = ¿Cómo te llamas? (s1)."],
@@ -612,7 +616,7 @@ ls:[
   w:[['ale','pero','🔀'],['pretože','porque','❓'],['aj','también','➕'],['naozaj','de verdad','✅'],['super','genial','🌟']],
   p:[
    ['Estoy cansado porque trabajo mucho','Som unavený, pretože pracujem veľa',[['Som unavený','Estoy cansado'],['pretože','porque'],['pracujem','trabajo'],['veľa','mucho']],['veľmi','trochu'],"'pretože' introduce la causa. 'veľa' = mucho (cantidad)."],
-   ['No soy médico, pero también soy estudiante','Nie som lekár, ale aj som študent',[['Nie som lekár','No soy médico'],['ale','pero'],['aj','también'],['som študent','soy estudiante']],['učiteľ','umelec'],"Combina negación + 'ale' (pero) + 'aj' (también)."]
+   ['No soy médico, pero también soy estudiante','Nie som lekár, ale som aj študent',[['Nie som lekár','No soy médico'],['ale','pero'],['som','soy'],['aj','también'],['študent','estudiante']],['učiteľ','umelec'],"Combina negación + 'ale' (pero) + 'aj' (también)."]
   ],
   mc:[
    ['¿Cómo se dice "porque"?',['ale','pretože','aj','naozaj'],1,"'pretože' = porque. 'prečo' (s3l7) = por qué."],
@@ -622,7 +626,7 @@ ls:[
  },
  {id:'s4test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
-   ['t','¡Cuarto examen!','Vas a responder 25 preguntas de toda la Sección 4. Necesitas 80% para desbloquear la Sección 5. ¡Vamos!'],
+   ['t','¡Cuarto examen!','Vas a responder unas 18 preguntas de repaso de toda la Sección 4. Necesitas 80% para desbloquear la Sección 5. ¡Vamos!'],
    ['g','Repaso rápido','Todo lo aprendido en la Sección 4:',[['Negación','nie som, nemám, nerobím, neviem'],['Emociones','šťastný, smutný, unavený, nervózny'],['Profesiones','lekár/lekárka, učiteľ/učiteľka'],['Nerád/nerada','Nerád varím. Nerada behám.']]],
    ['t','¡Casi terminas el Bloque 1!','Negación, emociones y profesiones son piezas clave del A1. ¡Solo queda una sección para terminar el Bloque 1!']
   ],
@@ -643,7 +647,7 @@ ls:[
    {id:'s4t-13',category:'new',type:'mc',skill:'vocab',concept_tag:'emociones_vocab',question:'"Ako sa máš?" significa...',options:['¿Cómo te llamas?','¿Cómo estás?','¿Quién eres?','¿Qué haces?'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ako sa máš?' = ¿Cómo estás?"},
    {id:'s4t-14',category:'new',type:'fill',skill:'grammar',concept_tag:'negacia_byt',question:'Completa: "___ som lekár, som učiteľ." (No)',options:[],answer:'Nie',audio:null,skippable:false,accept:['Nie'],explanation:"'Nie som' = no soy."},
    {id:'s4t-15',category:'new',type:'mc',skill:'vocab',concept_tag:'profesiones_vocab',question:'¿Qué significa "umelec"?',options:['abogado','ingeniero','artista','actor'],answer:2,audio:null,skippable:false,accept:[],explanation:"'umelec' = artista."},
-   {id:'s4t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_som_si_je',question:'"Vy ___ tu." (estáis)',options:['sme','ste','sú','je'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ste' = estáis (vy)."},
+   {id:'s4t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_som_si_je',question:'"Vy ___ tu." (están)',options:['sme','ste','sú','je'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ste' = están (ustedes)."},
    {id:'s4t-17',category:'old_review',type:'type',skill:'grammar',concept_tag:'pridavne_zhoda',question:'Escribe en eslovaco: "ella es bonita"',options:[],answer:'Ona je pekná',audio:null,skippable:false,accept:['Ona je pekná','ona je pekna'],explanation:"'pekná' es la forma femenina de 'pekný'."},
    {id:'s4t-18',category:'old_review',type:'mc',skill:'vocab',concept_tag:'numbers_11_100',question:'¿Cómo se dice "veinte"?',options:['dvanásť','dvadsať','desať','dva'],answer:1,audio:null,skippable:false,accept:[],explanation:"'dvadsať' = veinte."},
    {id:'s4t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'rad_rada_radi',question:'Completa: "Rád ___ knihy." (leo)',options:[],answer:'čítam',audio:null,skippable:false,accept:['čítam','citam'],explanation:"'Rád čítam' = me gusta leer (hombre)."},
@@ -663,7 +667,7 @@ gr:{
     {op:'newTable', category:'slovesa-casy', tableId:'ist-slovesa',
      title:"Sloveso 'ísť' (ir)", note:"'ísť' es un verbo irregular muy frecuente, usado para movimiento físico: 'voy/vas/va a...'.",
      h:['Osoba','ísť','Español'],
-     r:[['ja','idem','voy'],['ty','ideš','vas'],['on / ona / ono','ide','va'],['my','ideme','vamos'],['vy','idete','vais'],['oni / ony','idú','van']]},
+     r:[['ja','idem','voy'],['ty','ideš','vas'],['on / ona / ono','ide','va'],['my','ideme','vamos'],['vy','idete','van (ustedes)'],['oni / ony','idú','van (ellos)']]},
     {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
      r:[['Siempre + me gusta','vždy rád/rada/radi + verbo','Vždy rád pracujem. = Siempre me gusta trabajar.'],['Nunca + me gusta','nikdy nerád/nerada/neradi + verbo','Nikdy nerada upratujem. = Nunca me gusta limpiar.'],['A veces + me gusta','niekedy rád/rada/radi + verbo','Niekedy rada nakupujem. = A veces me gusta ir de compras.']]},
     {op:'addRows', category:'cisla-cas', tableId:'dni-tyzdna',
@@ -748,7 +752,7 @@ ls:[
   sl:[
    ['v','Lugares',[['kino','cine','ki-no'],['reštaurácia','restaurante','resh-tau-ra-tsya'],['príroda','naturaleza','pree-ro-da'],['hory','montañas','ho-ry']]],
    ['v','Ir a/desde',[['ísť','ir','eest'],['domov','a casa (destino)','do-mov'],['von','afuera / salir','von']]],
-   ['g','El verbo "ísť" (ir)','"ísť" es irregular y se usa para movimiento: "Idem do kina" (Voy al cine).',[['voy','idem'],['vas','ideš'],['va','ide'],['vamos','ideme'],['vais','idete'],['van','idú'],['no voy','nejdem']]]
+   ['g','El verbo "ísť" (ir)','"ísť" es irregular y se usa para movimiento: "Idem do kina" (Voy al cine).',[['voy','idem'],['vas','ideš'],['va','ide'],['vamos','ideme'],['van (ustedes)','idete'],['van (ellos)','idú'],['no voy','nejdem']]]
   ],
   w:[['ísť','ir','🚶'],['kino','cine','🎬'],['reštaurácia','restaurante','🍽️'],['príroda','naturaleza','🌳'],['hory','montañas','⛰️'],['domov','a casa','🏠'],['von','afuera','🚪']],
   p:[
@@ -797,7 +801,7 @@ ls:[
  },
  {id:'s5test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
-   ['t','¡Test final del Bloque 1!','25 preguntas sobre toda la Sección 5 (y repaso del Bloque 1 entero). Necesitas 80% para desbloquear el Bloque 2. ¡Mucha suerte!'],
+   ['t','¡Test final del Bloque 1!','Unas 18 preguntas de repaso sobre toda la Sección 5 (y el Bloque 1 entero). Necesitas 80% para desbloquear el Bloque 2. ¡Mucha suerte!'],
    ['g','Repaso rápido','Todo lo aprendido en la Sección 5:',[['Tiempo','dnes, zajtra, včera, týždeň, víkend'],['Frecuencia','vždy, často, niekedy, zriedka, nikdy'],['Partes del día','ráno, popoludní, večer, v noci'],['Verbo ísť','idem, ideš, ide, ideme, idete, idú']]],
    ['t','¡Felicidades!','Has completado el Bloque 1: identidad, presente, géneros, negación, emociones, profesiones y rutina semanal. ¡El Bloque 2 te espera!']
   ],
@@ -821,7 +825,7 @@ ls:[
    {id:'s5t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cuál es la negación de "mám"?',options:['nemám','nie mám','mám nie','nemam nie'],answer:0,audio:null,skippable:false,accept:[],explanation:"'nemám' = no tengo. 'ne-' + 'mám'."},
    {id:'s5t-17',category:'old_review',type:'type',skill:'grammar',concept_tag:'rad_rada_radi',question:'Escribe en eslovaco (hombre): "no me gusta cocinar"',options:[],answer:'Nerád varím',audio:null,skippable:false,accept:['Nerád varím','Nerad varim'],explanation:"'Nerád' + verbo = no me gusta (hombre)."},
    {id:'s5t-18',category:'old_review',type:'mc',skill:'grammar',concept_tag:'pridavne_zhoda',question:'¿Cuál es la forma femenina de "unavený"?',options:['unavená','unavené','unavený','unavení'],answer:0,audio:null,skippable:false,accept:[],explanation:"'unavená' = cansada (femenino, termina en -á)."},
-   {id:'s5t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'byt_som_si_je',question:'Completa: "Vy ___ tu." (estáis)',options:[],answer:'ste',audio:null,skippable:false,accept:['ste'],explanation:"'ste' = estáis (vy)."},
+   {id:'s5t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'byt_som_si_je',question:'Completa: "Vy ___ tu." (están)',options:[],answer:'ste',audio:null,skippable:false,accept:['ste'],explanation:"'ste' = están (ustedes)."},
    {id:'s5t-20',category:'old_review',type:'mc',skill:'vocab',concept_tag:'profesie_vocab',question:'¿Qué significa "kuchár"?',options:['médico','profesor','cocinero','vendedor'],answer:2,audio:null,skippable:false,accept:[],explanation:"'kuchár' = cocinero."},
    {id:'s5t-21',category:'random_review',type:'mc',skill:'vocab',concept_tag:'greetings_formal_informal',question:'¿Cuál es el saludo FORMAL?',options:['Ahoj','Čau','Dobrý deň','Servus'],answer:2,audio:null,skippable:false,accept:[],explanation:"'Dobrý deň' es el saludo formal."},
    {id:'s5t-22',category:'random_review',type:'mc',skill:'vocab',concept_tag:'numbers_1_10',question:'¿Cómo se dice "ocho"?',options:['sedem','osem','deväť','šesť'],answer:1,audio:null,skippable:false,accept:[],explanation:"'osem' = ocho."},
