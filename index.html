@@ -1089,7 +1089,7 @@ function renderVocab() {
       </div>`;
     html += secWords.map(([sk,es,pron]) => `
       <div class="vocab-item">
-        <div style="font-size:1.3rem">🔤</div>
+        <div style="font-size:1.3rem">${pron || '🔤'}</div>
         <div style="flex:1">
           <div class="vocab-sk">${sk}</div>
           <div class="vocab-es">${es}</div>
