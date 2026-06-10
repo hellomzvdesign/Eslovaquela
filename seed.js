@@ -1172,6 +1172,76 @@ ls:[
    {id:'s7t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'Corrige el error: "Mám telefónu."',options:[],answer:'Mám telefón',audio:null,skippable:false,accept:['Mám telefón'],explanation:"'telefón' (masculino inanimado) NO cambia en acusativo: 'Mám telefón', no 'Mám telefónu'."}
   ]
  }
+]},
+{id:'s8',ti:'¿Qué comes?',em:'🍽️',col:'#06D6A0',
+gr:{
+  intro:'La Sección 8 es el tercer paso del Bloque 2 ("Mi mundo y mis cosas"): el acusativo en el contexto de la comida y la bebida. Aprendes los verbos irregulares "jesť" (comer) y "piť" (beber), además de vocabulario de comida — combinando todo con el acusativo que ya conoces.',
+  patches:[
+    {op:'newTable', category:'byt-pritomny', tableId:'jest-pit',
+     title:'Verbos jesť (comer) y piť (beber) — presente',note:'Dos verbos irregulares fundamentales para hablar de comida y bebida.',
+     h:['Pronombre','jesť (comer)','piť (beber)'],
+     r:[['ja','jem','pijem'],['ty','ješ','piješ'],['on/ona/ono','je','pije'],['my','jeme','pijeme'],['vy','jete','pijete'],['oni/ony','jedia','pijú']]},
+    {op:'newTable', category:'frazy', tableId:'jedlo-frazy',
+     title:'Frases sobre comida y bebida',note:'Expresiones útiles para el hambre, la sed y el sabor.',
+     h:['Español','Eslovaco'],
+     r:[['Tengo hambre.','Mám hlad.'],['Tengo sed.','Mám smäd.'],['¡Buen provecho!','Dobrú chuť!'],['Está rico / me gusta.','Chutí mi to.']]},
+    {op:'addRows', category:'pady', tableId:'akuzativ',
+     r:[['Stredný','mäso','mäso','Jem mäso. = Como carne.'],['Ženský (-a)','voda','vodu','Pijem vodu. = Bebo agua.']]}
+  ],
+  tips:["🔑 'jesť' (comer) y 'piť' (beber) son irregulares: ja jem/pijem, ty ješ/piješ, on je/pije.","🔑 ¡Cuidado! 'je' significa 'es/está' (byť) Y 'come' (jesť) — el contexto lo aclara.","🔑 Los sustantivos neutros de comida (mäso, jablko) NO cambian en acusativo, igual que 'auto' y 'okno'.","🔑 'voda' (femenino -a) cambia a -u en acusativo: Pijem vodu, igual que 'izba'→'izbu'."]
+},
+ls:[
+ {id:'s8l1',ti:'Como pan',em:'🍞',
+  sl:[
+   ['v','Comer y el pan',[['jesť','comer','yest'],['chlieb','pan','khlieb']]],
+   ['g','El verbo jesť (presente)','"jesť" es un verbo irregular muy importante:',[['Yo como.','Ja jem.'],['Tú comes.','Ty ješ.'],['Él/ella come.','On/ona je.'],['Como pan.','Jem chlieb.']]]
+  ],
+  w:[['jesť','comer','🍽️'],['chlieb','pan','🍞']],
+  p:[
+   ['Como pan.','Jem chlieb.',[['Jem','Como'],['chlieb','pan']],['ješ','mám'],"'jesť'→'jem' (yo como); 'chlieb' (masculino inanimado) NO cambia en acusativo."],
+   ['¿Comes pan?','Ješ chlieb?',[['Ješ','¿Comes'],['chlieb?','pan?']],['jem','je'],"'ješ' = tú comes (2ª persona de 'jesť')."],
+   ['Él come pan.','On je chlieb.',[['On','Él'],['je','come'],['chlieb','pan']],['jem','ješ'],"'je' = él/ella come (3ª persona de 'jesť'). ¡Atención! 'je' también significa 'es/está' (byť) — el contexto lo aclara."]
+  ],
+  mc:[
+   ['¿Cómo se dice "comer"?',['piť','jesť','mať','robiť'],1,"'jesť' = comer."],
+   ['¿Cómo se dice "Yo como pan"?',['Ty ješ chlieb.','Ja jem chlieb.','On je chlieb.','Mám chlieb.'],1,"'jem' = yo como (1ª persona de 'jesť')."],
+   ['¿Qué significa "On je chlieb"?',['Él tiene pan','Él es pan','Él come pan','Él quiere pan'],2,"'On je chlieb' = Él come pan ('je' = 3ª persona de 'jesť', no de 'byť' aquí)."]
+  ]
+ },
+ {id:'s8l2',ti:'Bebo agua',em:'💧',
+  sl:[
+   ['v','Beber y el agua',[['piť','beber','pit'],['voda','agua','vo-da']]],
+   ['g','El verbo piť (presente)','"piť" sigue el mismo patrón que "jesť":',[['Yo bebo.','Ja pijem.'],['Tú bebes.','Ty piješ.'],['Bebo agua.','Pijem vodu.'],['Como pan. (repaso)','Jem chlieb.']]]
+  ],
+  w:[['piť','beber','🥤'],['voda','agua','💧']],
+  p:[
+   ['Bebo agua.','Pijem vodu.',[['Pijem','Bebo'],['vodu','agua']],['piješ','chlieb'],"'piť'→'pijem' (yo bebo); 'voda'→'vodu' (femenino -a→-u, repaso de s6-s7)."],
+   ['¿Bebes agua?','Piješ vodu?',[['Piješ','¿Bebes'],['vodu?','agua?']],['pijem','jem'],"'piješ' = tú bebes (2ª persona de 'piť')."],
+   ['Como pan y bebo agua.','Jem chlieb a pijem vodu.',[['Jem','Como'],['chlieb','pan'],['a','y'],['pijem vodu','bebo agua']],['mám','je'],"Combina los dos verbos nuevos: 'jesť' y 'piť'."]
+  ],
+  mc:[
+   ['¿Cómo se dice "beber"?',['jesť','piť','mať','byť'],1,"'piť' = beber."],
+   ['¿Cuál es el acusativo de "voda" (agua)?',['voda','vodu','vody','vode'],1,"'voda'→'vodu' (femenino -a→-u, mismo patrón que 'izba'→'izbu')."],
+   ['¿Qué significa "Pijem vodu"?',['Tengo agua','Quiero agua','Bebo agua','Es agua'],2,"'Pijem vodu' = Bebo agua."]
+  ]
+ },
+ {id:'s8l3',ti:'Carne y manzana',em:'🍎',
+  sl:[
+   ['v','Más comida',[['mäso','carne','mya-so'],['jablko','manzana','yab-lko']]],
+   ['g','Acusativo neutro: sin cambio','"mäso" y "jablko" son neutros y NO cambian en acusativo, igual que "auto" y "okno":',[['Como carne.','Jem mäso.'],['Como manzana.','Jem jablko.'],['Tengo un auto. (repaso)','Mám auto.'],['Bebo agua. (repaso)','Pijem vodu.']]]
+  ],
+  w:[['mäso','carne','🥩'],['jablko','manzana','🍎']],
+  p:[
+   ['Como carne.','Jem mäso.',[['Jem','Como'],['mäso','carne']],['mäsa','jablko'],"'mäso' (neutro) NO cambia en acusativo."],
+   ['Como manzana.','Jem jablko.',[['Jem','Como'],['jablko','manzana']],['mäso','vodu'],"'jablko' (neutro) NO cambia en acusativo, igual que 'mäso' y 'auto'."],
+   ['No como carne, como manzana.','Nejem mäso, jem jablko.',[['Nejem','No como'],['mäso','carne'],['jem','como'],['jablko','manzana']],['vodu','chlieb'],"Repaso de la negación 'nie-' (s1) + dos sustantivos neutros que no cambian en acusativo."]
+  ],
+  mc:[
+   ['¿Cómo se dice "carne"?',['jablko','mäso','chlieb','voda'],1,"'mäso' = carne."],
+   ['¿Cuál es el acusativo de "jablko" (manzana)?',['jablko','jablká','jablka','jablku'],0,"'jablko' (neutro) no cambia en acusativo."],
+   ['¿Qué significa "Jem mäso a jablko"?',['Bebo carne y manzana','Tengo carne y manzana','Como carne y manzana','¿Comes carne y manzana?'],2,"'Jem mäso a jablko' = Como carne y manzana."]
+  ]
+ }
 ]}
 ];
 
