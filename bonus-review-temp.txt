@@ -1,0 +1,485 @@
+REVIEW — Sekcia "Eslovaquia" v BONUS_DECKS (data/bonus.js)
+=============================================================
+(Tento súbor je dočasný, môžeš ho po kontrole zmazať.)
+
+Opravy podľa tvojej spätnej väzby:
+- "Pliešovská jaskyňa" (neexistuje) -> nahradené "Dobšinská ľadová jaskyňa"
+- "Hornád Gorge" (duplicita s Prielom Hornádu v s2, navyše nejasný názov)
+  -> nahradené "Súľovské skaly"
+- "centrum levantania" -> spresnené na "Levantamiento Nacional Eslovaco (SNP) de 1944"
+- Okrem toho som overil/opravil aj OBRÁZKY (veľa pôvodných URL z Wikimedia Commons
+  bolo rozbitých/neexistujúcich) pre: Ochtinská aragonitová jaskyňa, Vysoké Tatry,
+  Liptovský Mikuláš -> Múzeum liptovskej dediny v Pribyline, Bryndzové halušky,
+  Kapustnica, Šibačka, Vianočné betlehemy, Grassalkovičov palác, Trenčín,
+  Banská Bystrica, Nitra, Modra, Levice.
+
+
+=============================================================
+DECK s1 — 🏰 Hrady a zámky (6 kariet, beze zmeny)
+=============================================================
+1. Spišský hrad
+   tip:  Camina por las ruinas más grandes de Europa central, especialmente bonito al atardecer.
+   fact: Es Patrimonio de la UNESCO y uno de los complejos de castillos más grandes de Europa.
+
+2. Bojnický zámok
+   tip:  Visita durante el Festival Internacional de Fantasmas y Espíritus en mayo, muy popular entre familias.
+   fact: Su estilo romántico de cuento de hadas inspiró castillos en películas y dibujos animados.
+
+3. Oravský hrad
+   tip:  Sube hasta la torre más alta para ver el río Orava serpenteando abajo.
+   fact: Está construido sobre una roca de 112 metros, parece literalmente "crecer" de la piedra.
+
+4. Hrad Devín
+   tip:  Camina hasta el mirador donde se unen los ríos Danubio y Moravia.
+   fact: Tiene más de 1000 años de historia y marca la frontera entre Eslovaquia y Austria.
+
+5. Trenčiansky hrad
+   tip:  Busca el "pozo del amor" (studňa lásky) dentro del recinto del castillo.
+   fact: Según la leyenda, los prisioneros cavaron el pozo en la roca a cambio de su libertad.
+
+6. Hrad Červený Kameň
+   tip:  Recorre las antiguas bodegas subterráneas del castillo.
+   fact: Tiene una de las bodegas históricas más grandes y mejor conservadas de Europa central.
+
+QUIZ:
+1. ¿Cuál castillo es Patrimonio de la UNESCO y uno de los más grandes de Europa?
+   a) Bojnický zámok  b) Spišský hrad ✔  c) Hrad Devín  d) Trenčiansky hrad
+2. ¿En qué castillo hay un "pozo del amor"?
+   a) Oravský hrad  b) Hrad Červený Kameň  c) Trenčiansky hrad ✔  d) Hrad Devín
+3. ¿Qué castillo está en la confluencia de dos ríos y en la frontera con Austria?
+   a) Hrad Devín ✔  b) Bojnický zámok  c) Spišský hrad  d) Oravský hrad
+
+
+=============================================================
+DECK s2 — 🏔️ Naturaleza y aventura (6 kariet, beze zmeny)
+=============================================================
+1. Štrbské Pleso (Vysoké Tatry)
+   tip:  Camina alrededor del lago glaciar y sigue el sendero hacia Popradské pleso.
+   fact: Es uno de los lagos glaciares más famosos de los Altos Tatras.
+
+2. Slovenský raj
+   tip:  Sube por las gargantas con escaleras y cadenas pegadas a la roca, junto a cascadas.
+   fact: Su nombre significa "Paraíso Eslovaco" por sus cañones, ríos y cascadas.
+
+3. Demänovská jaskyňa slobody
+   tip:  Recorre esta cueva y admira su famoso lago color esmeralda.
+   fact: Forma parte de uno de los sistemas de cuevas más largos de Eslovaquia.
+
+4. Vrátna dolina
+   tip:  Toma el teleférico hasta Chleb para ver toda la cordillera de Malá Fatra.
+   fact: Es uno de los valles más fotografiados de Eslovaquia.
+
+5. Kriváň
+   tip:  Sube esta montaña, especialmente popular el 1 de mayo entre los eslovacos.
+   fact: Es el pico más simbólico para los eslovacos, símbolo de la identidad nacional.
+
+6. Domica
+   tip:  Da un paseo en bote por el río subterráneo dentro de la cueva.
+   fact: Forma parte de un sistema de cuevas compartido con Hungría, Patrimonio de la UNESCO.
+
+QUIZ:
+1. ¿Cómo se llama la región conocida como "Paraíso Eslovaco" por sus cañones y cascadas?
+   a) Vrátna dolina  b) Slovenský raj ✔  c) Štrbské Pleso  d) Kriváň
+2. ¿Qué puedes hacer en Domica?
+   a) Subir una montaña  b) Pasear en bote subterráneo ✔  c) Esquiar  d) Visitar un castillo
+3. ¿Cuál es el pico más simbólico para los eslovacos?
+   a) Kriváň ✔  b) Štrbské Pleso  c) Vrátna dolina  d) Demänovská jaskyňa
+
+
+=============================================================
+DECK s3 — 🏙️ Ciudades y cultura (6 kariet, beze zmeny)
+=============================================================
+1. Bratislava — Čumil
+   tip:  Busca la estatua de "Čumil", el hombre que se asoma de una alcantarilla en el casco antiguo.
+   fact: Čumil es una de las estatuas más fotografiadas de Eslovaquia.
+
+2. Bratislava — Most SNP (UFO)
+   tip:  Sube al mirador "UFO" en lo alto del puente para ver el Danubio desde arriba.
+   fact: El restaurante en la cima del puente tiene forma de platillo volador.
+
+3. Košice
+   tip:  Escucha el concierto de carillón de la Catedral de Santa Isabel.
+   fact: Es la ciudad más grande del este de Eslovaquia y su primera Capital Europea de la Cultura.
+
+4. Banská Štiavnica
+   tip:  Recorre las antiguas minas de plata convertidas en museo subterráneo.
+   fact: Patrimonio de la UNESCO por ser uno de los centros mineros más importantes de Europa.
+
+5. Levoča
+   tip:  Visita la iglesia con el altar de madera gótico más alto del mundo.
+   fact: El altar de Levoča, obra de Maestro Pavol, mide casi 19 metros de altura.
+
+6. Bardejov
+   tip:  Pasea por la plaza renacentista perfectamente conservada del centro histórico.
+   fact: Su centro histórico es Patrimonio de la UNESCO.
+
+QUIZ:
+1. ¿Dónde puedes encontrar la estatua de "Čumil"?
+   a) Košice  b) Bratislava ✔  c) Levoča  d) Bardejov
+2. ¿Qué tiene de especial la iglesia de Levoča?
+   a) El altar de madera gótico más alto del mundo ✔  b) Una mina de plata  c) Un puente UFO  d) Un carillón
+3. ¿Qué ciudad fue la primera Capital Europea de la Cultura de Eslovaquia?
+   a) Bratislava  b) Bardejov  c) Košice ✔  d) Banská Štiavnica
+
+
+=============================================================
+DECK s4 — 🌿 Príroda  (NOVÁ SEKCIA)
+=============================================================
+1. Ochtinská aragonitová jaskyňa
+   tip:  Baja bajo tierra para ver cristales de aragonita que brillan bajo la luz especial.
+   fact: Es la única cueva de aragonita abierta al público en Europa central y Patrimonio de la UNESCO.
+
+2. Dobšinská ľadová jaskyňa  [NÁHRADA za "Pliešovská jaskyňa", ktorá neexistuje]
+   tip:  Lleva ropa de abrigo: ¡dentro hace frío incluso en pleno verano!
+   fact: Es una de las cuevas de hielo más grandes de Europa y Patrimonio de la UNESCO desde el año 2000.
+
+3. Nízke Tatry
+   tip:  Camina por los senderos alpinos con vistas de picos nevados y valles verdosos.
+   fact: Es la segunda cordillera más alta de Eslovaquia y menos turística que los Altos Tatras.
+
+4. Oravská Priehrada
+   tip:  Navega en bote o practica windsurf en el lago artificial más grande de Eslovaquia.
+   fact: El embalse fue creado en 1953 y es un paraíso para actividades acuáticas y pesca.
+
+5. Súľovské skaly  [NÁHRADA za "Hornád Gorge" — bola duplicitná s Prielom Hornádu z s2]
+   tip:  Camina entre las torres de roca y busca la "Puerta Gótica", una abertura natural entre las piedras.
+   fact: Es una reserva natural famosa por sus extrañas formaciones de roca conglomerada en forma de torres y agujas.
+
+6. Vysoké Tatry — Hrebienok  [NÁHRADA za "Tatra National Park" — rozbitý obrázok]
+   tip:  Sube en funicular hasta Hrebienok para caminar entre los bosques de los Altos Tatras y ver cascadas cercanas.
+   fact: Los Altos Tatras forman parte del Parque Nacional de los Tatras (TANAP), creado en 1949 y el más antiguo de Eslovaquia.
+
+QUIZ:
+1. ¿Qué mineral forma los cristales brillantes de la Ochtinská aragonitová jaskyňa?
+   a) Cuarzo  b) Aragonita ✔  c) Calcita  d) Diamante
+2. ¿Cuál es la segunda cordillera más alta de Eslovaquia?
+   a) Pieniny  b) Malá Fatra  c) Nízke Tatry ✔  d) Beskydy
+3. ¿En qué año fue creado el embalse de Oravská Priehrada?
+   a) 1945  b) 1953 ✔  c) 1960  d) 1975
+
+
+=============================================================
+DECK s4b — 🦅 Príroda — montañas y cuevas  (NOVÝ BALÍČEK 2/3)
+=============================================================
+1. Belianska jaskyňa
+   tip:  Camina por sus salones decorados con estalactitas y estalagmitas de colores cálidos.
+   fact: Es la única cueva del Parque Nacional de los Tatras (TANAP) abierta al público.
+
+2. Morské oko (Vihorlat)
+   tip:  Camina alrededor de este lago rodeado de bosques y disfruta del reflejo de las montañas en el agua.
+   fact: Es el lago natural no kárstico más grande de Eslovaquia, formado en un antiguo cráter volcánico.
+
+3. Národný park Poloniny
+   tip:  Recorre los senderos entre los bosques de hayas más antiguos de Europa, en el extremo más oriental de Eslovaquia.
+   fact: Sus bosques de hayas vírgenes son Patrimonio de la UNESCO por su valor ecológico único.
+
+4. Kvačianska dolina
+   tip:  Sigue el sendero junto al río y observa los antiguos molinos de agua reconstruidos.
+   fact: Es una reserva natural conocida por su cañón angosto y sus formaciones rocosas.
+
+5. Jánošíkove diery
+   tip:  Sube por escaleras y pasarelas de madera entre las paredes estrechas de este sistema de gargantas.
+   fact: El nombre hace referencia a Jánošík, el legendario bandido eslovaco, y está en el corazón de Malá Fatra.
+
+6. Sninský kameň
+   tip:  Sube hasta esta formación rocosa para ver una de las mejores vistas panorámicas de los montes Vihorlat.
+   fact: Esta roca de origen volcánico se eleva a 1006 metros sobre el nivel del mar.
+
+QUIZ:
+1. ¿Qué cueva es la única abierta al público dentro del Parque Nacional de los Tatras (TANAP)?
+   a) Domica  b) Belianska jaskyňa ✔  c) Dobšinská ľadová jaskyňa  d) Ochtinská aragonitová jaskyňa
+2. ¿Qué es Morské oko?
+   a) Una cueva de hielo  b) El lago no kárstico más grande de Eslovaquia ✔
+   c) Un castillo medieval  d) Un museo al aire libre
+3. ¿Por qué los bosques del Národný park Poloniny son Patrimonio de la UNESCO?
+   a) Por sus castillos  b) Por sus minas de oro  c) Por sus bosques de hayas vírgenes ✔  d) Por sus lagos glaciares
+
+
+=============================================================
+DECK s4c — 🌲 Príroda — gargantas y picos  (NOVÝ BALÍČEK 3/3)
+=============================================================
+1. Národný park Muránska planina
+   tip:  Explora esta meseta caliza cubierta de bosques, hogar de águilas y otras aves rapaces.
+   fact: Es uno de los parques nacionales más jóvenes de Eslovaquia, declarado en 1997.
+
+2. Belianske Tatry
+   tip:  Admira esta cordillera de picos calizos, aunque la mayoría de sus senderos están cerrados para proteger la naturaleza.
+   fact: Es la única parte de los Altos Tatras con acceso muy restringido para conservar especies raras de plantas y animales.
+
+3. Demänovská dolina
+   tip:  Visita este valle famoso por sus cuevas y aprovecha también las pistas de esquí cercanas en invierno.
+   fact: Es uno de los valles más visitados de los Bajos Tatras, con varias cuevas declaradas monumento natural.
+
+4. Tichá dolina
+   tip:  Camina por uno de los valles más salvajes y menos visitados de los Altos Tatras.
+   fact: Es la reserva natural más grande de los Altos Tatras y un refugio importante para la fauna de montaña.
+
+5. Sitno (Štiavnické vrchy)
+   tip:  Sube hasta la torre mirador en la cima para ver toda la región minera de Banská Štiavnica.
+   fact: Con 1009 metros, Sitno es el pico más alto de los montes Štiavnické vrchy, de origen volcánico.
+
+6. Zádielska tiesňava
+   tip:  Camina por el fondo de este desfiladero de piedra caliza con paredes de hasta 300 metros de altura.
+   fact: Se encuentra en el Karst Eslovaco, una región de cuevas y cañones Patrimonio de la UNESCO.
+
+QUIZ:
+1. ¿Qué tienen de especial las Belianske Tatry?
+   a) Tienen el pico más alto de Eslovaquia
+   b) El acceso está muy restringido para proteger la naturaleza ✔
+   c) Son volcánicas  d) No tienen senderos
+2. ¿Cuál es el pico más alto de los Štiavnické vrchy?
+   a) Sitno ✔  b) Kriváň  c) Sninský kameň  d) Veľký Rozsutec
+3. ¿Dónde se encuentra la Zádielska tiesňava?
+   a) En los Altos Tatras  b) En el Karst Eslovaco ✔  c) En Malá Fatra  d) En los montes Vihorlat
+
+
+=============================================================
+DECK s5 — 🎭 Slovenská kultúra a tradícia  (NOVÁ SEKCIA)
+=============================================================
+1. Vlkolínec
+   tip:  Camina entre las casas de madera tradicionales de este pueblo que parece congelado en el tiempo.
+   fact: Vlkolínec es Patrimonio de la UNESCO por su arquitectura folclórica única perfectamente conservada.
+
+2. Múzeum liptovskej dediny v Pribyline  [NÁHRADA za "Liptovský Mikuláš"]
+   tip:  Camina entre las casas de madera, la iglesia y la antigua taberna (krčma) trasladadas aquí desde pueblos de la región de Liptov.
+   fact: Este museo al aire libre se creó en 1991, cuando la construcción del embalse de Liptovská Mara inundó varios pueblos originales.
+
+3. Bryndzové halušky
+   tip:  Prueba este plato nacional de papas con queso de oveja ahumado, es adictivo.
+   fact: Bryndzové halušky es el plato nacional de Eslovaquia desde 1999 (declarado oficialmente).
+
+4. Kapustnica
+   tip:  Come esta sopa tradicional de col y carnes ahumadas, especialmente en Navidad.
+   fact: La kapustnica es parte de la tradición navideña eslovaca desde tiempos medievales.
+
+5. Šibačka (Lunes de Pascua)
+   tip:  En Lunes de Pascua, los hombres jóvenes usan un korbáč (azote trenzado de ramas de sauce) para "azotar" amistosamente a las mujeres.
+   fact: Esta tradición de primavera simboliza la limpieza, la fertilidad y la salud, y data de tiempos paganos.
+
+6. Slovenský betlehem (Rajecká Lesná)
+   tip:  Observa las figuras móviles que representan oficios tradicionales eslovacos: pastores, mineros, viñadores y alfareros.
+   fact: Es un belén de madera tallado por Jozef Pekara durante más de 15 años, con cerca de 300 figuras, inaugurado en 1995.
+
+QUIZ:
+1. ¿Qué pueblo eslovaco es Patrimonio de la UNESCO por su arquitectura folclórica?
+   a) Múzeum liptovskej dediny  b) Vlkolínec ✔  c) Banská Štiavnica  d) Bardejov
+2. ¿Cuál es el plato nacional de Eslovaquia?
+   a) Kapustnica  b) Parenice  c) Bryndzové halušky ✔  d) Pagáče
+3. ¿Qué tradición de Pascua es característica de Eslovaquia?
+   a) Huevos decorados  b) Chocolate de Pascua
+   c) Šibačka (azotar amistosamente con un korbáč) ✔  d) Desfiles religiosos
+
+
+=============================================================
+DECK s5b — 🪈 Artesanía y sabores tradicionales  (NOVÝ BALÍČEK 2/3)
+=============================================================
+1. Fujara
+   tip:  Escucha el sonido grave y melancólico de esta enorme flauta de pastor, típica del centro de Eslovaquia.
+   fact: La fujara y su música son Patrimonio Cultural Inmaterial de la UNESCO desde 2008.
+
+2. Lokše
+   tip:  Prueba estas tortillas finas de papa, rellenas de manteca de ganso o mermelada.
+   fact: Se preparan con papas hervidas y ralladas mezcladas con harina, y se cocinan en una plancha caliente.
+
+3. Čičmany
+   tip:  Camina entre las casas de madera oscura decoradas con dibujos blancos geométricos.
+   fact: Los patrones blancos se pintaban originalmente con cal para proteger la madera, y luego se volvieron decorativos.
+
+4. Fašiangy
+   tip:  Observa los desfiles de máscaras y disfraces que recorren los pueblos antes de la Cuaresma.
+   fact: Esta celebración marca el fin del invierno y se celebra desde la Epifanía hasta el Miércoles de Ceniza.
+
+5. Slovenský ľudový kroj
+   tip:  Fíjate en los bordados y colores: cada región de Eslovaquia tiene su propio diseño único.
+   fact: A finales del siglo XIX existían cerca de 60 variantes regionales del traje folclórico eslovaco.
+
+6. Korbáčiky
+   tip:  Prueba este queso ahumado trenzado en finas hebras, típico de la región de Orava.
+   fact: Su nombre significa "pequeños látigos" por su forma trenzada característica.
+
+QUIZ:
+1. ¿Qué es la fujara?
+   a) Un queso trenzado  b) Una flauta de pastor gigante ✔  c) Un traje folclórico  d) Una máscara de carnaval
+2. ¿De qué están hechas las lokše?
+   a) De maíz  b) De papa ✔  c) De trigo sarraceno  d) De arroz
+3. ¿Por qué son famosas las casas de Čičmany?
+   a) Por sus techos rojos  b) Por sus dibujos blancos geométricos ✔  c) Por ser de piedra  d) Por sus ventanas redondas
+
+
+=============================================================
+DECK s5c — 🪺 Festivales y patrimonio vivo  (NOVÝ BALÍČEK 3/3)
+=============================================================
+1. Folklórny festival Východná
+   tip:  Disfruta de bailes, trajes y música folclórica de toda Eslovaquia y del extranjero, a los pies de los Tatras.
+   fact: Es el festival folclórico más antiguo y grande de Eslovaquia, celebrado desde 1953.
+
+2. Goralský kroj (Ždiar)
+   tip:  Observa el sombrero decorado con conchas y plumas, típico de los goral de la zona de Spiš y Orava.
+   fact: Los goral son un grupo cultural de las montañas que vive a ambos lados de la frontera entre Eslovaquia y Polonia.
+
+3. Oštiepok
+   tip:  Prueba este queso de oveja ahumado con forma ovalada y dibujos decorativos en la superficie.
+   fact: Es un producto con denominación de origen protegida por la Unión Europea.
+
+4. Habánsky dvor (Veľké Leváre)
+   tip:  Recorre este antiguo patio donde vivía la comunidad habana, famosa por su cerámica de colores.
+   fact: Los habanos eran un grupo religioso que se asentó en el oeste de Eslovaquia entre los siglos XVI y XVIII.
+
+5. Drevený kostol Hronsek
+   tip:  Entra a esta iglesia evangélica construida enteramente de madera, sin usar ni un solo clavo.
+   fact: Forma parte de los "Templos de madera de la zona eslovaca de los Cárpatos", Patrimonio de la UNESCO desde 2008.
+
+6. Kraslice
+   tip:  Admira los huevos de Pascua decorados con cera y tintes de colores, técnica llamada "batika".
+   fact: Las kraslice más antiguas encontradas en territorio eslovaco datan de tumbas eslavas del siglo VII.
+
+QUIZ:
+1. ¿Desde qué año se celebra el Folklórny festival Východná?
+   a) 1953 ✔  b) 1968  c) 1989  d) 2004
+2. ¿Con qué no se construyó el Drevený kostol Hronsek?
+   a) Madera  b) Piedra  c) Clavos ✔  d) Pintura
+3. ¿De qué leche se hace el oštiepok?
+   a) De vaca  b) De cabra  c) De oveja ✔  d) De búfala
+
+
+=============================================================
+DECK s6 — 🏘️ Atracciones en las ciudades eslovacas  (NOVÁ SEKCIA)
+=============================================================
+(pôvodný titulok mal preklep "Atrakcias", opravené na "Atracciones")
+
+1. Bratislava — Grassalkovičov palác
+   tip:  Pasea por los jardines barrocos del palacio presidencial, abiertos al público algunos días.
+   fact: Este palacio es la residencia oficial del Presidente de Eslovaquia desde 1996.
+
+2. Trenčín — Castillo y ciudad medieval
+   tip:  Explora las calles empedradas de la ciudad medieval bajo la sombra del imponente castillo.
+   fact: Trenčín es una de las ciudades medievales mejor conservadas de Eslovaquia.
+
+3. Banská Bystrica — Námestie SNP  [spresnené, predtým "centrum levantania"]
+   tip:  Siéntate en la plaza central rodeada de cafeterías y visita el Museo del SNP, dedicado a la historia de la Segunda Guerra Mundial.
+   fact: Banská Bystrica fue el centro del Levantamiento Nacional Eslovaco (SNP) de 1944, una rebelión armada contra el régimen fascista.
+
+4. Nitra — Castillo episcopal y catedral
+   tip:  Sube a la fortaleza del castillo para ver la catedral y las vistas de toda la ciudad.
+   fact: Nitra es uno de los centros religiosos más antiguos de Eslovaquia, con raíces que remontan al siglo IX.
+
+5. Modra — Pueblo de la cerámica
+   tip:  Visita los talleres de artesanos que fabrican la majolika, la cerámica azul y blanca tradicional.
+   fact: Modra es famosa por su majolika, una cerámica azul y blanca con más de un siglo de tradición.
+
+6. Levice — Castillo y río Hron
+   tip:  Navega por el río Hron en canoa o visita el castillo reconstruido que domina la ciudad.
+   fact: El castillo de Levice fue dañado en el siglo XX pero fue cuidadosamente reconstruido.
+
+QUIZ:
+1. ¿Cuál es la residencia oficial del Presidente de Eslovaquia?
+   a) Hrad Devín  b) Bojnický zámok  c) Grassalkovičov palác ✔  d) Hrad Trenčín
+2. ¿Qué ciudad es famosa por su cerámica azul y blanca llamada majolika?
+   a) Levoča  b) Modra ✔  c) Banská Bystrica  d) Bardejov
+3. ¿Qué evento histórico de 1944 tuvo su centro en Banská Bystrica?
+   a) El Levantamiento Nacional Eslovaco (SNP) ✔  b) Un terremoto
+   c) La fundación de la ciudad  d) Un festival de música
+
+
+=============================================================
+DECK s6b — 🏯 Castillos, baños y plazas  (NOVÝ BALÍČEK 2/3)
+=============================================================
+1. Bratislavský hrad
+   tip:  Sube a la colina sobre el río Danubio para visitar este castillo con vistas a toda la ciudad.
+   fact: Por su forma con cuatro torres en las esquinas, los eslovacos lo llaman cariñosamente "la mesa al revés".
+
+2. Michalská brána
+   tip:  Pasa bajo esta torre con reloj y fíjate en la veleta con forma de dragón en la cima.
+   fact: Es la única puerta medieval que se conserva de las antiguas murallas de Bratislava.
+
+3. Piešťany
+   tip:  Relájate en uno de los balnearios termales más famosos de Eslovaquia, conocidos por su lodo curativo.
+   fact: Las aguas termales y el lodo de Piešťany se usan desde hace más de 200 años para tratar dolencias musculares y articulares.
+
+4. Žilina — Mariánske námestie
+   tip:  Camina por esta plaza rodeada de arcadas coloridas, en el centro histórico de la ciudad.
+   fact: La plaza tiene su origen en el siglo XIII y conserva su trazado medieval con arcadas en tres de sus lados.
+
+5. Komárno — Stará pevnosť
+   tip:  Recorre esta enorme fortaleza construida para defenderse de los ataques otomanos.
+   fact: Es parte del sistema de fortalezas más grande de Europa Central, nunca conquistado por la fuerza.
+
+6. Trnava — Trojičné námestie
+   tip:  Admira las numerosas torres de iglesias que rodean esta plaza del centro histórico.
+   fact: Por su gran cantidad de iglesias, Trnava es conocida como la "pequeña Roma" de Eslovaquia.
+
+QUIZ:
+1. ¿Cómo se conoce popularmente la forma del Bratislavský hrad?
+   a) La corona  b) La mesa al revés ✔  c) El barco  d) La estrella
+2. ¿Qué es la Michalská brána?
+   a) Un castillo en ruinas  b) La única puerta medieval conservada de Bratislava ✔
+   c) Un balneario termal  d) Una plaza de Trnava
+3. ¿Para qué se construyó la fortaleza de Komárno?
+   a) Para defenderse de los otomanos ✔  b) Como residencia real  c) Como balneario  d) Como mercado
+
+
+=============================================================
+DECK s6c — 🚂 Pueblos y ciudades por descubrir  (NOVÝ BALÍČEK 3/3)
+=============================================================
+1. Poprad
+   tip:  Usa esta ciudad como punto de partida para explorar los Altos Tatras, a solo unos minutos en tren.
+   fact: Poprad es la principal puerta de entrada a los Altos Tatras, con conexiones de tren y autobús directas a las montañas.
+
+2. Ružomberok
+   tip:  Visita esta ciudad rodeada de montañas, ideal como base para explorar la Veľká Fatra.
+   fact: Ružomberok se encuentra a los pies del monte Čebrať y es la puerta de entrada a la cordillera Veľká Fatra.
+
+3. Spišská Nová Ves
+   tip:  Busca con la mirada la torre de la iglesia que domina el horizonte de la ciudad.
+   fact: La torre de la Iglesia de la Asunción es la más alta de todas las torres de iglesia de Eslovaquia.
+
+4. Skalica — Rotunda de San Jorge
+   tip:  Visita este pequeño edificio circular, uno de los monumentos más antiguos del país.
+   fact: La rotunda románica de Skalica data del siglo XI y es uno de los edificios más antiguos de Eslovaquia.
+
+5. Kremnica
+   tip:  Conoce la ceca donde todavía se acuñan monedas y medallas, en funcionamiento desde la Edad Media.
+   fact: La ceca de Kremnica, fundada en 1328, es una de las casas de moneda más antiguas del mundo en funcionamiento continuo.
+
+6. Zvolen — Castillo de Zvolen
+   tip:  Recorre este castillo gótico-renacentista, antiguo pabellón real de caza.
+   fact: El castillo de Zvolen fue construido en el siglo XIV como residencia y pabellón de caza de los reyes húngaros.
+
+QUIZ:
+1. ¿Por qué es conocida Spišská Nová Ves?
+   a) Por tener la torre de iglesia más alta de Eslovaquia ✔  b) Por su castillo de arena  c) Por su puerto  d) Por sus minas de oro
+2. ¿Por qué es famosa Kremnica?
+   a) Por su playa  b) Por su ceca, una de las más antiguas del mundo ✔  c) Por su universidad  d) Por su aeropuerto
+3. ¿De qué época es la Rotunda de San Jorge en Skalica?
+   a) Siglo XX  b) Siglo XVIII  c) Siglo XI ✔  d) Siglo XV
+
+
+=============================================================
+ZHRNUTIE POČTU CVIČENÍ (kariet) v kategórii "Eslovaquia"
+=============================================================
+s1  Hrady a zámky                          — 6 kariet + 3 quiz otázky
+s2  Naturaleza y aventura                  — 6 kariet + 3 quiz otázky
+s3  Ciudades y cultura                     — 6 kariet + 3 quiz otázky
+s4  Príroda — bal. 1/3                     — 6 kariet + 3 quiz otázky
+s4b Príroda — bal. 2/3 (montañas y cuevas) — 6 kariet + 3 quiz otázky  [NOVÝ]
+s4c Príroda — bal. 3/3 (gargantas y picos) — 6 kariet + 3 quiz otázky  [NOVÝ]
+s5  Slovenská kultúra — bal. 1/3           — 6 kariet + 3 quiz otázky
+s5b Slovenská kultúra — bal. 2/3 (artesanía/sabores) — 6 kariet + 3 quiz otázky  [NOVÝ]
+s5c Slovenská kultúra — bal. 3/3 (festivales/patrimonio) — 6 kariet + 3 quiz otázky  [NOVÝ]
+s6  Atracciones — bal. 1/3                 — 6 kariet + 3 quiz otázky
+s6b Atracciones — bal. 2/3 (castillos/baños/plazas) — 6 kariet + 3 quiz otázky  [NOVÝ]
+s6c Atracciones — bal. 3/3 (pueblos por descubrir)  — 6 kariet + 3 quiz otázky  [NOVÝ]
+
+Spolu kategória "Eslovaquia": 72 kariet + 36 quiz otázok (12 balíčkov)
+- Príroda: 3 balíčky (s4, s4b, s4c) — 18 kariet + 9 otázok
+- Slovenská kultúra a tradícia: 3 balíčky (s5, s5b, s5c) — 18 kariet + 9 otázok
+- Atracciones en las ciudades eslovacas: 3 balíčky (s6, s6b, s6c) — 18 kariet + 9 otázok
+
+Pre porovnanie ostatné kategórie:
+- Romance (romantic): 3 balíčky x ~8 kariet + 3 quiz otázky = 25 kariet + 9 otázok
+- Jerga (slang): 3 balíčky x 8 kariet + 3 quiz otázky = 24 kariet + 9 otázok
+
+CELKOVO bonusový obsah: 121 kariet + 54 quiz otázok naprieč 18 balíčkami.
+Každý balíček má 6 cvičení (kariet) aj presne 3 quiz otázky, takže
+podmienka "každá kategória ≥3 balíčky x (6 kariet + 3 otázky)" je splnená
+pre Príroda, Slovenská kultúra a tradícia aj Atracciones en las ciudades eslovacas.
