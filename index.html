@@ -1485,6 +1485,7 @@ function showResult(ok, explanation, correctSk) {
   const u = getUser();
   if (ok) {
     nCorr++;
+    playSound('correct');
   } else {
     nErr++;
     playSound('wrong');
@@ -1737,7 +1738,7 @@ function renderBonusQuiz() {
 function pickBonusQuiz(btn, idx, ci) {
   document.querySelectorAll('#bd-quiz-opts .opt').forEach(b=>b.disabled=true);
   const ok = idx === ci;
-  if (!ok) playSound('wrong');
+  playSound(ok?'correct':'wrong');
   btn.classList.add(ok?'ok':'err');
   if (!ok) document.querySelectorAll('#bd-quiz-opts .opt')[ci].classList.add('ok');
   if (ok) bonusQuizCorrect++;
@@ -1958,36 +1959,32 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
+const SOUND_FILES = {
+  correct: 'assets/sounds/correct.mp3',
+  wrong: 'assets/sounds/negative.mp3',
+  lessonComplete: 'assets/sounds/success.mp3'
+};
 function playSound(name) {
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContext) return;
-  if (!window._audioCtx) window._audioCtx = new AudioContext();
-  const ctx = window._audioCtx;
-  if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+  const src = SOUND_FILES[name];
+  if (!src) return;
+  try {
+    const a = new Audio(src);
+    a.volume = 0.6;
+    a.play().catch(() => {});
+  } catch (e) {}
+}
 
-  function tone(freq, start, duration, type='sine') {
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = type;
-    osc.frequency.value = freq;
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    gain.gain.setValueAtTime(0, start);
-    gain.gain.linearRampToValueAtTime(0.18, start + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
-    osc.start(start);
-    osc.stop(start + duration + 0.02);
+let _mapMusic = null;
+function playMapMusic() {
+  if (!_mapMusic) {
+    _mapMusic = new Audio('assets/sounds/drums.mp3');
+    _mapMusic.loop = true;
+    _mapMusic.volume = 0.25;
   }
-
-  const now = ctx.currentTime;
-  if (name === 'wrong') {
-    tone(220, now, 0.18, 'square');
-    tone(180, now + 0.14, 0.16, 'square');
-  } else if (name === 'lessonComplete') {
-    tone(440, now, 0.12, 'triangle');
-    tone(550, now + 0.12, 0.12, 'triangle');
-    tone(660, now + 0.24, 0.14, 'triangle');
-  }
+  _mapMusic.play().catch(() => {});
+}
+function stopMapMusic() {
+  if (_mapMusic) { _mapMusic.pause(); _mapMusic.currentTime = 0; }
 }
 
 // ─── CONFETTI ─────────────────────────────────────────────────────────
@@ -2012,6 +2009,7 @@ function showToast(msg) {
 function show(id) {
   document.querySelectorAll('.screen').forEach(s=>{ s.classList.remove('active'); s.style.display='none'; });
   const sc=document.getElementById(id); sc.style.display='flex'; sc.classList.add('active');
+  if (id === 'sc-map') playMapMusic(); else stopMapMusic();
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────
