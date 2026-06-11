@@ -76,7 +76,7 @@ module.exports = async (req, res) => {
       const streak = Number(body.streak) || 0;
       const lastActive = String(body.lastActive || '');
       const grammarUnlocked = JSON.stringify(safeArray(body.grammarUnlocked));
-      const streakFreezes = Math.max(0, Math.min(1, Number(body.streakFreezes) || 0));
+      const streakFreezes = Math.max(0, Math.min(3, Number(body.streakFreezes) || 0));
       const freezeTier = Math.max(0, Number(body.freezeTier) || 0);
       const lastRewardStreak = Math.max(0, Number(body.lastRewardStreak) || 0);
       const usedBonusDecks = JSON.stringify(body.usedBonusDecks && typeof body.usedBonusDecks === 'object' ? body.usedBonusDecks : {});
