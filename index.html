@@ -2218,6 +2218,7 @@ function toggleSound() {
 function updateSoundUI() {
   const btn = document.getElementById('sound-toggle-btn');
   const icon = document.getElementById('sound-icon');
+  if (!btn || !icon) return;
   if (_soundEnabled) {
     btn.classList.remove('muted');
     icon.textContent = '🔊';
@@ -2269,6 +2270,7 @@ async function init() {
   loadSession();
 }
 init();
+document.addEventListener('DOMContentLoaded',updateSoundUI);
 document.getElementById('auth-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doAuth();});
 document.getElementById('auth-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('auth-pass').focus();});
 </script>
