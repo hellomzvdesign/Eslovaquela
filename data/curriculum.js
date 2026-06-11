@@ -677,7 +677,7 @@ gr:{
   patches:[
     {op:'newTable', category:'slovesa-casy', tableId:'ist-slovesa',
      title:"Sloveso 'ísť' (ir)", note:"'ísť' es un verbo irregular muy frecuente, usado para movimiento físico: 'voy/vas/va a...'.",
-     h:['Osoba','ísť','Español'],
+     h:['Persona','ísť (ir)','Español'],
      r:[['ja','idem','voy'],['ty','ideš','vas'],['on / ona / ono','ide','va'],['my','ideme','vamos'],['vy','idete','van (ustedes)'],['oni / ony','idú','van (ellos)']]},
     {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
      r:[['Siempre + me gusta','vždy rád/rada/radi + verbo','Vždy rád pracujem. = Siempre me gusta trabajar.'],['Nunca + me gusta','nikdy nerád/nerada/neradi + verbo','Nikdy nerada upratujem. = Nunca me gusta limpiar.'],['A veces + me gusta','niekedy rád/rada/radi + verbo','Niekedy rada nakupujem. = A veces me gusta ir de compras.']]},
@@ -852,15 +852,15 @@ gr:{
   patches:[
     {op:'newTable', category:'pady', tableId:'rody',
      title:'Géneros gramaticales (repaso)', note:'Para usar el acusativo correctamente primero hay que reconocer el género del sustantivo.',
-     h:['Rod','Terminación típica','Ejemplos'],
+     h:['Género','Terminación típica','Ejemplos'],
      r:[['Mužský (masculino)','consonante','dom, stôl, telefón'],['Ženský (femenino)','-a','izba, kuchyňa, stolička'],['Stredný (neutro)','-o / -e','okno, srdce']]},
     {op:'newTable', category:'pady', tableId:'akuzativ',
      title:'Akuzatív (4. pád) — singular', note:"El acusativo es el caso del objeto directo: responde a 'Koho? Čo?' (¿a quién? ¿qué?). Se usa después de verbos como 'mať' (tener).",
-     h:['Rod','Nominatív','Akuzatív','Príklad'],
+     h:['Género','Nominativo','Acusativo','Ejemplo'],
      r:[['Mužský neživotný','dom','dom','Mám dom. = Tengo una casa.'],['Ženský (-a)','izba','izbu','Mám izbu. = Tengo un cuarto.'],['Stredný','okno','okno','Mám okno. = Tengo una ventana.']]},
     {op:'newTable', category:'pady', tableId:'prehlad-padov',
      title:'Prehľad skloňovania (vzorové slovo: izba)', note:'Esta tabla irá creciendo con cada caso nuevo que aprendas.',
-     h:['Pád','Otázka','Forma','Príklad'],
+     h:['Caso','Pregunta','Forma','Ejemplo'],
      r:[['Nominatív','Kto? Čo?','izba','To je moja izba. = Esto es mi cuarto.'],['Akuzatív','Koho? Čo?','izbu','Mám izbu. = Tengo un cuarto.']]},
     {op:'addRows', category:'otazky-spojky', tableId:'opytovacie-zamena',
      r:[['Koho? Čo?','¿a quién? ¿qué? (acusativo)']]},
@@ -873,7 +873,7 @@ ls:[
  {id:'s6l1',ti:'Mi casa',em:'🏠',
   sl:[
    ['v','La casa',[['dom','casa','dom'],['izba','cuarto / habitación','iz-ba']]],
-   ['g','El acusativo: lo que TIENES','El acusativo es el caso de lo que tienes, ves o quieres. Compara:',[['Esto es una casa. (nominativo)','To je dom.'],['Tengo una casa. (acusativo)','Mám dom.'],['Esto es un cuarto. (nominativo)','To je izba.'],['Tengo un cuarto. (acusativo)','Mám izbu.']]]
+   ['g','El acusativo: lo que TIENES','A diferencia del español, en eslovaco los sustantivos cambian de terminación según su función en la oración — esto se llama "caso" (pád). El acusativo es el caso del objeto directo: lo que TIENES, VES o QUIERES. Compara:',[['Esto es un cuarto. (nominativo)','To je izba.'],['Tengo un cuarto. (acusativo: izba→izbu)','Mám izbu.'],['Esto es una casa. (nominativo)','To je dom.'],['Tengo una casa. (acusativo: sin cambio)','Mám dom.']]]
   ],
   w:[['dom','casa','🏠'],['izba','cuarto / habitación','🚪']],
   p:[
@@ -1026,7 +1026,7 @@ gr:{
      r:[['Mužský životný','pes','psa','Mám psa. = Tengo un perro.']]},
     {op:'newTable', category:'pady', tableId:'mnozne-cislo',
      title:'Množné číslo (nominatív)', note:'El plural depende del género. Después de los números 2, 3 y 4 se usa esta misma forma.',
-     h:['Rod','Singular','Plural','Príklad'],
+     h:['Género','Singular','Plural','Ejemplo'],
      r:[['Mužský','dom','domy','Mám dva domy. = Tengo dos casas.'],['Ženský','izba','izby','Mám tri izby. = Tengo tres cuartos.'],['Stredný','okno','okná','Mám dve okná. = Tengo dos ventanas.']]},
     {op:'addRows', category:'pady', tableId:'prehlad-padov',
      r:[['Akuzatív (živ.)','Koho?','psa','Mám psa. = Tengo un perro.']]},
@@ -1107,7 +1107,7 @@ ls:[
  {id:'s7l5',ti:'El auto y el plural',em:'🚗',
   sl:[
    ['v','Un vehículo',[['auto','auto / carro','au-to']]],
-   ['g','Množné číslo (plural)','¡Nuevo! Para hablar de VARIAS cosas, el sustantivo cambia de forma. Mira estos ejemplos:',[['una casa → dos casas','dom → domy'],['un cuarto → tres cuartos','izba → izby'],['una ventana → dos ventanas','okno → okná'],['un auto → dos autos','auto → autá']]]
+   ['g','Množné číslo (plural)','¡Nuevo! Para hablar de VARIAS cosas, el sustantivo también cambia de forma — y la terminación que recibe depende del género: masculino y femenino añaden "-y", el neutro cambia "-o" por "-á". Mira estos ejemplos:',[['Masculino (-y): una casa → dos casas','dom → domy'],['Femenino (-y): un cuarto → tres cuartos','izba → izby'],['Neutro (-o→-á): una ventana → dos ventanas','okno → okná'],['Neutro (-o→-á): un auto → dos autos','auto → autá']]]
   ],
   w:[['auto','auto / carro','🚗']],
   p:[

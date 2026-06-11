@@ -54,6 +54,10 @@ zámeny v minulosti):
 
 Plný dizajn pozri [docs/superpowers/specs/2026-06-09-curriculum-roadmap-design.md](docs/superpowers/specs/2026-06-09-curriculum-roadmap-design.md).
 Pred novou sekciou skontroluj aj formát gramatiky
-([2026-06-10-grammar-skeleton-system-design.md](docs/superpowers/specs/2026-06-10-grammar-skeleton-system-design.md))
-a formát testov
-([2026-06-10-question-template-standard.md](docs/superpowers/specs/2026-06-10-question-template-standard.md)).
+([2026-06-10-grammar-skeleton-system-design.md](docs/superpowers/specs/2026-06-10-grammar-skeleton-system-design.md)),
+formát testov
+([2026-06-10-question-template-standard.md](docs/superpowers/specs/2026-06-10-question-template-standard.md))
+a štandard vysvetlení v gramatických kartách `'g'`
+([2026-06-11-grammar-card-explanation-standard.md](docs/superpowers/specs/2026-06-11-grammar-card-explanation-standard.md)) —
+každá nová `'g'` karta, ktorá zavádza nový gramatický jav, musí vysvetliť
+PREČO sa tvar mení (pravidlo/kritérium), nielen ukázať hotové páry príkladov.
