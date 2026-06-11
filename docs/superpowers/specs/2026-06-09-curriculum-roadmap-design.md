@@ -13,23 +13,40 @@ temáticos de **5 secciones** cada uno. Al terminar el curso el alumno debe:
 - Experimentar un aumento de dificultad **suave y uniforme** a lo largo de
   las 90 secciones.
 
-## Estado actual
+## Estado actual (actualizado 2026-06-11)
 
-Ya existen 3 secciones (`s1`, `s2`, `s3`), que son las **secciones 1-3 del
-Bloque 1**:
+Ya existen 8 secciones (`s1`-`s8`): el Bloque 1 completo (s1-s5) y las
+secciones 1-3 del Bloque 2 (s6-s8). El estándar vigente de ritmo es
+**11 palabras nuevas por sección, 7 lecciones + 1 test** (ver
+[2026-06-10-exercise-pacing-standard-design.md](2026-06-10-exercise-pacing-standard-design.md)):
 
-| Sección | Título actual | Lecciones | Palabras nuevas |
-|---|---|---|---|
-| s1 | ¡Hola, Eslovaquia! | 7 + test | 54 |
-| s2 | El mundo a tu alrededor | 7 + test | 49 |
-| s3 | La vida diaria | 8 + test | 57 |
+| Sección | Título actual | Lecciones | Palabras `w` | Estándar de 11 palabras |
+|---|---|---|---|---|
+| s1 | ¡Hola, Eslovaquia! | 7 + test | 11 | ✅ migrada |
+| s2 | El cuerpo humano | 7 + test | 11 | ✅ migrada |
+| s3 | La vida diaria | 8 + test | 57 | ❌ pendiente de migración |
+| s4 | ¿Cómo estás? | 7 + test | 47 | ❌ pendiente de migración |
+| s5 | Mi semana | 7 + test | 48 | ❌ pendiente de migración |
+| s6 | Mi casa | 7 + test | 11 | ✅ |
+| s7 | Mis cosas | 7 + test | 11 | ✅ |
+| s8 | ¿Qué comes? | 7 + test | 11 | ✅ |
 
-Gramática ya cubierta: pronombres personales, verbo *byť*, géneros
-gramaticales, saludos formales/informales, números 1-100, presente de
-indicativo (patrones regulares + *mať*/*robiť*), concordancia de adjetivos,
-palabras interrogativas, *rád/rada/radi*.
+Gramática ya cubierta: pronombres personales (ja/ty/on/ona), verbo *byť*
+(singular), géneros gramaticales, presente de indicativo (*mať*/*robiť* +
+patrón *-ovať*), números 11-100, concordancia de adjetivos, palabras
+interrogativas, *rád/rada/radi* (+ negación con *nerád*), negación verbal
+(*ne-*/*nie som*), verbo *ísť*, acusativo singular (femenino -a→-u,
+masculino animado -Ø→-a, inanimado/neutro sin cambio) y plural nominativo.
 
-Al Bloque 1 le faltan las **secciones 4 y 5**.
+**OJO**: saludos, números 1-10, colores, días de la semana, familia y
+*sme/ste/sú* todavía NO se enseñan en ninguna sección — están en el
+[fondo de palabras pendientes](vocab-bank-pendiente.md) esperando ser
+asignados (los días de la semana van a s5 en su migración). Ninguna
+pregunta de test debe evaluarlos hasta entonces.
+
+La migración de s3-s5 está diseñada en
+[2026-06-10-secciones-2-5-migracion-design.md](2026-06-10-secciones-2-5-migracion-design.md)
+(orden: s3 → s4 → s5).
 
 ## Arquitectura general (enfoque híbrido)
 
@@ -72,6 +89,13 @@ A1).
 
 ## Curva de ritmo de vocabulario
 
+> **⚠️ SUPERSEDIDA (2026-06-10).** Esta curva decreciente fue sustituida por
+> el ritmo **uniforme de 11 palabras nuevas por sección** (90 × 11 = 990 ≈
+> objetivo de ~1000), definido en
+> [2026-06-10-exercise-pacing-standard-design.md](2026-06-10-exercise-pacing-standard-design.md).
+> Se conserva la tabla solo como registro histórico — NO usarla para
+> planificar secciones nuevas.
+
 | Bloques | Secciones | Palabras nuevas / sección (promedio) | Subtotal |
 |---|---|---|---|
 | 1 (secciones 1-5) | 5 | ~50 *(1-3 ya hechas: 160 en total)* | ~260 |
@@ -97,9 +121,9 @@ profundización gramatical y el reciclaje de vocabulario ya visto.
 | 4 | Cruce — ancla actual + ancla anterior más relevante juntas | 1-2 nuevas + 3-4 de repaso/combinación |
 | 5 | Consolidación + Test — vocabulario reciclado, repaso mixto, lección de test final | 0-1 nuevas + 4-5 de repaso de varias anclas |
 
-El **vocabulario por sección** sigue la curva anterior, repartido entre las
-~7-8 lecciones de la sección (en bloques avanzados, cada lección introduce
-solo 1-3 palabras nuevas, frente a las 6-8 actuales).
+El **vocabulario por sección** es de 11 palabras nuevas (estándar de ritmo),
+repartidas entre las **7 lecciones** de la sección a razón de 1-2 por
+lección; la 8ª unidad es siempre el test y no introduce palabras nuevas.
 
 ## Cómo usar este documento
 
@@ -108,8 +132,9 @@ Antes de crear contenido para una nueva sección (sección N, bloque
 
 1. Consultar la fila del bloque correspondiente para el **nombre**, **dominio
    temático** y **ancla gramatical**.
-2. Consultar la curva de vocabulario para el **número objetivo de palabras
-   nuevas** de esa sección.
+2. El número objetivo de palabras nuevas es siempre **11 por sección**
+   (1-2 por lección), según el
+   [estándar de ritmo](2026-06-10-exercise-pacing-standard-design.md).
 3. Consultar la plantilla interna (sección 1-5 dentro del bloque) para saber
    qué proporción de tablas de gramática deben ser nuevas vs. repaso, y qué
    anclas anteriores conviene combinar.

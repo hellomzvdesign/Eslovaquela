@@ -45,6 +45,12 @@ zámeny v minulosti):
 - Kurz má **18 blokov × 5 sekcií = 90 sekcií** celkovo (NIE 4 sekcie na blok).
 - Blok N obsahuje sekcie `(N-1)*5 + 1` až `N*5`. Napr. **Blok 1 = sekcie 1-5**.
 - Pre danú sekciu číslo N je číslo bloku `ceil(N/5)`.
+- **1 sekcia = presne 7 lekcií + 1 test** (`isTest:true`, 15-20 `tq` otázok,
+  0 nových slov).
+- **11 nových slov na sekciu**, rozdelených 1-2 na lekciu (rovnomerné tempo
+  podľa [2026-06-10-exercise-pacing-standard-design.md](docs/superpowers/specs/2026-06-10-exercise-pacing-standard-design.md);
+  klesajúca krivka v roadmape je zrušená). Cieľ kurzu: 90 × 11 ≈ 1000 slov
+  + kompletná gramatika A1.
 - Rola sekcie v rámci bloku (1-5):
   1. Introducir el ancla
   2. Ampliar el ancla

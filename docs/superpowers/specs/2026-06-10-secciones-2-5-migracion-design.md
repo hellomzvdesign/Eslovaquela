@@ -10,11 +10,11 @@ test final (8ª unidad) sin palabras nuevas.
 Estado real verificado (palabras nuevas totales por sección, sumando `w` de
 todas las lecciones):
 
-| Sección | Palabras (`w`) | Estado |
+| Sección | Palabras (`w`) | Estado *(actualizado 2026-06-11)* |
 |---|---|---|
 | s1 ¡Hola, Eslovaquia! | 11 | ✅ ya migrada |
-| s2 El mundo a tu alrededor | ~49 | ❌ modelo antiguo |
-| s3 La vida diaria | ~57 | ❌ modelo antiguo |
+| s2 El cuerpo humano | 11 | ✅ **migrada 2026-06-10** (antes "El mundo a tu alrededor", ~49) |
+| s3 La vida diaria | ~57 | ❌ modelo antiguo — **siguiente en migrar** |
 | s4 ¿Cómo estás? | ~47 | ❌ modelo antiguo |
 | s5 Mi semana | ~48 | ❌ modelo antiguo |
 | s6 Mi casa | 11 | ✅ ya migrada |
@@ -39,7 +39,7 @@ mismo patrón a las secciones 2-5.
 Migrar las secciones **s2, s3, s4, s5** al estándar de 11 palabras/sección
 (1-2/lección), siguiendo el patrón ya validado en s6-s8: cada sección se
 re-enfoca en **un único tema léxico cohesivo**, cubierto en profundidad a lo
-largo de sus 7-8 lecciones, y el resto del vocabulario actual (~150 palabras)
+largo de sus 7 lecciones, y el resto del vocabulario actual (~150 palabras)
 se traslada al fondo de palabras pendientes para nutrir secciones futuras
 (9+).
 
@@ -69,8 +69,10 @@ y el ancla de esta tabla como restricciones.
 
 Cada sección migrada sigue la estructura ya validada en s1/s6-s8:
 
-- **7 lecciones (`ls`) + 1 test (`ls[7]`, `isTest:true`)**. No cambia el
-  número de lecciones.
+- **Exactamente 7 lecciones (`ls`) + 1 test (`ls[7]`, `isTest:true`)**.
+  Las secciones que hoy tienen otro número de lecciones se reestructuran:
+  en concreto, **s3 (8 lecciones) se consolida a 7** durante su migración
+  (con solo 11 palabras nuevas, el contenido cabe de sobra en 7 lecciones).
 - **`w`**: 11 palabras en total, repartidas 1-2 por lección (ej. patrón
   `2,2,1,2,1,2,1` como en s6/s7).
 - **`gr.patches`**: se mantienen los mismos temas de tablas gramaticales

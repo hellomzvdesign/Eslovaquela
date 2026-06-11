@@ -10,7 +10,7 @@ gr:{
     {op:'newTable', category:'byt-pritomny', tableId:'byt-basico',
      title:'Verbo byť — ser / estar (básico)',note:"A diferencia del español, 'byť' cumple las funciones de ser Y estar.",
      h:['Pronombre','Forma','Ejemplo'],
-     r:[['ja','som','Ja som doma. → Yo estoy en casa.'],['ty','si','Ty si priateľ. → Tú eres amigo.'],['on','má (sa)','Má sa dobre. → Él está bien.']]},
+     r:[['ja','som','Ja som doma. → Yo estoy en casa.'],['ty','si','Ty si priateľ. → Tú eres amigo.'],['on','je','On je doma. → Él está en casa.']]},
     {op:'newTable', category:'byt-pritomny', tableId:'byt-negacion',
      title:'Negación de byť',note:"'nie' se coloca siempre justo antes del verbo.",
      h:['Afirmativo','Negativo'],
@@ -18,9 +18,9 @@ gr:{
     {op:'newTable', category:'otazky-spojky', tableId:'pregunta-ako-si',
      title:'Preguntar "¿cómo estás?"',note:"'Ako' (cómo) + 'sa máš' forma la pregunta sobre el estado de alguien.",
      h:['Español','Eslovaco'],
-     r:[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Je mi dobre.'],['¿Cómo está él?','Ako sa má?'],['Él está bien.','Má sa dobre.']]}
+     r:[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Mám sa dobre.'],['¿Cómo está él?','Ako sa má?'],['Él está bien.','Má sa dobre.']]}
   ],
-  tips:["🔑 En eslovaco, pronombre + 'byť' ya forma una frase completa: 'Ja som' = 'Yo soy/estoy'.","🔑 'byť' equivale a SER y ESTAR del español al mismo tiempo. El contexto indica cuál.","🔑 La negación 'nie' va siempre justo antes del verbo: 'nie som', 'nie si', 'nie je'.","🔑 'Ako sa máš?' (¿Cómo estás?) se responde con 'Je mi dobre.' (Estoy bien)."]
+  tips:["🔑 En eslovaco, pronombre + 'byť' ya forma una frase completa: 'Ja som' = 'Yo soy/estoy'.","🔑 'byť' equivale a SER y ESTAR del español al mismo tiempo. El contexto indica cuál.","🔑 La negación 'nie' va siempre justo antes del verbo: 'nie som', 'nie si', 'nie je'.","🔑 'Ako sa máš?' (¿Cómo estás?) se responde con 'Mám sa dobre.' (Estoy bien)."]
 },
 ls:[
  {id:'s1l1',ti:'Primeros pasos',em:'👋',
@@ -96,13 +96,13 @@ ls:[
  {id:'s1l6',ti:'¿Cómo estás?',em:'😊',
   sl:[
    ['v','Dos palabras nuevas',[['dobre','bien','do-bre'],['ako','cómo','a-ko']]],
-   ['g','Preguntar cómo está alguien','"Ako sa máš" forma la pregunta "¿Cómo estás/está...?".',[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Je mi dobre.'],['¿Cómo está él?','Ako sa má?'],['Él está bien.','Má sa dobre.']]]
+   ['g','Preguntar cómo está alguien','"Ako sa máš?" pregunta por tu estado. Fíjate en el patrón del verbo: "máš" (tú) → "mám" (yo) → "má" (él/ella). La respuesta usa la misma estructura que la pregunta.',[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Mám sa dobre.'],['¿Cómo está él?','Ako sa má?'],['Él está bien.','Má sa dobre.']]]
   ],
   w:[['dobre','bien','👌'],['ako','cómo','❓']],
   p:[
    ['¿Cómo estás?','Ako sa máš?',[['Ako','Cómo'],['sa máš','estás']],['som','je'],"'Ako sa máš' = '¿Cómo estás?'."],
-   ['Estoy bien.','Je mi dobre.',[['Je','Es'],['mi','para mí'],['dobre','bien']],['ja','ty'],"'Je mi dobre' = Estoy bien."],
-   ['Él está bien.','Má sa dobre.',[['Má','Tiene/está'],['sa','se'],['dobre','bien']],['ty','si'],"'Má sa dobre' = Él está bien."]
+   ['Estoy bien.','Mám sa dobre.',[['Mám sa','Estoy'],['dobre','bien']],['máš','je'],"'Mám sa dobre' = Estoy bien — la respuesta natural a 'Ako sa máš?'."],
+   ['Él está bien.','Má sa dobre.',[['Má sa','(Él) está'],['dobre','bien']],['máš','mám'],"'Má sa dobre' = Él está bien. Mismo patrón que 'Mám sa dobre', con 'má' (él/ella)."]
   ],
   mc:[
    ['¿Cómo se dice "bien"?',['ako','dobre','nie','je'],1,"'dobre' = bien."],
@@ -145,7 +145,7 @@ ls:[
    {id:'s1t-08',category:'old_review',type:'mc',skill:'vocab',concept_tag:'pronombres_personales',question:'¿Cómo se dice "tú"?',options:['ja','ty','on','si'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ty' = tú."},
    {id:'s1t-09',category:'random_review',type:'listen',skill:'grammar',concept_tag:'byt_presente',question:'Escucha y elige la traducción correcta.',options:['Estoy en casa','Estás en casa','Está en casa','Soy amigo'],answer:0,audio:'Ja som doma',skippable:true,accept:[],explanation:"'Ja som doma' = Estoy en casa."},
    {id:'s1t-10',category:'old_review',type:'mc',skill:'vocab',concept_tag:'preguntas_como_estas',question:'¿Cómo se dice "¿Cómo estás?"?',options:['Si ako sa máš?','Ako sa máš?','Ako som?','Dobre sa máš?'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ako sa máš?' = ¿Cómo estás?"},
-   {id:'s1t-11',category:'old_review',type:'fill',skill:'vocab',concept_tag:'preguntas_como_estas',question:'Completa: "___ mi dobre." (Estoy bien)',options:[],answer:'Je',audio:null,skippable:false,accept:['Je','je'],explanation:"'Je mi dobre' = Estoy bien."},
+   {id:'s1t-11',category:'old_review',type:'fill',skill:'vocab',concept_tag:'preguntas_como_estas',question:'Completa: "Mám sa ___." (Estoy bien)',options:[],answer:'dobre',audio:null,skippable:false,accept:['dobre'],explanation:"'Mám sa dobre' = Estoy bien."},
    {id:'s1t-12',category:'old_review',type:'type',skill:'vocab',concept_tag:'vocab_basico_s1',question:'Escribe en eslovaco: "amigo"',options:[],answer:'priateľ',audio:null,skippable:false,accept:['priateľ','priatel'],explanation:"'priateľ' = amigo."},
    {id:'s1t-13',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacion_byt',question:'¿Qué significa "Ty nie si doma"?',options:['Tú estás en casa','Tú no estás en casa','Él no está en casa','Yo no estoy en casa'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ty nie si doma' = Tú no estás en casa."},
    {id:'s1t-14',category:'random_review',type:'mc',skill:'grammar',concept_tag:'byt_presente',question:'¿Qué significa "On je priateľ"?',options:['Él es amigo','Él está bien','Yo soy amigo','Tú eres amigo'],answer:0,audio:null,skippable:false,accept:[],explanation:"'On je priateľ' = Él es amigo."},
@@ -180,6 +180,7 @@ ls:[
   sl:[
    ['v','La cabeza',[['hlava','cabeza','hla-va'],['oko','ojo','o-ko']]],
    ['g','Género: hlava y oko','"hlava" termina en -a → femenino. "oko" termina en -o → neutro. El género determina cómo cambian las palabras en eslovaco.',[['La cabeza (femenino)','hlava'],['El ojo (neutro)','oko']]],
+   ['g','La frase "Bolí ma..."','Para decir que algo te duele: "bolí" = duele y "ma" = me (a mí). "Bolí ma [parte]" es una frase fija — solo cambia la parte del cuerpo.',[['Me duele la cabeza.','Bolí ma hlava.'],['Me duele el ojo.','Bolí ma oko.']]],
    ['t','Ona = ella','Ahora puedes decir "ona" (ella), igual que "on" (él). "Ona je doma." = Ella está en casa.']
   ],
   w:[['hlava','cabeza','🧠'],['oko','ojo','👁️']],
@@ -234,7 +235,7 @@ ls:[
   w:[['noha','pierna/pie','🦵'],['srdce','corazón','❤️']],
   p:[
    ['Me duele la pierna','Bolí ma noha',[['Bolí ma','Me duele'],['noha','la pierna']],['ruka','srdce'],"—"],
-   ['Ella está bien','Ona je dobre',[['Ona','Ella'],['je','está'],['dobre','bien']],['On','Ja'],"Repaso: 'ona je' + adjetivo (Sección 1: 'dobre' = bien)."]
+   ['Ella no está en casa','Ona nie je doma',[['Ona','Ella'],['nie','no'],['je','está'],['doma','en casa']],['On','som'],"Repaso de la negación (s1): 'nie' va antes del verbo, ahora con 'ona'."]
   ],
   mc:[
    ['¿Qué significa "srdce"?',['cabeza','corazón','pierna','brazo'],1,"'srdce' = corazón. ¡La palabra más poética del eslovaco!"],
@@ -284,7 +285,7 @@ ls:[
   w:[['brucho','barriga/panza','🫃']],
   p:[
    ['Me duele la barriga','Bolí ma brucho',[['Bolí ma','Me duele'],['brucho','la barriga']],['srdce','noha'],"—"],
-   ['¿Cómo está ella?','Ako je ona?',[['Ako','Cómo'],['je','está'],['ona','ella']],['on','ty'],"Repaso: 'Ako' (cómo, Sección 1) + 'je' + pronombre."]
+   ['Ella está bien','Ona sa má dobre',[['Ona','Ella'],['sa má','está'],['dobre','bien']],['je','nie'],"'sa má' como en 'Ako sa máš?' (s1): 'Ona sa má dobre' = Ella está bien."]
   ],
   mc:[
    ['¿Qué significa "brucho"?',['corazón','barriga/panza','pierna','cara'],1,"'brucho' = barriga/panza."],
@@ -314,7 +315,7 @@ ls:[
    {id:'s2t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_presente',question:'¿Cómo se dice "Yo soy / Yo estoy"?',options:['Ty si','Ja som','On je','Ona je'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ja som' = Yo soy / Yo estoy (Sección 1)."},
    {id:'s2t-13',category:'old_review',type:'fill',skill:'grammar',concept_tag:'negacion_byt',question:'Completa: "On ___ je." (Él no está)',options:[],answer:'nie',audio:null,skippable:false,accept:['nie'],explanation:"La negación 'nie' va justo antes del verbo (Sección 1)."},
    {id:'s2t-14',category:'old_review',type:'mc',skill:'vocab',concept_tag:'pronombres_personales',question:'¿Qué significa "ty"?',options:['yo','tú','él','ella'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ty' = tú (Sección 1)."},
-   {id:'s2t-15',category:'random_review',type:'listen',skill:'vocab',concept_tag:'preguntas_como_estas',question:'Escucha y elige la traducción correcta.',options:['¿Cómo estás?','Estoy bien','Estoy en casa','Soy amigo'],answer:0,audio:'Ako si?',skippable:true,accept:[],explanation:"'Ako si?' = ¿Cómo estás? (Sección 1)."},
+   {id:'s2t-15',category:'random_review',type:'listen',skill:'vocab',concept_tag:'preguntas_como_estas',question:'Escucha y elige la traducción correcta.',options:['¿Cómo estás?','Estoy bien','Estoy en casa','Soy amigo'],answer:0,audio:'Ako sa máš?',skippable:true,accept:[],explanation:"'Ako sa máš?' = ¿Cómo estás? (Sección 1)."},
    {id:'s2t-16',category:'random_review',type:'type',skill:'vocab',concept_tag:'vocab_basico_s1',question:'Escribe en eslovaco: "amigo"',options:[],answer:'priateľ',audio:null,skippable:false,accept:['priateľ','priatel'],explanation:"'priateľ' = amigo (Sección 1)."},
    {id:'s2t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'rody_gramaticke',question:'Elige el género CORRECTO de "oko" (ojo)',options:['Masculino','Femenino','Neutro','No tiene género'],answer:2,audio:null,skippable:false,accept:[],explanation:"'oko' termina en -o → neutro."},
    {id:'s2t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'zamena_ona',question:'Corrige el error: "Ona som doma." (debería significar "Ella está en casa")',options:[],answer:'Ona je doma',audio:null,skippable:false,accept:['Ona je doma','ona je doma'],explanation:"Con 'ona' se usa 'je', no 'som'. 'som' es solo para 'ja'."}
@@ -472,7 +473,7 @@ ls:[
   sl:[
    ['v','Adjetivos comunes (masc.)',[['veľký','grande','vel-kee'],['malý','pequeño','ma-lee'],['pekný','bonito','pek-nee'],['starý','viejo','sta-ree'],['nový','nuevo','no-vee'],['dobrý','bueno','dob-ree']]],
    ['g','Concordancia de género','Los adjetivos cambian su terminación según el género del sustantivo: masculino -ý, femenino -á, neutro -é.',[['grande (m./f./n.)','veľký / veľká / veľké'],['nuevo (m./f./n.)','nový / nová / nové'],['Un perro grande (m.)','veľký pes'],['Una habitación grande (f.)','veľká izba'],['Un auto grande (n.)','veľké auto']]],
-   ['t','Truco para recordar','-ý → masculino, -á → femenino, -é → neutro. ¡Es el mismo patrón que viste con los colores en la Sección 1!']
+   ['t','Truco para recordar','-ý → masculino, -á → femenino, -é → neutro. Memoriza este trío de terminaciones: se aplica a casi todos los adjetivos del eslovaco.']
   ],
   w:[['veľký','grande','🐘'],['malý','pequeño','🐭'],['pekný','bonito','✨'],['starý','viejo','👴'],['nový','nuevo','🆕'],['dobrý','bueno','👍']],
   p:[
@@ -541,7 +542,7 @@ ls:[
   ],
   w:[['šťastný','feliz','😄'],['smutný','triste','😢'],['unavený','cansado','😴'],['nervózny','nervioso','😬'],['hladný','hambriento','🍽️'],['smädný','sediento','🥤'],['chorý','enfermo','🤒']],
   p:[
-   ['Estoy cansado','Som unavený',[['Som','Estoy'],['unavený','cansado']],['šťastný','smutný'],"Estructura igual a 'Som učiteľ' (s1), pero con un adjetivo de estado."],
+   ['Estoy cansado','Som unavený',[['Som','Estoy'],['unavený','cansado']],['šťastný','smutný'],"Misma estructura que 'Ja som...' (s1), ahora con un adjetivo de estado."],
    ['No estoy enfermo, estoy bien','Nie som chorý, som v poriadku',[['Nie som','No estoy'],['chorý','enfermo'],['som v poriadku','estoy bien']],['unavený','smutný'],"Combina la negación de la lección anterior con un adjetivo nuevo."]
   ],
   mc:[
@@ -562,7 +563,7 @@ ls:[
    ['No estoy nada nervioso','Vôbec nie som nervózny',[['Vôbec nie','Para nada'],['som','estoy'],['nervózny','nervioso']],['trochu','veľmi'],"'vôbec nie' refuerza la negación: 'para nada' / 'en absoluto'."]
   ],
   mc:[
-   ['¿Cómo preguntas "¿Cómo estás?"?',['Ako sa voláš?','Kto si?','Ako sa máš?','Čo robíš?'],2,"'Ako sa máš?' = ¿Cómo estás?. 'Ako sa voláš?' = ¿Cómo te llamas? (s1)."],
+   ['¿Cómo preguntas "¿Cómo estás?"?',['Ako sa má?','Kto si?','Ako sa máš?','Čo robíš?'],2,"'Ako sa máš?' = ¿Cómo estás? (tú). 'Ako sa má?' = ¿Cómo está (él/ella)?"],
    ['¿Qué significa "veľmi"?',['un poco','muy','para nada','siempre'],1,"'veľmi' = muy. 'trochu' = un poco."],
    ['¿Cómo se dice "estoy mal"?',['Mám sa dobre','Som dobrý','Mám sa zle','Nie som dobrý'],2,"'Mám sa zle' = estoy mal. 'Mám sa dobre' = estoy bien."]
   ]
@@ -581,7 +582,7 @@ ls:[
   mc:[
    ['¿Cómo se dice "estudiante"?',['učiteľ','lekár','študent','vodič'],2,"'študent' = estudiante. Muy parecido al español."],
    ['¿Cuál es la forma femenina de "kuchár"?',['kuchárka','kuchár','kuchára','kuchári'],0,"'kuchárka' = cocinera. Se forma añadiendo '-ka'."],
-   ['¿Qué significa "policajt"?',['profesor','policía','vendedor','médico'],1,"'policajt' = policía. Recuerda 'polícia' (s2) = la institución."]
+   ['¿Qué significa "policajt"?',['profesor','policía','vendedor','médico'],1,"'policajt' = policía (la persona). 'polícia' = la institución."]
   ]
  },
  {id:'s4l5',ti:'¿A qué te dedicas?',em:'🧑‍💼',
@@ -658,16 +659,16 @@ ls:[
    {id:'s4t-13',category:'new',type:'mc',skill:'vocab',concept_tag:'emociones_vocab',question:'"Ako sa máš?" significa...',options:['¿Cómo te llamas?','¿Cómo estás?','¿Quién eres?','¿Qué haces?'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ako sa máš?' = ¿Cómo estás?"},
    {id:'s4t-14',category:'new',type:'fill',skill:'grammar',concept_tag:'negacia_byt',question:'Completa: "___ som lekár, som učiteľ." (No)',options:[],answer:'Nie',audio:null,skippable:false,accept:['Nie'],explanation:"'Nie som' = no soy."},
    {id:'s4t-15',category:'new',type:'mc',skill:'vocab',concept_tag:'profesiones_vocab',question:'¿Qué significa "umelec"?',options:['abogado','ingeniero','artista','actor'],answer:2,audio:null,skippable:false,accept:[],explanation:"'umelec' = artista."},
-   {id:'s4t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_som_si_je',question:'"Vy ___ tu." (están)',options:['sme','ste','sú','je'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ste' = están (ustedes)."},
+   {id:'s4t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'byt_som_si_je',question:'"On ___ doma." (está)',options:['som','si','je','nie'],answer:2,audio:null,skippable:false,accept:[],explanation:"'je' = es/está (3ª persona de 'byť', s1)."},
    {id:'s4t-17',category:'old_review',type:'type',skill:'grammar',concept_tag:'pridavne_zhoda',question:'Escribe en eslovaco: "ella es bonita"',options:[],answer:'Ona je pekná',audio:null,skippable:false,accept:['Ona je pekná','ona je pekna'],explanation:"'pekná' es la forma femenina de 'pekný'."},
    {id:'s4t-18',category:'old_review',type:'mc',skill:'vocab',concept_tag:'numbers_11_100',question:'¿Cómo se dice "veinte"?',options:['dvanásť','dvadsať','desať','dva'],answer:1,audio:null,skippable:false,accept:[],explanation:"'dvadsať' = veinte."},
-   {id:'s4t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'rad_rada_radi',question:'Completa: "Rád ___ knihy." (leo)',options:[],answer:'čítam',audio:null,skippable:false,accept:['čítam','citam'],explanation:"'Rád čítam' = me gusta leer (hombre)."},
+   {id:'s4t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'rad_rada_radi',question:'Completa (hombre): "Rád ___." (Me gusta leer)',options:[],answer:'čítam',audio:null,skippable:false,accept:['čítam','citam'],explanation:"'Rád čítam' = me gusta leer (hombre)."},
    {id:'s4t-20',category:'old_review',type:'mc',skill:'vocab',concept_tag:'opytovacie_zamena',question:'¿Qué significa "kde"?',options:['cuándo','dónde','por qué','cómo'],answer:1,audio:null,skippable:false,accept:[],explanation:"'kde' = dónde."},
-   {id:'s4t-21',category:'random_review',type:'mc',skill:'vocab',concept_tag:'greetings_formal_informal',question:'¿Cuál es el saludo FORMAL?',options:['Ahoj','Čau','Dobrý deň','Servus'],answer:2,audio:null,skippable:false,accept:[],explanation:"'Dobrý deň' es el saludo formal."},
+   {id:'s4t-21',category:'random_review',type:'mc',skill:'vocab',concept_tag:'preguntas_como_estas',question:'¿Cuál es la respuesta natural a "Ako sa máš?"?',options:['Mám sa dobre','Ja som ja','Nie som doma','Som študent'],answer:0,audio:null,skippable:false,accept:[],explanation:"'Mám sa dobre' = Estoy bien (s1)."},
    {id:'s4t-22',category:'random_review',type:'mc',skill:'vocab',concept_tag:'body_vocab',question:'¿Qué significa "srdce"?',options:['cabeza','nariz','ojo','corazón'],answer:3,audio:null,skippable:false,accept:[],explanation:"'srdce' = corazón."},
    {id:'s4t-23',category:'random_review',type:'mc',skill:'vocab',concept_tag:'clothes_vocab',question:'¿Cómo se dice "zapatos"?',options:['topánky','ponožky','sukňa','čiapka'],answer:0,audio:null,skippable:false,accept:[],explanation:"'topánky' = zapatos."},
    {id:'s4t-24',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'negacia_byt',question:'¿Qué frase es CORRECTA?',options:['Nesom lekár.','Nie som lekár.','Som nie lekár.','Nieje lekár.'],answer:1,audio:null,skippable:false,accept:[],explanation:"'byť' es la excepción: 'Nie som', con espacio."},
-   {id:'s4t-25',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'negacia_slovesa',question:'Corrige el error: "Ja nie mám čas."',options:[],answer:'Nemám čas',audio:null,skippable:false,accept:['Nemám čas','Nemám čas.'],explanation:"Los verbos (excepto 'byť') niegan con 'ne-' pegado: 'nemám', no 'nie mám'."}
+   {id:'s4t-25',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'negacia_slovesa',question:'Corrige el error: "Ja nie mám peniaze."',options:[],answer:'Nemám peniaze',audio:null,skippable:false,accept:['Nemám peniaze','Nemám peniaze.','Ja nemám peniaze','Ja nemám peniaze.'],explanation:"Los verbos (excepto 'byť') niegan con 'ne-' pegado: 'nemám', no 'nie mám'."}
   ]
  }
 ]},
@@ -699,7 +700,7 @@ ls:[
   ],
   w:[['deň','día','📆'],['týždeň','semana','🗓️'],['víkend','fin de semana','🏖️'],['pracovný deň','día laborable','💼'],['dnes','hoy','👉'],['zajtra','mañana','➡️'],['včera','ayer','⬅️']],
   p:[
-   ['Hoy es lunes, mañana es martes','Dnes je pondelok, zajtra je utorok',[['Dnes','Hoy'],['je','es'],['pondelok','lunes'],['zajtra','mañana'],['utorok','martes']],['streda','piatok'],"'je' = es/está (3ª persona de 'byť'). Repaso de los días de la semana."],
+   ['Hoy es lunes, mañana martes','Dnes je pondelok, zajtra utorok',[['Dnes','Hoy'],['je','es'],['pondelok','lunes'],['zajtra','mañana'],['utorok','martes']],['streda','piatok'],"'je' = es/está (3ª persona de 'byť'). En la segunda parte se puede omitir: 'zajtra (je) utorok'."],
    ['El fin de semana no trabajo','Cez víkend nepracujem',[['Cez','Durante'],['víkend','el fin de semana'],['nepracujem','no trabajo']],['týždeň','deň'],"'cez' (s4l7) + 'víkend' = durante el fin de semana. 'nepracujem' repasa la negación (s4)."]
   ],
   mc:[
@@ -819,15 +820,15 @@ ls:[
   w:[],p:[],mc:[],
   tq:[
    {id:'s5t-01',category:'new',type:'mc',skill:'vocab',concept_tag:'dni_tyzdna',question:'¿Qué significa "týždeň"?',options:['día','semana','fin de semana','mes'],answer:1,audio:null,skippable:false,accept:[],explanation:"'týždeň' = semana."},
-   {id:'s5t-02',category:'new',type:'fill',skill:'vocab',concept_tag:'dni_tyzdna',question:'Completa: "Dnes je pondelok, ___ je utorok." (mañana)',options:[],answer:'zajtra',audio:null,skippable:false,accept:['zajtra'],explanation:"'zajtra' = mañana (día siguiente)."},
+   {id:'s5t-02',category:'new',type:'fill',skill:'vocab',concept_tag:'dni_tyzdna',question:'Completa: "Dnes pracujem, ___ som doma." (mañana)',options:[],answer:'zajtra',audio:null,skippable:false,accept:['zajtra'],explanation:"'zajtra' = mañana (día siguiente)."},
    {id:'s5t-03',category:'new',type:'mc',skill:'vocab',concept_tag:'frekvencia_prislovky',question:'¿Cómo se dice "siempre"?',options:['často','vždy','niekedy','nikdy'],answer:1,audio:null,skippable:false,accept:[],explanation:"'vždy' = siempre."},
    {id:'s5t-04',category:'new',type:'type',skill:'vocab',concept_tag:'frekvencia_prislovky',question:'Escribe en eslovaco: "nunca"',options:[],answer:'nikdy',audio:null,skippable:false,accept:['nikdy'],explanation:"'nikdy' = nunca."},
    {id:'s5t-05',category:'new',type:'mc',skill:'vocab',concept_tag:'frekvencia_prislovky',question:'¿Qué significa "zriedka"?',options:['siempre','a menudo','raras veces','cada día'],answer:2,audio:null,skippable:false,accept:[],explanation:"'zriedka' = raras veces."},
    {id:'s5t-06',category:'new',type:'fill',skill:'vocab',concept_tag:'casti_dna',question:'Completa: "Ráno pracujem, ___ som doma." (por la noche)',options:[],answer:'večer',audio:null,skippable:false,accept:['večer'],explanation:"'večer' = por la noche/tarde."},
    {id:'s5t-07',category:'new',type:'mc',skill:'vocab',concept_tag:'casti_dna',question:'¿Cómo se dice "durante el día"?',options:['celý deň','cez deň','každý deň','v noci'],answer:1,audio:null,skippable:false,accept:[],explanation:"'cez deň' = durante el día."},
    {id:'s5t-08',category:'new',type:'listen',skill:'vocab',concept_tag:'ist_konjugacia',question:'Escucha y elige la traducción correcta.',options:['Voy al cine','Voy a casa','Voy a las montañas','Voy de compras'],answer:0,audio:'Idem do kina',skippable:true,accept:[],explanation:"'Idem do kina' = Voy al cine."},
-   {id:'s5t-09',category:'new',type:'mc',skill:'grammar',concept_tag:'ist_konjugacia',question:'"Ja ___ do práce." (voy)',options:['ide','ideš','idem','idú'],answer:2,audio:null,skippable:false,accept:[],explanation:"'idem' = voy. 1ª persona de 'ísť'."},
-   {id:'s5t-10',category:'new',type:'type',skill:'grammar',concept_tag:'ist_konjugacia',question:'Conjuga "ísť" para "ty" (tú)',options:[],answer:'ideš',audio:null,skippable:false,accept:['ideš','idez'],explanation:"'ideš' = vas (2ª persona singular de 'ísť')."},
+   {id:'s5t-09',category:'new',type:'mc',skill:'grammar',concept_tag:'ist_konjugacia',question:'"Ja ___ do kina." (voy)',options:['ide','ideš','idem','idú'],answer:2,audio:null,skippable:false,accept:[],explanation:"'idem' = voy. 1ª persona de 'ísť'."},
+   {id:'s5t-10',category:'new',type:'type',skill:'grammar',concept_tag:'ist_konjugacia',question:'Conjuga "ísť" para "ty" (tú)',options:[],answer:'ideš',audio:null,skippable:false,accept:['ideš'],explanation:"'ideš' = vas (2ª persona singular de 'ísť')."},
    {id:'s5t-11',category:'new',type:'mc',skill:'vocab',concept_tag:'volny_cas_slovesa',question:'¿Qué significa "stretávať sa"?',options:['limpiar','quedar con amigos','descansar','jugar'],answer:1,audio:null,skippable:false,accept:[],explanation:"'stretávať sa' = quedar/reunirse con amigos."},
    {id:'s5t-12',category:'new',type:'fill',skill:'grammar',concept_tag:'rad_rada_radi',question:'Completa (mujer): "Rada ___ cez víkend." (compro/voy de compras)',options:[],answer:'nakupujem',audio:null,skippable:false,accept:['nakupujem'],explanation:"'Rada nakupujem' = me gusta ir de compras (mujer)."},
    {id:'s5t-13',category:'new',type:'mc',skill:'vocab',concept_tag:'volny_cas_slovesa',question:'¿Cómo se dice "limpiar"?',options:['relaxovať','upratovať','oddychovať','nakupovať'],answer:1,audio:null,skippable:false,accept:[],explanation:"'upratovať' = limpiar."},
@@ -836,11 +837,11 @@ ls:[
    {id:'s5t-16',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cuál es la negación de "mám"?',options:['nemám','nie mám','mám nie','nemam nie'],answer:0,audio:null,skippable:false,accept:[],explanation:"'nemám' = no tengo. 'ne-' + 'mám'."},
    {id:'s5t-17',category:'old_review',type:'type',skill:'grammar',concept_tag:'rad_rada_radi',question:'Escribe en eslovaco (hombre): "no me gusta cocinar"',options:[],answer:'Nerád varím',audio:null,skippable:false,accept:['Nerád varím','Nerad varim'],explanation:"'Nerád' + verbo = no me gusta (hombre)."},
    {id:'s5t-18',category:'old_review',type:'mc',skill:'grammar',concept_tag:'pridavne_zhoda',question:'¿Cuál es la forma femenina de "unavený"?',options:['unavená','unavené','unavený','unavení'],answer:0,audio:null,skippable:false,accept:[],explanation:"'unavená' = cansada (femenino, termina en -á)."},
-   {id:'s5t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'byt_som_si_je',question:'Completa: "Vy ___ tu." (están)',options:[],answer:'ste',audio:null,skippable:false,accept:['ste'],explanation:"'ste' = están (ustedes)."},
+   {id:'s5t-19',category:'old_review',type:'fill',skill:'grammar',concept_tag:'byt_som_si_je',question:'Completa: "Ona ___ doma." (está)',options:[],answer:'je',audio:null,skippable:false,accept:['je'],explanation:"'je' = es/está (3ª persona de 'byť', s1-s2)."},
    {id:'s5t-20',category:'old_review',type:'mc',skill:'vocab',concept_tag:'profesie_vocab',question:'¿Qué significa "kuchár"?',options:['médico','profesor','cocinero','vendedor'],answer:2,audio:null,skippable:false,accept:[],explanation:"'kuchár' = cocinero."},
-   {id:'s5t-21',category:'random_review',type:'mc',skill:'vocab',concept_tag:'greetings_formal_informal',question:'¿Cuál es el saludo FORMAL?',options:['Ahoj','Čau','Dobrý deň','Servus'],answer:2,audio:null,skippable:false,accept:[],explanation:"'Dobrý deň' es el saludo formal."},
-   {id:'s5t-22',category:'random_review',type:'mc',skill:'vocab',concept_tag:'numbers_1_10',question:'¿Cómo se dice "ocho"?',options:['sedem','osem','deväť','šesť'],answer:1,audio:null,skippable:false,accept:[],explanation:"'osem' = ocho."},
-   {id:'s5t-23',category:'random_review',type:'mc',skill:'vocab',concept_tag:'colors',question:'¿Qué significa "zelená"?',options:['roja','azul','verde','amarilla'],answer:2,audio:null,skippable:false,accept:[],explanation:"'zelená' = verde."},
+   {id:'s5t-21',category:'random_review',type:'mc',skill:'vocab',concept_tag:'emociones_vocab',question:'¿Qué significa "šťastný"?',options:['triste','feliz','cansado','enfermo'],answer:1,audio:null,skippable:false,accept:[],explanation:"'šťastný' = feliz (s4)."},
+   {id:'s5t-22',category:'random_review',type:'mc',skill:'vocab',concept_tag:'numbers_11_100',question:'¿Qué número es "tridsať"?',options:['13','30','3','33'],answer:1,audio:null,skippable:false,accept:[],explanation:"'tridsať' = 30 (treinta, s3)."},
+   {id:'s5t-23',category:'random_review',type:'mc',skill:'vocab',concept_tag:'clothes_vocab',question:'¿Qué significa "tričko"?',options:['pantalones','camiseta','gorro','falda'],answer:1,audio:null,skippable:false,accept:[],explanation:"'tričko' = camiseta (s3)."},
    {id:'s5t-24',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'frekvencia_prislovky',question:'¿Qué frase es CORRECTA?',options:['Idem nikdy do kina.','Nikdy nejdem do kina.','Nikdy idem nie do kina.','Nejdem nikdy do kina nie.'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Nikdy' + verbo negado: 'Nikdy nejdem' (idem→nejdem con 'ne-')."},
    {id:'s5t-25',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'rad_rada_radi',question:'Corrige el error: "Som rád pracujem."',options:[],answer:'Rád pracujem',audio:null,skippable:false,accept:['Rád pracujem','Rad pracujem'],explanation:"'Rád/rada/radi' + verbo NO lleva 'som' delante: 'Rád pracujem' (no 'Som rád pracujem')."}
   ]
@@ -980,7 +981,7 @@ ls:[
   w:[['skriňa','armario','🚪']],
   p:[
    ['Tengo un armario.','Mám skriňu.',[['Mám','Tengo'],['skriňu','un armario']],['posteľ','okno'],"'skriňa'→'skriňu' (femenino -a → -u)."],
-   ['Tengo una cocina, un dormitorio y un baño.','Mám kuchyňu, spálňu a kúpeľňu.',[['Mám','Tengo'],['kuchyňu','una cocina'],['spálňu','un dormitorio'],['kúpeľňu','un baño']],['obývačku','skriňu'],"Repaso de tres palabras femeninas en acusativo (-a→-u)."],
+   ['Tengo una cocina, un dormitorio y un baño.','Mám kuchyňu, spálňu a kúpeľňu.',[['Mám','Tengo'],['kuchyňu','una cocina'],['spálňu','un dormitorio'],['a','y'],['kúpeľňu','un baño']],['obývačku','skriňu'],"Repaso de tres palabras femeninas en acusativo (-a→-u), unidas con 'a' (y)."],
    ['¿Qué tienes en tu casa?','Čo máš doma?',[['Čo','Qué'],['máš','tienes'],['doma?','en tu casa?']],['kde','ako'],"'Čo' (qué, acusativo) + 'máš' (s3) + 'doma' (s1)."]
   ],
   mc:[
@@ -1011,7 +1012,7 @@ ls:[
    {id:'s6t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cómo se dice "No tengo casa"?',options:['Nie mám dom','Mám nie dom','Nemám dom','Dom nemám nie'],answer:2,audio:null,skippable:false,accept:[],explanation:"'ne-' + 'mám' = 'nemám' (s4)."},
    {id:'s6t-13',category:'old_review',type:'mc',skill:'grammar',concept_tag:'pritomny_vzory_mat',question:'¿Cómo se dice "tienes" (de "mať")?',options:['mám','máš','má','majú'],answer:1,audio:null,skippable:false,accept:[],explanation:"'máš' = tienes (2ª persona de 'mať', s3)."},
    {id:'s6t-14',category:'old_review',type:'fill',skill:'vocab',concept_tag:'opytovacie_zamena',question:'Completa: "___ je kúpeľňa?" (¿Dónde está el baño?)',options:[],answer:'Kde',audio:null,skippable:false,accept:['Kde'],explanation:"'Kde' = dónde (s3)."},
-   {id:'s6t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'numbers_1_10',question:'¿Cómo se dice "tres"?',options:['dva','tri','štyri','päť'],answer:1,audio:null,skippable:false,accept:[],explanation:"'tri' = tres."},
+   {id:'s6t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'numbers_11_100',question:'¿Cómo se dice "cien"?',options:['dvadsať','sto','tridsať','päťdesiat'],answer:1,audio:null,skippable:false,accept:[],explanation:"'sto' = cien (s3)."},
    {id:'s6t-16',category:'random_review',type:'listen',skill:'grammar',concept_tag:'rad_rada_radi',question:'Escucha y elige la traducción correcta.',options:['Me gusta trabajar','No me gusta trabajar','Trabajo mucho','Quiero trabajar'],answer:0,audio:'Rád pracujem',skippable:true,accept:[],explanation:"'Rád pracujem' = Me gusta trabajar (hombre)."},
    {id:'s6t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Elige la frase CORRECTA para "Tengo un cuarto"',options:['Mám izba','Mám izbu','Mám izbe','Mám izby'],answer:1,audio:null,skippable:false,accept:[],explanation:"Femenino -a → -u en acusativo: 'izba'→'izbu'."},
    {id:'s6t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'Corrige el error: "Mám domu."',options:[],answer:'Mám dom',audio:null,skippable:false,accept:['Mám dom'],explanation:"'dom' (masculino inanimado) NO cambia en acusativo: 'Mám dom', no 'Mám domu'."}
@@ -1107,7 +1108,7 @@ ls:[
  {id:'s7l5',ti:'El auto y el plural',em:'🚗',
   sl:[
    ['v','Un vehículo',[['auto','auto / carro','au-to']]],
-   ['g','Množné číslo (plural)','¡Nuevo! Para hablar de VARIAS cosas, el sustantivo también cambia de forma — y la terminación que recibe depende del género: masculino y femenino añaden "-y", el neutro cambia "-o" por "-á". Mira estos ejemplos:',[['Masculino (-y): una casa → dos casas','dom → domy'],['Femenino (-y): un cuarto → tres cuartos','izba → izby'],['Neutro (-o→-á): una ventana → dos ventanas','okno → okná'],['Neutro (-o→-á): un auto → dos autos','auto → autá']]]
+   ['g','Množné číslo (plural)','¡Nuevo! Para hablar de VARIAS cosas, el sustantivo también cambia de forma — y la terminación que recibe depende del género: masculino y femenino añaden "-y", el neutro cambia "-o" por "-á". Los números son "dva" (dos, masculino), "dve" (dos, femenino/neutro) y "tri" (tres). Mira estos ejemplos:',[['Masculino (-y): dos casas','dva domy'],['Femenino (-y): tres cuartos','tri izby'],['Neutro (-o→-á): dos autos','dve autá'],['Neutro (-o→-á): dos ventanas','dve okná']]]
   ],
   w:[['auto','auto / carro','🚗']],
   p:[
@@ -1177,7 +1178,7 @@ ls:[
    {id:'s7t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'¿Cuál es el acusativo de "izba" (cuarto)?',options:['izba','izbe','izbu','izby'],answer:2,audio:null,skippable:false,accept:[],explanation:"Repaso de la Sección 6: izba→izbu."},
    {id:'s7t-13',category:'old_review',type:'mc',skill:'vocab',concept_tag:'vocab_dom_izba',question:'¿Qué significa "kúpeľňa"?',options:['cocina','dormitorio','baño','sala'],answer:2,audio:null,skippable:false,accept:[],explanation:"'kúpeľňa' = baño (s6)."},
    {id:'s7t-14',category:'old_review',type:'fill',skill:'grammar',concept_tag:'pritomny_vzory_mat',question:'Completa: "Ja ___ psa." (yo tengo)',options:[],answer:'mám',audio:null,skippable:false,accept:['mám'],explanation:"'mám' = tengo (1ª persona de 'mať', s3)."},
-   {id:'s7t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'colors',question:'¿Qué significa "modrá"?',options:['roja','azul','verde','negra'],answer:1,audio:null,skippable:false,accept:[],explanation:"'modrá' = azul."},
+   {id:'s7t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'vocab_dom_izba',question:'¿Qué significa "posteľ"?',options:['silla','cama','ventana','armario'],answer:1,audio:null,skippable:false,accept:[],explanation:"'posteľ' = cama (s6)."},
    {id:'s7t-16',category:'random_review',type:'listen',skill:'grammar',concept_tag:'ist_konjugacia',question:'Escucha y elige la traducción correcta.',options:['Voy a casa','Estoy en casa','Voy al cine','Tengo una casa'],answer:0,audio:'Idem domov',skippable:true,accept:[],explanation:"'Idem domov' = Voy a casa."},
    {id:'s7t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'akuzativ_muzsky_zivotny',question:'Elige la frase CORRECTA para "Tengo un perro"',options:['Mám pes','Mám psa','Mám psy','Mám pesa'],answer:1,audio:null,skippable:false,accept:[],explanation:"Masculino animado -Ø→-a: 'pes'→'psa'."},
    {id:'s7t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'Corrige el error: "Mám telefónu."',options:[],answer:'Mám telefón',audio:null,skippable:false,accept:['Mám telefón'],explanation:"'telefón' (masculino inanimado) NO cambia en acusativo: 'Mám telefón', no 'Mám telefónu'."}
@@ -1247,7 +1248,7 @@ ls:[
   p:[
    ['Como carne.','Jem mäso.',[['Jem','Como'],['mäso','carne']],['mäsa','jablko'],"'mäso' (neutro) NO cambia en acusativo."],
    ['Como manzana.','Jem jablko.',[['Jem','Como'],['jablko','manzana']],['mäso','vodu'],"'jablko' (neutro) NO cambia en acusativo, igual que 'mäso' y 'auto'."],
-   ['No como carne, como manzana.','Nejem mäso, jem jablko.',[['Nejem','No como'],['mäso','carne'],['jem','como'],['jablko','manzana']],['vodu','chlieb'],"Repaso de la negación 'nie-' (s1) + dos sustantivos neutros que no cambian en acusativo."]
+   ['No como carne, como manzana.','Nejem mäso, jem jablko.',[['Nejem','No como'],['mäso','carne'],['jem','como'],['jablko','manzana']],['vodu','chlieb'],"'ne-' + 'jem' = 'nejem' (negación, s4) + dos sustantivos neutros que no cambian en acusativo."]
   ],
   mc:[
    ['¿Cómo se dice "carne"?',['jablko','mäso','chlieb','voda'],1,"'mäso' = carne."],
@@ -1313,7 +1314,7 @@ ls:[
   ],
   w:[['pivo','cerveza','🍺']],
   p:[
-   ['Bebo cerveza los viernes.','Pijem pivo v piatok.',[['Pijem','Bebo'],['pivo','cerveza'],['v piatok','los viernes']],['vodu','v sobotu'],"'pivo' (neutro) no cambia en acusativo. Repaso de los días (s2)."],
+   ['Por la noche bebo cerveza.','Večer pijem pivo.',[['Večer','Por la noche'],['pijem','bebo'],['pivo','cerveza']],['vodu','ráno'],"'pivo' (neutro) no cambia en acusativo. Repaso de 'večer' (s5)."],
    ['No bebo cerveza, bebo agua.','Nepijem pivo, pijem vodu.',[['Nepijem','No bebo'],['pivo','cerveza'],['pijem','bebo'],['vodu','agua']],['mlieko','čaj'],"'ne-' + 'pijem' = 'nepijem' (s4)."],
    ['¿Qué comes y qué bebes?','Čo ješ a čo piješ?',[['Čo','Qué'],['ješ','comes'],['a','y'],['čo','qué'],['piješ?','bebes?']],['jem','pijem'],"Repaso de 'čo' (s3l7) + los verbos 'jesť' y 'piť'."]
   ],
@@ -1341,11 +1342,11 @@ ls:[
    {id:'s8t-08',category:'new',type:'fill',skill:'grammar',concept_tag:'jest_pit_konjugacia',question:'Completa: "On ___ chlieb." (come)',options:[],answer:'je',audio:null,skippable:false,accept:['je'],explanation:"'je' = come (3ª persona de 'jesť')."},
    {id:'s8t-09',category:'new',type:'mc',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'¿Cuál es el acusativo de "mlieko" (leche)?',options:['mlieko','mlieka','mlieku','mliekom'],answer:0,audio:null,skippable:false,accept:[],explanation:"'mlieko' (neutro) no cambia en acusativo."},
    {id:'s8t-10',category:'new',type:'type',skill:'vocab',concept_tag:'vocab_jedlo',question:'Escribe en eslovaco: "Bebo cerveza."',options:[],answer:'Pijem pivo',audio:null,skippable:false,accept:['Pijem pivo','pijem pivo'],explanation:"'Pijem pivo' = Bebo cerveza."},
-   {id:'s8t-11',category:'new',type:'mc',skill:'vocab',concept_tag:'jedlo_frazy',question:'¿Qué significa "Mám hlad"?',options:['Tengo sed','Tengo hambre','Tengo frío','Tengo sueño'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Mám hlad' = Tengo hambre."},
+   {id:'s8t-11',category:'random_review',type:'mc',skill:'vocab',concept_tag:'emociones_vocab',question:'¿Qué significa "Som hladný"?',options:['Tengo sed','Tengo hambre (estoy hambriento)','Estoy cansado','Estoy enfermo'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Som hladný' = estoy hambriento / tengo hambre (s4)."},
    {id:'s8t-12',category:'old_review',type:'mc',skill:'grammar',concept_tag:'akuzativ_muzsky_zivotny',question:'¿Cuál es el acusativo de "pes" (perro)?',options:['pes','psa','psy','pesa'],answer:1,audio:null,skippable:false,accept:[],explanation:"'pes'→'psa' (masculino animado, -Ø → -a)."},
    {id:'s8t-13',category:'old_review',type:'fill',skill:'vocab',concept_tag:'opytovacie_zamena',question:'Completa: "___ je kúpeľňa?" (¿Dónde está...?)',options:[],answer:'Kde',audio:null,skippable:false,accept:['Kde'],explanation:"'Kde' = dónde (s3)."},
    {id:'s8t-14',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacia_slovesa',question:'¿Cómo se dice "No tengo"?',options:['nie som','nemám','neviem','nerobím'],answer:1,audio:null,skippable:false,accept:[],explanation:"'nemám' = no tengo (s4)."},
-   {id:'s8t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'dni_tyzdna',question:'¿Qué significa "streda"?',options:['martes','miércoles','jueves','lunes'],answer:1,audio:null,skippable:false,accept:[],explanation:"'streda' = miércoles."},
+   {id:'s8t-15',category:'random_review',type:'mc',skill:'vocab',concept_tag:'vocab_moje_veci',question:'¿Qué significa "kniha"?',options:['bolsa','libro','teléfono','lámpara'],answer:1,audio:null,skippable:false,accept:[],explanation:"'kniha' = libro (s7)."},
    {id:'s8t-16',category:'random_review',type:'listen',skill:'grammar',concept_tag:'ist_konjugacia',question:'Escucha y elige la traducción correcta.',options:['Voy a casa','Estoy en casa','Voy al cine','Tengo una casa'],answer:0,audio:'Idem domov',skippable:true,accept:[],explanation:"'Idem domov' = Voy a casa."},
    {id:'s8t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'akuzativ_zenske_a',question:'Elige la frase CORRECTA para "Bebo agua"',options:['Pijem voda','Pijem vodu','Pijem vode','Pijem vody'],answer:1,audio:null,skippable:false,accept:[],explanation:"Femenino -a → -u en acusativo: 'voda'→'vodu'."},
    {id:'s8t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'akuzativ_bez_zmeny',question:'Corrige el error: "Jem mäsa."',options:[],answer:'Jem mäso',audio:null,skippable:false,accept:['Jem mäso'],explanation:"'mäso' (neutro) NO cambia en acusativo: 'Jem mäso', no 'Jem mäsa'."}

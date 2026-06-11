@@ -1481,11 +1481,16 @@ async function fetchMistakes() {
   } catch (e) { return []; }
 }
 
-function findReviewQuestion(conceptTag, excludeIds) {
+function findReviewQuestion(conceptTag, excludeIds, uptoSecId) {
+  // Solo secciones hasta la actual: una pregunta de repaso nunca debe venir
+  // de una sección que el alumno todavía no ha estudiado.
   const candidates = [];
-  C.forEach(s => s.ls.forEach(l => (l.tq||[]).forEach(q => {
-    if (q.concept_tag === conceptTag && q.category !== 'error_pattern' && !excludeIds.includes(q.id)) candidates.push(q);
-  })));
+  for (const s of C) {
+    s.ls.forEach(l => (l.tq||[]).forEach(q => {
+      if (q.concept_tag === conceptTag && q.category !== 'error_pattern' && !excludeIds.includes(q.id)) candidates.push(q);
+    }));
+    if (s.id === uptoSecId) break;
+  }
   if (!candidates.length) return null;
   return shuffle(candidates)[0];
 }
@@ -1503,7 +1508,7 @@ async function buildTestExercises(sec) {
   if (mistakes.length) {
     const usedIds = staticQs.map(q => q.id);
     const top = [...mistakes].sort((a,b) => b.wrong_count - a.wrong_count || b.last_wrong_at - a.last_wrong_at).slice(0,2);
-    const found = top.map(m => findReviewQuestion(m.concept_tag, usedIds)).filter(Boolean);
+    const found = top.map(m => findReviewQuestion(m.concept_tag, usedIds, sec.id)).filter(Boolean);
     if (found.length) {
       errorQs = found.map(q => ({...q, category:'error_pattern'}));
       if (errorQs.length === 1 && fallbackErrorQs.length) errorQs.push(fallbackErrorQs[0]);
@@ -1652,7 +1657,7 @@ function renderListen(ex, body) {
     <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
       ${ex.opts.map((o,i)=>`<button class="opt" onclick="pickListen(this,${i},${ex.ci})">${o}</button>`).join('')}
     </div>`;
-  document.getElementById('les-footer').innerHTML = ex.skippable ? `<button onclick="skipListen()" class="btn btn-ghost w-full">Preskočiť</button>` : '';
+  document.getElementById('les-footer').innerHTML = ex.skippable ? `<button onclick="skipListen()" class="btn btn-ghost w-full">Omitir</button>` : '';
   setTimeout(() => speak(ex.audio), 300);
 }
 function pickListen(btn, idx, ci) {
