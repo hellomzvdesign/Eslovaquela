@@ -1483,8 +1483,14 @@ function postMistake(conceptTag) {
 
 function showResult(ok, explanation, correctSk) {
   const u = getUser();
-  if (ok) { nCorr++; }
-  else { nErr++; if(!hpMode){ u.hearts=Math.max(0,u.hearts-1); setUser(u); renderHeartsEl('les-hearts',u.hearts); updateProgress().catch(()=>{}); } postMistake(curEx.conceptTag); }
+  if (ok) {
+    nCorr++;
+  } else {
+    nErr++;
+    playSound('wrong');
+    if(!hpMode){ u.hearts=Math.max(0,u.hearts-1); setUser(u); renderHeartsEl('les-hearts',u.hearts); updateProgress().catch(()=>{}); }
+    postMistake(curEx.conceptTag);
+  }
   const foot = document.getElementById('les-footer');
   foot.innerHTML = `
     <div class="${ok?'res-ok':'res-err'}" style="margin-bottom:12px">
@@ -1504,6 +1510,7 @@ function nextEx() { exIdx++; renderEx(); }
 function exitLesson() { if(confirm('¿Salir? Perderás el progreso actual.')) { goMap(true); showBottomNav(true); } }
 
 function showComplete() {
+  playSound('lessonComplete');
   const u = getUser();
   const total = nCorr + nErr;
   const acc = total > 0 ? Math.round(nCorr/total*100) : 100;
@@ -1730,6 +1737,7 @@ function renderBonusQuiz() {
 function pickBonusQuiz(btn, idx, ci) {
   document.querySelectorAll('#bd-quiz-opts .opt').forEach(b=>b.disabled=true);
   const ok = idx === ci;
+  if (!ok) playSound('wrong');
   btn.classList.add(ok?'ok':'err');
   if (!ok) document.querySelectorAll('#bd-quiz-opts .opt')[ci].classList.add('ok');
   if (ok) bonusQuizCorrect++;
@@ -1948,6 +1956,38 @@ function speak(text) {
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'sk-SK'; u.rate = 0.82;
   speechSynthesis.speak(u);
+}
+
+function playSound(name) {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) return;
+  if (!window._audioCtx) window._audioCtx = new AudioContext();
+  const ctx = window._audioCtx;
+  if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+
+  function tone(freq, start, duration, type='sine') {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.value = freq;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    gain.gain.setValueAtTime(0, start);
+    gain.gain.linearRampToValueAtTime(0.18, start + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
+    osc.start(start);
+    osc.stop(start + duration + 0.02);
+  }
+
+  const now = ctx.currentTime;
+  if (name === 'wrong') {
+    tone(220, now, 0.18, 'square');
+    tone(180, now + 0.14, 0.16, 'square');
+  } else if (name === 'lessonComplete') {
+    tone(440, now, 0.12, 'triangle');
+    tone(550, now + 0.12, 0.12, 'triangle');
+    tone(660, now + 0.24, 0.14, 'triangle');
+  }
 }
 
 // ─── CONFETTI ─────────────────────────────────────────────────────────
