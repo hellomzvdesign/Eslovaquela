@@ -50,6 +50,12 @@ h1,h2,h3,h4{font-family:var(--fd)}
 .scr-head-re{background:linear-gradient(160deg,#FF8A6B 0%,#F25C50 45%,var(--re) 100%)}
 .scr-head-yw{background:linear-gradient(160deg,#FFD166 0%,#FFB627 55%,var(--yw) 100%)}
 .scr-head-les{background:linear-gradient(160deg,#4467E0 0%,var(--bl) 45%,var(--pu) 100%)}
+
+/* ── ONBOARDING CAROUSEL ── */
+.onb-head{height:36vh;min-height:200px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.onb-emoji{font-size:5rem;filter:drop-shadow(0 8px 16px rgba(58,38,18,.28))}
+.onb-dot{width:8px;height:8px;border-radius:99px;background:var(--bo-d);transition:width .2s,background .2s}
+.onb-dot.active{width:22px;background:var(--or)}
 .hero-scene{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .scene-sun{animation:sunFloat 5.5s ease-in-out infinite}
 .scene-cloud{animation:cloudDrift 8s ease-in-out infinite alternate}
@@ -68,6 +74,7 @@ h1,h2,h3,h4{font-family:var(--fd)}
 .btn-gr:active{box-shadow:0 1px 0 var(--gr-d),inset 0 1.5px 0 rgba(255,255,255,.35)}
 .btn-ghost{background:rgba(255,255,255,.65);border:2px solid var(--bo-d);color:var(--mu);box-shadow:0 3px 0 var(--bo)}
 .btn-ghost:active{background:var(--su2);box-shadow:0 1px 0 var(--bo)}
+.btn:disabled{opacity:.5;filter:grayscale(.3);cursor:default;box-shadow:none;transform:none}
 @media(hover:hover){
   .btn:not(:disabled):hover{filter:brightness(1.06)}
   .btn-ghost:hover{filter:none;background:#fff}
@@ -117,6 +124,10 @@ h1,h2,h3,h4{font-family:var(--fd)}
 /* ── HEARTS ── */
 .heart-ico{font-size:1.3rem;transition:all .3s;filter:drop-shadow(0 2px 2px rgba(120,20,0,.3))}
 .heart-ico.empty{filter:grayscale(1);opacity:.3}
+
+/* ── FREEZE ICONS ── */
+.freeze-ico{font-size:1.7rem;transition:all .3s;filter:drop-shadow(0 2px 2px rgba(20,90,140,.3))}
+.freeze-ico.empty{filter:grayscale(1);opacity:.25}
 
 /* ── INPUT ── */
 .inp{background:var(--su);border:2px solid var(--bo);border-radius:14px;font-family:'Rubik',sans-serif;font-size:1rem;padding:13px 15px;width:100%;outline:none;transition:border .15s,box-shadow .15s;color:var(--tx);box-shadow:0 2px 0 rgba(58,38,18,.05)}
@@ -449,6 +460,26 @@ h1,h2,h3,h4{font-family:var(--fd)}
   </div>
 </div>
 
+<!-- ─────────────── ONBOARDING ─────────────── -->
+<div id="sc-onboarding" class="screen">
+  <div id="onb-head" class="scr-head onb-head scr-head-or">
+    <div class="onb-emoji" id="onb-emoji">🦜</div>
+  </div>
+  <div class="flex flex-col flex-1" style="padding:28px 24px 24px;justify-content:space-between">
+    <div class="text-center">
+      <h2 id="onb-title" style="font-size:1.4rem;font-weight:900;margin:0 0 10px"></h2>
+      <p id="onb-body" style="color:var(--mu);font-size:.98rem;line-height:1.55;margin:0"></p>
+    </div>
+    <div>
+      <div id="onb-dots" style="display:flex;justify-content:center;gap:6px;margin-bottom:18px"></div>
+      <div style="display:flex;gap:10px">
+        <button id="onb-skip" onclick="onbSkip()" class="btn btn-ghost flex-1">Omitir</button>
+        <button id="onb-next" onclick="onbNext()" class="btn btn-or flex-1">Siguiente →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ─────────────── MAP ─────────────── -->
 <div id="sc-map" class="screen has-nav">
   <div class="map-header scr-head scr-head-or">
@@ -469,7 +500,7 @@ h1,h2,h3,h4{font-family:var(--fd)}
         <h2 id="map-username" style="font-size:1.45rem;font-weight:900;margin:0;letter-spacing:-.01em"></h2>
       </div>
       <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end">
-        <div class="streak-chip" id="map-streak">🔥 0</div>
+        <div class="streak-chip" id="map-streak" onclick="showStreakScreen()" style="cursor:pointer">🔥 0</div>
         <button onclick="logout()" style="background:rgba(255,255,255,.2);border:none;border-radius:10px;color:#fff;cursor:pointer;font-family:'Rubik',sans-serif;font-size:.78rem;font-weight:600;padding:5px 10px">Salir</button>
       </div>
     </div>
@@ -567,6 +598,34 @@ h1,h2,h3,h4{font-family:var(--fd)}
     </div>
     <div id="hp-body"></div>
     <div id="hp-footer"></div>
+    <button onclick="goMap(true)" class="btn btn-ghost w-full">Volver al mapa</button>
+  </div>
+</div>
+
+<!-- ─────────────── STREAK / FREEZE ─────────────── -->
+<div id="sc-streak" class="screen">
+  <div class="scr-head scr-head-yw" style="padding:22px 20px 30px;text-align:center">
+    <div style="font-size:3rem">🔥</div>
+    <h2 id="streak-days" style="font-size:1.6rem;font-weight:900;margin:8px 0 2px"></h2>
+    <p id="streak-sub" style="opacity:.88;font-size:.9rem;margin:0"></p>
+  </div>
+  <div class="p-4 flex flex-col gap-4">
+    <div class="card">
+      <p style="font-weight:700;font-size:.95rem;margin:0 0 6px">¿Cómo funciona la racha?</p>
+      <p style="font-size:.85rem;color:var(--mu);margin:0;line-height:1.5">Completa al menos una lección cada día para mantener tu racha 🔥. Si te saltas un día sin tener una congelación disponible, la racha vuelve a empezar desde cero.</p>
+    </div>
+    <div class="card">
+      <p style="font-weight:700;font-size:.95rem;margin:0 0 8px;text-align:center">Congelaciones de racha</p>
+      <div style="display:flex;justify-content:center;gap:10px;margin:4px 0 10px" id="streak-freeze-icons"></div>
+      <p style="font-size:.8rem;color:var(--mu);margin:0 0 4px;text-align:center">Una congelación te perdona un día sin practicar.</p>
+      <p style="font-size:.75rem;color:var(--li);margin:0 0 14px;text-align:center">Ganas 1 gratis cada 500 XP acumulados (máx. 3 en total).</p>
+      <button id="streak-buy-btn" onclick="buyFreeze()" class="btn btn-or w-full">Comprar congelación · 500 XP</button>
+      <p id="streak-xp-note" style="font-size:.75rem;color:var(--mu);margin:8px 0 0;text-align:center"></p>
+    </div>
+    <div class="card">
+      <p style="font-weight:700;font-size:.95rem;margin:0 0 4px">Próximo hito 🎁</p>
+      <p id="streak-milestone-text" style="font-size:.85rem;color:var(--mu);margin:0;line-height:1.5"></p>
+    </div>
     <button onclick="goMap(true)" class="btn btn-ghost w-full">Volver al mapa</button>
   </div>
 </div>
@@ -959,15 +1018,50 @@ function registerStreakActivity(u) {
   }
   return { prevDisplay, newStreak, freezeUsed, milestone };
 }
-// Concede 1 streak freeze cada 500 XP acumulados (máx. 1 en stock).
+// Concede 1 streak freeze cada 500 XP acumulados (máx. FREEZE_MAX en stock).
+const FREEZE_MAX = 3;
+const FREEZE_COST = 500;
 function checkFreezeGrant(u) {
-  const TIER = 500;
-  const tier = Math.floor((u.xp||0) / TIER);
+  const tier = Math.floor((u.xp||0) / FREEZE_COST);
   if (tier > (u.freezeTier||0)) {
     u.freezeTier = tier;
-    if ((u.streakFreezes||0) < 1) { u.streakFreezes = 1; return true; }
+    if ((u.streakFreezes||0) < FREEZE_MAX) { u.streakFreezes = (u.streakFreezes||0) + 1; return true; }
   }
   return false;
+}
+// ─── STREAK SCREEN ──────────────────────────────────────────────────
+function showStreakScreen() {
+  const u = getUser();
+  const days = effectiveStreak(u);
+  document.getElementById('streak-days').textContent = days + (days === 1 ? ' día de racha' : ' días de racha');
+  document.getElementById('streak-sub').textContent = days > 0
+    ? '¡Sigue practicando para no perderla!'
+    : 'Completa una lección hoy para empezar tu racha.';
+  const freezes = u?.streakFreezes || 0;
+  document.getElementById('streak-freeze-icons').innerHTML = [...Array(FREEZE_MAX)].map((_,i) =>
+    `<span class="freeze-ico${i < freezes ? '' : ' empty'}">🧊</span>`).join('');
+  const xp = u?.xp || 0;
+  const buyBtn = document.getElementById('streak-buy-btn');
+  buyBtn.textContent = `Comprar congelación · ${FREEZE_COST} XP`;
+  buyBtn.disabled = freezes >= FREEZE_MAX || xp < FREEZE_COST;
+  document.getElementById('streak-xp-note').textContent = freezes >= FREEZE_MAX
+    ? 'Ya tienes el máximo de congelaciones.'
+    : `Tienes ${xp} XP.`;
+  const rem = (days % 7 === 0) ? 7 : 7 - (days % 7);
+  document.getElementById('streak-milestone-text').innerHTML =
+    `Llega a <strong>${days + rem} días</strong> de racha (${rem} ${rem === 1 ? 'día más' : 'días más'}) para desbloquear un paquete de contenido especial.`;
+  show('sc-streak');
+  showBottomNav(false);
+}
+function buyFreeze() {
+  const u = getUser();
+  if ((u.streakFreezes||0) >= FREEZE_MAX || (u.xp||0) < FREEZE_COST) return;
+  u.xp -= FREEZE_COST;
+  u.streakFreezes = (u.streakFreezes||0) + 1;
+  setUser(u);
+  updateProgress().catch(()=>{});
+  showStreakScreen();
+  showToast('🧊 ¡Congelación comprada!');
 }
 
 // ─── AUTH ────────────────────────────────────────────────────────────
@@ -990,11 +1084,48 @@ async function doAuth() {
     });
     ST.token = data.token;
     setUser(data.user);
-    goMap();
+    if (authMode === 'reg') showOnboarding(); else goMap();
   } catch(err) { showAuthErr(err?.error || 'Error al iniciar sesión.'); }
 }
 function showAuthErr(msg) { const e=document.getElementById('auth-err'); e.textContent=msg; e.style.display='block'; }
 function logout() { ST.token=null; ST.user=null; saveST(); showBottomNav(false); show('sc-auth'); }
+
+// ─── ONBOARDING ──────────────────────────────────────────────────────
+const ONBOARDING_SLIDES = [
+  { cls:'scr-head-or', emoji:'🦜', title:'¡Bienvenido a Eslovaquela!',
+    body:'Aprende eslovaco paso a paso con lecciones cortas, vocabulario y gramática. Te mostramos rápido cómo funciona todo. ¡Vamos!' },
+  { cls:'scr-head-bl', emoji:'🗺️', title:'Tu mapa de lecciones',
+    body:'Avanza lección por lección por el camino. Cada bloque tiene 5 secciones; completa una para desbloquear la siguiente. Al final de cada bloque hay un test que repasa todo lo aprendido.' },
+  { cls:'scr-head-pu', emoji:'❤️', title:'Corazones, XP y nivel',
+    body:'Empiezas con 5 corazones ❤️. Si te equivocas, pierdes uno, pero se recuperan solos cada 3 horas. Cada respuesta correcta suma XP y te ayuda a subir de nivel.' },
+  { cls:'scr-head-yw', emoji:'🔥', title:'Racha diaria',
+    body:'Practica todos los días para mantener tu racha 🔥. Cada 500 XP ganas una congelación 🧊 que te perdona un día sin practicar, y también puedes comprar más por 500 XP cada una (máx. 3). ¡Y cada 7 días de racha desbloqueas un paquete de contenido especial sorpresa! 🎁' },
+  { cls:'scr-head-les', emoji:'📖', title:'Vocabulario y gramática',
+    body:'Desde los botones de abajo puedes repasar todo el vocabulario que aprendiste y consultar las tablas de gramática cuando quieras.' },
+];
+let onbIdx = 0;
+function showOnboarding() {
+  onbIdx = 0;
+  renderOnboarding();
+  show('sc-onboarding');
+}
+function renderOnboarding() {
+  const s = ONBOARDING_SLIDES[onbIdx];
+  document.getElementById('onb-head').className = 'scr-head onb-head ' + s.cls;
+  document.getElementById('onb-emoji').textContent = s.emoji;
+  document.getElementById('onb-title').textContent = s.title;
+  document.getElementById('onb-body').textContent = s.body;
+  document.getElementById('onb-dots').innerHTML = ONBOARDING_SLIDES.map((_,i) =>
+    `<span class="onb-dot${i===onbIdx?' active':''}"></span>`).join('');
+  const isLast = onbIdx === ONBOARDING_SLIDES.length - 1;
+  document.getElementById('onb-next').textContent = isLast ? '¡Empezar! 🚀' : 'Siguiente →';
+  document.getElementById('onb-skip').style.display = isLast ? 'none' : '';
+}
+function onbNext() {
+  if (onbIdx < ONBOARDING_SLIDES.length - 1) { onbIdx++; renderOnboarding(); }
+  else { goMap(); }
+}
+function onbSkip() { goMap(); }
 
 // ─── HEARTS REGEN ────────────────────────────────────────────────────
 function checkRegen() {
