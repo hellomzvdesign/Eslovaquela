@@ -316,8 +316,20 @@ h1,h2,h3,h4{font-family:var(--fd)}
 .bonus-pick-sub{color:var(--mu);font-size:.8rem;margin-top:2px}
 
 /* ── AUTH HERO ── */
-.auth-hero{position:relative;height:150px;overflow:hidden;border-radius:0 0 28px 28px;background:linear-gradient(170deg,#FFC25E 0%,#FF8A3D 45%,#FF6B35 78%,#EF5B2B 100%);box-shadow:0 10px 24px -14px rgba(201,78,28,.6);flex-shrink:0}
+.auth-hero{position:relative;height:170px;overflow:hidden;border-radius:0 0 30px 30px;background:linear-gradient(170deg,#FFC25E 0%,#FF8A3D 45%,#FF6B35 78%,#EF5B2B 100%);box-shadow:0 10px 24px -14px rgba(201,78,28,.6);flex-shrink:0}
 .auth-pill{display:inline-flex;align-items:center;gap:6px;background:var(--or-l);border:1.5px solid var(--or);color:var(--or-d);border-radius:99px;padding:6px 14px;font-size:.8rem;font-weight:700}
+
+/* ── POLISH V2 ── */
+.ex-kicker{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--or-d);margin:0 0 8px}
+.ex-hero{width:118px;height:118px;margin:0 auto 16px;background:var(--su);border:2px solid var(--bo);border-radius:30px;display:flex;align-items:center;justify-content:center;font-size:3.6rem;box-shadow:0 4px 0 rgba(58,38,18,.08),var(--shadow-soft)}
+.opt::before{background:transparent}
+.opt.ok::before{background:var(--gr)}
+.opt.err::before{background:var(--re)}
+.res-ok,.res-err{animation:resIn .28s cubic-bezier(.34,1.3,.64,1)}
+@keyframes resIn{from{opacity:0;transform:translateY(10px)}}
+#les-footer,.screen-footer{box-shadow:0 -10px 24px rgba(58,38,18,.06)}
+#sl-body,#les-body,#bd-body{display:flex;flex-direction:column;justify-content:safe center}
+.map-header h2{text-shadow:0 1px 3px rgba(150,55,10,.35)}
 
 /* ── DESKTOP LAYOUT ── */
 @media (min-width:500px){
@@ -395,22 +407,25 @@ h1,h2,h3,h4{font-family:var(--fd)}
 
 <!-- ─────────────── AUTH ─────────────── -->
 <div id="sc-auth" class="screen active">
-  <div class="auth-hero">
+  <div class="auth-hero scr-head scr-head-or">
     <svg class="hero-scene" viewBox="0 0 480 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <circle class="scene-sun" cx="398" cy="44" r="40" fill="rgba(255,255,255,.18)"/>
-      <circle class="scene-sun" cx="398" cy="44" r="23" fill="rgba(255,243,210,.9)"/>
-      <g class="scene-cloud" fill="rgba(255,255,255,.35)">
+      <circle class="scene-sun" cx="398" cy="40" r="38" fill="rgba(255,255,255,.2)"/>
+      <circle class="scene-sun" cx="398" cy="40" r="22" fill="rgba(255,243,210,.9)"/>
+      <g class="scene-cloud" fill="rgba(255,255,255,.4)">
         <ellipse cx="92" cy="38" rx="30" ry="10"/>
         <ellipse cx="118" cy="31" rx="20" ry="8"/>
       </g>
-      <ellipse class="scene-cloud c2" cx="295" cy="26" rx="26" ry="8" fill="rgba(255,255,255,.28)"/>
-      <path d="M0 150V96l58-40 56 44 52-58 62 54 56-36 60 46 50-30 86 52v22z" fill="rgba(255,255,255,.18)"/>
-      <path d="M0 150v-28l66-34 62 38 70-44 74 42 64-26 70 34 74-20v38z" fill="rgba(140,46,8,.28)"/>
+      <ellipse class="scene-cloud c2" cx="295" cy="26" rx="26" ry="8" fill="rgba(255,255,255,.32)"/>
+      <path d="M0 150V96l58-40 56 44 52-58 62 54 56-36 60 46 50-30 86 52v22z" fill="rgba(255,255,255,.22)"/>
+      <path d="M0 150v-28l66-34 62 38 70-44 74 42 64-26 70 34 74-20v38z" fill="rgba(140,46,8,.32)"/>
+      <path d="M187 88L198 82l11 6z" fill="rgba(255,255,255,.55)"/>
+      <path d="M325 104L336 98l11 6z" fill="rgba(255,255,255,.5)"/>
+      <path d="M47 99L66 88l19 11z" fill="rgba(255,255,255,.45)"/>
     </svg>
   </div>
-  <div class="flex flex-col items-center justify-center flex-1 p-6 gap-5">
-    <div class="text-center" style="margin-bottom:4px">
-      <img src="assets/logo.webp" alt="Eslovaquela" style="width:78%;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 6px 14px rgba(58,38,18,.18))">
+  <div class="flex flex-col items-center flex-1 gap-5" style="padding:0 24px 24px;justify-content:flex-start">
+    <div class="text-center" style="margin:-62px 0 0;position:relative;z-index:2">
+      <img src="assets/logo.webp" alt="Eslovaquela" style="width:76%;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 8px 16px rgba(58,38,18,.28))">
       <p style="color:var(--mu);font-size:.95rem;margin-top:6px">Aprende eslovaco paso a paso</p>
       <div style="margin-top:10px"><span class="auth-pill">🦜 De Latinoamérica a Eslovaquia</span></div>
     </div>
@@ -438,8 +453,8 @@ h1,h2,h3,h4{font-family:var(--fd)}
 <div id="sc-map" class="screen has-nav">
   <div class="map-header scr-head scr-head-or">
     <svg class="hero-scene" viewBox="0 0 480 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <circle class="scene-sun" cx="400" cy="40" r="36" fill="rgba(255,255,255,.16)"/>
-      <circle class="scene-sun" cx="400" cy="40" r="20" fill="rgba(255,243,210,.8)"/>
+      <circle class="scene-sun" cx="416" cy="80" r="32" fill="rgba(255,255,255,.16)"/>
+      <circle class="scene-sun" cx="416" cy="80" r="18" fill="rgba(255,243,210,.8)"/>
       <g class="scene-cloud" fill="rgba(255,255,255,.28)">
         <ellipse cx="86" cy="36" rx="28" ry="9"/>
         <ellipse cx="110" cy="29" rx="18" ry="7"/>
@@ -461,7 +476,10 @@ h1,h2,h3,h4{font-family:var(--fd)}
     <div style="margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
       <div id="map-hearts" style="display:flex;gap:3px"></div>
       <p id="map-regen" style="font-size:.72rem;opacity:.75;margin:0"></p>
-      <div class="xp-chip" id="map-xp-chip" style="margin-left:auto">0 XP</div>
+    </div>
+    <div style="margin-top:14px">
+      <div class="xp-label"><span class="level-badge" id="map-level">🌱 Novato</span><span class="xp-chip" id="map-xp-chip">0 XP</span></div>
+      <div class="xp-track"><div class="xp-fill" id="map-xp-fill" style="width:0%"></div></div>
     </div>
   </div>
   <div id="map-body" class="scroll-body p-4"></div>
@@ -508,7 +526,7 @@ h1,h2,h3,h4{font-family:var(--fd)}
     </div>
   </div>
   <div id="sl-body" class="scroll-body p-4"></div>
-  <div style="padding:14px 16px;display:flex;gap:10px;background:var(--su);border-top:1.5px solid var(--bo)">
+  <div class="screen-footer" style="padding:14px 16px;display:flex;gap:10px;background:var(--su);border-top:1.5px solid var(--bo)">
     <button id="sl-prev" onclick="slideNav(-1)" class="btn btn-ghost flex-1">← Anterior</button>
     <button id="sl-next" onclick="slideNav(1)" class="btn btn-or flex-1">Siguiente →</button>
   </div>
@@ -614,7 +632,7 @@ h1,h2,h3,h4{font-family:var(--fd)}
     <div style="display:flex;justify-content:center;gap:6px;margin-top:14px" id="bd-dots"></div>
   </div>
   <div id="bd-body" class="scroll-body p-4"></div>
-  <div style="padding:14px 16px;display:flex;gap:10px;background:var(--su);border-top:1.5px solid var(--bo)">
+  <div class="screen-footer" style="padding:14px 16px;display:flex;gap:10px;background:var(--su);border-top:1.5px solid var(--bo)">
     <button id="bd-prev" onclick="bonusCardNav(-1)" class="btn btn-ghost flex-1">← Anterior</button>
     <button id="bd-next" onclick="bonusCardNav(1)" class="btn btn-or flex-1">Siguiente →</button>
   </div>
@@ -980,6 +998,9 @@ function goMap(scrollToActive) {
   document.getElementById('map-regen').textContent = regenText();
   const xp = u?.xp || 0;
   document.getElementById('map-xp-chip').textContent = xp + ' XP';
+  const lv = getLevel(xp);
+  document.getElementById('map-level').textContent = `${lv.icon} ${lv.name}`;
+  document.getElementById('map-xp-fill').style.width = lv.prog + '%';
   renderMap();
   show('sc-map');
   showBottomNav(true);
@@ -1158,8 +1179,8 @@ function renderSlide() {
   } else if (type === 't') {
     const [title, bodyT] = args;
     body.innerHTML = `<div style="text-align:center;margin-bottom:18px">
-      <div style="font-size:2.8rem">💡</div>
-      <h3 style="font-size:1.2rem;font-weight:700;margin:8px 0 0">${title}</h3>
+      <div class="ex-hero" style="width:96px;height:96px;font-size:2.6rem;border-radius:26px;margin-bottom:12px">💡</div>
+      <h3 style="font-size:1.25rem;font-weight:700;margin:8px 0 0">${title}</h3>
     </div>
     <div class="note-card"><p style="color:var(--mu);line-height:1.6;margin:0;font-size:.93rem">${bodyT}</p></div>`;
   }
@@ -1348,9 +1369,9 @@ function checkFreeAnswer(input, ex) {
 function renderImg(ex, body) {
   body.innerHTML = `
     <div style="text-align:center;margin-bottom:20px">
-      <div style="font-size:5rem;margin-bottom:10px">${ex.em||'🔤'}</div>
-      <p style="font-size:.82rem;color:var(--mu);margin:0 0 4px">¿Cómo se dice en eslovaco?</p>
-      <p style="font-size:1.4rem;font-weight:700;color:var(--tx);margin:0">${ex.es}</p>
+      <div class="ex-hero">${ex.em||'🔤'}</div>
+      <p class="ex-kicker" style="margin-bottom:4px">¿Cómo se dice en eslovaco?</p>
+      <p style="font-size:1.45rem;font-weight:700;color:var(--tx);margin:0">${ex.es}</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:9px">
       ${ex.opts.map(o=>`<button class="opt" onclick="pickImg(this,'${o.replace(/'/g,"\\'")}','${ex.sk.replace(/'/g,"\\'")}')">${o}</button>`).join('')}
@@ -1369,7 +1390,7 @@ function renderWd(ex, body) {
   const bank = shuffle([...(ex.dis||[]), ...ex.w.map(w=>w.sk)]);
   body.innerHTML = `
     <div style="margin-bottom:16px">
-      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">Traduce al eslovaco:</p>
+      <p class="ex-kicker">Traduce al eslovaco</p>
       <p style="font-size:1.35rem;font-weight:700;margin:0">${ex.es}</p>
     </div>
     <div id="sel-area" style="min-height:52px;background:var(--su);border:2px dashed var(--bo);border-radius:12px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px"></div>
@@ -1405,7 +1426,7 @@ function checkWd() {
 function renderFill(ex, body) {
   body.innerHTML = `
     <div style="margin-bottom:18px">
-      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">Completa la frase:</p>
+      <p class="ex-kicker">Completa la frase</p>
       <p style="font-size:1.2rem;font-weight:700;margin:0;line-height:1.4">${ex.q}</p>
     </div>
     <input id="free-input" class="inp" placeholder="Escribe tu respuesta..." autocomplete="off" autocapitalize="off">`;
@@ -1416,7 +1437,7 @@ function renderFill(ex, body) {
 function renderType(ex, body) {
   body.innerHTML = `
     <div style="margin-bottom:18px">
-      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">⌨️ Traduce / escribe en eslovaco:</p>
+      <p class="ex-kicker">Escribe en eslovaco</p>
       <p style="font-size:1.2rem;font-weight:700;margin:0;line-height:1.4">${ex.q}</p>
     </div>
     <input id="free-input" class="inp" placeholder="Escribe en eslovaco..." autocomplete="off" autocapitalize="off">`;
@@ -1435,8 +1456,8 @@ function checkFreeEx() {
 function renderListen(ex, body) {
   body.innerHTML = `
     <div style="text-align:center;margin-bottom:20px">
-      <div style="font-size:5rem;margin-bottom:10px">🎧</div>
-      <p style="font-size:.82rem;color:var(--mu);margin:0 0 14px">${ex.q}</p>
+      <div class="ex-hero">🎧</div>
+      <p style="font-size:.92rem;font-weight:600;color:var(--mu);margin:0 0 14px">${ex.q}</p>
       <button onclick="speak('${(ex.audio||'').replace(/'/g,"\\'")}');event.stopPropagation()" class="btn btn-ghost" style="font-size:.95rem">🔊 Escuchar de nuevo</button>
     </div>
     <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
@@ -1461,7 +1482,7 @@ function skipListen() {
 function renderMc(ex, body) {
   body.innerHTML = `
     <div style="margin-bottom:18px">
-      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">Elige la respuesta correcta:</p>
+      <p class="ex-kicker">Elige la respuesta correcta</p>
       <p style="font-size:1.2rem;font-weight:700;margin:0;line-height:1.4">${ex.q}</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:9px">
@@ -1727,7 +1748,7 @@ function renderBonusQuiz() {
   if (!q) { finishBonusDeck(); return; }
   body.innerHTML = `
     <div style="margin-bottom:18px">
-      <p style="font-size:.82rem;color:var(--mu);margin:0 0 6px">Pregunta ${bonusQuizIdx+1} de ${quiz.length}</p>
+      <p class="ex-kicker">Pregunta ${bonusQuizIdx+1} de ${quiz.length}</p>
       <p style="font-size:1.15rem;font-weight:700;margin:0;line-height:1.4">${q.q}</p>
     </div>
     <div id="bd-quiz-opts" style="display:flex;flex-direction:column;gap:9px">
