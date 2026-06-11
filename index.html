@@ -1390,7 +1390,13 @@ function tileClick(el, word) {
 }
 function checkWd() {
   const correct = curEx.w.map(w=>w.sk).join(' ');
-  const ok = selTiles.join(' ').toLowerCase() === correct.toLowerCase();
+  let ok = selTiles.join(' ').toLowerCase() === correct.toLowerCase();
+  // Si no es exacto, verifica si contiene todas las palabras en cualquier orden
+  if (!ok && selTiles.length === curEx.w.length) {
+    const correctWords = curEx.w.map(w=>w.sk.toLowerCase().trim()).sort();
+    const userWords = selTiles.map(t=>t.toLowerCase().trim()).sort();
+    ok = correctWords.join('|') === userWords.join('|');
+  }
   speak(correct);
   if (!ok) exQueue.push({...curEx});
   showResult(ok, curEx.x, correct);

@@ -16,9 +16,9 @@ gr:{
      h:['Afirmativo','Negativo'],
      r:[['Ja som (yo soy/estoy)','Ja nie som (yo no soy/estoy)'],['Ty si (tú eres/estás)','Ty nie si (tú no eres/estás)'],['On je (él es/está)','On nie je (él no es/está)']]},
     {op:'newTable', category:'otazky-spojky', tableId:'pregunta-ako-si',
-     title:'Preguntar "¿cómo estás?"',note:"'Ako' (cómo) + 'byť' forma la pregunta sobre el estado de alguien.",
+     title:'Preguntar "¿cómo estás?"',note:"'Ako' (cómo) + 'sa máš' forma la pregunta sobre el estado de alguien.",
      h:['Español','Eslovaco'],
-     r:[['¿Cómo estás?','Ako si?'],['Estoy bien.','Som dobre.'],['¿Cómo está él?','Ako je on?'],['Él está bien.','On je dobre.']]}
+     r:[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Som dobre.'],['¿Cómo está él?','Ako je on?'],['Él está bien.','On je dobre.']]}
   ],
   tips:["🔑 En eslovaco, pronombre + 'byť' ya forma una frase completa: 'Ja som' = 'Yo soy/estoy'.","🔑 'byť' equivale a SER y ESTAR del español al mismo tiempo. El contexto indica cuál.","🔑 La negación 'nie' va siempre justo antes del verbo: 'nie som', 'nie si', 'nie je'.","🔑 'Ako si?' (¿Cómo estás?) se responde con 'Som dobre.' (Estoy bien)."]
 },
@@ -96,17 +96,17 @@ ls:[
  {id:'s1l6',ti:'¿Cómo estás?',em:'😊',
   sl:[
    ['v','Dos palabras nuevas',[['dobre','bien','do-bre'],['ako','cómo','a-ko']]],
-   ['g','Preguntar cómo está alguien','"Ako" + "byť" forma la pregunta "¿Cómo estás/está...?".',[['¿Cómo estás?','Ako si?'],['Estoy bien.','Som dobre.'],['¿Cómo está él?','Ako je on?'],['Él está bien.','On je dobre.']]]
+   ['g','Preguntar cómo está alguien','"Ako sa máš" forma la pregunta "¿Cómo estás/está...?".',[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Som dobre.'],['¿Cómo está él?','Ako je on?'],['Él está bien.','On je dobre.']]]
   ],
   w:[['dobre','bien','👌'],['ako','cómo','❓']],
   p:[
-   ['¿Cómo estás?','Ako si?',[['Ako','Cómo'],['si','estás']],['som','je'],"'Ako' + 'si' = '¿Cómo estás?'."],
+   ['¿Cómo estás?','Ako sa máš?',[['Ako','Cómo'],['sa máš','estás']],['som','je'],"'Ako sa máš' = '¿Cómo estás?'."],
    ['Estoy bien.','Som dobre.',[['Som','Estoy'],['dobre','bien']],['ja','ty'],"'Som dobre' = Estoy bien."],
    ['Él está bien.','On je dobre.',[['On','Él'],['je','está'],['dobre','bien']],['ty','si'],"Mismo patrón con 'on je'."]
   ],
   mc:[
    ['¿Cómo se dice "bien"?',['ako','dobre','nie','je'],1,"'dobre' = bien."],
-   ['¿Cómo se dice "¿Cómo estás?"?',['Ako si?','Si ako?','Ako som?','Dobre si?'],0,"'Ako si?' = ¿Cómo estás?."],
+   ['¿Cómo se dice "¿Cómo estás?"?',['Ako sa máš?','Si ako sa máš?','Ako som?','Dobre sa máš?'],0,"'Ako sa máš?' = ¿Cómo estás?."],
    ['¿Qué significa "On je dobre"?',['Yo estoy bien','Tú estás bien','Él está bien','Él no está bien'],2,"'On je dobre' = Él está bien."]
   ]
  },
@@ -144,7 +144,7 @@ ls:[
    {id:'s1t-07',category:'old_review',type:'mc',skill:'vocab',concept_tag:'pronombres_personales',question:'¿Qué significa "on"?',options:['yo','tú','él','no'],answer:2,audio:null,skippable:false,accept:[],explanation:"'on' = él."},
    {id:'s1t-08',category:'old_review',type:'mc',skill:'vocab',concept_tag:'pronombres_personales',question:'¿Cómo se dice "tú"?',options:['ja','ty','on','si'],answer:1,audio:null,skippable:false,accept:[],explanation:"'ty' = tú."},
    {id:'s1t-09',category:'random_review',type:'listen',skill:'grammar',concept_tag:'byt_presente',question:'Escucha y elige la traducción correcta.',options:['Estoy en casa','Estás en casa','Está en casa','Soy amigo'],answer:0,audio:'Ja som doma',skippable:true,accept:[],explanation:"'Ja som doma' = Estoy en casa."},
-   {id:'s1t-10',category:'old_review',type:'mc',skill:'vocab',concept_tag:'preguntas_como_estas',question:'¿Cómo se dice "¿Cómo estás?"?',options:['Si ako?','Ako si?','Ako som?','Dobre si?'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ako si?' = ¿Cómo estás?"},
+   {id:'s1t-10',category:'old_review',type:'mc',skill:'vocab',concept_tag:'preguntas_como_estas',question:'¿Cómo se dice "¿Cómo estás?"?',options:['Si ako sa máš?','Ako sa máš?','Ako som?','Dobre sa máš?'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ako sa máš?' = ¿Cómo estás?"},
    {id:'s1t-11',category:'old_review',type:'fill',skill:'vocab',concept_tag:'preguntas_como_estas',question:'Completa: "Som ___." (Estoy bien)',options:[],answer:'dobre',audio:null,skippable:false,accept:['dobre'],explanation:"'Som dobre' = Estoy bien."},
    {id:'s1t-12',category:'old_review',type:'type',skill:'vocab',concept_tag:'vocab_basico_s1',question:'Escribe en eslovaco: "amigo"',options:[],answer:'priateľ',audio:null,skippable:false,accept:['priateľ','priatel'],explanation:"'priateľ' = amigo."},
    {id:'s1t-13',category:'old_review',type:'mc',skill:'grammar',concept_tag:'negacion_byt',question:'¿Qué significa "Ty nie si doma"?',options:['Tú estás en casa','Tú no estás en casa','Él no está en casa','Yo no estoy en casa'],answer:1,audio:null,skippable:false,accept:[],explanation:"'Ty nie si doma' = Tú no estás en casa."},
