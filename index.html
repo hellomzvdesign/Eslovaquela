@@ -41,6 +41,11 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
 .btn-ghost{background:transparent;border:2px solid var(--bo);color:var(--mu);box-shadow:none}
 .btn-ghost:active{background:var(--su2);transform:none}
 
+/* ── SEGMENTED TABS (e.g. Entrar/Registrarse) ── */
+.seg-wrap{display:flex;gap:4px;background:var(--su2);border-radius:14px;padding:4px}
+.seg-tab{flex:1;border:none;border-radius:10px;cursor:pointer;font-family:'Rubik',sans-serif;font-size:.9rem;font-weight:700;padding:10px;background:transparent;color:var(--mu);transition:background .15s,color .15s}
+.seg-tab.active{background:var(--su);color:var(--tx);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
 /* ── OPTION BUTTONS (exercises) ── */
 .opt{
   background:var(--su);border:2px solid var(--bo);border-radius:14px;
@@ -312,9 +317,9 @@ body{background:var(--bg);color:var(--tx);max-width:480px;margin:0 auto!importan
       <p style="color:var(--mu);font-size:.95rem;margin-top:5px">Aprende eslovaco paso a paso</p>
     </div>
     <div class="w-full card flex flex-col gap-4">
-      <div style="display:flex;gap:6px">
-        <button onclick="setTab('login')" id="tab-login" class="btn btn-or flex-1" style="font-size:.9rem;padding:10px">Entrar</button>
-        <button onclick="setTab('reg')" id="tab-reg" class="btn btn-ghost flex-1" style="font-size:.9rem;padding:10px">Registrarse</button>
+      <div class="seg-wrap">
+        <button onclick="setTab('login')" id="tab-login" class="seg-tab active">Entrar</button>
+        <button onclick="setTab('reg')" id="tab-reg" class="seg-tab">Registrarse</button>
       </div>
       <div>
         <label style="font-size:.8rem;color:var(--mu);font-weight:600;display:block;margin-bottom:5px">Nombre de usuario</label>
@@ -794,8 +799,8 @@ function checkFreezeGrant(u) {
 let authMode = 'login';
 function setTab(m) {
   authMode = m;
-  document.getElementById('tab-login').className = 'btn flex-1 ' + (m==='login'?'btn-or':'btn-ghost');
-  document.getElementById('tab-reg').className   = 'btn flex-1 ' + (m==='reg'  ?'btn-or':'btn-ghost');
+  document.getElementById('tab-login').className = 'seg-tab' + (m==='login'?' active':'');
+  document.getElementById('tab-reg').className   = 'seg-tab' + (m==='reg'  ?' active':'');
   document.getElementById('auth-err').style.display = 'none';
 }
 async function doAuth() {
