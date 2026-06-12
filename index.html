@@ -949,6 +949,7 @@ function setUser(u) {
 
 async function authFetch(url, opts = {}) {
   opts.headers = { 'Content-Type':'application/json', ...(opts.headers||{}), ...(ST.token ? {Authorization:`Bearer ${ST.token}`} : {}) };
+  if (opts.method === 'POST') opts.keepalive = true;
   const res = await fetch(url, opts);
   const text = await res.text();
   const data = text ? JSON.parse(text) : {};
