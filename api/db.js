@@ -35,4 +35,23 @@ async function execute(text, params) {
   return pool.query(text, params);
 }
 
-module.exports = { execute, hashPassword, verifyPassword, signToken, verifyToken };
+function normalizeUserRow(row) {
+  return {
+    username: row.username,
+    name: row.name,
+    xp: row.xp,
+    hearts: row.hearts,
+    heartsRegen: Number(row.hearts_regen || Date.now()),
+    completed: row.completed || [],
+    testsPassed: row.tests_passed || [],
+    streak: row.streak || 0,
+    lastActive: row.last_active || '',
+    grammarUnlocked: row.grammar_unlocked || [],
+    streakFreezes: row.streak_freezes || 0,
+    freezeTier: row.freeze_tier || 0,
+    lastRewardStreak: row.last_reward_streak || 0,
+    usedBonusDecks: row.used_bonus_decks || {}
+  };
+}
+
+module.exports = { execute, hashPassword, verifyPassword, signToken, verifyToken, normalizeUserRow };

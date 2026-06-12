@@ -1,4 +1,4 @@
-const { execute, verifyToken } = require('./db');
+const { execute, verifyToken, normalizeUserRow } = require('./db');
 
 function parseJson(req) {
   return new Promise((resolve, reject) => {
@@ -26,25 +26,6 @@ function getToken(req) {
 
 function safeArray(value) {
   return Array.isArray(value) ? value : [];
-}
-
-function normalizeUserRow(row) {
-  return {
-    username: row.username,
-    name: row.name,
-    xp: row.xp,
-    hearts: row.hearts,
-    heartsRegen: Number(row.hearts_regen || Date.now()),
-    completed: row.completed || [],
-    testsPassed: row.tests_passed || [],
-    streak: row.streak || 0,
-    lastActive: row.last_active || '',
-    grammarUnlocked: row.grammar_unlocked || [],
-    streakFreezes: row.streak_freezes || 0,
-    freezeTier: row.freeze_tier || 0,
-    lastRewardStreak: row.last_reward_streak || 0,
-    usedBonusDecks: row.used_bonus_decks || {}
-  };
 }
 
 module.exports = async (req, res) => {

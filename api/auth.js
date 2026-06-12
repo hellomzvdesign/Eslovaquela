@@ -1,4 +1,4 @@
-const { execute, hashPassword, verifyPassword, signToken } = require('./db');
+const { execute, hashPassword, verifyPassword, signToken, normalizeUserRow } = require('./db');
 
 function parseJson(req) {
   return new Promise((resolve, reject) => {
@@ -55,17 +55,14 @@ module.exports = async (req, res) => {
       if (exists.rowCount) return sendJson(res, 400, { error: 'El usuario ya existe.' });
 
       const { salt, hash } = hashPassword(password);
-      await execute(
+      const inserted = await execute(
         `INSERT INTO users (username, name, password_hash, salt, xp, hearts, hearts_regen, completed, tests_passed)
-         VALUES ($1, $2, $3, $4, 0, 5, $5, $6, $7)`,
+         VALUES ($1, $2, $3, $4, 0, 5, $5, $6, $7) RETURNING *`,
         [username, name, hash, salt, Date.now(), JSON.stringify([]), JSON.stringify([])]
       );
 
       const token = signToken({ username });
-      return sendJson(res, 200, {
-        token,
-        user: { username, name, xp: 0, hearts: 5, heartsRegen: Date.now(), completed: [], testsPassed: [] }
-      });
+      return sendJson(res, 200, { token, user: normalizeUserRow(inserted.rows[0]) });
     }
 
     const result = await execute('SELECT * FROM users WHERE username = $1', [username]);
@@ -77,18 +74,7 @@ module.exports = async (req, res) => {
     }
 
     const token = signToken({ username });
-    return sendJson(res, 200, {
-      token,
-      user: {
-        username: row.username,
-        name: row.name,
-        xp: row.xp,
-        hearts: row.hearts,
-        heartsRegen: Number(row.hearts_regen || Date.now()),
-        completed: row.completed || [],
-        testsPassed: row.tests_passed || []
-      }
-    });
+    return sendJson(res, 200, { token, user: normalizeUserRow(row) });
   } catch (error) {
     console.error(error);
     return sendJson(res, 500, { error: 'Server error' });
