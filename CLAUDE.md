@@ -114,6 +114,28 @@ nič z toho sa v s1–s8 neučí, hoci to staré testy predpokladali).
    kontroluje `node scripts/audit_bonus.js`, duplicitné dlaždice
    `node scripts/audit_tiles.js`.
 
+## Výslovnostné cvičenia (typ `speak`) — TVRDÉ PRAVIDLÁ
+
+Hovorené cvičenie cez Web Speech API (`SpeechRecognition`). V lekcii sa
+zadáva poľom `sp:[['slovo','preklad'], ...]`; v teste ako `tq` položka
+`type:'speak'` s poľami `target` (slovenské slovo/fráza), `es` (preklad),
+voliteľné `accept` (ďalšie akceptované prepisy) a `skippable`.
+
+1. **Cieľ (`sp`/`target`) musí byť naučený v slajde** rovnakej alebo
+   skoršej lekcie — to isté pravidlo ako #1/#2. Audit kontroluje (HARD).
+2. **Nikdy neuberá srdcia a je vždy preskočiteľné.** ASR sa mýli;
+   netrestáme zaň. Správne/blízke = +1 do `nCorr`, nesprávne = bez
+   penalizácie (retry/Continuar).
+3. **Hodnotí len ZROZUMITEĽNOSŤ, nie kvalitu prízvuku.** Google ASR
+   „opraví" výslovnosť na najbližšie reálne slovo (tvrdé „den" → `deň`,
+   „srse" → `srdce`), takže jemné rozdiely (tvrdé/mäkké, krátke/dlhé)
+   `speak` spoľahlivo nezachytí. Na tréning týchto rozdielov použiť
+   radšej `listen` rozlišovanie. `speak` nevolá `postMistake`.
+4. **Fonetika patrí do gramatickej kategórie `vyslovnost`**
+   (`GRAMMAR_CATEGORIES`). Nové fonetické pravidlo vysvetli aj v `g`/`t`
+   slajde lekcie, nielen v gramatickej tabuľke `gr.patches` (tá sa
+   odomkne až po sekcii, takže sa nepočíta ako naučenie).
+
 Vzor dobre postavenej sekcie: **s6 (akuzatív)** — pravidlo sa vysvetlí
 v `g` karte PREČO a AKO, každé nové slovo má `v` slajd, otázky používajú
 len naučené tvary a test pokrýva len obsah sekcie + skutočne naučené

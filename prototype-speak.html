@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Prototipo · Ejercicio de pronunciación (Web Speech API)</title>
+<style>
+  :root{
+    --bg:#0f1220; --card:#1a1f33; --mu:#8b93ad; --tx:#eef1fa;
+    --gr:#3ad17a; --re:#ff5d6c; --ye:#ffc23c; --bl:#5b8cff; --bd:#2a3052;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);color:var(--tx);min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;padding:18px}
+  .wrap{width:100%;max-width:460px}
+  h1{font-size:1.15rem;margin:6px 0 2px}
+  .sub{color:var(--mu);font-size:.82rem;margin:0 0 16px;line-height:1.4}
+  .warn{display:none;background:#3a1c22;border:1px solid var(--re);color:#ffd0d5;
+    padding:12px 14px;border-radius:12px;font-size:.85rem;line-height:1.45;margin-bottom:14px}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:18px;
+    padding:22px 20px;margin-bottom:14px}
+  .chip{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--bl);background:#16204a;border:1px solid #27407f;
+    padding:3px 9px;border-radius:999px;margin-bottom:14px}
+  .target{font-size:2.5rem;font-weight:800;letter-spacing:-.01em;margin:0;line-height:1.1}
+  .hint{color:var(--mu);font-size:.95rem;margin:6px 0 0}
+  .btns{display:flex;gap:10px;margin-top:20px}
+  button{font:inherit;cursor:pointer;border:none;border-radius:12px;padding:14px 12px;
+    font-weight:700;font-size:.95rem;transition:transform .05s,filter .15s}
+  button:active{transform:scale(.97)}
+  button:disabled{opacity:.5;cursor:not-allowed}
+  .b-listen{flex:1;background:#222a47;color:var(--tx);border:1px solid var(--bd)}
+  .b-mic{flex:1.4;background:var(--bl);color:#fff}
+  .b-mic.rec{background:var(--re);animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
+  .status{min-height:22px;margin-top:14px;font-size:.85rem;color:var(--mu);text-align:center}
+  .result{margin-top:14px;border-radius:12px;padding:13px 14px;font-size:.92rem;display:none;line-height:1.45}
+  .r-perfect{background:#13301f;border:1px solid var(--gr)}
+  .r-close{background:#352c14;border:1px solid var(--ye)}
+  .r-wrong{background:#331a1e;border:1px solid var(--re)}
+  .result b{font-size:1rem}
+  .heard{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--tx)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .nav button{background:#222a47;color:var(--tx);border:1px solid var(--bd);flex:1}
+  .nav .pos{color:var(--mu);font-size:.82rem;white-space:nowrap}
+  details{margin-top:8px;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:4px 14px}
+  summary{cursor:pointer;font-size:.82rem;color:var(--mu);padding:10px 0;font-weight:600}
+  .diag{font-size:.8rem;color:var(--mu);padding:4px 0 14px}
+  .diag div{padding:4px 0;border-top:1px solid var(--bd);display:flex;gap:8px;flex-wrap:wrap}
+  .diag .k{color:var(--mu);min-width:120px}
+  .diag .v{color:var(--tx);font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-word}
+  .alt{display:block;padding:1px 0}
+  .foot{color:var(--mu);font-size:.74rem;text-align:center;margin-top:10px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎤 Prototipo de pronunciación</h1>
+  <p class="sub">Escucha el modelo, presiona el micrófono y di la palabra en eslovaco.
+    Esto prueba qué tan bien reconoce el navegador el eslovaco (<code>sk-SK</code>) en tu dispositivo.</p>
+
+  <div class="warn" id="warn"></div>
+
+  <div class="card">
+    <span class="chip" id="focus">—</span>
+    <p class="target" id="target">—</p>
+    <p class="hint" id="hint">—</p>
+    <div class="btns">
+      <button class="b-listen" id="bListen">🔊 Escuchar</button>
+      <button class="b-mic" id="bMic">🎤 Hablar</button>
+    </div>
+    <div class="status" id="status"></div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <div class="nav">
+    <button id="bPrev">← Anterior</button>
+    <span class="pos" id="pos">1 / 1</span>
+    <button id="bNext">Siguiente →</button>
+  </div>
+
+  <details>
+    <summary>🔬 Diagnóstico (para evaluar el reconocedor)</summary>
+    <div class="diag" id="diag">Habla una vez para ver los datos del reconocimiento.</div>
+  </details>
+
+  <p class="foot">Funciona mejor en Chrome (escritorio/Android) y Safari 14.5+.
+    En Chrome el audio se procesa en los servidores de Google. Requiere conexión a internet.</p>
+</div>
+
+<script>
+// ---- Banco de palabras de prueba (foneticamente desafiantes para hispanohablantes) ----
+const ITEMS = [
+  {sk:'dom',            es:'casa',          focus:'Base simple'},
+  {sk:'mám',            es:'tengo',         focus:'Vocal larga á'},
+  {sk:'krk',            es:'cuello',        focus:'Sin vocales'},
+  {sk:'deň',            es:'día',           focus:'Consonante blanda ň'},
+  {sk:'srdce',          es:'corazón',       focus:'Grupo consonántico'},
+  {sk:'žena',           es:'mujer',         focus:'Sonido ž'},
+  {sk:'štvrtok',        es:'jueves',        focus:'š + grupo tvrt'},
+  {sk:'Ďakujem',        es:'gracias',       focus:'ď blanda + vocal larga'},
+  {sk:'chlieb',         es:'pan',           focus:'ch + diptongo ie'},
+  {sk:'zmrzlina',       es:'helado',        focus:'Famosa: pocas vocales'},
+  {sk:'Dobrý deň',      es:'buenos días',   focus:'Frase corta'},
+  {sk:'Volám sa Peter', es:'me llamo Peter',focus:'Frase personal'},
+];
+
+let idx = 0;
+let recognizing = false;
+let recognition = null;
+
+const $ = id => document.getElementById(id);
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+// ---------- Texto a voz (modelo) ----------
+function speak(text){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'sk-SK'; u.rate = 0.82;
+  speechSynthesis.speak(u);
+}
+
+// ---------- Normalización y comparación ----------
+function strictNorm(s){
+  return (s||'').toLowerCase().normalize('NFC')
+    .replace(/[^\p{L}\s]/gu,'')      // quita puntuación, números, símbolos
+    .replace(/\s+/g,' ').trim();
+}
+function looseNorm(s){                // además quita diacríticos (dĺžne/mäkčene)
+  return strictNorm(s).normalize('NFD').replace(/[̀-ͯ]/g,'');
+}
+function levenshtein(a,b){
+  const m=a.length, n=b.length;
+  if(!m) return n; if(!n) return m;
+  const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);
+  for(let j=0;j<=n;j++) d[0][j]=j;
+  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++){
+    const c = a[i-1]===b[j-1]?0:1;
+    d[i][j]=Math.min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+c);
+  }
+  return d[m][n];
+}
+
+// Devuelve {verdict:'perfect'|'close'|'wrong', dist, note}
+function grade(heard, target){
+  const hs=strictNorm(heard), ts=strictNorm(target);
+  const hl=looseNorm(heard),  tl=looseNorm(target);
+  if(hs===ts)              return {verdict:'perfect', dist:0};
+  if(hl===tl)              return {verdict:'close', dist:0,
+                                   note:'Acertaste la palabra, pero falló la longitud de vocal o una consonante blanda (dĺžeň/mäkčeň).'};
+  const dist = levenshtein(hl,tl);
+  const tol  = Math.max(1, Math.round(tl.length*0.25));
+  if(dist<=tol)            return {verdict:'close', dist,
+                                   note:'Muy cerca: '+dist+' diferencia(s) de letra.'};
+  return {verdict:'wrong', dist};
+}
+
+// ---------- Render del ítem ----------
+function render(){
+  const it = ITEMS[idx];
+  $('focus').textContent  = it.focus;
+  $('target').textContent = it.sk;
+  $('hint').textContent   = '« '+it.es+' »';
+  $('pos').textContent    = (idx+1)+' / '+ITEMS.length;
+  $('result').style.display='none';
+  $('status').textContent='';
+  $('bPrev').disabled = idx===0;
+  $('bNext').disabled = idx===ITEMS.length-1;
+}
+
+function showResult(g, heard){
+  const r = $('result');
+  r.style.display='block';
+  if(g.verdict==='perfect'){
+    r.className='result r-perfect';
+    r.innerHTML='✅ <b>¡Perfecto!</b><br>Reconocido como «<span class="heard">'+(heard||'')+'</span>».';
+  } else if(g.verdict==='close'){
+    r.className='result r-close';
+    r.innerHTML='🟡 <b>¡Casi!</b><br>Reconocido como «<span class="heard">'+(heard||'')+'</span>».'+
+                (g.note?'<br><span style="color:var(--mu)">'+g.note+'</span>':'');
+  } else {
+    r.className='result r-wrong';
+    r.innerHTML='❌ <b>Intenta de nuevo</b><br>Reconocido como «<span class="heard">'+(heard||'(nada)')+'</span>»';
+  }
+}
+
+function renderDiag(target, results){
+  const it = ITEMS[idx];
+  let alts='';
+  results.forEach((alt,i)=>{
+    alts += '<span class="alt">'+(i+1)+'. «'+alt.transcript+'» · conf '+
+            (alt.confidence!=null ? (alt.confidence*100).toFixed(0)+'%' : 'n/d')+'</span>';
+  });
+  const top = results[0] ? results[0].transcript : '';
+  const g = grade(top, it.sk);
+  $('diag').innerHTML =
+    '<div><span class="k">Objetivo</span><span class="v">'+it.sk+'</span></div>'+
+    '<div><span class="k">Mejor resultado</span><span class="v">'+(top||'(nada)')+'</span></div>'+
+    '<div><span class="k">Alternativas</span><span class="v">'+(alts||'—')+'</span></div>'+
+    '<div><span class="k">Norm. estricta</span><span class="v">'+strictNorm(top)+'  vs  '+strictNorm(it.sk)+'</span></div>'+
+    '<div><span class="k">Norm. flexible</span><span class="v">'+looseNorm(top)+'  vs  '+looseNorm(it.sk)+'</span></div>'+
+    '<div><span class="k">Veredicto</span><span class="v">'+g.verdict+' (dist '+g.dist+')</span></div>';
+}
+
+// ---------- Reconocimiento de voz ----------
+function startRec(){
+  if(!SR){ return; }
+  if(recognizing){ recognition.stop(); return; }
+
+  recognition = new SR();
+  recognition.lang = 'sk-SK';
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 5;
+  recognition.continuous = false;
+
+  let finalResults = null;
+
+  recognition.onstart = () => {
+    recognizing=true;
+    $('bMic').classList.add('rec');
+    $('bMic').textContent='⏹ Detener';
+    $('status').textContent='Escuchando… di la palabra.';
+    $('result').style.display='none';
+  };
+  recognition.onresult = (e) => {
+    const res = e.results[e.results.length-1];
+    if(res.isFinal){
+      finalResults = Array.from(res).map(a=>({transcript:a.transcript.trim(), confidence:a.confidence}));
+    } else {
+      $('status').textContent='… '+res[0].transcript;
+    }
+  };
+  recognition.onerror = (e) => {
+    const map = {
+      'no-speech':'No se detectó voz. Intenta de nuevo.',
+      'audio-capture':'No se encontró micrófono.',
+      'not-allowed':'Permiso de micrófono denegado. Habilítalo en el navegador.',
+      'service-not-allowed':'El servicio de reconocimiento no está disponible.',
+      'network':'Error de red (Chrome necesita internet para reconocer).',
+      'language-not-supported':'Este navegador no reconoce eslovaco (sk-SK). Prueba Chrome.',
+    };
+    $('status').textContent = '⚠️ '+(map[e.error] || ('Error: '+e.error));
+  };
+  recognition.onend = () => {
+    recognizing=false;
+    $('bMic').classList.remove('rec');
+    $('bMic').textContent='🎤 Hablar';
+    if(finalResults && finalResults.length){
+      const top = finalResults[0].transcript;
+      showResult(grade(top, ITEMS[idx].sk), top);
+      renderDiag(ITEMS[idx].sk, finalResults);
+      if($('status').textContent.startsWith('…')||$('status').textContent.startsWith('Escuchando'))
+        $('status').textContent='';
+    } else if(!$('status').textContent.startsWith('⚠️')){
+      $('status').textContent='No se captó nada. Intenta otra vez.';
+    }
+  };
+
+  try { recognition.start(); }
+  catch(err){ $('status').textContent='No se pudo iniciar: '+err.message; }
+}
+
+// ---------- Wiring ----------
+function init(){
+  if(!SR){
+    $('warn').style.display='block';
+    $('warn').innerHTML='⚠️ Tu navegador no soporta reconocimiento de voz (Web Speech API). '+
+      'Abre esta página en <b>Chrome</b> (escritorio o Android) o Safari 14.5+.';
+    $('bMic').disabled=true;
+  }
+  $('bListen').onclick = () => speak(ITEMS[idx].sk);
+  $('bMic').onclick    = startRec;
+  $('bPrev').onclick   = () => { if(idx>0){ idx--; render(); } };
+  $('bNext').onclick   = () => { if(idx<ITEMS.length-1){ idx++; render(); } };
+  render();
+}
+init();
+</script>
+</body>
+</html>

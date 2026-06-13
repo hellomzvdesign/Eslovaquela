@@ -40,7 +40,9 @@ for (const sec of CURRICULUM) {
       if (typeof q.answer === 'string') addGlobal(q.answer);
       (q.accept || []).forEach(a => addGlobal(a));
       if (q.audio) addGlobal(q.audio);
+      if (q.target) addGlobal(q.target);
     });
+    (les.sp || []).forEach(([sk]) => addGlobal(sk));
   }
 }
 // palabras españolas frecuentes que colisionan con tokens eslovacos
@@ -112,6 +114,12 @@ for (const sec of CURRICULUM) {
       tokenize(sk).forEach(t => { shown.add(t); vocab.add(t); });
     });
 
+    // A2) ejercicios de pronunciación sp: el target debe estar ya enseñado
+    (les.sp || []).forEach(([sk]) => {
+      const miss = tokenize(sk).filter(t => !shown.has(t));
+      if (miss.length) flag('HARD', where0, `pronunciación sp '${sk}' nunca mostrada en slides: [${miss.join(', ')}]`);
+    });
+
     // B) preguntas p (construir frase)
     (les.p || []).forEach(([es, sk, ws, dis]) => {
       const where = `${where0} p:"${es}"`;
@@ -166,6 +174,10 @@ for (const sec of CURRICULUM) {
       if (q.type === 'listen' && q.audio) {
         const miss = missingTokens(q.audio);
         if (miss.length) flag('HARD', where, `audio '${q.audio}' usa tokens no enseñados: [${miss.join(', ')}]`);
+      }
+      if (q.type === 'speak' && q.target) {
+        const miss = missingTokens(q.target);
+        if (miss.length) flag('HARD', where, `target de pronunciación '${q.target}' usa tokens no enseñados: [${miss.join(', ')}]`);
       }
       if (q.type === 'mc' || q.type === 'listen') {
         if (!Array.isArray(q.options) || typeof q.answer !== 'number' || q.answer < 0 || q.answer >= q.options.length) {

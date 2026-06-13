@@ -874,6 +874,7 @@ const BLOCKS = [
 
 // ─── GRAMMAR SKELETON (categories + merge) ─────────────────────────
 const GRAMMAR_CATEGORIES = [
+  {id:'vyslovnost',    em:'🗣️', title:'Pronunciación y sonidos'},
   {id:'zamena',        em:'🙋', title:'Pronombres y posesivos'},
   {id:'byt-pritomny',  em:'🟢', title:'Ser/estar y presente'},
   {id:'slovesa-casy',  em:'⏳', title:'Modos y tiempos verbales'},
@@ -1422,6 +1423,9 @@ function addLessonItemsToPool(les, pool) {
   (les.mc||[]).forEach(([q,opts,ci,x]) => {
     pool.push({t:'mc',q,opts,ci,x});
   });
+  (les.sp||[]).forEach(([sk,es]) => {
+    pool.push({t:'speak',target:sk,es,accept:[],skippable:true,x:`'${sk}' = '${es}'.`});
+  });
 }
 
 function buildPreviousPool(les) {
@@ -1471,6 +1475,7 @@ function tqToEx(q) {
   if (q.type === 'fill') return {...base, t:'fill', q:q.question, answer:q.answer, accept:q.accept||[]};
   if (q.type === 'type') return {...base, t:'type', q:q.question, answer:q.answer, accept:q.accept||[]};
   if (q.type === 'listen') return {...base, t:'listen', q:q.question, audio:q.audio, opts:q.options, ci:q.answer, skippable:!!q.skippable};
+  if (q.type === 'speak') return {...base, t:'speak', target:q.target, es:q.es, accept:q.accept||[], skippable:q.skippable!==false};
   return {...base, t:'mc', q:q.question, opts:q.options||[], ci:q.answer};
 }
 
@@ -1549,6 +1554,7 @@ function renderEx() {
   else if (curEx.t === 'fill') renderFill(curEx, body);
   else if (curEx.t === 'type') renderType(curEx, body);
   else if (curEx.t === 'listen') renderListen(curEx, body);
+  else if (curEx.t === 'speak') renderSpeak(curEx, body);
   else renderMc(curEx, body);
 }
 
@@ -1673,6 +1679,98 @@ function skipListen() {
   exQueue.push({...curEx});
   nextEx();
 }
+
+// ─── Ejercicio de pronunciación (hablar) — Web Speech API ──────────────
+// Honesto: comprueba que el reconocedor entendió la palabra, no la finura
+// del acento. Nunca resta corazones (el ASR se equivoca); siempre se puede
+// omitir o reintentar.
+const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+let _spkRec = null, _spkBusy = false;
+function spkNorm(s) {
+  return String(s||'').toLowerCase().normalize('NFC').replace(/[^\p{L}\s]/gu,'').replace(/\s+/g,' ').trim();
+}
+function spkLev(a, b) {
+  const m=a.length, n=b.length; if(!m) return n; if(!n) return m;
+  const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);
+  for(let j=0;j<=n;j++) d[0][j]=j;
+  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++){const c=a[i-1]===b[j-1]?0:1;d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c);}
+  return d[m][n];
+}
+function gradeSpeak(heard, target, accept) {
+  const variants = [target, ...(accept||[])];
+  const hs = spkNorm(heard), hl = normalizeAnswer(heard);
+  if (variants.some(v => spkNorm(v) === hs)) return {verdict:'perfect'};
+  if (variants.some(v => normalizeAnswer(v) === hl)) return {verdict:'close', note:'Cuidado con la longitud de la vocal o una consonante suave (dĺžeň/mäkčeň).'};
+  const tl = normalizeAnswer(target);
+  const dist = spkLev(hl, tl), tol = Math.max(1, Math.round(tl.length*0.25));
+  if (dist <= tol) return {verdict:'close', note:`Muy cerca: ${dist} diferencia(s) de letra.`};
+  return {verdict:'wrong'};
+}
+function renderSpeak(ex, body) {
+  const target = ex.target || '';
+  body.innerHTML = `
+    <div style="text-align:center;margin-bottom:8px">
+      <p class="ex-kicker">Di esta palabra en voz alta</p>
+      <p style="font-size:2rem;font-weight:800;margin:6px 0 2px;line-height:1.1">${target}</p>
+      ${ex.es?`<p style="color:var(--mu);font-size:.95rem;margin:0">« ${ex.es} »</p>`:''}
+    </div>
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <button onclick="speak('${target.replace(/'/g,"\\'")}');event.stopPropagation()" class="btn btn-ghost" style="flex:1;font-size:.95rem">🔊 Escuchar</button>
+      <button id="spk-mic" class="btn btn-bl" style="flex:1.3">🎤 Hablar</button>
+    </div>
+    <div id="spk-status" style="min-height:22px;margin-top:14px;text-align:center;color:var(--mu);font-size:.85rem"></div>`;
+  document.getElementById('les-footer').innerHTML = ex.skippable ? `<button onclick="skipSpeak()" class="btn btn-ghost w-full">Omitir</button>` : '';
+  const mic = document.getElementById('spk-mic');
+  if (!SpeechRec) {
+    document.getElementById('spk-status').textContent = 'Tu navegador no permite el micrófono aquí. Escucha, repite en voz alta y continúa.';
+    mic.textContent = '✓ Lo dije';
+    mic.onclick = () => { playSound('correct'); nCorr++; nextEx(); };
+  } else {
+    mic.onclick = () => startSpeakRec(ex);
+  }
+  setTimeout(() => speak(target), 300);
+}
+function startSpeakRec(ex) {
+  if (!SpeechRec) return;
+  if (_spkBusy) { try { _spkRec.stop(); } catch(e){} return; }
+  const mic = document.getElementById('spk-mic');
+  const status = document.getElementById('spk-status');
+  _spkRec = new SpeechRec();
+  _spkRec.lang = 'sk-SK'; _spkRec.interimResults = true; _spkRec.maxAlternatives = 5; _spkRec.continuous = false;
+  let best = null;
+  _spkRec.onstart = () => { _spkBusy = true; if(mic) mic.textContent = '⏹ Detener'; if(status) status.textContent = 'Escuchando…'; };
+  _spkRec.onresult = (e) => {
+    const r = e.results[e.results.length-1];
+    if (r.isFinal) best = r[0].transcript.trim();
+    else if (status) status.textContent = '… ' + r[0].transcript;
+  };
+  _spkRec.onerror = (e) => {
+    const map = {'no-speech':'No se detectó voz. Intenta otra vez.','audio-capture':'No se encontró micrófono.','not-allowed':'Permiso de micrófono denegado.','service-not-allowed':'Servicio de reconocimiento no disponible.','network':'Sin conexión para reconocer.','language-not-supported':'Este navegador no reconoce eslovaco. Prueba Chrome.'};
+    if (status) status.textContent = '⚠️ ' + (map[e.error] || ('Error: '+e.error));
+  };
+  _spkRec.onend = () => {
+    _spkBusy = false; if(mic) mic.textContent = '🎤 Hablar';
+    if (best) showSpeakResult(gradeSpeak(best, ex.target, ex.accept), best);
+    else if (status && !status.textContent.startsWith('⚠️')) status.textContent = 'No se captó nada. Intenta otra vez.';
+  };
+  try { _spkRec.start(); } catch(err) { if(status) status.textContent = 'No se pudo iniciar el micrófono.'; }
+}
+function showSpeakResult(g, heard) {
+  const ok = g.verdict !== 'wrong';
+  if (ok) { nCorr++; playSound('correct'); } else { playSound('wrong'); }
+  const head = g.verdict==='perfect' ? '✅ ¡Perfecto!' : g.verdict==='close' ? '🟡 ¡Casi!' : '❌ Intenta de nuevo';
+  document.getElementById('les-footer').innerHTML = `
+    <div class="${ok?'res-ok':'res-err'}" style="margin-bottom:12px">
+      <div style="font-weight:700;font-size:1rem">${head}</div>
+      <p style="font-size:.83rem;color:var(--mu);margin:4px 0 0;line-height:1.4">Reconocido como «${heard||'—'}».${g.note?'<br>'+g.note:''}</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      ${ok?'':`<button onclick="retrySpeak()" class="btn btn-ghost" style="flex:1">🎤 Otra vez</button>`}
+      <button onclick="nextEx()" class="btn ${ok?'btn-gr':'btn-bl'}" style="flex:1">Continuar →</button>
+    </div>`;
+}
+function retrySpeak() { renderEx(); }
+function skipSpeak() { nextEx(); }
 
 function renderMc(ex, body) {
   body.innerHTML = `

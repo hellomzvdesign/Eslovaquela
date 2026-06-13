@@ -18,7 +18,11 @@ gr:{
     {op:'newTable', category:'otazky-spojky', tableId:'pregunta-ako-si',
      title:'Preguntar "¿cómo estás?"',note:"'Ako' (cómo) + 'sa máš' forma la pregunta sobre el estado de alguien.",
      h:['Español','Eslovaco'],
-     r:[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Mám sa dobre.'],['¿Cómo está él?','Ako sa má?'],['Él está bien.','Má sa dobre.']]}
+     r:[['¿Cómo estás?','Ako sa máš?'],['Estoy bien.','Mám sa dobre.'],['¿Cómo está él?','Ako sa má?'],['Él está bien.','Má sa dobre.']]},
+    {op:'newTable', category:'vyslovnost', tableId:'vyslovnost-s1',
+     title:'El acento y los sonidos',note:'El eslovaco se lee casi como se escribe. Regla de oro: el acento SIEMPRE cae en la primera sílaba. La tilde no marca acento — alarga la vocal.',
+     h:['Regla','Ejemplo','Cómo suena'],
+     r:[['Acento en la 1ª sílaba','dobre','DO-bre'],['Tilde (á) = vocal larga','máš','la "a" se alarga'],['"ľ" final = "l" suave','priateľ','PRIA-teľ']]}
   ],
   tips:["🔑 En eslovaco, pronombre + 'byť' ya forma una frase completa: 'Ja som' = 'Yo soy/estoy'.","🔑 'byť' equivale a SER y ESTAR del español al mismo tiempo. El contexto indica cuál.","🔑 La negación 'nie' va siempre justo antes del verbo: 'nie som', 'nie si', 'nie je'.","🔑 'Ako sa máš?' (¿Cómo estás?) se responde con 'Mám sa dobre.' (Estoy bien)."]
 },
@@ -108,11 +112,13 @@ ls:[
    ['¿Cómo se dice "bien"?',['ako','dobre','nie','je'],1,"'dobre' = bien."],
    ['¿Cómo se dice "¿Cómo estás?"?',['Ako sa máš?','Si ako sa máš?','Ako som?','Dobre sa máš?'],0,"'Ako sa máš?' = ¿Cómo estás?."],
    ['¿Qué significa "Má sa dobre"?',['Yo estoy bien','Tú estás bien','Él está bien','Él no está bien'],2,"'Má sa dobre' = Él está bien."]
-  ]
+  ],
+  sp:[['dobre','bien']]
  },
  {id:'s1l7',ti:'Mi lugar, mi gente',em:'🏠',
   sl:[
    ['v','Últimas 2 palabras de la sección',[['doma','en casa','do-ma'],['priateľ','amigo','prya-tel']]],
+   ['g','Cómo suena el eslovaco','El eslovaco se lee casi como se escribe, así que la pronunciación es predecible. Dos reglas clave: el acento SIEMPRE cae en la primera sílaba (por eso no cambia de lugar como en español), y la tilde (á, é, í…) NO marca el acento sino que alarga la vocal. La "ľ" del final de "priateľ" es una "l" suave.',[['Acento en la 1ª sílaba','dobre'],['Vocal larga con tilde','máš'],['"l" suave al final','priateľ']]],
    ['t','¡Sección 1 completa!','Con estas 11 palabras (ja, ty, on, som, si, je, nie, ako, dobre, doma, priateľ) ya puedes formar muchas frases. ¡A practicar para el test final!']
   ],
   w:[['doma','en casa','🏠'],['priateľ','amigo','🤝']],
@@ -125,7 +131,8 @@ ls:[
    ['¿Cómo se dice "amigo"?',['doma','dobre','priateľ','ako'],2,"'priateľ' = amigo."],
    ['¿Qué significa "Som doma"?',['Estoy bien','Estoy en casa','Soy amigo','Él está en casa'],1,"'Som doma' = Estoy en casa."],
    ['¿Cómo se dice "Tú no estás en casa"?',['Ty nie si doma','Ty si doma','Ty nie som doma','On nie je doma'],0,"'Ty nie si doma' = Tú no estás en casa."]
-  ]
+  ],
+  sp:[['priateľ','amigo'],['doma','en casa']]
  },
  {id:'s1test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
@@ -152,7 +159,8 @@ ls:[
    {id:'s1t-15',category:'old_review',type:'fill',skill:'grammar',concept_tag:'preguntas_como_estas',question:'Completa: "Ako ___ on?" (¿Cómo está él?)',options:[],answer:'sa má',audio:null,skippable:false,accept:['sa má','sa ma'],explanation:"'Ako sa má on?' = ¿Cómo está él?"},
    {id:'s1t-16',category:'random_review',type:'listen',skill:'vocab',concept_tag:'vocab_basico_s1',question:'Escucha y elige la traducción correcta.',options:['Soy amigo','Estoy en casa','Eres amigo','Él es amigo'],answer:0,audio:'Ja som priateľ',skippable:true,accept:[],explanation:"'Ja som priateľ' = Soy amigo."},
    {id:'s1t-17',category:'error_pattern',type:'mc',skill:'grammar',concept_tag:'negacion_byt',question:'Elige la frase CORRECTA para "Yo no soy / no estoy"',options:['Nie ja som','Ja nie som','Ja som nie','Nie som ja'],answer:1,audio:null,skippable:false,accept:[],explanation:"'nie' va siempre justo antes del verbo: 'Ja nie som'."},
-   {id:'s1t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'pronombres_personales',question:'Corrige el error: "Ty som doma." (debería significar "Tú estás en casa")',options:[],answer:'Ty si doma',audio:null,skippable:false,accept:['Ty si doma','ty si doma'],explanation:"Con 'ty' se usa 'si', no 'som'. 'som' es solo para 'ja'."}
+   {id:'s1t-18',category:'error_pattern',type:'type',skill:'grammar',concept_tag:'pronombres_personales',question:'Corrige el error: "Ty som doma." (debería significar "Tú estás en casa")',options:[],answer:'Ty si doma',audio:null,skippable:false,accept:['Ty si doma','ty si doma'],explanation:"Con 'ty' se usa 'si', no 'som'. 'som' es solo para 'ja'."},
+   {id:'s1t-19',category:'new',type:'speak',skill:'pronunciation',concept_tag:'pronunciacion_s1',question:'Di esta palabra en voz alta.',target:'priateľ',es:'amigo',options:[],answer:null,audio:null,skippable:true,accept:['priatel'],explanation:"'priateľ' = amigo. Fíjate en la 'ľ' suave del final y el acento en PRIA-."}
   ]
  }
 ]},
