@@ -684,7 +684,7 @@ gr:{
   intro:'La Sección 5 cierra el Bloque 1 con el tema "Môj týždeň" (Mi semana): vocabulario de tiempo y rutina, el verbo irregular "ísť" (ir), y mucho repaso de negación, rád/rada/radi, adjetivos y palabras interrogativas en nuevos contextos.',
   patches:[
     {op:'newTable', category:'slovesa-casy', tableId:'ist-slovesa',
-     title:"Sloveso 'ísť' (ir)", note:"'ísť' es un verbo irregular muy frecuente, usado para movimiento físico: 'voy/vas/va a...'.",
+     title:"Verbo 'ísť' (ir)", note:"'ísť' es un verbo irregular muy frecuente, usado para movimiento físico: 'voy/vas/va a...'.",
      h:['Persona','ísť (ir)','Español'],
      r:[['ja','idem','voy'],['ty','ideš','vas'],['on / ona / ono','ide','va'],['my','ideme','vamos'],['vy','idete','van (ustedes)'],['oni / ony','idú','van (ellos)']]},
     {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
@@ -865,9 +865,9 @@ gr:{
     {op:'newTable', category:'pady', tableId:'akuzativ',
      title:'Akuzatív (4. pád) — singular', note:"El acusativo es el caso del objeto directo: responde a 'Koho? Čo?' (¿a quién? ¿qué?). Se usa después de verbos como 'mať' (tener).",
      h:['Género','Nominativo','Acusativo','Ejemplo'],
-     r:[['Mužský neživotný','dom','dom','Mám dom. = Tengo una casa.'],['Ženský (-a)','izba','izbu','Mám izbu. = Tengo un cuarto.'],['Stredný','okno','okno','Mám okno. = Tengo una ventana.']]},
+     r:[['Masculino inanimado','dom','dom','Mám dom. = Tengo una casa.'],['Femenino (-a)','izba','izbu','Mám izbu. = Tengo un cuarto.'],['Neutro','okno','okno','Mám okno. = Tengo una ventana.']]},
     {op:'newTable', category:'pady', tableId:'prehlad-padov',
-     title:'Prehľad skloňovania (vzorové slovo: izba)', note:'Esta tabla irá creciendo con cada caso nuevo que aprendas.',
+     title:'Resumen de declinación (palabra modelo: izba)', note:'Esta tabla irá creciendo con cada caso nuevo que aprendas.',
      h:['Caso','Pregunta','Forma','Ejemplo'],
      r:[['Nominatív','Kto? Čo?','izba','To je moja izba. = Esto es mi cuarto.'],['Akuzatív','Koho? Čo?','izbu','Mám izbu. = Tengo un cuarto.']]},
     {op:'addRows', category:'otazky-spojky', tableId:'opytovacie-zamena',
@@ -1000,7 +1000,7 @@ ls:[
  {id:'s6test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
    ['t','¡Hora del examen!','Vas a responder preguntas de repaso de toda la Sección 6: el acusativo y las 11 palabras de la casa. Necesitas 80% correctas para desbloquear la Sección 7. ¡Tú puedes!'],
-   ['g','Repaso rápido','El acusativo singular:',[['Mužský neživotný (no cambia)','dom, stôl, okno*'],['Ženský -a → -u','izba→izbu, kuchyňa→kuchyňu, skriňa→skriňu...'],['Mám + acusativo','Mám dom, izbu, kuchyňu...']]],
+   ['g','Repaso rápido','El acusativo singular:',[['Masculino inanimado (no cambia)','dom, stôl, okno*'],['Femenino -a → -u','izba→izbu, kuchyňa→kuchyňu, skriňa→skriňu...'],['Mám + acusativo','Mám dom, izbu, kuchyňu...']]],
    ['t','Consejo final',"Recuerda: solo los sustantivos femeninos terminados en -a cambian (-a→-u). Los demás se quedan igual."]
   ],
   w:[],p:[],mc:[],
@@ -1031,13 +1031,13 @@ gr:{
   intro:'La Sección 7 amplía el acusativo: ahora incluye los sustantivos masculinos ANIMADOS (personas, animales), que cambian -Ø → -a, y el plural de los tres géneros. También aprendes vocabulario de "mis cosas": mascotas, libros y aparatos.',
   patches:[
     {op:'addRows', category:'pady', tableId:'akuzativ',
-     r:[['Mužský životný','pes','psa','Mám psa. = Tengo un perro.']]},
+     r:[['Masculino animado','pes','psa','Mám psa. = Tengo un perro.']]},
     {op:'newTable', category:'pady', tableId:'mnozne-cislo',
-     title:'Množné číslo (nominatív)', note:'El plural depende del género. Después de los números 2, 3 y 4 se usa esta misma forma.',
+     title:'Plural (nominativo)', note:'El plural depende del género. Después de los números 2, 3 y 4 se usa esta misma forma.',
      h:['Género','Singular','Plural','Ejemplo'],
-     r:[['Mužský','dom','domy','Mám dva domy. = Tengo dos casas.'],['Ženský','izba','izby','Mám tri izby. = Tengo tres cuartos.'],['Stredný','okno','okná','Mám dve okná. = Tengo dos ventanas.']]},
+     r:[['Masculino','dom','domy','Mám dva domy. = Tengo dos casas.'],['Femenino','izba','izby','Mám tri izby. = Tengo tres cuartos.'],['Neutro','okno','okná','Mám dve okná. = Tengo dos ventanas.']]},
     {op:'addRows', category:'pady', tableId:'prehlad-padov',
-     r:[['Akuzatív (živ.)','Koho?','psa','Mám psa. = Tengo un perro.']]},
+     r:[['Akuzatív (anim.)','Koho?','psa','Mám psa. = Tengo un perro.']]},
     {op:'addRows', category:'frazy', tableId:'prezivanie',
      r:[['¿Qué es esto?','Čo je to?','cho ye to']]}
   ],
@@ -1115,7 +1115,7 @@ ls:[
  {id:'s7l5',ti:'El auto y el plural',em:'🚗',
   sl:[
    ['v','Un vehículo',[['auto','auto / carro','au-to']]],
-   ['g','Množné číslo (plural)','¡Nuevo! Para hablar de VARIAS cosas, el sustantivo también cambia de forma — y la terminación que recibe depende del género: masculino y femenino añaden "-y", el neutro cambia "-o" por "-á". Los números son "dva" (dos, masculino), "dve" (dos, femenino/neutro) y "tri" (tres). Mira estos ejemplos:',[['Masculino (-y): dos casas','dva domy'],['Femenino (-y): tres cuartos','tri izby'],['Neutro (-o→-á): dos autos','dve autá'],['Neutro (-o→-á): dos ventanas','dve okná']]]
+   ['g','El plural','¡Nuevo! Para hablar de VARIAS cosas, el sustantivo también cambia de forma — y la terminación que recibe depende del género: masculino y femenino añaden "-y", el neutro cambia "-o" por "-á". Los números son "dva" (dos, masculino), "dve" (dos, femenino/neutro) y "tri" (tres). Mira estos ejemplos:',[['Masculino (-y): dos casas','dva domy'],['Femenino (-y): tres cuartos','tri izby'],['Neutro (-o→-á): dos autos','dve autá'],['Neutro (-o→-á): dos ventanas','dve okná']]]
   ],
   w:[['auto','auto / carro','🚗']],
   p:[
@@ -1166,7 +1166,7 @@ ls:[
  {id:'s7test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
    ['t','¡Hora del examen!','Vas a responder preguntas de repaso de toda la Sección 7: el acusativo ampliado (animado + plural) y 11 palabras nuevas. Necesitas 80% correctas para desbloquear la Sección 8. ¡Tú puedes!'],
-   ['g','Repaso rápido','El acusativo, ampliado:',[['Mužský životný (-Ø → -a)','pes→psa, brat→brata'],['Mužský neživotný / Stredný (no cambia)','dom, telefón, auto, pero'],['Ženský -a → -u','mačka→mačku, kniha→knihu'],['Plurál','dom→domy, izba→izby, auto→autá']]],
+   ['g','Repaso rápido','El acusativo, ampliado:',[['Masculino animado (-Ø → -a)','pes→psa, brat→brata'],['Masculino inanimado / Neutro (no cambia)','dom, telefón, auto, pero'],['Femenino -a → -u','mačka→mačku, kniha→knihu'],['Plural','dom→domy, izba→izby, auto→autá']]],
    ['t','Consejo final',"Antes de decir 'Mám ___', pregúntate: ¿es una persona o animal? Si sí, cambia -Ø → -a."]
   ],
   w:[],p:[],mc:[],
@@ -1205,7 +1205,7 @@ gr:{
      h:['Español','Eslovaco'],
      r:[['Tengo hambre.','Mám hlad.'],['Tengo sed.','Mám smäd.'],['¡Buen provecho!','Dobrú chuť!'],['Está rico / me gusta.','Chutí mi to.']]},
     {op:'addRows', category:'pady', tableId:'akuzativ',
-     r:[['Stredný','mäso','mäso','Jem mäso. = Como carne.'],['Ženský (-a)','voda','vodu','Pijem vodu. = Bebo agua.'],['Mužský neživotný','syr','syr','Jem syr. = Como queso.'],['Stredný','pivo','pivo','Pijem pivo. = Bebo cerveza.']]},
+     r:[['Neutro','mäso','mäso','Jem mäso. = Como carne.'],['Femenino (-a)','voda','vodu','Pijem vodu. = Bebo agua.'],['Masculino inanimado','syr','syr','Jem syr. = Como queso.'],['Neutro','pivo','pivo','Pijem pivo. = Bebo cerveza.']]},
     {op:'addRows', category:'frazy', tableId:'rad-rada-radi',
      r:[['Me gusta [cosa] (hombre)','mám rád + sustantivo (acus.)','Mám rád kávu. = Me gusta el café.'],['Me gusta [cosa] (mujer)','mám rada + sustantivo (acus.)','Mám rada čaj. = Me gusta el té.'],['¿Te gusta [cosa]?','máš rád/rada + sustantivo (acus.)','Máš rád kávu? = ¿Te gusta el café?']]}
   ],
