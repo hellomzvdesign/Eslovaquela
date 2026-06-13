@@ -1187,7 +1187,7 @@ function goMap(scrollToActive) {
   activeTab = 'map';
   const u = getUser();
   document.getElementById('map-username').textContent = u?.name || u?.username || '';
-  document.getElementById('map-streak').textContent = '🔥 ' + effectiveStreak(u) + ((u?.streakFreezes||0) > 0 ? ' 🧊' : '');
+  document.getElementById('map-streak').textContent = '🔥 ' + effectiveStreak(u) + ((u?.streakFreezes||0) > 0 ? ' 🧊 ' + (u.streakFreezes||0) : '');
   renderHeartsEl('map-hearts', u?.hearts || 0);
   document.getElementById('map-regen').textContent = regenText();
   const xp = u?.xp || 0;
