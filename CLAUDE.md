@@ -116,10 +116,17 @@ nič z toho sa v s1–s8 neučí, hoci to staré testy predpokladali).
 
 ## Výslovnostné cvičenia (typ `speak`) — TVRDÉ PRAVIDLÁ
 
-Hovorené cvičenie cez Web Speech API (`SpeechRecognition`). V lekcii sa
-zadáva poľom `sp:[['slovo','preklad'], ...]`; v teste ako `tq` položka
+Hovorené cvičenie cez Web Speech API (`SpeechRecognition`). **Generuje sa
+automaticky** v `addLessonItemsToPool`: každá lekcia dostane ~1 cvičenie
+písania (`type`) a ~1 výslovnosti (`speak`) z náhodného slovíčka `w` —
+ako spestrenie, **NIE pravidlo do každého cvičenia**. Rovnako sa
+auto-generuje aj `type` (písanie) — písanie už nie je len v testoch.
+
+Navyše sa dá pridať ručne: v lekcii poľom `sp:[['slovo','preklad',['variant',...]], ...]`
+(napr. keď treba vlastné `accept`); v teste ako `tq` položka
 `type:'speak'` s poľami `target` (slovenské slovo/fráza), `es` (preklad),
-voliteľné `accept` (ďalšie akceptované prepisy) a `skippable`.
+voliteľné `accept` a `skippable`. Auto-`speak` preskočí slová, ktoré už
+majú vlastný `sp` (aby nevznikol duplikát).
 
 1. **Cieľ (`sp`/`target`) musí byť naučený v slajde** rovnakej alebo
    skoršej lekcie — to isté pravidlo ako #1/#2. Audit kontroluje (HARD).
@@ -135,6 +142,13 @@ voliteľné `accept` (ďalšie akceptované prepisy) a `skippable`.
    (`GRAMMAR_CATEGORIES`). Nové fonetické pravidlo vysvetli aj v `g`/`t`
    slajde lekcie, nielen v gramatickej tabuľke `gr.patches` (tá sa
    odomkne až po sekcii, takže sa nepočíta ako naučenie).
+5. **Hodnotenie je STRIKTNÁ zhoda** prepisu s `target` alebo niektorým
+   `accept` variantom — žiadna edit-distance ani auto-diakritická
+   tolerancia (na rozdiel od písania, kde sa diakritika ignoruje). Bežné
+   výstupy ASR (napr. bez mäkčeňa: `priatel` za `priateľ`) pridaj
+   explicitne do `accept`. Formát lekciového `sp`:
+   `['slovo','preklad', ['variant1', ...]]` (3. prvok je voliteľný
+   zoznam akceptovaných prepisov).
 
 Vzor dobre postavenej sekcie: **s6 (akuzatív)** — pravidlo sa vysvetlí
 v `g` karte PREČO a AKO, každé nové slovo má `v` slajd, otázky používajú

@@ -348,6 +348,9 @@ h1,h2,h3,h4{font-family:var(--fd)}
 @keyframes resIn{from{opacity:0;transform:translateY(10px)}}
 #les-footer,.screen-footer{box-shadow:0 -10px 24px rgba(58,38,18,.06)}
 #sl-body,#les-body,#bd-body{display:flex;flex-direction:column;justify-content:safe center}
+/* Footer anclado al fondo: el panel de resultado se superpone y NO empuja el contenido (sin saltos al responder) */
+#sc-lesson{position:relative}
+#les-body{padding-bottom:80px}
 .map-header h2{text-shadow:0 1px 3px rgba(150,55,10,.35)}
 
 /* ── DESKTOP LAYOUT ── */
@@ -582,7 +585,7 @@ h1,h2,h3,h4{font-family:var(--fd)}
     </div>
   </div>
   <div id="les-body" class="scroll-body p-4"></div>
-  <div id="les-footer" style="padding:14px 16px;background:var(--su);border-top:1.5px solid var(--bo)"></div>
+  <div id="les-footer" style="position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:var(--su);border-top:1.5px solid var(--bo)"></div>
 </div>
 
 <!-- ─────────────── HEARTS SCREEN ─────────────── -->
@@ -1413,18 +1416,29 @@ const LESSON_EXERCISE_COUNT = 11;
 const PREVIOUS_LESSON_EXERCISE_COUNT = 6;
 
 function addLessonItemsToPool(les, pool) {
-  (les.w||[]).forEach(([sk,es,em]) => {
+  const spWords = new Set((les.sp||[]).map(s => s[0]));
+  const words = les.w || [];
+  words.forEach(([sk,es,em]) => {
     pool.push({t:'img',es,sk,em,opts:makeOpts(sk,ALL_SK,4),x:`'${sk}' significa '${es}'.`});
     pool.push({t:'wd',es,sk,w:[{sk,es}],dis:makeDistr(sk,ALL_SK,3),x:`'${sk}' = '${es}'.`});
   });
+  // Escritura y pronunciación como VARIEDAD, no en cada ejercicio: ~1 de cada
+  // por lección, sobre una palabra al azar del vocabulario de la lección.
+  if (words.length) {
+    const pick = () => words[Math.floor(Math.random()*words.length)];
+    const [tsk,tes] = pick();
+    pool.push({t:'type',q:tes,answer:tsk,accept:[],x:`'${tsk}' = '${tes}'.`});
+    const [ssk,ses] = pick();
+    if (!spWords.has(ssk)) pool.push({t:'speak',target:ssk,es:ses,accept:[],skippable:true,x:`'${ssk}' = '${ses}'.`});
+  }
   (les.p||[]).forEach(([es,sk,ws,dis,x]) => {
     pool.push({t:'wd',es,sk,w:ws.map(([s,e])=>({sk:s,es:e})),dis,x});
   });
   (les.mc||[]).forEach(([q,opts,ci,x]) => {
     pool.push({t:'mc',q,opts,ci,x});
   });
-  (les.sp||[]).forEach(([sk,es]) => {
-    pool.push({t:'speak',target:sk,es,accept:[],skippable:true,x:`'${sk}' = '${es}'.`});
+  (les.sp||[]).forEach(([sk,es,acc]) => {
+    pool.push({t:'speak',target:sk,es,accept:acc||[],skippable:true,x:`'${sk}' = '${es}'.`});
   });
 }
 
@@ -1620,7 +1634,6 @@ function checkWd() {
     ok = correctWords.join('|') === userWords.join('|');
   }
   speak(correct);
-  if (!ok) exQueue.push({...curEx});
   showResult(ok, curEx.x, correct);
 }
 
@@ -1689,22 +1702,12 @@ let _spkRec = null, _spkBusy = false;
 function spkNorm(s) {
   return String(s||'').toLowerCase().normalize('NFC').replace(/[^\p{L}\s]/gu,'').replace(/\s+/g,' ').trim();
 }
-function spkLev(a, b) {
-  const m=a.length, n=b.length; if(!m) return n; if(!n) return m;
-  const d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);
-  for(let j=0;j<=n;j++) d[0][j]=j;
-  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++){const c=a[i-1]===b[j-1]?0:1;d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c);}
-  return d[m][n];
-}
+// Coincidencia ESTRICTA: el transcript debe igualar exactamente el target o
+// algún variante de 'accept'. Sin tolerancia de edit-distance ni de
+// diacríticos (a diferencia de la escritura): pronunciar mal = incorrecto.
 function gradeSpeak(heard, target, accept) {
-  const variants = [target, ...(accept||[])];
-  const hs = spkNorm(heard), hl = normalizeAnswer(heard);
-  if (variants.some(v => spkNorm(v) === hs)) return {verdict:'perfect'};
-  if (variants.some(v => normalizeAnswer(v) === hl)) return {verdict:'close', note:'Cuidado con la longitud de la vocal o una consonante suave (dĺžeň/mäkčeň).'};
-  const tl = normalizeAnswer(target);
-  const dist = spkLev(hl, tl), tol = Math.max(1, Math.round(tl.length*0.25));
-  if (dist <= tol) return {verdict:'close', note:`Muy cerca: ${dist} diferencia(s) de letra.`};
-  return {verdict:'wrong'};
+  const variants = [target, ...(accept||[])].map(spkNorm);
+  return variants.includes(spkNorm(heard)) ? {verdict:'perfect'} : {verdict:'wrong'};
 }
 function renderSpeak(ex, body) {
   const target = ex.target || '';
@@ -1756,20 +1759,24 @@ function startSpeakRec(ex) {
   try { _spkRec.start(); } catch(err) { if(status) status.textContent = 'No se pudo iniciar el micrófono.'; }
 }
 function showSpeakResult(g, heard) {
-  const ok = g.verdict !== 'wrong';
-  if (ok) { nCorr++; playSound('correct'); } else { playSound('wrong'); }
-  const head = g.verdict==='perfect' ? '✅ ¡Perfecto!' : g.verdict==='close' ? '🟡 ¡Casi!' : '❌ Intenta de nuevo';
+  const ok = g.verdict === 'perfect';
+  if (ok) { nCorr++; playSound('correct'); } // sin sonido en error: speak nunca quita corazones
+  const head = ok ? '✅ ¡Perfecto!' : '❌ Intenta de nuevo';
   document.getElementById('les-footer').innerHTML = `
     <div class="${ok?'res-ok':'res-err'}" style="margin-bottom:12px">
       <div style="font-weight:700;font-size:1rem">${head}</div>
-      <p style="font-size:.83rem;color:var(--mu);margin:4px 0 0;line-height:1.4">Reconocido como «${heard||'—'}».${g.note?'<br>'+g.note:''}</p>
+      <p style="font-size:.83rem;color:var(--mu);margin:4px 0 0;line-height:1.4">Reconocido como «${heard||'—'}».</p>
     </div>
     <div style="display:flex;gap:10px">
       ${ok?'':`<button onclick="retrySpeak()" class="btn btn-ghost" style="flex:1">🎤 Otra vez</button>`}
-      <button onclick="nextEx()" class="btn ${ok?'btn-gr':'btn-bl'}" style="flex:1">Continuar →</button>
+      <button onclick="speakContinue(${ok})" class="btn ${ok?'btn-gr':'btn-bl'}" style="flex:1">Continuar →</button>
     </div>`;
 }
 function retrySpeak() { renderEx(); }
+// speak nunca quita corazones, pero una pronunciación fallida se reencola para
+// repetirla más adelante en la lección (no es penalización, es repaso). Omitir
+// sigue sin reencolar: queda como vía de escape en cada render.
+function speakContinue(ok) { if (!ok) exQueue.push({...curEx}); nextEx(); }
 function skipSpeak() { nextEx(); }
 
 function renderMc(ex, body) {
@@ -1802,9 +1809,11 @@ function showResult(ok, explanation, correctSk) {
     playSound('correct');
   } else {
     nErr++;
-    playSound('wrong');
-    if(!hpMode){ u.hearts=Math.max(0,u.hearts-1); setUser(u); renderHeartsEl('les-hearts',u.hearts); updateProgress().catch(()=>{}); }
+    // negative.mp3 SOLO cuando se pierde un corazón (no en hpMode ni en speak)
+    if(!hpMode){ playSound('wrong'); u.hearts=Math.max(0,u.hearts-1); setUser(u); renderHeartsEl('les-hearts',u.hearts); updateProgress().catch(()=>{}); }
     postMistake(curEx.conceptTag);
+    // Reencola la pregunta fallada para repetirla más adelante en la lección.
+    exQueue.push({...curEx});
   }
   const foot = document.getElementById('les-footer');
   foot.innerHTML = `

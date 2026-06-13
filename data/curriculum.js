@@ -112,8 +112,7 @@ ls:[
    ['¿Cómo se dice "bien"?',['ako','dobre','nie','je'],1,"'dobre' = bien."],
    ['¿Cómo se dice "¿Cómo estás?"?',['Ako sa máš?','Si ako sa máš?','Ako som?','Dobre sa máš?'],0,"'Ako sa máš?' = ¿Cómo estás?."],
    ['¿Qué significa "Má sa dobre"?',['Yo estoy bien','Tú estás bien','Él está bien','Él no está bien'],2,"'Má sa dobre' = Él está bien."]
-  ],
-  sp:[['dobre','bien']]
+  ]
  },
  {id:'s1l7',ti:'Mi lugar, mi gente',em:'🏠',
   sl:[
@@ -132,7 +131,7 @@ ls:[
    ['¿Qué significa "Som doma"?',['Estoy bien','Estoy en casa','Soy amigo','Él está en casa'],1,"'Som doma' = Estoy en casa."],
    ['¿Cómo se dice "Tú no estás en casa"?',['Ty nie si doma','Ty si doma','Ty nie som doma','On nie je doma'],0,"'Ty nie si doma' = Tú no estás en casa."]
   ],
-  sp:[['priateľ','amigo'],['doma','en casa']]
+  sp:[['priateľ','amigo',['priatel']]]
  },
  {id:'s1test',ti:'⭐ TEST FINAL',em:'⭐',isTest:true,
   sl:[
@@ -969,7 +968,7 @@ ls:[
    ['v','Dos palabras nuevas',[['posteľ','cama','pos-tel'],['okno','ventana','ok-no']]],
    ['g','Dos patrones que NO cambian','"posteľ" (femenino terminado en consonante blanda) y "okno" (neutro) NO cambian en acusativo, igual que "dom" y "stôl".',[['Tengo una cama. (no cambia)','Mám posteľ.'],['Tengo una ventana. (no cambia)','Mám okno.'],['Esto es mi cama.','To je moja posteľ.']]]
   ],
-  w:[['posteľ','cama','🛏️'],['okno','ventana','🪟']],
+  w:[['posteľ','cama','🛏️'],['okno','ventana','🖼️']],
   p:[
    ['Tengo una cama.','Mám posteľ.',[['Mám','Tengo'],['posteľ','una cama']],['posteľu','okná'],"'posteľ' (femenino en consonante blanda) NO cambia en acusativo."],
    ['Tengo una ventana.','Mám okno.',[['Mám','Tengo'],['okno','una ventana']],['oknu','okná'],"'okno' (neutro) NO cambia en acusativo, igual que 'dom'."],
